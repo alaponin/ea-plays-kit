@@ -1,0 +1,22 @@
+name: ci
+on:
+  push: { branches: [main], tags: ['v*'] }
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Shared references are in sync
+        run: bash plugins/ea-plays/scripts/sync-shared.sh --check
+      - name: Fixtures and provenance headers
+        run: python3 tests/check_fixtures.py
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+      - name: Validate plugin
+        run: claude plugin validate plugins/ea-plays --strict
+      - name: Validate marketplace
+        run: claude plugin validate . --strict

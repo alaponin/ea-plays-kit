@@ -1,0 +1,354 @@
+{
+ "0": {
+  "play": "Build the A0 country context pack",
+  "subtopic": "Build your country context",
+  "skill": "country-context-pack",
+  "also": [],
+  "artefact": "A0 — Country context pack",
+  "consumes": "the country name and sector"
+ },
+ "1.1": {
+  "play": "Diagnose your country's fragmentation symptoms",
+  "subtopic": "Why your country needs a national EA",
+  "skill": "country-context-pack",
+  "also": [
+   "cite-or-discard"
+  ],
+  "artefact": "A1 — Fragmentation diagnostic",
+  "consumes": "A0 §1"
+ },
+ "1.2": {
+  "play": "Draft a one-slide 'what is EA' explainer for ministers",
+  "subtopic": "What an EA actually is, in one breath",
+  "skill": "ea-institution-mapper",
+  "also": [],
+  "artefact": "A2 — Ministerial explainer slide",
+  "consumes": "A0 §1, A0 §6"
+ },
+ "1.3": {
+  "play": "Build the whole-of-government business case for building-block re-use",
+  "subtopic": "Why projects can't do this themselves — EA as planning, RAs as scar tissue",
+  "skill": "ea-cost-case",
+  "also": [
+   "cite-or-discard"
+  ],
+  "artefact": "A3 — Re-use business case",
+  "consumes": "A0 §2, A1"
+ },
+ "1.4": {
+  "play": "Translate an operating-model question into a business-IT joint agenda",
+  "subtopic": "Why an EA matters more now — and what it lets your minister actually do",
+  "skill": "ea-legal-context",
+  "also": [],
+  "artefact": "A4 — Joint business–IT agenda",
+  "consumes": "A0 §3, A2"
+ },
+ "1.5": {
+  "play": "Map your country's existing initiatives against PAERA's five foundations",
+  "subtopic": "Why PAERA-anchored — the head start you do not pay for twice",
+  "skill": "paera-reference-check",
+  "also": [
+   "cite-or-discard"
+  ],
+  "artefact": "A5 — PAERA foundation coverage map",
+  "consumes": "A0 §2, the initiatives list, A1"
+ },
+ "1.6": {
+  "play": "Draft a phase-by-phase RACI for your country's EA programme",
+  "subtopic": "The lifecycle on one page",
+  "skill": "ea-governance-drafter",
+  "also": [
+   "ea-institution-mapper"
+  ],
+  "artefact": "A6 — Phase RACI and role-gap list",
+  "consumes": "A0 §4, A4, A5"
+ },
+ "1.7": {
+  "play": "Draft a Terms of Reference for your EA Governance Board",
+  "subtopic": "What you will need from your minister — and how to ask for it",
+  "skill": "ea-governance-drafter",
+  "also": [
+   "ea-legal-context"
+  ],
+  "artefact": "A7 — EA Governance Board ToR",
+  "consumes": "A0 §4, A0 §7, A3, A6, A8"
+ },
+ "1.8": {
+  "play": "Generate comparator-country signposts that fit your context",
+  "subtopic": "Four signposts — three African, one international",
+  "skill": "ea-comparator-evidence",
+  "also": [
+   "cite-or-discard"
+  ],
+  "artefact": "A8 — Comparator-country cards",
+  "consumes": "A0 §5"
+ },
+ "2.1": {
+  "play": "Generate a four-layer reading template for a ministry",
+  "subtopic": "Read any government in four layers",
+  "skill": "bdat-assessor",
+  "also": [],
+  "artefact": "A9 — Four-layer reading template",
+  "consumes": "A0 §6"
+ },
+ "2.2": {
+  "play": "Check a draft architecture against the PAERA metamodel",
+  "subtopic": "The shared vocabulary that makes re-use possible",
+  "skill": "paera-reference-check",
+  "also": [],
+  "artefact": "A10 — Metamodel conformance report",
+  "consumes": "a draft model, or the initiatives list"
+ },
+ "2.3": {
+  "play": "Turn a PAERA principle into a country-tailored principle card",
+  "subtopic": "Adopt your principles, don't draft them",
+  "skill": "paera-reference-check",
+  "also": [
+   "ea-legal-context"
+  ],
+  "artefact": "A11 — Principle card set",
+  "consumes": "A0 §7"
+ },
+ "2.4": {
+  "play": "Classify a public body and generate its expected profile",
+  "subtopic": "Classify any public body before you model it",
+  "skill": "ea-institution-mapper",
+  "also": [],
+  "artefact": "A12 — Body classification profile",
+  "consumes": "A0 §6"
+ },
+ "2.5": {
+  "play": "Draft a first-pass BDAT skeleton for a sector",
+  "subtopic": "BDAT on a real ministry — the Progressa walkthrough",
+  "skill": "bdat-assessor",
+  "also": [
+   "ea-institution-mapper"
+  ],
+  "artefact": "A13 — Sector BDAT skeleton",
+  "consumes": "A0 §6, A5, A9, A12"
+ },
+ "2.6": {
+  "play": "Turn AS-IS notes into a scored gap analysis",
+  "subtopic": "Run a Phase 2 Assess — what good looks like, and the gaps you'll find",
+  "skill": "bdat-assessor",
+  "also": [],
+  "artefact": "A14 — Scored gap analysis",
+  "consumes": "A13, A11"
+ },
+ "2.7": {
+  "play": "Run a two-trap screen on a project proposal",
+  "subtopic": "The two traps to catch at Assess — bespoke and vendor-driven",
+  "skill": "bb-landscape-check",
+  "also": [
+   "bb-sourcing-researcher"
+  ],
+  "artefact": "A15 — Two-trap screen",
+  "consumes": "A14, BB status register"
+ },
+ "3.1": {
+  "play": "Design your EA repository's structure",
+  "subtopic": "Set up the one place your architecture lives",
+  "skill": "ea-governance-drafter",
+  "also": [],
+  "artefact": "A16 — EA repository structure",
+  "consumes": "A13"
+ },
+ "3.2": {
+  "play": "Score EA tool options against lock-in and fit",
+  "subtopic": "Choose EA tooling without locking yourself in",
+  "skill": "ea-tool-evaluator",
+  "also": [
+   "cite-or-discard"
+  ],
+  "artefact": "A17 — EA tool comparison + export test",
+  "consumes": "A16 and a candidate list"
+ },
+ "3.3": {
+  "play": "Draft the repository update policy",
+  "subtopic": "Keep the repository true — the update discipline",
+  "skill": "ea-governance-drafter",
+  "also": [],
+  "artefact": "A18 — Repository update policy",
+  "consumes": "A16, A7"
+ },
+ "3.4": {
+  "play": "Draft your EA Board's Terms of Reference",
+  "subtopic": "Stand up an EA Board that can actually say no",
+  "skill": "ea-governance-drafter",
+  "also": [
+   "ea-legal-context"
+  ],
+  "artefact": "A7 rev.2 — EA Board ToR, standing version",
+  "consumes": "A7, A0 §7"
+ },
+ "3.5": {
+  "play": "Build your architecture review gate checklist",
+  "subtopic": "Review projects against the architecture",
+  "skill": "ea-governance-drafter",
+  "also": [
+   "bb-landscape-check"
+  ],
+  "artefact": "A19 — Review-gate checklist",
+  "consumes": "A7 rev.2, A11, BB status register"
+ },
+ "3.6": {
+  "play": "Build your EA health scorecard",
+  "subtopic": "Show the EA is working — the few metrics that matter",
+  "skill": "ea-governance-drafter",
+  "also": [],
+  "artefact": "A20 — EA health scorecard",
+  "consumes": "A16, A18"
+ },
+ "3.7": {
+  "play": "Build your EA sustainment risk register",
+  "subtopic": "Keep the practice alive past year two",
+  "skill": "ea-governance-drafter",
+  "also": [],
+  "artefact": "A21 — Sustainment risk register",
+  "consumes": "A20, A6"
+ },
+ "4.1": {
+  "play": "Build your own demonstration canvas",
+  "subtopic": "Meet Progressa — a real sector with a real fragmentation problem",
+  "skill": "ea-institution-mapper",
+  "also": [],
+  "artefact": "A22 — Demonstration canvas",
+  "consumes": "A0 §6, A12, the sector problem paragraph"
+ },
+ "4.2": {
+  "play": "Draft your Discovery brief outline",
+  "subtopic": "Phase 1, Discover — map what the sector has today",
+  "skill": "ea-method-runner",
+  "also": [
+   "cite-or-discard"
+  ],
+  "artefact": "A23 — Discovery brief",
+  "consumes": "A22, A0 §7"
+ },
+ "4.3": {
+  "play": "Turn your Discovery brief into a ranked gap analysis",
+  "subtopic": "Phase 2, Assess — find the gaps and rank them",
+  "skill": "ea-method-runner",
+  "also": [],
+  "artefact": "A14 rev.2 — Ranked gap analysis",
+  "consumes": "A23, A14"
+ },
+ "4.4": {
+  "play": "Build your sourcing matrix",
+  "subtopic": "Phase 3, Adapt — fit PAERA and decide build, buy or share",
+  "skill": "ea-method-runner",
+  "also": [
+   "bb-landscape-check",
+   "bb-sourcing-researcher"
+  ],
+  "artefact": "A24 — Sourcing matrix",
+  "consumes": "A14 rev.2, BB status register"
+ },
+ "4.5": {
+  "play": "Design a first-cut target architecture from your gaps",
+  "subtopic": "Phase 4, Plan — design the target architecture",
+  "skill": "ea-method-runner",
+  "also": [
+   "bb-landscape-check"
+  ],
+  "artefact": "A25 — Target architecture",
+  "consumes": "A24, A11, BB status register"
+ },
+ "4.6": {
+  "play": "Sequence your roadmap into waves",
+  "subtopic": "Phase 4, Plan — sequence the roadmap and cost it",
+  "skill": "ea-method-runner",
+  "also": [],
+  "artefact": "A26 — Wave roadmap",
+  "consumes": "A25, A3"
+ },
+ "4.7": {
+  "play": "Run a gate decision on a real project",
+  "subtopic": "Phase 5, Execute & Govern — stand up the living EA",
+  "skill": "ea-method-runner",
+  "also": [
+   "bb-landscape-check"
+  ],
+  "artefact": "A27 — Gate decision paper",
+  "consumes": "A26, A19, A7 rev.2, BB status register"
+ },
+ "4.8": {
+  "play": "Map the Progressa method to your sector",
+  "subtopic": "Run this on your own sector — the transferable recipe",
+  "skill": "ea-method-runner",
+  "also": [
+   "ea-institution-mapper"
+  ],
+  "artefact": "A28 — Sector transfer plan",
+  "consumes": "A26, A0 §6 for the next sector"
+ },
+ "5.1": {
+  "play": "Generate comparator-country evidence tuned to your context",
+  "subtopic": "Is this proven, or just theory? — evidence from real programmes",
+  "skill": "ea-comparator-evidence",
+  "also": [
+   "cite-or-discard"
+  ],
+  "artefact": "A8 rev.2 — Comparator evidence, sourced",
+  "consumes": "A0 §5, A8"
+ },
+ "5.2": {
+  "play": "Build your programme's sustainment risk register",
+  "subtopic": "What the evidence says works — and what quietly kills these programmes",
+  "skill": "ea-governance-drafter",
+  "also": [],
+  "artefact": "A21 rev.2 — Programme risk register",
+  "consumes": "A21, A27"
+ },
+ "5.3": {
+  "play": "Map the method to a second sector",
+  "subtopic": "Will it work for your other sectors? — the portability case",
+  "skill": "ea-method-runner",
+  "also": [
+   "bb-landscape-check",
+   "ea-institution-mapper"
+  ],
+  "artefact": "A28 rev.2 — Second-sector map",
+  "consumes": "A28, BB status register"
+ },
+ "5.4": {
+  "play": "Draft the one-page ministerial business case",
+  "subtopic": "Win the commitment — the business case that gets your minister to yes",
+  "skill": "ea-cost-case",
+  "also": [
+   "ea-comparator-evidence",
+   "cite-or-discard"
+  ],
+  "artefact": "A29 — Ministerial business case",
+  "consumes": "A3, A8 rev.2, A21 rev.2, A26"
+ },
+ "5.5": {
+  "play": "Build your team's capability-building plan",
+  "subtopic": "Build your team's capability with open knowledge products",
+  "skill": "ea-open-learning-catalogue",
+  "also": [],
+  "artefact": "A30 — Capability-building plan",
+  "consumes": "A6"
+ },
+ "5.6": {
+  "play": "Sequence your national rollout into waves",
+  "subtopic": "Roll it out — from one sector to a national EA practice",
+  "skill": "ea-method-runner",
+  "also": [
+   "bb-landscape-check"
+  ],
+  "artefact": "A31 — National rollout wave plan",
+  "consumes": "A26, A28 rev.2, BB status register"
+ },
+ "5.7": {
+  "play": "Draft your closing one-page case for the minister",
+  "subtopic": "The closing case — proven, portable, and necessary now",
+  "skill": "ea-comparator-evidence",
+  "also": [
+   "cite-or-discard",
+   "ea-cost-case"
+  ],
+  "artefact": "A29 rev.2 — Closing one-page case",
+  "consumes": "A29, A31, A8 rev.2"
+ }
+}
