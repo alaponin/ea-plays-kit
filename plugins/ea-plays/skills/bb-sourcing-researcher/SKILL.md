@@ -83,7 +83,7 @@ Read `references/build-vs-buy.md` for:
 - The lock-in taxonomy and how to score it
 - The reasoning rules that turn research findings into a recommended posture
 
-Read `references/worked-example.md` for a complete eighteen-block analysis (Gambia education
+Read `references/worked-example.md` for a complete eighteen-block analysis (Progressa education
 context) to follow or compare against.
 
 ---
@@ -215,7 +215,14 @@ skill; for a quick in-chat answer, markdown tables are fine.
 
 - `references/research-method.md` — 18-block list, source map, search patterns, maturity priors
 - `references/build-vs-buy.md` — four-way posture scale, lock-in taxonomy, reasoning rules
-- `references/worked-example.md` — full eighteen-block analysis in a Gambia education context
+
+### Fixture material
+
+- `references/worked-example.md` — full eighteen-block analysis in an education context, with
+  three blocks reusing a national system that already exists.
+
+  Progressa is the fictional demonstration country shared by every play; the canonical
+  description is `tests/progressa.md` in the kit repo.
 
 Read these when you need the detail they contain. For anything not covered, research live and
 cite.
