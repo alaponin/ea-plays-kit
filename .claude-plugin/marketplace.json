@@ -1,0 +1,12 @@
+{
+  "name": "ea-plays-kit",
+  "owner": { "name": "FiscalAdmin OÜ", "url": "https://github.com/aarelaponin" },
+  "plugins": [
+    {
+      "name": "ea-plays",
+      "source": "./plugins/ea-plays",
+      "description": "The 'with the kit' layer for the KP1 Government Enterprise Architecture AI plays",
+      "version": "0.0.1"
+    }
+  ]
+}
