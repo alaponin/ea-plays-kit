@@ -1,11 +1,11 @@
 # The provenance header
 
-Every artefact this kit produces opens with it. Three blockquote lines, before
-any prose, any table and any reasoning.
+Each artefact from this kit starts with the provenance header. The header has three
+blockquote lines. Put the header before all prose, all tables, and all analysis.
 
 ```
 > **Artefact** A6 — Phase RACI and role-gap list · **Country** Progressa · **Sector** Education · **Built** 2026-09-05
-> **Skill** ea-governance-drafter v0.1.3 · **Consumed** A0 §4, A4, A5 · **Feeds** 1.7, 3.7, 5.5
+> **Skill** ea-governance-drafter v0.2.0 · **Consumed** A0 §4, A4, A5 · **Feeds** 1.7, 3.7, 5.5
 > **Sources** 4 × Tier 1, 2 × Tier 2, 0 × Tier 3 · **Unverified lines** 1 (marked ⚠)
 ```
 
@@ -13,23 +13,25 @@ any prose, any table and any reasoning.
 
 | Field | Line | Rule |
 | --- | --- | --- |
-| **Artefact** | 1 | The workbook number and name, e.g. `A6 — Roles register`. Use `—` (em dash). If the output is not a numbered workbook artefact, write the artefact name alone. |
-| **Country** | 1 | As the learner named it. `Progressa` for fixture runs. |
-| **Sector** | 1 | The sector, or `—` where the artefact is whole-of-government. |
-| **Built** | 1 | ISO date, the day the skill ran. |
-| **Skill** | 2 | `<skill-name> v<version>`, the version from `plugin.json`. |
-| **Consumed** | 2 | The A-numbered inputs actually read, with sections, e.g. `A0 §1, A0 §6`. `—` if the learner pasted free text. |
-| **Feeds** | 2 | The play ids this artefact is an input to, from `workbook-chain.md`. |
-| **Sources** | 3 | Counts by tier: `n × Tier 1, n × Tier 2, n × Tier 3`. Zeros are written, not omitted. |
-| **Unverified lines** | 3 | How many lines carry ⚠, and `(marked ⚠)` when the count is above zero. `0` when everything verified. |
+| **Artefact** | 1 | The number and the name of the workbook artefact, for example `A6 — Roles register`. Use the em dash `—`. If the output is not a numbered workbook artefact, write only the name. |
+| **Country** | 1 | The country as the learner named it. Write `Progressa` for a fixture run. |
+| **Sector** | 1 | The sector. Write `—` if the artefact applies to all of government. |
+| **Built** | 1 | The date in ISO format. Use the day that the skill ran. |
+| **Skill** | 2 | `<skill-name> v<version>`. Take the version from `plugin.json`. |
+| **Consumed** | 2 | The A-numbered inputs that you read, with their sections, for example `A0 §1, A0 §6`. Write `—` if the learner gave free text. |
+| **Feeds** | 2 | The play ids that use this artefact as an input. Take them from `workbook-chain.md`. |
+| **Sources** | 3 | The count for each tier: `n × Tier 1, n × Tier 2, n × Tier 3`. Write the zeros. Do not omit them. |
+| **Unverified lines** | 3 | The number of lines that have a ⚠ mark. Add `(marked ⚠)` if the number is more than zero. Write `0` if you verified all lines. |
 
 ## Rules
 
-- **All nine fields, always.** A field with no value gets `—`, never a blank or a
-  dropped field. The fixture check in `tests/` fails on a missing field.
-- **Before everything.** If the skill wants to say what it did, it says it after
-  the header and after the artefact, never before.
-- **A drafting skill still counts sources.** A document drafted from templates with
-  two published exemplars is `2 × Tier 1, 0 × Tier 2, 0 × Tier 3` — not an absent
-  Sources line.
-- **⚠ travels.** The count on line 3 must equal the number of ⚠ marks in the body.
+- **Write all nine fields each time.** If a field has no value, write `—`. Do not
+  write a blank. Do not remove the field. The fixture check in `tests/` fails if a
+  field is missing.
+- **Put the header first.** A skill can tell what it did after the header and after
+  the artefact. It must not do this before them.
+- **A skill that writes documents also counts its sources.** A document that comes
+  from templates and two published exemplars is `2 × Tier 1, 0 × Tier 2, 0 × Tier 3`.
+  It is not an absent Sources line.
+- **Keep the ⚠ marks together.** The count on line 3 must be equal to the number of ⚠
+  marks in the body.

@@ -1,91 +1,100 @@
 ---
 name: ea-tool-evaluator
 description: >-
-  Score EA tool candidates on facts that can be checked online rather than on vendor claims —
-  licence (OSI-listed or not), the Open Group's ArchiMate tool certification register,
-  documented export formats, whether the metamodel is user-extensible per the vendor's own
-  documentation, the published pricing page, and the DPGA registry for open tools such as
-  Archi. Serves play 3.2 only, but 3.2 is where vendor marketing does the most damage. Use
-  when someone says "which EA tool should we use", "compare Archi and [vendor]", "score EA
-  tools", "is this tool open", "will we be locked in", "can we get our models out", "do we
-  need a dedicated EA tool or is a spreadsheet enough", "ArchiMate certified tools". Returns
-  the comparison table the play asks for plus an export-test script — load ten entities,
-  export, open the file without the tool — because the safeguard says to score the export
-  you performed, not the one the brochure promises. Expect it to ask two questions first:
-  how many entities you will hold, and your budget posture.
+  Score EA tool candidates on facts that you can check online, not on the claims of a
+  vendor: the licence and whether OSI lists it, the ArchiMate tool certification register of
+  the Open Group, the export formats that the documentation gives, whether the user can
+  extend the metamodel as the vendor's own documentation says, the published pricing page,
+  and the DPGA registry for open tools such as Archi. Serves play 3.2 only, but 3.2 is where
+  vendor marketing does the most damage. Use when someone says "which EA tool should we
+  use", "compare Archi and [vendor]", "score EA tools", "is this tool open", "will we be
+  locked in", "can we get our models out", "do we need a dedicated EA tool or is a
+  spreadsheet enough", "ArchiMate certified tools". Returns the comparison table that the
+  play asks for, and an export-test script: load ten entities, export them, and open the
+  file without the tool. The safeguard says to score the export that you performed, not the
+  export that the brochure promises. It asks two questions first: how many entities you will
+  hold, and your budget posture.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 ---
 
 ## What this skill does
 
-Scores two to four candidate EA tools on **verifiable** attributes, and hands back a test
-the learner runs themselves before signing anything.
+This skill scores two to four candidate EA tools on attributes that you can **verify**. It
+also gives the learner a test to run before the learner signs a contract.
 
-It serves 3.2 alone. The narrowness is the point: this is the play where the gap between
-what a vendor says and what a tool does is widest, and where a wrong choice is paid for
-over a decade.
+It serves play 3.2 only. This narrow scope has a purpose. In this play the difference
+between what a vendor says and what a tool does is largest, and the learner pays for a wrong
+choice for ten years.
 
 ## Inputs
 
-Two to four candidates and the learner's requirements. **Ask two questions before scoring**,
-both at once — the August 2026 run showed this play asking exactly these:
+The inputs are two to four candidates and the requirements of the learner.
 
-1. **How many entities** will the repository hold in year one and year three? (This decides
-   whether a dedicated tool is warranted at all.)
-2. **Budget posture** — is there a licence budget, or must this be free?
+**Ask two questions before you score. Ask both at the same time.** The August 2026 run of
+this play asked these two questions:
 
-Record both answers in the output as *Inputs supplied by the learner*. They change the
-recommendation and the next reader needs to see them.
+1. **How many entities** will the repository hold in year one and in year three? The answer
+   decides whether the learner needs a dedicated tool.
+2. **What is the budget posture?** Is there a budget for a licence, or must the tool be
+   free?
 
-If the learner has A16, the repository structure, read it — the section count and the
-relationship types are the real requirement.
+Record both answers in the output, in an *Inputs supplied by the learner* block. The answers
+change the recommendation, and the next reader must see them.
 
-**Say when the answer is "no tool yet".** Under a few hundred entities, a spreadsheet with
-the A16 schema and a decision log beats a tool nobody maintains. Recommending that is a
-legitimate output of this skill and often the right one.
+If the learner has A16, the repository structure, read it. The number of sections and the
+relationship types are the true requirement.
+
+**Say when the answer is "no tool yet".** Below a few hundred entities, a spreadsheet with
+the A16 schema and a decision log is better than a tool that nobody maintains. This is a
+correct output of this skill, and frequently the correct one.
 
 ## Procedure
 
-Score only what can be checked. For each candidate:
+Score only the attributes that you can check. For each candidate, do these nine steps:
 
-1. **Licence** — is it **OSI-listed**? Check opensource.org's licence list for the exact
-   licence named, not for the word "open". "Open" in marketing covers open-core, free tiers,
-   and source-available licences that are not open source. Record the licence name.
+1. **Licence.** Is the licence **on the OSI list**? Check the licence list at
+   opensource.org for the exact name of the licence. Do not check for the word "open".
+   In marketing, "open" also covers open-core products, free tiers, and source-available
+   licences that are not open source. Record the name of the licence.
 
-2. **ArchiMate certification** — check **the Open Group's tool certification register**.
-   Certified / not certified / certified at an older version. This is a register, so the
-   answer is a fact and not an opinion.
+2. **ArchiMate certification.** Check the **tool certification register of the Open Group**.
+   The result is certified, not certified, or certified at an older version. The register is
+   a record, so the answer is a fact and not an opinion.
 
-3. **Export formats, documented** — from the **vendor's own documentation**, not the feature
-   list: ArchiMate Exchange Format (and which version), CSV, OpenAPI, plain files, an
-   open database. Record where in the documentation each format is described. A format
-   mentioned only on a marketing page is *claimed*, not documented.
+3. **Export formats in the documentation.** Take them from the **documentation of the
+   vendor**, not from the feature list. Look for the ArchiMate Exchange Format and its
+   version, CSV, OpenAPI, plain files, and an open database. Record where the documentation
+   describes each format. A format that is only on a marketing page is *claimed*. It is not
+   documented.
 
-4. **Metamodel extensibility** — can the user add entity types and relationships, per the
-   vendor's own documentation? This decides whether the tool can hold the PAERA metamodel or
-   only its own.
+4. **Metamodel extensibility.** Can the user add entity types and relationships, as the
+   documentation of the vendor says? The answer decides whether the tool can hold the PAERA
+   metamodel, or only the metamodel of the tool.
 
-5. **Pricing** — the **published** page. Per user or per instance; what tier is needed for
-   the export formats above (export behind an enterprise tier is a lock-in mechanism);
-   whether there is a public price at all. "Contact us" is a finding — record it as such.
+5. **Pricing.** Use the **published** page. Record whether the price is for each user or for
+   each instance. Record which tier the learner needs to get the export formats above,
+   because an export behind an enterprise tier is a mechanism for lock-in. Record whether
+   there is a public price. "Contact us" is a finding. Record it as one.
 
-6. **DPGA registry** — for open tools, whether it is a recognised digital public good.
+6. **DPGA registry.** For an open tool, record whether the registry recognises it as a
+   digital public good.
 
-7. **Lock-in assessment** — from the facts above, not from a general impression: can the
-   models leave? Three questions — is there a documented export, is it in an open format,
-   and is that export available at the tier you can afford?
+7. **Lock-in assessment.** Use the facts above. Do not use a general impression. Ask three
+   questions: is there a documented export, is the export in an open format, and is that
+   export available at the tier that the learner can pay for?
 
-8. **Run `cite-or-discard`** on every claim. Vendor pages are Tier "reject" as *evidence of
-   quality* but Tier 1 as *evidence of what the vendor documents* — cite them for the second
-   only, and say which you are doing.
+8. **Run `cite-or-discard` on each claim.** As evidence of quality, a vendor page is in the
+   "reject" tier. As evidence of what the vendor documents, a vendor page is Tier 1. Cite a
+   vendor page for the second purpose only, and say which purpose you use.
 
-9. **Hand over the export test.** `scripts/export-test.md` is the procedure. The scoring is
-   provisional until the learner has run it.
+9. **Give the export test to the learner.** The procedure is in `scripts/export-test.md`.
+   The scores stay provisional until the learner runs the test.
 
 ## Output contract
 
-Provenance header first (`references/provenance-header.md`), then:
+Write the provenance header first (`references/provenance-header.md`). Then write these
+five sections.
 
 **Inputs supplied by the learner** — the two answers.
 
@@ -95,41 +104,43 @@ Provenance header first (`references/provenance-header.md`), then:
 | Tool | Licence (OSI?) | ArchiMate certified | Documented exports | Metamodel extensible | Published price | DPGA | Lock-in risk | Sources |
 ```
 
-Every cell that is a claim carries its source. A cell you could not verify says **not
-documented** — never blank, and never the vendor's adjective.
+Each cell that contains a claim also contains its source. If you could not verify a cell,
+write **not documented**. Never leave the cell blank. Never write the adjective of the
+vendor.
 
-**Recommendation** — with the reason stated as the two or three attributes that decided it,
-and the condition: *provisional until the export test passes*.
+**Recommendation** — with the two or three attributes that decided it, and this condition:
+*provisional until the export test passes*.
 
 **The export test** — the script from `scripts/export-test.md`, filled in for these
 candidates.
 
-**What could not be verified** — every attribute where documentation was absent. This list
-is the negotiation agenda.
+**What could not be verified** — each attribute with no documentation. This list is the
+agenda for the negotiation.
 
-Text in the chat. No file. No reasoning before the header. See
+Write text in the chat. Do not make a file. Write no analysis before the header. See
 `references/output-contract.md`.
 
 ## Safeguard handed back
 
-**Vendor claims of "open" and "exports everything" must be tested with a real export of real
-data before you sign. A demo is not a test.**
+**A vendor can claim that a tool is "open" and that it "exports everything". Test the claim
+with a real export of real data before you sign. A demo is not a test.**
 
-- **Run the export test yourself**, on your own ten entities, and open the file **without
-  the tool**. Score the export you performed, not the one the brochure promises.
-- **Check what the export costs.** An open format available only on the enterprise tier is
+- **Run the export test yourself**, with your own ten entities. Open the file **without the
+  tool**. Score the export that you performed, not the export that the brochure promises.
+- **Find the price of the export.** An open format that is only on the enterprise tier is
   not an exit path at your budget.
-- **Ask for the exit clause in writing** — data format, timeframe, and cost of extraction at
-  contract end. A supplier who will not put it in writing has answered the question.
-- **Re-check the certification register** before signing; certifications lapse and versions
-  move.
+- **Ask for the exit clause in writing.** Ask for the data format, the timeframe, and the
+  cost to extract the data at the end of the contract. A supplier who refuses to write it
+  down has answered the question.
+- **Read the certification register again before you sign.** Certifications end, and
+  versions move.
 - The recommendation here is provisional until the test passes.
 
 ## References
 
-- `references/verifiable-attributes.md` — each attribute, where the register or
-  documentation is, and how vendors obscure it.
-- `scripts/export-test.md` — the ten-entity export test, step by step, with the pass
+- `references/verifiable-attributes.md` — each attribute, where its register or its
+  documentation is, and how vendors hide it.
+- `scripts/export-test.md` — the export test with ten entities, step by step, with the pass
   criteria.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.

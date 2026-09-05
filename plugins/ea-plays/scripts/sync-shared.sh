@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Copy shared/*.md into every skill's references/, so a single skill folder
-# uploaded to the Claude app is self-contained (plan §3.5).
+# uploaded to the Claude app is self-contained.
 #
 #   sync-shared.sh          copy, then verify every copy matches
 #   sync-shared.sh --check  verify only; do not write. Non-zero if anything drifted.

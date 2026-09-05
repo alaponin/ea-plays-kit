@@ -1,4 +1,4 @@
-# API Query Guide — Country Context Data
+# A guide to the API queries for the country context data
 
 ## Table of Contents
 1. [World Bank API](#1-world-bank-api)
@@ -141,7 +141,7 @@ https://unstats.un.org/SDGAPI/v1/sdg/DataV2/PivotData?indicator=16.9.1&areaCode=
 https://unstats.un.org/SDGAPI/v1/sdg/DataV2/PivotData?indicator=9.c.1&areaCode=GHA
 ```
 
-> **Note**: SDG 16.9.1 (birth registration rate) is a key proxy for ID system reach in African countries.
+> **Note**: SDG 16.9.1 is the rate of birth registration. In an African country it is a good indicator of how far the ID system reaches.
 
 ---
 
@@ -170,7 +170,7 @@ GET https://datahub.itu.int/api/data/?indicator=ICT_IU&country=GHA&format=json
 Authorization: Token {YOUR_TOKEN}
 ```
 
-> **Tip**: World Bank mirrors ITU data — `IT.NET.USER.ZS` requires no auth and is usually sufficient.
+> **Tip**: the World Bank copies the data of the ITU. `IT.NET.USER.ZS` needs no authentication, and it is usually enough.
 
 ---
 
@@ -214,7 +214,7 @@ GET https://stats.oecd.org/SDMX-JSON/data/{DATASET}/{FILTER}/all?startTime={YEAR
 | `PISA` | PISA learning outcomes |
 | `DGI` | Digital Government Index |
 
-> **Note**: PISA data released every 3 years (2018, 2022, 2025). OECD sources are limited to members + partners — for most African countries use UNESCO UIS instead.
+> **Note**: the OECD releases the PISA data every 3 years: 2018, 2022 and 2025. The OECD sources cover only the members and the partners. For most African countries, use UNESCO UIS.
 
 ---
 
@@ -350,11 +350,11 @@ The GTMI assesses digital government maturity across four pillars:
 | CTES — Citizen and Technology Engagement | Open data, citizen feedback, digital literacy programs |
 | GTES — GovTech Enabling Systems | Legal/regulatory frameworks, digital identity, cybersecurity |
 
-> **Key for cross-agency systems**: The CGSS pillar directly measures whether a country has shared back-office platforms, interoperability layers, and integrated government data systems.
+> **This is the key to the systems that cross the agencies**: the CGSS pillar measures directly whether a country has shared platforms for its back office, layers for interoperability, and government data systems that are integrated.
 
 ### Why Use for African Countries
 - Covers 198 countries including all African nations
-- Directly answers questions about cross-agency integration that EGDI's composite score obscures
+- It answers a question about integration between agencies directly. The composite score of EGDI hides that answer
 - Updated every 2 years; 2022 edition available; 2024 forthcoming
 
 ### Querying via World Bank API
@@ -417,7 +417,7 @@ ID coverage gaps and digital ID system capabilities:
 | System characteristics | Biometric use, remote authentication capability, interoperability |
 
 ### Key Data Points for African Context
-- **~800 million people globally lack official ID** — majority in sub-Saharan Africa and South Asia
+- **About 800 million people in the world have no official ID.** Most of them are in sub-Saharan Africa and in South Asia
 - **Sub-Saharan Africa accounts for 50%+ of the global unidentified population**
 - **~95 million African children under 5 have never had births recorded**
 
@@ -432,7 +432,7 @@ https://api.worldbank.org/v2/country/GH/indicator/SP.REG.BRTH.ZS?format=json&mrv
 # Also available on DataBank — search "ID4D" for full indicator list
 ```
 
-> **Note**: For detailed country-level ID system characteristics (technology type, legal framework, interoperability architecture), use the qualitative country diagnostic reports — see section 21 (African Sources) below.
+> **Note**: for the detailed characteristics of the ID system of one country, use the country diagnostic reports. These give the type of technology, the legal framework and the architecture for interoperability. See section 21, the African sources, below.
 
 ### Country Diagnostic Reports
 Published for 30+ countries including: Botswana, Burkina Faso, Côte d'Ivoire, Ethiopia, Guinea, Kenya, Liberia, Madagascar, Morocco, Namibia, Nigeria, Rwanda, Sierra Leone, Somalia, Uganda, Zambia.
@@ -525,7 +525,7 @@ https://github.com/teamookla/ookla-open-data
 **Auth**: None | **Format**: CSV/Excel download | **Frequency**: Annual
 
 ### Key Metric
-Cost of cheapest 1GB prepaid mobile broadband plan as % of monthly GNI per capita.
+The cost of the cheapest prepaid mobile broadband plan of 1 GB, as a percentage of the monthly GNI for each person.
 - Target: ≤2% (ITU/A4AI affordability threshold)
 - Especially important for lower-income African countries
 
@@ -641,7 +641,7 @@ Use to identify unregistered schools not in official government registries.
 
 ## 21. African Digital Government & Identity Sources
 
-These sources are qualitative and document-based rather than API-queryable, but are essential for assessing cross-agency systems, identity programmes, and digital government strategies in African countries. Always check these after running quantitative API queries for African contexts.
+These sources are documents. They are qualitative, and no API queries them. They are necessary when you assess the systems that cross the agencies, the identity programmes, and the digital government strategies of an African country. For an African country, always read these sources after you run the API queries for the quantitative data.
 
 ---
 
@@ -654,14 +654,14 @@ These sources are qualitative and document-based rather than API-queryable, but 
 - Assessment of ID system architecture (foundational vs. functional)
 - Biometric technology used and enrollment status
 - Legal and regulatory framework for ID
-- Cross-agency use of the ID system (health, education, social protection, finance)
+- The use of the ID system by more than one agency: health, education, social protection and finance
 - Interoperability gaps and recommendations
 
 #### Available African Country Reports
 Botswana, Burkina Faso, Côte d'Ivoire, Ethiopia, Guinea, Kenya, Liberia, Madagascar, Morocco, Namibia, Nigeria, Rwanda, Sierra Leone, Somalia, Uganda, Zambia (and others).
 
 #### Synthesis Report
-"The State of Identification Systems in Africa" (2017) — summarizes 17 country assessments:
+"The State of Identification Systems in Africa" (2017). It summarises the assessments of 17 countries:
 ```
 http://documents.worldbank.org/curated/en/156111493234231522/
 ```
@@ -678,12 +678,12 @@ http://documents.worldbank.org/curated/en/156111493234231522/
 - Local, national, and regional identity system architectures
 - Cross-border ID interoperability initiatives (ECOWAS ENBIC, AU framework)
 - Legal and data protection framework maturity
-- Key finding: ~85% of African countries have national ID systems backed by electronic databases; 70%+ collect biometrics
+- The key finding: about 85% of the African countries have a national ID system with an electronic database behind it. More than 70% of them collect biometrics
 
 #### Key Stats for Context
 - ~542 million Africans lack identity cards
 - ~95 million children under 5 have never had births recorded
-- Countries implementing digital ID could unlock 3–13% of GDP by 2030 (UNECA estimate)
+- A country that implements a digital ID can add 3% to 13% to its GDP before 2030. This is an estimate by UNECA
 
 ---
 
@@ -695,7 +695,7 @@ http://documents.worldbank.org/curated/en/156111493234231522/
 #### What It Provides
 - Annual General Meeting proceedings with country case studies
 - National ID authority contacts and programme updates
-- Policy briefs on specific identity topics (displaced persons, women, rural populations)
+- Policy briefs on one topic in identity: displaced persons, women, or the rural population
 - Real-world implementation assessments beyond what quantitative data shows
 
 #### Search for Country Information
@@ -715,10 +715,10 @@ https://id4africa.com/knowledge/
 **Auth**: None | **Coverage**: 37+ African member states
 
 #### What It Provides
-- **National Digital Economy Blueprints** — country-specific digital transformation roadmaps
-- **Digital Identity Blueprint** — governance and technical framework for interoperable ID across member states
+- **The National Digital Economy Blueprints** — a roadmap for the digital transformation of one country
+- **The Digital Identity Blueprint** — the governance framework and the technical framework for an ID that is interoperable across the member states
 - **Data Governance Blueprint** — national data strategy design guidance
-- **Smart Africa Data Exchange (SADX)** — cross-border data sharing platform (pilot: Ghana, Benin, Rwanda as of 2025)
+- **The Smart Africa Data Exchange (SADX)** — a platform that shares data across the borders. In 2025 it is a pilot in Ghana, Benin and Rwanda
 
 #### Key Documents to Check
 ```
@@ -733,7 +733,7 @@ https://smartafrica.org/knowledge/
 ```
 
 #### SADX Status
-The Smart Africa Data Exchange enables secure cross-border government data sharing. Check readiness by country:
+The Smart Africa Data Exchange lets governments share data across a border, and it is secure. Check whether each country is ready:
 - Ghana: readiness validated (April 2025)
 - Benin: readiness validated
 - Rwanda: next in queue
@@ -747,7 +747,7 @@ The Smart Africa Data Exchange enables secure cross-border government data shari
 **Auth**: None | **Coverage**: African countries where UNECA co-developed the strategy
 
 #### What It Provides
-Published national digital transformation strategies co-developed with UNECA, including:
+The national strategies for digital transformation that UNECA developed with the country, and that the country published. They include:
 - The Gambia Digital Transformation Strategy + Digital ID Strategy (2023)
 - Tanzania Digital Economy Strategic Framework 2024–2034
 - Country-specific strategies for Rwanda, Kenya, Ethiopia, and others
@@ -755,7 +755,7 @@ Published national digital transformation strategies co-developed with UNECA, in
 #### How to Find Country Strategies
 1. Search `site:uneca.org "[country name] digital transformation strategy"`
 2. Or browse: `https://www.uneca.org/publications` filtered by country
-3. Also check national ICT ministry websites — UNECA strategies are often published there
+3. Also read the sites of the national ICT ministry. It frequently publishes the UNECA strategy
 
 ---
 
@@ -765,7 +765,7 @@ Published national digital transformation strategies co-developed with UNECA, in
 **Auth**: None | **Format**: Web articles, reports | **Frequency**: Annual cohorts
 
 #### What It Provides
-Country snapshots on **Digital Public Infrastructure (DPI)** readiness — the "stack" of:
+Snapshots of one country, about its readiness for **Digital Public Infrastructure (DPI)**. The DPI stack is:
 - Foundational digital ID system
 - Digital payments infrastructure
 - Cross-government data exchange systems
@@ -774,7 +774,7 @@ Country snapshots on **Digital Public Infrastructure (DPI)** readiness — the "
 Uganda, Sierra Leone, The Gambia, Zambia, Tanzania, Nigeria, Eswatini (2024–2025 cohorts)
 
 #### Key Insight Format
-Each country snapshot covers: what interoperable systems exist, what's missing, policy blockers, and what peer countries can learn. Example — Tanzania's Jamii suite:
+The snapshot of each country gives four items: the interoperable systems that exist, the systems that are missing, the policies that block the work, and what a peer country can learn. An example is the Jamii suite of Tanzania:
 - Jamii Namba (digital ID)
 - Jamii Malipo (digital payments)
 - Jamii X-Change (cross-agency data exchange)
@@ -788,15 +788,15 @@ Each country snapshot covers: what interoperable systems exist, what's missing, 
 
 #### How to Use
 Use as a checklist when assessing a country's national strategy:
-- Does the country's strategy align with AU DTS pillars (infrastructure, policy, digital skills, innovation, digital finance, e-government)?
+- Does the strategy of the country agree with the pillars of the AU DTS? The pillars are infrastructure, policy, digital skills, innovation, digital finance and e-government
 - Is the country implementing the AU Interoperability Framework for Digital ID?
-- Is the country participating in the African Continental Free Trade Area (AfCFTA) digital single market initiative?
+- Does the country take part in the digital single market initiative of the African Continental Free Trade Area (AfCFTA)?
 
 #### AU Interoperability Framework for Digital ID
 ```
 https://au.int/en/documents/20231211/au-interoperability-framework-digital-id
 ```
-Endorsed by AU Executive Council in 2022 — defines minimum technical standards and governance mechanisms for cross-border and cross-agency ID interoperability. Check whether target country's systems are aligned.
+The AU Executive Council endorsed this document in 2022. It defines the minimum technical standards, and the mechanisms of governance, for an ID that is interoperable across a border and across agencies. Check whether the systems of your country agree with it.
 
 ---
 
@@ -902,7 +902,7 @@ Endorsed by AU Executive Council in 2022 — defines minimum technical standards
 
 ---
 
-## 23. Quick Start: Recommended Query Sequence
+## 23. A quick start: the recommended sequence of queries
 
 ### All Countries — Phase 1: Core Profile (no auth, <10 min)
 1. **World Bank** — GDP, population, internet access, enrollment, literacy, WGI governance scores, GTMI

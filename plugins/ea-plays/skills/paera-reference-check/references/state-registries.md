@@ -2,8 +2,9 @@
 
 Source: https://paera.govstack.global/8.-annex-3-main-state-registries
 
-State registries are a foundational component of national digital infrastructure (Section 3.4.2).
-They serve as the authoritative source of truth and enable the Once-Only principle.
+A state registry is a foundational component of the national digital infrastructure
+(Section 3.4.2). It is the authoritative source of truth for its data, and it makes the
+Once-Only principle possible.
 
 ## Core State Registries (Priority for Digitalisation)
 
@@ -51,23 +52,24 @@ They serve as the authoritative source of truth and enable the Once-Only princip
 - **Data**: Court decisions, enforcement orders, insolvencies
 - **Enables**: Legal certainty, enforcement
 
-## Assessment Questions for State Registries
+## Questions to ask about a state registry
 
-When assessing a country's registry landscape, check:
+Ask these seven questions when you assess the registries of a country:
+
 1. **Existence**: Does the registry exist in digital form?
-2. **Authority**: Is it the official authoritative source (not a copy)?
-3. **Quality**: Is data current, accurate, and regularly maintained?
-4. **Access**: Can other agencies query it via API/interoperability platform?
-5. **Legal basis**: Is the registry legally established?
-6. **Once-Only**: Does it eliminate re-collection of the same data elsewhere?
-7. **Privacy**: Is access controlled and logged?
+2. **Authority**: Is it the official authoritative source, and not a copy?
+3. **Quality**: Is the data current and accurate? Does somebody maintain it?
+4. **Access**: Can another agency query it through an API or the interoperability platform?
+5. **Legal basis**: Did an instrument establish the registry?
+6. **Once-Only**: Does it stop another body from collecting the same data again?
+7. **Privacy**: Does somebody control the access, and does the system log it?
 
 ## Maturity Indicators for Registries
 
 | Level | Description |
 |-------|-------------|
-| Paper-based | Records exist only on paper |
-| Digitised | Scanned or entered into a database, not queryable via API |
-| Digital | Queryable via API, real-time, authoritative |
-| Interoperable | Connected to national interoperability platform (Information Mediator) |
-| Once-Only compliant | Proactively shared so no MDA needs to re-collect the data |
+| Paper-based | The records are only on paper |
+| Digitised | A person scanned the records or put them in a database. No API can query them |
+| Digital | An API can query the registry. It answers in real time. It is authoritative |
+| Interoperable | The registry connects to the national interoperability platform, the Information Mediator |
+| Once-Only compliant | The registry gives the data to the bodies that need it, so that no MDA collects the data again |

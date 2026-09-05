@@ -1,19 +1,19 @@
-# Source Selection Quick Reference
+# A quick reference: how to select a source
 
-## By Country Type
+## Select by the type of country
 
-### EU Member States
+### A member state of the EU
 **Priority order**: Eurostat → World Bank → DESI → OECD → UNESCO UIS → ILO → UNDP
-- Eurostat provides the richest granularity for EU countries
-- DESI gives comprehensive digital economy scoring
-- OECD available for EU members that are also OECD members (most are)
+- Eurostat gives the most detail for an EU country.
+- DESI gives a full score for the digital economy.
+- The OECD sources are available for an EU member that is also an OECD member. Most of them are.
 
-### OECD Members (non-EU)
+### A member of the OECD that is not in the EU
 **Priority order**: World Bank → OECD API → UNESCO UIS → ILO → UNDP → IMF
 - OECD API unlocks PISA, Digital Government Index, Education at a Glance
 - World Bank still best starting point (speed, breadth)
 
-### Sub-Saharan African Countries
+### A country in sub-Saharan Africa
 **Priority order**: World Bank → UNESCO UIS → UN SDG → ID4D → GTMI → UNDP → ILO → UNICEF → IMF → ITU
 - Always run the **African Additional Block** (see api-guide.md section 23)
 - Expect data gaps — flag them; use UNICEF for equity/child indicators
@@ -21,15 +21,15 @@
 - Smart Africa and UNECA repositories are primary sources for strategy documents
 - TIMSS/PIRLS more relevant than PISA for learning outcome benchmarks
 
-### Upper-Middle Income Countries (non-OECD, non-Africa)
+### An upper-middle-income country that is not in the OECD and not in Africa
 **Priority order**: World Bank → UNESCO UIS → UN SDG → ILO → UNDP → IMF → ITU
 - World Bank has good coverage; TIMSS/PIRLS likely available
 
 ---
 
-## By Data Need
+## Select by the data that you need
 
-### Digital Readiness Assessment
+### The assessment of the digital readiness
 | Priority | Source | Key Data |
 |---|---|---|
 | 1 | World Bank | IT.NET.USER.ZS, IT.NET.BBND.P2, IT.CEL.SETS.P2 |
@@ -42,7 +42,7 @@
 | 8 | DESI (EU only) | Connectivity, digital skills, internet use sub-indices |
 | 9 | UNESCO UIS | Schools with internet access (aggregate %) |
 
-### Education System Baseline
+### The baseline of the education system
 | Priority | Source | Key Data |
 |---|---|---|
 | 1 | World Bank | SE.* enrollment, completion, pupil-teacher, expenditure |
@@ -53,7 +53,7 @@
 | 6 | IEA TIMSS/PIRLS | Learning outcome benchmarks (broader African coverage than PISA) |
 | 7 | UNDP HDR | Expected/mean years of schooling, education inequality |
 
-### School Connectivity (Education Digital Transformation)
+### The connectivity of the schools, for the digital transformation of education
 | Priority | Source | Key Data |
 |---|---|---|
 | 1 | Giga Maps API | % schools connected, connectivity type breakdown, locations |
@@ -63,9 +63,9 @@
 | 5 | ITU DataHub | National ICT infrastructure context |
 | 6 | A4AI | Connectivity affordability for sustainability |
 
-**Giga benchmarks**: Minimum 10 Mbps dedicated download; target 20 Mbps; Wi-Fi 100m coverage, 200+ users.
+**The Giga benchmarks**: a minimum of 10 Mbps of dedicated download, and a target of 20 Mbps. The Wi-Fi covers 100 m and more than 200 users.
 
-### Digital Identity & Civil Registration
+### The digital identity and the civil registration
 | Priority | Source | Key Data |
 |---|---|---|
 | 1 | World Bank ID4D DataBank | Adult ID ownership %, birth registration rate, digital ID availability |
@@ -76,7 +76,7 @@
 | 6 | World Bank ID4D Diagnostics | Full country diagnostic (30+ African countries) |
 | 7 | AU Interoperability Framework | Whether country's system meets continental standards |
 
-### Digital Government Maturity & Cross-Agency Systems
+### The maturity of the digital government, and the systems that cross the agencies
 | Priority | Source | Key Data |
 |---|---|---|
 | 1 | World Bank GTMI | Core systems score (cross-agency), service delivery, enabling systems |
@@ -86,7 +86,7 @@
 | 5 | OGP | Open data commitments, action plan status |
 | 6 | UN SDG 16.10.2 | Countries with open data policies |
 
-### National Digital Government Strategy Documents
+### The strategy documents of the national digital government
 | Priority | Source | What to Find |
 |---|---|---|
 | 1 | UNECA Repository (Africa) | Co-developed national digital transformation strategies |
@@ -96,7 +96,7 @@
 | 5 | AU DTS 2020–2030 | Continental reference to assess country alignment |
 | 6 | National ICT ministry websites | Most recent and authoritative version |
 
-### Governance & Institutional Capacity
+### The governance and the institutional capacity
 | Priority | Source | Key Data |
 |---|---|---|
 | 1 | World Bank WGI | GE.EST, RL.EST, CC.EST, RQ.EST, PV.EST, VA.EST |
@@ -105,7 +105,7 @@
 | 4 | UN SDG 16 | Rule of law, transparency, public service indicators |
 | 5 | OECD (members) | Public at a Glance, Digital Government Index |
 
-### Socioeconomic Context
+### The socioeconomic context
 | Priority | Source | Key Data |
 |---|---|---|
 | 1 | World Bank | NY.GDP.PCAP.CD, SI.POV.GINI, SP.POP.TOTL, SP.URB.TOTL.IN.ZS |
@@ -113,14 +113,14 @@
 | 3 | IMF WEO | GDP growth, public debt, inflation |
 | 4 | World Bank | SI.POV.DDAY (poverty headcount) |
 
-### Labor Market & Workforce Skills
+### The labour market and the skills of the workforce
 | Priority | Source | Key Data |
 |---|---|---|
 | 1 | ILO ILOSTAT | Youth unemployment, employment by sector, participation |
 | 2 | World Bank | SL.UEM.1524.ZS (mirrors ILO, no auth needed) |
 | 3 | Eurostat | Detailed labor data (EU countries only) |
 
-### Economic & Fiscal Context
+### The economic and fiscal context
 | Priority | Source | Key Data |
 |---|---|---|
 | 1 | IMF WEO | NGDPDPC, NGDP_RPCH, GGX_NGDP, GGXWDG_NGDP |
@@ -128,9 +128,9 @@
 
 ---
 
-## By Project Phase
+## Select by the phase of the project
 
-### Phase 1: Initial Scoping / Feasibility
+### Phase 1: the first scoping, and the feasibility
 Focus on high-level composite indices:
 - World Bank GDP, HDI, WGI governance scores, GTMI overall score
 - World Bank ID4D — ID ownership rate, birth registration
@@ -139,7 +139,7 @@ Focus on high-level composite indices:
 - UN SDG progress overview
 - DESI (EU) / OECD overview (if applicable)
 
-### Phase 2: Needs Assessment / Baseline
+### Phase 2: the assessment of the needs, and the baseline
 Go deep on sector-specific indicators:
 - All education sources (UNESCO UIS, UNICEF, IEA TIMSS/PIRLS)
 - Giga Maps API (school connectivity)
@@ -148,7 +148,7 @@ Go deep on sector-specific indicators:
 - Governance detail (WGI sub-scores, OGP action plans)
 - **Africa**: UNECA Digital ID Landscape, Smart Africa blueprint, DIAL/ADLI snapshot
 
-### Phase 3: Solution Design / Policy Development
+### Phase 3: the design of the solution, and the development of the policy
 Add policy environment and strategy alignment:
 - World Bank GTMI sub-scores (which pillar is weakest?)
 - World Bank ID4D Country Diagnostic (detailed ID system architecture)
@@ -157,7 +157,7 @@ Add policy environment and strategy alignment:
 - ID4Africa country case studies (implementation lessons)
 - Cross-country comparisons using same GTMI/EGDI/ID4D indicators
 
-### Phase 4: Monitoring & Evaluation
+### Phase 4: the monitoring and the evaluation
 Focus on SDG-aligned trackable indicators:
 - UN SDG API (SDG 4, 9, 16 — including 16.9.1 birth registration)
 - World Bank indicators with annual updates
@@ -168,7 +168,7 @@ Focus on SDG-aligned trackable indicators:
 
 ---
 
-## Auth & Access Summary
+## A summary of the authentication and the access
 
 | Auth Needed | Sources |
 |---|---|
@@ -179,7 +179,7 @@ Focus on SDG-aligned trackable indicators:
 
 ---
 
-## Data Currency Guide
+## A guide to how current the data is
 
 | Freshness | Sources |
 |---|---|
@@ -192,4 +192,4 @@ Focus on SDG-aligned trackable indicators:
 | Every 4–5 years | TIMSS/PIRLS |
 | Ad hoc (check date) | UNECA/Smart Africa strategies, DIAL/ADLI snapshots, ID4Africa reports |
 
-**Rule of thumb**: Flag any indicator older than 3 years. Strategy documents older than 5 years may have been superseded — check for updated versions.
+**The rule**: flag each indicator that is more than 3 years old. Another document can supersede a strategy document that is more than 5 years old. Search for a later version.

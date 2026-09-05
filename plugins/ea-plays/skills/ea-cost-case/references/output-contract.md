@@ -1,58 +1,64 @@
 # The output contract
 
-Every skill in this kit obeys all six rules. They exist because the August 2026
-play tests broke each one at least once, and each break severed the workbook chain.
+Every skill in this kit obeys these six rules. The August 2026 play tests broke each
+rule one time or more. Each break stopped the workbook chain.
 
 ## 1. Text in, text out
 
-The output is markdown **in the chat**: tables, headed sections, lists. Never a
-file, never a `.docx`, never a chart, never an image, never a screenshot. A table
-inside a picture cannot be pasted into the next play; a `.docx` cannot be read by
-the assistant that runs 1.7 after 1.6.
+Write the output as markdown in the chat. Use tables, sections with headings, and
+lists. Do not make a file, a `.docx`, a chart, an image, or a screenshot.
 
-This is why every skill declares `disallowed-tools: Write`. If the learner asks
-for a file, produce the text and say they can save it themselves — the chain needs
-the text.
+You cannot paste a table that is inside a picture into the next play. The assistant
+that runs play 1.7 after play 1.6 cannot read a `.docx`.
+
+This is why each skill declares `disallowed-tools: Write`. If the learner asks for a
+file, write the text. Then tell the learner to save the text. The chain needs the text.
 
 ## 2. Posts, not names
 
-Refer to **the post**: *the PDGA Director-General*, *the MoEYS ICT Director*, *the
-head of the civil service*. Never the name of the current holder, even where the
-name is public and easy to find. Sources will hand you names; drop them at the
-point of writing, not at the point of review.
+Write the name of the post: *the PDGA Director-General*, *the MoEYS ICT Director*,
+*the head of the civil service*. Do not write the name of the person who holds the
+post. This rule applies also when the name is public and easy to find.
 
-If a source is only comprehensible with the name (a court ruling, a signed
-instrument), cite the document, not the person.
+Sources give you the names of persons. Remove these names when you write the line.
+Do not wait for the review.
 
-## 3. Strip your own reasoning
+Some sources are clear only with the name of a person, for example a court ruling or
+a signed instrument. Cite the document. Do not cite the person.
 
-"The search confirms… let me now produce the table" is the model talking to
-itself. The learner will paste this output into the next play. Cut every word of
-it. The provenance header is the first thing in the output and the artefact is the
-second.
+## 3. Remove your analysis
 
-## 4. Record the clarifying answers
+"The search confirms… let me now make the table" is the model that speaks to itself.
+The learner pastes this output into the next play. Remove all of these words. The
+provenance header is the first item in the output. The artefact is the second item.
 
-Some skills must ask before they can answer — repository size, budget posture,
-which sector. Ask at most **three** questions, ask them all at once, and when the
-answers come back, write them into the artefact as an *Inputs supplied by the
-learner* block. They are part of the artefact, not a conversation that evaporates.
+## 4. Record the answers to your questions
 
-## 5. Every claim carries its source
+Some skills must ask a question before they can give an answer. Examples are the size
+of the repository, the budget posture, and the sector.
 
-Inline, in the row it belongs to: URL, tier, access date. Not a bibliography at
-the end — a learner checking one row should not have to match it to a footnote.
-Apply `source-tiers.md`; mark anything unverified with ⚠.
+Ask a maximum of **three** questions. Ask all of them at the same time. When you get
+the answers, write them into the artefact in an *Inputs supplied by the learner*
+block. The answers are part of the artefact. A conversation does not keep them.
 
-## 6. Hand the safeguard back
+## 5. Each claim has its source
 
-Every play in the course ends with a safeguard — the specific way *this* output
-can mislead. A skill that does the verification still ends by naming what remains
-the learner's judgement: what to confirm with a person, what counsel must approve,
-what only a costing exercise can settle. Restate it as the learner's **next
-action**, not as a disclaimer.
+Write the source in the same row as the claim. Give the URL, the tier, and the access
+date. Do not put a bibliography at the end. A learner who examines one row must not
+have to find a footnote. Apply `source-tiers.md`. Mark each unverified claim with ⚠.
 
-## What this contract is not
+## 6. Give the safeguard back to the learner
 
-It is not a licence to be terse. Sourced, complete and long beats clean and thin.
-The rules govern the *form* of the output, never its ambition.
+Each play in the course ends with a safeguard. The safeguard tells how this output can
+give a wrong result.
+
+A skill that does the verification must also end with a safeguard. Tell the learner
+what stays their judgement: what to confirm with a person, what counsel must approve,
+and what only a costing exercise can answer. Write the safeguard as the next action
+for the learner. Do not write it as a disclaimer.
+
+## What this contract does not do
+
+This contract does not tell you to write less. An output that has its sources, and is
+complete and long, is better than an output that is short and thin. The rules control
+the form of the output. They do not control its ambition.

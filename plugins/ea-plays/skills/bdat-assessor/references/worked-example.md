@@ -1,144 +1,149 @@
 <!-- fixture: Progressa (fictional) · canonical: tests/progressa.md · keep consistent with it -->
-# Worked Example: Progressa Education Sector
+# A worked example: the education sector of Progressa
 
-All facts from `tests/progressa.md` §1, §6, §7 and the sector-problem paragraph. Progressa
-is fictional; the example carries no sources.
+Each fact here comes from `tests/progressa.md` §1, §6, §7, and the paragraph about the
+problem of the sector. Progressa is fictional, so this example carries no sources.
 
-Use it as a concrete model to follow or compare against when assessing a real sector.
+Use it as a concrete model. Follow it, or compare your assessment of a real sector against
+it.
 
 ---
 
-## Bodies in Scope
+## The bodies in the scope
 
-| Body | Classification | Expected Profile |
+| Body | Classification | Expected profile |
 |------|---------------|-----------------|
-| Ministry of Education, Youth and Skills (MoEYS) | Policy Unit | Sets education policy, funds schools; runs district EMIS with its own learner numbering |
-| Progressa National Examination Authority (PNEA) | Service-Delivery Authority with regulatory edge | Runs examinations, certifies results; holds a candidate list on its own numbering |
-| Progressa Learner Registry (PLR) | State Registry | Intended single list of learners. Status: **planned** — called for in the Education Sector Plan 2023–2028, not started. Runs nothing and holds nothing yet |
-| Progressa National ID Authority (PNIA) | State Registry + Shared Platform | Owns person identity; National ID since 2018 at 78% adult coverage, e-KYC since 2024. Issues IDs only at 16 |
-| Progressa Digital Government Authority (PDGA) | Shared Platform | Coordinates digital government and runs the shared data exchange, Linkup. Coordinating mandate, not binding; a unit under the Ministry of ICT |
-| Social Protection Agency | Service-Delivery Authority | Social grants; beneficiary register built 2016 by a vendor under a World Bank programme |
-| Civil Registration Department (Ministry of Interior) | State Registry | Birth and death registration, paper-first, 71% birth registration |
-| Central Bank of Progressa | Shared Platform | Operates PayPro, the national fast-payment system |
+| Ministry of Education, Youth and Skills (MoEYS) | Policy Unit | Sets the education policy and funds the schools. It operates the district EMIS, which has its own numbers for the learners |
+| Progressa National Examination Authority (PNEA) | Service-Delivery Authority, with a regulatory role | Runs the examinations and certifies the results. It holds a list of candidates on its own numbers |
+| Progressa Learner Registry (PLR) | State Registry | It must become the single list of the learners. Its status is **planned**. The Education Sector Plan 2023–2028 asks for it, and the government has not started it. It operates nothing and holds nothing now |
+| Progressa National ID Authority (PNIA) | State Registry and Shared Platform | Owns the identity of a person. The National ID exists since 2018, and it covers 78% of the adults. e-KYC exists since 2024. It issues an ID only at 16 years |
+| Progressa Digital Government Authority (PDGA) | Shared Platform | Coordinates the digital government and operates the shared data exchange, Linkup. Its mandate coordinates. It does not bind. It is a unit under the Ministry of ICT |
+| Social Protection Agency | Service-Delivery Authority | Social grants. A vendor built its register of beneficiaries in 2016, under a World Bank programme |
+| Civil Registration Department (Ministry of Interior) | State Registry | Registration of births and deaths. It works on paper first. It registers 71% of the births |
+| Central Bank of Progressa | Shared Platform | Operates PayPro, the national system for fast payments |
 
-Classification takes one minute. It tells you what to expect before the first interview.
+The classification takes one minute. It tells you what to expect before the first interview.
 
-**Read the PLR row twice.** The registry that would resolve the sector's problem does not
-exist. Every finding below follows from its absence, not from its design.
+**Read the PLR row two times.** The registry that would solve the problem of the sector does
+not exist. Each finding below comes from its absence. No finding comes from its design.
 
-**Read the Civil Registration row too.** It is the legal identity anchor for a child under
-the Civil Registration Act, and because PNIA issues no ID before 16, the National ID cannot
-be the learner key for a primary-school child.
+**Read the Civil Registration row also.** Under the Civil Registration Act, it is the legal
+anchor of the identity of a child. PNIA issues no ID before 16 years. Therefore the National
+ID cannot be the key for a learner in a primary school.
 
 ---
 
-## Business Layer
+## The Business layer
 
-**Capabilities** (what each body can do):
+**Capabilities.** What each body can do:
 
 | Capability | Owner |
 |-----------|-------|
-| Set education policy and fund schools | MoEYS |
+| Set the education policy and fund the schools | MoEYS |
 | Run an examination | PNEA |
-| Certify an examination result | PNEA |
-| Prove the identity of a person aged 16 or over | PNIA |
+| Certify the result of an examination | PNEA |
+| Prove the identity of a person of 16 years or more | PNIA |
 | Establish the legal identity of a child | Civil Registration Department |
-| Determine social-grant eligibility | Social Protection Agency |
-| Exchange data between bodies | PDGA |
-| Settle a payment between accounts | Central Bank of Progressa |
-| Register a learner | **unowned** — the PLR that would own it is not started |
+| Decide the eligibility for a social grant | Social Protection Agency |
+| Exchange data between the bodies | PDGA |
+| Settle a payment between two accounts | Central Bank of Progressa |
+| Register a learner | **no owner.** The PLR that would own it is not started |
 
-**Services** (how capabilities reach citizens or other bodies):
+**Services.** How a capability reaches a citizen or another body:
 
-| Service | Capability served | Delivered by |
+| Service | Capability that it serves | Delivered by |
 |---------|------------------|-------------|
-| Enrol a child in school | Register a learner | the school, on paper; the head teacher keys it into district EMIS |
-| Sit a national examination | Run an examination | PNEA, from its own candidate list |
-| Receive an examination certificate | Certify a result | PNEA |
-| Receive a scholarship | Determine eligibility; settle a payment | MoEYS, by cheque |
+| Enrol a child in a school | Register a learner | The school, on paper. The head teacher then types it into the district EMIS |
+| Sit a national examination | Run an examination | PNEA, from its own list of candidates |
+| Receive a certificate for an examination | Certify a result | PNEA |
+| Receive a scholarship | Decide the eligibility, and settle a payment | MoEYS, by cheque |
 
-**Quality test result**: ⚠️ Capabilities describe what each body does — but one capability
-has no owner, which is the finding, not a formatting fault.
+**The result of the quality test**: ⚠️ The capabilities describe what each body does. One
+capability has no owner. That is the finding. It is not an error of format.
 
-**Gap confirmed**: MoEYS and PNEA both maintain learner data as a side-effect of their own
-capabilities, and the Social Protection Agency holds a third list. No body claims "register
-a learner" as its capability. A capability nobody owns is held three times by nobody's
-design.
+**A gap that is confirmed**: MoEYS and PNEA each hold learner data, because their own
+capabilities need it. The Social Protection Agency holds a third list. No body says that
+"register a learner" is its capability. Nobody owns this capability, and three bodies hold
+it. Nobody designed this.
 
 ---
 
-## Data Layer
+## The Data layer
 
-| Domain | Owner | Authoritative Copy Location | Consuming Bodies |
+| Domain | Owner | Where the authoritative copy is | Bodies that use it |
 |--------|-------|----------------------------|-----------------|
-| Person (16+) | PNIA | National ID register | tax authority, business register, PDGA members |
-| Legal identity of a child | Civil Registration Department | Civil register, paper-first | none electronically |
-| Learner | **none** | three partial copies, none authoritative | — |
-| Examination result | PNEA | Examination Authority | MoEYS |
-| School | MoEYS | School census | — |
-| Grant beneficiary | Social Protection Agency | Beneficiary register (2016) | — |
+| Person of 16 years or more | PNIA | The National ID register | The tax authority, the business register, the members of Linkup |
+| The legal identity of a child | Civil Registration Department | The civil register, on paper first | None, electronically |
+| Learner | **none** | Three partial copies. None of them is authoritative | — |
+| The result of an examination | PNEA | The Examination Authority | MoEYS |
+| School | MoEYS | The school census | — |
+| A beneficiary of a grant | Social Protection Agency | The register of beneficiaries (2016) | — |
 
-**Once-only rule applied**: it is not. A parent proves the child's identity on paper at
-every counter, because no system trusts another's.
+**Is the once-only rule applied?** No. A parent proves the identity of the child on paper at
+each counter, because no system trusts the record of another system.
 
-**Quality test result**: ❌ One domain — Learner — has no owner and no authoritative copy.
+**The result of the quality test**: ❌ One domain, the Learner, has no owner and no
+authoritative copy.
 
-**Gap confirmed, not suspected**: learner data is held three times, in the district EMIS,
-in the PNEA candidate list and in the Social Protection beneficiary register, each on its
-own numbering. None of the three lists agree.
+**A gap that is confirmed, not suspected**: three systems hold the learner data. They are the
+district EMIS, the list of candidates of PNEA, and the register of beneficiaries of the
+Social Protection Agency. Each one uses its own numbers. The three lists do not agree.
 
 ---
 
-## Application Layer
+## The Application layer
 
-| Application | Capability served | Data domains used | Owner |
+| Application | Capability that it serves | Data domains that it uses | Owner |
 |------------|------------------|------------------|-------|
-| District EMIS | Fund schools; school census | Learner (partial), School | MoEYS |
-| Candidate management system | Run an examination; certify a result | Learner (partial), Examination result | PNEA |
-| National ID and e-KYC platform | Prove identity (16+) | Person | PNIA |
-| Linkup (X-Road 7.x) | Exchange data | all, for its four members | PDGA |
-| Beneficiary register | Determine eligibility | Learner (partial), Grant beneficiary | Social Protection Agency |
+| District EMIS | Fund the schools; the school census | Learner (partial), School | MoEYS |
+| Candidate management system | Run an examination; certify a result | Learner (partial), the result of an examination | PNEA |
+| The National ID and e-KYC platform | Prove an identity, for 16 years and more | Person | PNIA |
+| Linkup (X-Road 7.x) | Exchange data | All domains, for its four members | PDGA |
+| Register of beneficiaries | Decide the eligibility | Learner (partial), a beneficiary of a grant | Social Protection Agency |
 | PayPro | Settle a payment | — | Central Bank of Progressa |
-| — | Register a learner | Learner | no application exists |
+| — | Register a learner | Learner | No application exists |
 
-**Quality test result**: ⚠️ Every application points to a capability, and the three that
-hold the Learner domain each hold a different partial copy.
+**The result of the quality test**: ⚠️ Each application points to a capability. The three
+applications that hold the Learner domain each hold a different partial copy.
 
-**Cross-layer check**: three applications carry learner data and none of them consumes
-another. There is no application to consume: the PLR is not started.
+**The check across the layers**: three applications carry learner data, and no one of them
+uses the data of another. There is no application to use, because the PLR is not started.
 
-**Gap confirmed**: this is both a duplicate registry (Data layer) and, because the copies
-are reconciled by hand or by spreadsheet, a point-to-point problem at the Technology layer.
+**A gap that is confirmed**: this is a duplicate registry, in the Data layer. It is also a
+point-to-point problem, in the Technology layer, because a person reconciles the copies by
+hand or in a spreadsheet.
 
 ---
 
-## Technology Layer
+## The Technology layer
 
 | Component | Role | Standard |
 |-----------|------|----------|
-| National ID and e-KYC (PNIA) | Issues and verifies identity, 16+ | documented API; no sector adoption framework |
-| Linkup (PDGA) | Routes data between members with an audit trail | X-Road 7.x — live pilot, four members: PNIA, the business register, the tax authority, PDGA |
-| PayPro (Central Bank of Progressa) | Settles a payment between accounts | used by the tax authority; the scholarship programme still pays by cheque |
-| e-Government Interoperability Framework 2021 | Names message formats and an approved-standards list | published, not applied; its governance committee no longer meets |
-| Government hosting | Hosts the sector's systems | not standardised |
+| The National ID and e-KYC platform (PNIA) | Issues and verifies an identity, for 16 years and more | It has a documented API. There is no framework for a sector to adopt it |
+| Linkup (PDGA) | Routes data between the members, with an audit trail | X-Road 7.x. It is a live pilot with four members: PNIA, the business register, the tax authority, and PDGA |
+| PayPro (Central Bank of Progressa) | Settles a payment between two accounts | The tax authority uses it. The scholarship programme still pays by cheque |
+| e-Government Interoperability Framework 2021 | Names the message formats and the list of approved standards | It is published. Nobody applies it. Its governance committee does not meet |
+| Government hosting | Hosts the systems of the sector | It has no standard |
 
-**Quality test result**: ❌ A standards instrument exists and is not applied; the exchange
-layer exists and the education sector is not on it. **MoEYS is not a Linkup member.**
+**The result of the quality test**: ❌ An instrument for the standards exists, and nobody
+applies it. The layer for exchange exists, and the education sector is not on it. **MoEYS is
+not a member of Linkup.**
 
-**Point-to-point finding — Confirmed, not a risk.** The tax-to-business-register link was
-built as a direct database link in 2022, before Linkup existed, and has not been migrated.
-MoEYS and the Ministry of Health exchange data by spreadsheet on request. Both are
-point-to-point integrations running alongside an exchange layer that could carry them.
+**The point-to-point finding is confirmed. It is not a risk.** A team built the link from the
+tax authority to the business register as a direct link between two databases in 2022, before
+Linkup existed. Nobody migrated it. MoEYS and the Ministry of Health exchange data in a
+spreadsheet, on request. Both are point-to-point integrations, and they run next to a layer
+for exchange that can carry them.
 
-**Single points of failure**: Linkup and the National ID platform. Neither yet carries an
-education-sector flow, so the sector's exposure is not to their downtime but to its own
-absence from them.
+**The single points of failure**: Linkup and the National ID platform. No flow of the
+education sector goes through them now. Therefore the risk to the sector is not that they
+stop. The risk is that the sector is absent from them.
 
 ---
 
-## Full Traceability Trace
+## The full trace
 
-Service: **Sit an examination and receive a certificate**
+The service is: **sit an examination and receive a certificate**.
 
 ```
 Service: Sit an examination; receive a certificate
@@ -156,36 +161,38 @@ Technology: none — MoEYS is not a Linkup member; the school file reaches PNEA 
 Technology: government hosting, not standardised
 ```
 
-The trace is a complete architectural reading precisely because it breaks. Two links —
-the Learner owner and the exchange route — are empty, and every symptom the minister
-describes hangs off those two gaps.
+The trace is a complete architectural reading because it breaks. Two links are empty: the
+owner of the Learner domain, and the route for the exchange. Each symptom that the minister
+describes comes from those two gaps.
 
 ---
 
-## Universal Gap Findings for Progressa
+## The universal gaps in Progressa
 
 | Gap | Status | Evidence |
 |-----|--------|---------|
-| Duplicate registries | **Confirmed** | A learner is held three times: district EMIS, PNEA candidate list, Social Protection beneficiary register — each on its own numbering, and the lists do not agree |
-| Orphan systems | **Risk** | Provincial secondary files and school-level records are named in §3 but not inventoried |
-| Point-to-point spaghetti | **Confirmed** | Tax ↔ business register by direct database link since 2022, unmigrated; MoEYS ↔ Health by spreadsheet; Linkup has four members and MoEYS is not one |
+| Duplicate registries | **Confirmed** | Three systems hold a learner: the district EMIS, the list of candidates of PNEA, and the register of beneficiaries of the Social Protection Agency. Each one uses its own numbers, and the lists do not agree |
+| Orphan systems | **Risk** | Section §3 names the files of the provincial secondary schools and the records at the school level. Nobody put them in an inventory |
+| Point-to-point integration | **Confirmed** | The tax authority and the business register use a direct link between databases since 2022, and nobody migrated it. MoEYS and Health use a spreadsheet. Linkup has four members, and MoEYS is not one of them |
 | No clear owner | **Confirmed** | The Learner domain has no owner. The PLR that would own it is not started |
-| No standards function | **Confirmed** | §6 records no education-sector data-standards function; the 2021 Interoperability Framework is published, not applied |
+| No function for standards | **Confirmed** | Section §6 records no function for data standards in the education sector. The 2021 Interoperability Framework is published, and nobody applies it |
 
 ---
 
-## Architecture Traps in Progressa
+## The architecture traps in Progressa
 
-**Bespoke trap — present.** The Social Protection Agency's beneficiary register was built in
-2016 by a vendor under a World Bank programme rather than assembled from shared registries,
-and it is now the third place a learner appears. Four more donor-funded systems are in the
-same shape: five programmes across four ministries, each with its own identity and exchange
-needs, funded by three donors on separate timetables. The National Learner Registry at
-USD 6.5m is the next one to be procured, and nothing yet requires it to consume PNIA and
-the civil register rather than build a sixth list.
+**The bespoke trap is present.** A vendor built the register of beneficiaries of the Social
+Protection Agency in 2016, under a World Bank programme. The team did not assemble it from
+the registries that the country shares. It is now the third place where a learner appears.
+Four more systems that a donor funded have the same shape: five programmes across four
+ministries, each one with its own needs for identity and for exchange, funded by three donors
+on separate timetables. The National Learner Registry, at USD 6.5m, is the next system to
+procure. Nothing yet obliges it to use PNIA and the civil register instead of building a
+sixth list.
 
-**Vendor-driven trap — present.** The same 2016 register is under single-vendor maintenance:
-the vendor that built it still holds the only maintenance contract. That is the fixture's
-vendor-lock-in case, already realised, not a procurement risk to guard against later.
-Require an open export format and a maintenance market before the PLR contract is signed,
-because the counter-example is already running in the same sector.
+**The vendor-driven trap is present.** The same register from 2016 has one vendor for its
+maintenance: the vendor that built it still holds the only maintenance contract. This is the
+case of vendor lock-in in the fixture. It already happened. It is not a risk to prevent
+later. Require an open format for export, and a market of more than one maintainer, before a
+person signs the contract for the PLR. The counter-example already operates in the same
+sector.

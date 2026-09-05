@@ -1,17 +1,22 @@
-# GovStack Building Blocks — Reference Catalogue & Cost Benchmarks
+# The GovStack building blocks — the catalogue and the cost benchmarks
 
 Source: GovStack Specifications (specs.govstack.global), GovStack Initiative publications, ITU/DIAL/GIZ research
 
 ---
 
-## The Three Core Building Blocks for Cost Comparison
+## The three core building blocks for a cost comparison
 
-The GovStack cost-comparison skill focuses on these three BBs because they are the most universally duplicated across government programmes:
+This skill compares the cost of these three building blocks. Government programmes duplicate
+these three more than any others.
 
 ### 1. Identity Building Block
 
-**What it does:**  
-Provides foundational identity verification, authentication, and credential management for all digital government services. Uses OpenID Connect flows. Enables relying parties (programmes) to verify citizen identity and retrieve foundational attributes without each programme maintaining its own identity database.
+**What it does**
+
+It gives foundational identity verification, authentication and credential management to each
+digital government service. It uses OpenID Connect flows. A relying party, which is a
+programme, can verify the identity of a citizen and read the foundational attributes. The
+programme does not need its own database of identities.
 
 **Key functions:**  
 - Identity verification API (OpenID Connect)
@@ -25,8 +30,11 @@ Provides foundational identity verification, authentication, and credential mana
 - OpenCRVS (civil registration)
 - National Digital ID systems in Togo, Sierra Leone, Uganda
 
-**Why programmes duplicate it without shared infra:**  
-Health programmes build patient ID, social protection builds beneficiary ID, tax builds taxpayer ID — all solving the same problem of "who is this person?" with separate databases and no interoperability.
+**Why programmes duplicate it when there is no shared infrastructure**
+
+A health programme builds a patient ID. A social protection programme builds a beneficiary
+ID. A tax programme builds a taxpayer ID. Each one answers the same question, "who is this
+person?", with its own database, and the databases are not interoperable.
 
 **Cost Benchmarks (build cost, one-time, includes integration and customization):**
 
@@ -53,8 +61,12 @@ Health programmes build patient ID, social protection builds beneficiary ID, tax
 
 ### 2. Payments Building Block
 
-**What it does:**  
-Provides government payment infrastructure for G2P (government-to-person), G2B (government-to-business), P2G (person-to-government) and B2G flows. Handles bulk payment processing, bank/wallet mapping, reconciliation, and multicurrency support (v3.0, Dec 2025).
+**What it does**
+
+It gives the payment infrastructure of the government for four flows: government to person
+(G2P), government to business (G2B), person to government (P2G), and business to government
+(B2G). It processes bulk payments, maps a beneficiary to a bank or a wallet, reconciles the
+payments, and supports more than one currency (v3.0, Dec 2025).
 
 **Key functions:**  
 - Bulk disbursement processing (social transfers, salaries, subsidies)
@@ -70,8 +82,11 @@ Provides government payment infrastructure for G2P (government-to-person), G2B (
 - GSMA Mobile Money API-aligned systems
 - MoMo-based G2P systems (West Africa)
 
-**Why programmes duplicate it:**  
-Social protection, health insurance, agricultural subsidies, emergency cash transfers — each programme builds its own payment pipeline, its own FSP (financial service provider) integrations, its own reconciliation logic.
+**Why programmes duplicate it**
+
+Social protection, health insurance, agricultural subsidies and emergency cash transfers each
+build their own payment pipeline. Each one builds its own integrations to the financial
+service providers, and its own logic to reconcile the payments.
 
 **Cost Benchmarks:**
 
@@ -97,8 +112,12 @@ Social protection, health insurance, agricultural subsidies, emergency cash tran
 
 ### 3. Information Mediator (Data Exchange) Building Block
 
-**What it does:**  
-Provides secure, auditable, consent-aware data exchange between government systems. Based on X-Road-style architecture (Estonia's model, widely adopted). Acts as the data highway of the GovStack — without it, identity and payment BBs cannot share data across programmes.
+**What it does**
+
+It exchanges data between the systems of a government. The exchange is secure, a person can
+audit it, and it applies the consent of the citizen. Its architecture follows X-Road, which
+is the model of Estonia that many countries adopted. It is the road for the data in GovStack.
+Without it, the Identity block and the Payment block cannot share data between programmes.
 
 **Key functions:**  
 - Secure API gateway between government systems
@@ -112,8 +131,11 @@ Provides secure, auditable, consent-aware data exchange between government syste
 - DIGIT (Egovernments Foundation, India)
 - OpenHIE (health information exchange)
 
-**Why programmes duplicate it:**  
-Without shared mediation, each programme builds point-to-point integrations. N programmes = N×(N-1)/2 integration pairs. With a shared Information Mediator: N integrations (each programme connects once to the hub).
+**Why programmes duplicate it**
+
+Without a shared mediator, each programme builds point-to-point integrations. For N
+programmes there are N×(N−1)/2 pairs to integrate. With a shared Information Mediator there
+are N integrations, because each programme connects one time to the hub.
 
 **Integration complexity multiplier (siloed):**  
 - 3 programmes: 3 pairs → 3 bespoke integrations  
@@ -148,7 +170,7 @@ Without shared mediation, each programme builds point-to-point integrations. N p
 
 ---
 
-## Other GovStack Building Blocks (for context, not primary cost comparison)
+## The other GovStack building blocks. They give context. They are not in the main cost comparison
 
 | Building Block | Function | When to include in cost model |
 |---|---|---|
@@ -163,9 +185,12 @@ Without shared mediation, each programme builds point-to-point integrations. N p
 
 ---
 
-## Commodity vs. Differentiating Capabilities (Sourcing Guide)
+## Commodity capabilities and differentiating capabilities: a guide to sourcing
 
-A common costing error is applying one sourcing stance (e.g. "build everything bespoke" or "buy everything COTS") across the whole stack. Different capabilities warrant different sourcing — drive build/buy/configure decisions by strategic character:
+People make one common error when they cost a programme. They apply one sourcing stance to
+the full stack, such as "build everything bespoke" or "buy everything as a commercial
+product". A different capability needs a different sourcing decision. Decide to build, to buy
+or to configure by the strategic character of the capability.
 
 | Capability Type | Sourcing Default | Rationale | Expected Bespoke Footprint |
 |---|---|---|---|
@@ -174,29 +199,36 @@ A common costing error is applying one sourcing stance (e.g. "build everything b
 | **Domain logic with moderate uniqueness** (sector-specific business rules, eligibility calculations) | Configure rules engine / policy-as-code | Rules change frequently with policy; embedding in code creates maintenance drag | 15–30% |
 | **Differentiating / competitive-asset capabilities** (capabilities where deep domain knowledge creates strategic value — e.g. tax risk-scoring models, fraud detection algorithms, sector-specific analytics) | Bespoke build justified | These are where organisational competence is expressed; outsourcing them removes the strategic edge | 60–90% |
 
-**Costing implication**: For BBs in the "commodity" or "shared infrastructure" rows, apply the configuration dividend (~80% bespoke code reduction) when modelling Scenario B. For "differentiating" capabilities, model bespoke build cost honestly — the dividend doesn't apply, and that's correct.
+**What this means for the cost.** For a block in the "commodity" row or in the "shared
+infrastructure" row, apply the configuration dividend when you model Scenario B. The dividend
+removes about 80% of the bespoke code. For a "differentiating" capability, model the full
+cost of a bespoke build. The dividend does not apply there, and that is correct.
 
 ---
 
-## Country Tier Classification
+## How to classify the tier of a country
 
-Use GDP per capita (current USD) as proxy:
+Use the GDP for each person, in current USD:
 - **LIC**: <$1,135/year (World Bank threshold)
 - **LMIC**: $1,136–$4,465/year
 - **UMIC**: $4,466–$13,845/year
 - **HIC**: >$13,845/year (usually have existing infrastructure; different model applies)
 
-**Adjustment factors for specific contexts:**
-- Conflict/fragile states: ×1.5–2.0 on all costs (security, logistics, turnover)
-- Island nations / small population (<2M): ×0.6–0.8 on build, ×1.2 on ops (small market, imported expertise)
-- Federated systems (states/provinces each need own instance): multiply by federation units
-- Strong diaspora tech community: ×0.7–0.9 on labour costs
+**The adjustment factors for a specific context**
+
+- A state in conflict, or a fragile state: multiply each cost by 1.5 to 2.0, for the
+  security, the logistics and the turnover of staff.
+- An island nation, or a population below 2 million: multiply the build by 0.6 to 0.8, and
+  multiply the operations by 1.2. The market is small, and the country imports the expertise.
+- A federated system, where each state or province needs its own instance: multiply by the
+  number of units in the federation.
+- A large technology community in the diaspora: multiply the labour costs by 0.7 to 0.9.
 
 ---
 
-## Non-Financial Benefits Catalogue
+## The catalogue of benefits that are not financial
 
-Always include relevant items from this list in the output:
+Put each item from this list that applies into the output.
 
 **Efficiency gains:**
 - Faster programme launch: consuming a shared BB is 6–18 months faster than building from scratch

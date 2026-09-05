@@ -1,79 +1,86 @@
 ---
 name: ea-open-learning-catalogue
 description: >-
-  Build a team capability-building plan from open learning materials, checking on the day it
-  runs that every item actually resolves — each with a URL and a "checked on" date, and
-  anything paywalled, moved or stale flagged. Serves play 5.5. Use when someone says "how do
-  I build my team's capability", "what should my architects learn", "training plan for the
-  EA team", "free EA and DPI learning resources", "onboard a new architect", "what courses
-  exist for government enterprise architecture", "capability plan for the minister". Reads
-  the PAERA site, GovStack specifications and learning material, the ITU Academy, the DPGA
-  registry, the Knowledge Product video playlists and GitBook, and the World Bank Open
-  Learning Campus. Returns a sequenced plan by role and starting point, what to fund, and
-  how to retain the capability once it exists — because the real cost is the team's time,
-  not the materials, and the real risk is the trained architect leaving.
+  Build a plan to develop the capability of a team, from open learning materials. On the day
+  that the plan is written, check that each item resolves. Give each item a URL and a
+  "checked on" date, and flag each item that is behind a paywall, that moved, or that is
+  stale. Serves play 5.5. Use when someone says "how do I build my team's capability", "what
+  should my architects learn", "training plan for the EA team", "free EA and DPI learning
+  resources", "onboard a new architect", "what courses exist for government enterprise
+  architecture", "capability plan for the minister". Reads the PAERA site, the GovStack
+  specifications and learning material, the ITU Academy, the DPGA registry, the Knowledge
+  Product video playlists and GitBook, and the World Bank Open Learning Campus. Returns a
+  plan in sequence by role and by starting point, what to fund, and how to keep the
+  capability after the team has it. The true cost is the time of the team, not the
+  materials, and the true risk is that the architect you trained leaves.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 ---
 
 ## What this skill does
 
-Produces the learning sequence for 5.5, with every item **verified to exist on the day the
-plan is written**. The play's safeguard is *confirm the specific materials exist and are
-current*; link rot in open learning material is fast, and a plan whose first three links are
-dead is not used twice.
+This skill makes the learning sequence for play 5.5. It **verifies that each item exists on
+the day that it writes the plan**.
+
+The safeguard of the play says: *confirm the specific materials exist and are current*.
+Links to open learning material break quickly. Nobody uses a plan a second time when its
+first three links are dead.
 
 ## Inputs
 
-Team size and the members' backgrounds — how many people, and where each is starting from
-(a developer, a policy officer, a statistician, a project manager, a new graduate). If the
-learner has A6, the RACI and role-gap list, read it: **the role gaps are what the plan has
-to close**, and a plan that trains for roles the programme does not need is a plan nobody
-funds.
+The skill needs the size of the team and the background of each member. Give the number of
+people, and the starting point of each one: a developer, a policy officer, a statistician, a
+project manager, or a new graduate.
 
-If team size is unknown, ask once, alongside any other question — no more than three at
-once, recorded in the output.
+If the learner has A6, the RACI and role-gap list, read it. **The plan must close the role
+gaps.** Nobody funds a plan that trains people for roles that the programme does not need.
+
+If you do not know the size of the team, ask one time. Ask it with your other questions. Ask
+a maximum of three questions at the same time, and record the answers in the output.
 
 ## Procedure
 
-1. **Fetch every item before listing it.** Not a sample. Record the URL, the **checked on**
-   date, and whether it resolved. This is the whole point of the skill.
+1. **Read every item before you list it.** Read all of them, not a sample. Record the URL,
+   the **checked on** date, and whether the page opened. This step is the purpose of the
+   skill.
 
-2. **For each item record**: what it is, who it is for, roughly how long, whether it is
-   free, whether registration is required, and whether it carries a credential. "Free but
-   requires an institutional email" is a real barrier and belongs in the table.
+2. **Record these items for each entry**: what it is, who it is for, how long it takes,
+   whether it is free, whether the learner must register, and whether it gives a credential.
+   "Free but requires an institutional email" is a true barrier. Put it in the table.
 
-3. **Flag four states**, per `references/learning-sources.md`:
-   **current** · **stale** (exists, but its content refers to a superseded version) ·
-   **paywalled** (or newly paywalled) · **moved or gone**. For anything moved or gone, spend
-   one search on where it went, and say if you could not find it.
+3. **Give each item one of four states**, as `references/learning-sources.md` defines them:
+   **current** · **stale**, which means that it exists but its content is about a version
+   that is superseded · **paywalled**, which includes items that a publisher moved behind a
+   paywall recently · **moved or gone**. For each item that moved or is gone, do one search
+   for its new location. If you do not find it, say so.
 
-4. **Sequence by role and starting point**, not by topic. A policy officer and a developer
-   do not start in the same place, and a sequence that ignores that is a reading list.
-   Three tracks is usually right: architecture foundations, the specifications
-   (PAERA, GovStack), and the method.
+4. **Put the items in sequence by role and by starting point. Do not sequence them by
+   topic.** A policy officer and a developer do not start at the same place. A sequence that
+   ignores this is a reading list. Three tracks are usually correct: the foundations of
+   architecture, the specifications, which are PAERA and GovStack, and the method.
 
-5. **Name the three layers**: what the team learns from **open materials**, what needs
-   **taught instruction or mentoring**, and what only comes from **doing the work** with
-   someone experienced. Most of an architect's capability is in the third layer, and a plan
-   that pretends otherwise underestimates the time by a factor.
+5. **Name the three layers.** Say what the team learns from **open materials**, what needs
+   **instruction or a mentor**, and what comes only from **doing the work** with a person
+   who has experience. Most of the capability of an architect is in the third layer. A plan
+   that says something different makes the time much too short.
 
-6. **Say what to fund.** Usually not the materials — they are free. What costs money:
-   protected time; a mentor or an experienced architect for the first sector; the
-   certification exam fees if a credential is required; and travel to the one workshop that
-   is worth attending in person.
+6. **Say what to fund.** Usually this is not the materials, because they are free. These
+   items cost money: time that nobody can take away; a mentor or an architect with
+   experience for the first sector; the fees for a certification exam, if the team needs a
+   credential; and travel to the one workshop that is worth a journey.
 
-7. **Say how to retain the capability.** A trained architect is more employable and this is
-   the fade mode 3.7 and 5.2 both name. Retention devices: the work itself being
-   interesting, a career path that does not require leaving architecture to be promoted, and
-   pairing so that capability sits in two heads rather than one.
+7. **Say how to keep the capability.** A trained architect can find another job more easily.
+   Plays 3.7 and 5.2 both name this fade mode. These devices help: work that is interesting;
+   a career path that lets a person get a promotion and stay in architecture; and pair work,
+   so that the capability is in two heads and not one.
 
-8. **Run `cite-or-discard`** over the list. Here it is nearly the whole procedure — the
-   verification *is* the deliverable.
+8. **Run `cite-or-discard` on the list.** Here it is almost the full procedure, because the
+   verification is the deliverable.
 
 ## Output contract
 
-Provenance header first (`references/provenance-header.md`), then:
+Write the provenance header first (`references/provenance-header.md`). Then write these six
+sections.
 
 **Learning sequence**
 
@@ -81,42 +88,44 @@ Provenance header first (`references/provenance-header.md`), then:
 | # | Item | Source | For whom | Time | Free? | Registration? | Credential | Status | URL | Checked on |
 ```
 
-Status: current / stale / paywalled / moved or gone.
+The status is current, stale, paywalled, or moved or gone.
 
-**The three tracks** — foundations, specifications, method — with the items in order per
-track and the starting point each assumes.
+**The three tracks** — foundations, specifications and method. Give the items of each track
+in order, and the starting point that each track assumes.
 
-**The three layers** — open materials / taught instruction / learning by doing, with what
-belongs in each and roughly what share of the capability each carries.
+**The three layers** — open materials, instruction, and learning by doing. Give what belongs
+in each layer, and how much of the capability each layer gives.
 
-**What to fund** — a short list with the reason. Time first.
+**What to fund** — a short list with a reason for each item. Put time first.
 
-**How to retain it** — the fade mode, and the two or three devices against it.
+**How to keep it** — the fade mode, and the two or three devices against it.
 
-**Could not verify** — every item that did not resolve, and where it appears to have gone.
+**Could not verify** — each item that did not open, and where it appears to have moved.
 
-Text in the chat. No file. No reasoning before the header. See
+Write text in the chat. Do not make a file. Write no analysis before the header. See
 `references/output-contract.md`.
 
 ## Safeguard handed back
 
-**The plan assumes the open materials cover your needs. Confirm they do before relying on
-them, and budget honestly for the team's time — that is the real cost and the one most often
-underestimated.**
+**This plan assumes that the open materials cover what you need. Confirm that they do before
+you use them. Budget the time of the team honestly. That time is the true cost, and people
+make it too small more than any other item.**
 
-- **Open one item per track yourself** before circulating the plan. A "checked on" date
-  means the URL resolved, not that the content is good or current for your context.
-- **Budget the time in days, not hours**, and protect it. Learning that competes with
-  delivery loses every time — which is the first fade mode in the sustainment register.
-- **Open materials teach the framework, not your country.** The judgement — which body owns
-  which domain, which trade-off is politically survivable — comes from doing the work with
-  someone who has done it before. Plan for that person.
-- **Re-check the links** before the plan is reused. Six months is enough for a third of them
-  to move.
+- **Open one item in each track yourself** before you send the plan to other people. A
+  "checked on" date says that the URL opened. It does not say that the content is good, or
+  that it is current for your context.
+- **Budget the time in days, not in hours**, and protect it. Learning that competes with
+  delivery loses each time. This is the first fade mode in the sustainment register.
+- **Open materials teach the framework. They do not teach your country.** The judgement
+  comes from doing the work with a person who has done it before. That judgement includes
+  which body owns which domain, and which trade-off can survive politically. Plan for that
+  person.
+- **Check the links again before you use the plan a second time.** In six months, a third of
+  them move.
 
 ## References
 
-- `references/learning-sources.md` — the sources to check, what each offers, and the
-  registration and currency traps in each.
+- `references/learning-sources.md` — the sources to check, what each one gives, and the
+  traps for registration and currency in each one.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.

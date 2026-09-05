@@ -1,9 +1,9 @@
 ---
 name: bb-landscape-check
 description: >-
-  Find out which shared digital building blocks a country actually has LIVE — not planned —
-  and return a status register with sources: national ID, instant payments, data exchange
-  (X-Road, GovStack Information Mediator), civil registration, G-cloud and hosting, consent.
+  Find which shared digital building blocks a country has LIVE, not planned, and give a
+  status register with sources: national ID, instant payments, data exchange (X-Road,
+  GovStack Information Mediator), civil registration, G-cloud and hosting, consent.
   Use whenever a play asks "which shared building blocks already exist", before the two-trap
   screen (2.7), the sourcing matrix (4.4), the target architecture (4.5), the review gate
   (3.5), the gate decision (4.7), the second-sector map (5.3) or the rollout waves (5.6), or
@@ -20,104 +20,114 @@ disallowed-tools: Write, Edit, NotebookEdit
 
 ## What this skill does
 
-Returns the **BB status register**: for each shared building block, whether the country has
-it live, in pilot, planned, or not at all — with the operator, a coverage figure, and a
-source that says so.
+This skill gives the **BB status register**. For each shared building block, the register
+tells whether the country has the block live, in pilot, planned, or not at all. It gives
+the operator, a coverage figure, and a source that says so.
 
-It answers the most repeated safeguard in Modules 2, 4 and 5 — *verify the shared block is
-authoritative and available, not merely planned* — which the plays currently leave to the
-learner as "note if unknown". It serves 2.7, 3.5, 4.4, 4.5, 4.7, 5.3 and 5.6.
+Modules 2, 4 and 5 repeat one safeguard more than any other: *verify the shared block is
+authoritative and available, not merely planned*. The plays leave this work to the learner
+with the words "note if unknown". This skill does the work. It serves 2.7, 3.5, 4.4, 4.5,
+4.7, 5.3 and 5.6.
 
-`bb-sourcing-researcher` answers a different question: **which products could supply** a
-block the country lacks. This skill answers **what the country has**. Run this one first;
-its *none* and *planned* rows are that skill's input.
+`bb-sourcing-researcher` answers a different question: **which products can supply** a
+block that the country does not have. This skill answers **what the country has**. Run
+this skill first. Its *none* rows and *planned* rows are the input to that skill.
 
 ## Inputs
 
-The country. Optionally a sector, which adds the sector's own registries to the register
-(a learner registry, a facility registry, a farmer registry).
+The skill needs the country. It can also use a sector. A sector adds the registries of
+that sector to the register: a learner registry, a facility registry, or a farmer registry.
 
-If the learner has A0 §1 or §6, read them — they already name the systems. Do not ask for
-them; the whole point is that the learner does not have them.
+If the learner has A0 §1 or A0 §6, read them. They already give the names of the systems.
+Do not ask the learner for them. The learner does not have them. This is why the skill
+exists.
 
 ## Procedure
 
-For each block below, search the named sources in the order given, then fetch. **A slide, a
-strategy document or a press release announcing an intention is not evidence a system is
-live.** Only the operator's own statement, a regulator's report, a donor completion report,
-or a deployment register counts for a *live* status.
+For each block in the table below, search the sources in the order given. Then read the
+pages. **An intention in a slide, a strategy document or a press release is not evidence
+that a system is live.** For a *live* status you need one of these: a statement by the
+operator, a report by a regulator, a completion report by a donor, or a deployment
+register.
 
 | Block | Sources, in order | Tier |
 | --- | --- | --- |
-| **Identity** | World Bank ID4D country diagnostics and dataset; the ID authority's own site; ID4Africa country profile; the MOSIP deployment list; UNECA Africa Digital ID Landscape | T1, then T2 |
-| **Civil registration** | The national CRVS agency; UNICEF birth-registration data; the World Bank ID4D CRVS material | T1/T2 |
-| **Payments** | The central bank's instant-payment or national-switch page and annual report; the World Bank fast-payments material; GSMA mobile-money data | T1, then T2 |
-| **Data exchange** | The NIIS X-Road world map; GovStack country engagements; the UNDP DPI map; the operator's own member list | T2, chase to T1 |
-| **Cloud and hosting** | National data-centre and G-cloud announcements by the operating agency; the national ICT agency's service catalogue | T1 |
-| **Consent / data sharing** | The data-protection regulator's register and guidance; any published consent service | T1 |
-| **Sector registries** (if a sector is named) | The sector ministry's own systems list; the donor project documents that built them | T1/T2 |
+| **Identity** | World Bank ID4D country diagnostics and dataset; the site of the ID authority; the ID4Africa country profile; the MOSIP deployment list; the UNECA Africa Digital ID Landscape | T1, then T2 |
+| **Civil registration** | The national CRVS agency; UNICEF birth-registration data; the CRVS material of World Bank ID4D | T1/T2 |
+| **Payments** | The instant-payment page or national-switch page of the central bank, and its annual report; the fast-payments material of the World Bank; GSMA mobile-money data | T1, then T2 |
+| **Data exchange** | The NIIS X-Road world map; GovStack country engagements; the UNDP DPI map; the member list of the operator | T2, then find the T1 source |
+| **Cloud and hosting** | The national data-centre and G-cloud announcements by the agency that operates them; the service catalogue of the national ICT agency | T1 |
+| **Consent / data sharing** | The register and guidance of the data-protection regulator; any consent service that is published | T1 |
+| **Sector registries** (if the learner gives a sector) | The systems list of the sector ministry; the donor project documents that built the systems | T1/T2 |
 
-Then:
+Then do these six steps:
 
-1. **Assign a status per block**: **live** · **pilot** · **planned** · **none** · **unclear**.
-   *Unclear* is a real status — use it when the sources conflict or the last statement is
-   more than two years old, and say which source said what.
+1. **Give each block a status**: **live** · **pilot** · **planned** · **none** ·
+   **unclear**. *Unclear* is a true status. Use it when the sources do not agree, or when
+   the last statement is more than two years old. Then tell which source says what.
 
-2. **Name the operator.** A block with no named operator is not live, whatever the strategy
-   says. If you cannot find who runs it, the status is *unclear*, not *live*.
+2. **Give the name of the operator.** A block with no named operator is not live, whatever
+   the strategy says. If you cannot find who operates it, the status is *unclear*. It is
+   not *live*.
 
-3. **Find the coverage figure** where one exists — adult ID coverage, birth-registration
-   rate, number of connected members, transaction volume. With its year. A coverage figure
-   without a year is useless to a gate decision.
+3. **Find the coverage figure**, if one exists: adult ID coverage, the birth-registration
+   rate, the number of members that are connected, or the transaction volume. Give the
+   year with the figure. A coverage figure with no year has no value at a gate decision.
 
-4. **Date the claim.** Status goes stale faster than anything else in the workbook. Record
-   the date of the *source statement*, not just the date you fetched it.
+4. **Put the date on the claim.** Status goes stale faster than any other item in the
+   workbook. Record the date of the *statement in the source*, not only the date that you
+   read the page.
 
-5. **Run `cite-or-discard`** on the register. Where a fetch fails, mark ⚠ and say so —
-   central-bank and government portals block automated fetches routinely, and a refused
-   fetch must never become a *planned* status. See `references/source-tiers.md`.
+5. **Run `cite-or-discard`** on the register. If a fetch fails, mark the row ⚠ and say so.
+   Central-bank portals and government portals block automatic fetches frequently. A
+   refused fetch must never become a *planned* status. See `references/source-tiers.md`.
 
-6. **Answer the availability question, not just the existence one.** A block can be live and
-   still unavailable to a new sector: closed membership, no onboarding procedure, a fee no
-   ministry can pay, a legal basis that covers only the founding members. Record that in
-   the *Available to a new sector?* column — it is the column the gate decision actually
-   turns on.
+6. **Answer the availability question. Do not answer only the existence question.** A
+   block can be live and still not available to a new sector. The membership can be
+   closed. There can be no onboarding procedure. The fee can be more than a ministry can
+   pay. The legal basis can cover only the members that started it. Record this in the
+   *Available to a new sector?* column. The gate decision depends on that column.
 
 ## Output contract
 
-Provenance header first (`references/provenance-header.md`), then:
+Write the provenance header first (`references/provenance-header.md`). Then write this
+table:
 
 ```
 | Block | Status | Operator | Coverage (year) | Available to a new sector? | Source | Tier | Stated on |
 ```
 
-Then, in order:
+Then write these three sections in this order:
 
-- **What this means for the plays that consume it** — one line per block: what the *none*
-  and *planned* rows force into build-or-buy, and which *live* rows the gate can point to.
-- **Contested or unclear** — where sources disagree, both cited.
-- **Re-check by** — a date, three months out.
+- **What this means for the plays that consume it** — one line for each block. Say what
+  the *none* rows and the *planned* rows force into a build-or-buy decision. Say which
+  *live* rows the gate can use.
+- **Contested or unclear** — the blocks where the sources do not agree, with both sources
+  cited.
+- **Re-check by** — a date three months from now.
 
-Text in the chat. No file, no chart, no map image. Posts, not names. No reasoning before
-the header. See `references/output-contract.md`.
+Write text in the chat. Do not make a file, a chart or an image of a map. Posts, not
+names. Write no analysis before the header. See `references/output-contract.md`.
 
 ## Safeguard handed back
 
-A register says a block exists. It does not say you can use it.
+A register says that a block exists. It does not say that you can use the block.
 
-- **Confirm availability with the operator**, not with the strategy document. Ask for the
-  onboarding procedure, the current member list, the fee, and the legal basis for a new
-  member's traffic.
-- **A pilot is not a platform.** Four members and no data catalogue is a pilot even where
-  the announcement said *national*. Do not let a *pilot* row carry a wave in a roadmap.
-- **Re-run this before any gate decision.** A status three months old has already been
-  wrong once in this course's own test runs.
-- Anything marked ⚠ or *unclear* is a call you make with a person, not with this table.
+- **Confirm availability with the operator.** Do not confirm it with the strategy
+  document. Ask for the onboarding procedure, the current member list, the fee, and the
+  legal basis for the traffic of a new member.
+- **A pilot is not a platform.** Four members and no data catalogue is a pilot, also when
+  the announcement used the word *national*. Do not let a *pilot* row carry a wave in a
+  roadmap.
+- **Run this skill again before each gate decision.** In the test runs of this course, a
+  status three months old was already wrong one time.
+- Each item marked ⚠ or *unclear* is a decision that you make with a person. You do not
+  make it with this table.
 
 ## References
 
-- `references/block-sources.md` — the registries and pages per block, with what each one
-  can and cannot prove, and where each moved to when it moved.
-- `references/status-rubric.md` — what evidence is required for each of the five statuses.
+- `references/block-sources.md` — the registries and pages for each block, what each one
+  can prove, what each one cannot prove, and where each one moved to.
+- `references/status-rubric.md` — the evidence that each of the five statuses needs.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.

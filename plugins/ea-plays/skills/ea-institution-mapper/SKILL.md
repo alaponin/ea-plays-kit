@@ -1,9 +1,9 @@
 ---
 name: ea-institution-mapper
 description: >-
-  Find the public bodies that matter in a country and sector, and record for each one its
-  legal mandate with the instrument that grants it, the systems and registries it is known
-  to operate, the post that heads it, and its PAERA Annex A1.2 classification with a
+  Find the public bodies that matter in a country and a sector. For each body, record its
+  legal mandate with the instrument that grants it, the systems and registries that it
+  operates, the post that heads it, and its PAERA Annex A1.2 classification with a
   confidence and a hybrid flag. Serves every play that begins "here are the main bodies in
   [sector]": the ministerial explainer (1.2), the phase RACI's roles input (1.6), classify a
   body (2.4), the sector BDAT skeleton (2.5), the demonstration canvas (4.1), the transfer
@@ -20,74 +20,80 @@ disallowed-tools: Write, Edit, NotebookEdit
 
 ## What this skill does
 
-Turns "the main bodies in the sector" from something the learner is asked to paste into
-something sourced: each body's **legal mandate with the instrument that grants it**, the
-systems and registries it runs, the post that heads it, and where it sits in the PAERA
-taxonomy.
+The plays ask the learner to paste "the main bodies in the sector". This skill finds them
+in the public record. For each body it gives the **legal mandate and the instrument that
+grants it**, the systems and registries that the body operates, the post that heads the
+body, and the position of the body in the PAERA taxonomy.
 
-The safeguard in 2.4 — *confirm the classification against the body's actual legal
-mandate* — becomes this skill's own step rather than the learner's homework.
+Play 2.4 ends with this safeguard: *confirm the classification against the body's actual
+legal mandate*. This skill does that step. It is not homework for the learner.
 
 ## Inputs
 
-Country and sector. If the learner has A0 §6, read it and deepen it rather than starting
-again; §6 is a first pass with confirmed/inferred, and this skill adds the legal instrument,
-the classification and the head post.
+The skill needs the country and the sector.
 
-If neither is available, build the body list first from the sector ministry's own site and
-the sector plan, then proceed.
+If the learner has A0 §6, read it and add to it. Do not start again. Section §6 is a first
+pass with the tags confirmed and inferred. This skill adds the legal instrument, the
+classification and the post that heads each body.
+
+If the learner has neither input, build the list of bodies first. Use the site of the
+sector ministry and the sector plan. Then continue.
 
 ## Procedure
 
-1. **Find the bodies.** The sector ministry or ministries; examinations, licensing or
-   regulatory bodies; the registries; and the shared-platform providers the sector depends
-   on (identity, civil registration, payments, data exchange). Sources: official portals
-   (T1), the national strategy and sector plan (T1), donor project documents — PADs and
-   ICRs describe institutional arrangements in unusual detail (T2), ID4D and CRVS country
-   assessments (T1/T2), Giga for education infrastructure (T1).
+1. **Find the bodies.** Look for the sector ministry or ministries; the bodies for
+   examinations, licensing or regulation; the registries; and the providers of the shared
+   platforms that the sector uses, which are identity, civil registration, payments and
+   data exchange. Sources: official portals (T1); the national strategy and the sector plan
+   (T1); donor project documents, because PADs and ICRs describe institutional arrangements
+   in unusual detail (T2); ID4D and CRVS country assessments (T1/T2); Giga for education
+   infrastructure (T1).
 
-2. **Find the establishing instrument** for each body — the act, decree or statutory
-   instrument that creates it — and quote the one clause that states its mandate. A mandate
-   paraphrased from an "about" page is *inferred*; a mandate quoted from an act is
-   *confirmed*. Record which.
+2. **Find the establishing instrument of each body.** This is the act, decree or statutory
+   instrument that creates the body. Quote the one clause that gives its mandate. A mandate
+   in your own words from an "about" page is *inferred*. A mandate quoted from an act is
+   *confirmed*. Record which one it is.
 
-   Where a body exists in practice but you cannot find an instrument, say so. A unit with
-   a coordinating role and no legal basis is a finding that matters more than a
-   classification: it is exactly the pattern that stalls national EA programmes.
+   A body can exist in practice when you cannot find an instrument. Then say so. A unit
+   that coordinates and has no legal basis is a finding. It is more important than a
+   classification, because this pattern stops national EA programmes.
 
-3. **Record systems and registries.** What it runs, what it holds. From strategy documents,
-   donor project documents, the body's own service catalogue, and — for status rather than
-   existence — `bb-landscape-check`. Distinguish a system the body **operates** from one it
-   **consumes**.
+3. **Record the systems and the registries.** Record what the body operates and what it
+   holds. Use strategy documents, donor project documents and the service catalogue of the
+   body. For status, and not for existence, use `bb-landscape-check`. Show the difference
+   between a system that the body **operates** and a system that the body **uses**.
 
-4. **Classify against PAERA Annex A1.2**, using the **full seven-type taxonomy**, not the
-   five-type teaching subset. See `references/paera-a1-2.md`, and re-read Annex A1.2 at
-   paera.govstack.global when the country work justifies the authoritative wording.
+4. **Classify each body against PAERA Annex A1.2.** Use the **full taxonomy of seven
+   types**. Do not use the subset of five types from the videos. See
+   `references/paera-a1-2.md`. Read Annex A1.2 again at paera.govstack.global when the
+   country work needs the exact published words.
 
-   Each classification carries:
+   Give four items with each classification:
    - the **type**;
-   - in brackets, the **nearest teaching type** from the five used in the videos, so the
-     learner can reconcile the output with the course;
-   - a **confidence** — confirmed (from the instrument) / inferred (from behaviour);
-   - a **hybrid flag** where a body genuinely does two jobs. Hybrids are common and are not
-     a failure of the taxonomy: a ministry that both sets policy and runs a national system
-     is a Policy Unit **and** a Service-Delivery Authority, and saying so is the finding.
-     Never force a hybrid into one box to make the table tidy.
+   - the **nearest teaching type**, in brackets, from the five types in the videos, so that
+     the learner can compare the output with the course;
+   - a **confidence**, which is confirmed from the instrument, or inferred from behaviour;
+   - a **hybrid flag**, when a body truly does two jobs. Hybrid bodies are common. They
+     are not a failure of the taxonomy. A ministry that makes policy and also operates a
+     national system is a Policy Unit **and** a Service-Delivery Authority. To say so is
+     the finding. Never put a hybrid body into one box to make the table look better.
 
-5. **Build the roles register** — by post, with the confirmed / partial / gap status tag
-   the August 2026 runs produced, and the phase each gap blocks. This is the input to 1.6.
+5. **Build the roles register.** Record each role by post. Give the status tag from the
+   August 2026 runs, which is confirmed, partial or gap. Give the phase that each gap
+   blocks. This register is the input to play 1.6.
 
-6. **Pre-fill the 4.1 demonstration canvas** when a canvas is what the learner needs: the
-   bodies, the systems, the duplicate registrations, the paper re-entry points, and the
-   stalled flagship.
+6. **Fill in the 4.1 demonstration canvas** when the learner needs a canvas. Give the
+   bodies, the systems, the registrations that occur two times or more, the points where
+   staff put data on paper again, and the flagship programme that stopped.
 
-7. **Run `cite-or-discard`** before returning. Legal mandates are the claims most damaging
-   to get wrong — a RACI built on a mandate that does not exist puts the learner in front
-   of a Board defending a fiction.
+7. **Run `cite-or-discard` before you give the output to the learner.** A wrong legal
+   mandate does the most damage. A RACI built on a mandate that does not exist puts the
+   learner in front of a Board to defend a fiction.
 
 ## Output contract
 
-Provenance header first (`references/provenance-header.md`), then, as the learner asked:
+Write the provenance header first (`references/provenance-header.md`). Then write what the
+learner asked for.
 
 **A5 bodies register**
 
@@ -101,46 +107,49 @@ Provenance header first (`references/provenance-header.md`), then, as the learne
 | Post | Institution | Mandate (one line) | Status | Blocks from phase | Source |
 ```
 
-Status is confirmed / partial / gap. Follow it with **Roles an EA programme needs that are
-missing**, one line each.
+The status is confirmed, partial or gap. After the table, write **Roles an EA programme
+needs that are missing**, with one line for each role.
 
-**4.1 canvas** (when asked) — bodies, the fragmentation symptoms observed, the stalled
-flagship, and the baseline figures, as headed text.
+**4.1 canvas**, when the learner asks for it — the bodies, the symptoms of fragmentation
+that you observed, the flagship programme that stopped, and the baseline figures. Write it
+as text with headings.
 
-Close every output with **Not found where one would be expected** — the bodies and
+End each output with **Not found where one would be expected**. List the bodies and
 functions whose absence is a finding.
 
-Text in the chat. No file, no diagram image, no org chart picture. **Posts, never names** —
-sources will hand you the current holder; drop the name at the point of writing. No
-reasoning before the header. See `references/output-contract.md`.
+Write text in the chat. Do not make a file, an image of a diagram, or a picture of an
+organisation chart. **Posts, never names.** Sources give you the name of the person in the
+post. Remove the name when you write the line. Write no analysis before the header. See
+`references/output-contract.md`.
 
 ## Safeguard handed back
 
-A classification is a hypothesis about a body's mandate, and mandates are contested inside
-governments more often than outside them.
+A classification is a hypothesis about the mandate of a body. Mandates are disputed inside
+a government more frequently than outside it.
 
-- **Confirm each mandate against the instrument itself**, and confirm with someone inside
-  the body that the instrument is the current one — amendments rarely surface in search.
-- **Check the hybrids with the bodies concerned.** Telling a ministry it is a registry, or
-  an agency that it has drifted into delivery without a mandate, is a political act. Have
-  the clause ready.
-- **A gap in the roles register is a claim about an absence** — the hardest thing to
-  evidence from public sources. Confirm every *gap* row internally before it becomes the
-  membership section of a Board ToR.
-- Anything marked ⚠ or *inferred* is not yet a fact.
+- **Confirm each mandate against the instrument.** Then confirm with a person inside the
+  body that the instrument is the current one. A search rarely finds the amendments.
+- **Check each hybrid body with the bodies concerned.** To tell a ministry that it is a
+  registry, or to tell an agency that it moved into delivery with no mandate, is a
+  political act. Have the clause ready.
+- **A gap row in the roles register is a claim about an absence.** This is the most
+  difficult claim to prove from public sources. Confirm each *gap* row inside the
+  government before it becomes the membership section of a Board ToR.
+- Each item marked ⚠ or *inferred* is not yet a fact.
 
 ## References
 
-- `references/mandate-sources.md` — where establishing instruments are published, by
-  document type, and how to tell an amended act from a superseded one.
+- `references/mandate-sources.md` — where each type of establishing instrument is
+  published, and how to see the difference between an amended act and an act that is
+  superseded.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.
 
 ### Fixture material
 
-- `references/paera-a1-2.md` — the seven-type taxonomy, the five-type teaching subset, how
-  they map, and when to re-read the published annex. Its worked classification is of a
-  fixture body.
+- `references/paera-a1-2.md` — the taxonomy of seven types, the teaching subset of five
+  types, how they map to each other, and when to read the published annex again. Its
+  worked classification uses a fixture body.
 
-  Progressa is the fictional demonstration country shared by every play; the canonical
+  Progressa is the fictional demonstration country that each play shares. The canonical
   description is `tests/progressa.md` in the kit repo.

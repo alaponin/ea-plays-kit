@@ -1,56 +1,73 @@
-# Build-vs-Buy: Sourcing Posture Reasoning
+# Build versus buy: how to reason about a sourcing posture
 
-This file turns research findings into a defensible **sourcing posture** for each block. It is
-the reasoning core of the skill. The cost magnitude is `govstack-cost-estimator`'s job; this
-file decides *what kind of thing to source*, which is the estimator's input.
+This file turns a research finding into a **sourcing posture** for each block that you can
+defend. It is the core of the reasoning in this skill. `ea-cost-case` gives the magnitude of
+the cost. This file decides *what kind of thing to source*, and that decision is the input to
+the cost model.
 
 ---
 
-## The four-way posture scale
+## The scale of four postures
 
-Postures in preference order. The presumption is reuse; bespoke must be argued for.
+The postures are in the order of preference. Reuse is the presumption. You must argue for a
+bespoke build.
 
-### 1. Reuse-OSS *(default for mature blocks)*
-A production-grade open-source product (ideally a DPG) fits the requirement. Procure a
-competitively tendered system integrator to deploy, integrate, and operate it under a support
-contract. Best of both: no licence lock-in, with paid support and accountability.
-- **Choose when**: a mature OSS product covers the core capability with real government
-  deployments, and an integrator market exists (globally or in-country).
-- **Lock-in**: Low. Watch only for SI lock-in — mitigate with documented config and exit terms.
+### 1. Reuse-OSS. *This is the default for a mature block*
+
+An open-source product of production quality fits the requirement. A digital public good is
+best. Procure a system integrator in a competitive tender, to deploy the product, to
+integrate it, and to operate it under a support contract. This route gives both benefits:
+there is no lock-in to a licence, and a party is paid to support the system and is
+accountable for it.
+
+- **Choose it when** a mature open-source product covers the core capability, when real
+  governments deployed it, and when a market of integrators exists, in the country or
+  globally.
+- **Lock-in**: Low. Watch only for lock-in to the integrator. Reduce that risk with
+  documented configuration and with exit terms.
 
 ### 2. Reuse-Commercial
-A competitively sourced commercial product or channel is the realistic route. Most defensible
-for **ancillary, genuinely competitive layers** that slot into an open core — biometric
-devices/ABIS, SMS/mobile-money channels, qualified trust services — rather than for the whole
-platform.
-- **Choose when**: no OSS product is production-ready for this layer, OR the capability is an
-  in-country channel (mobile money, local SMS) only commercial providers supply, OR a legal
-  requirement (e.g. QTSP) mandates an accredited commercial provider.
-- **Lock-in**: Medium–High for whole-platform proprietary deals; Low–Medium for swappable
-  ancillary providers behind an open core. **Always name the vector.**
+
+A commercial product or channel that you source competitively is the realistic route. You can
+defend this posture best for a **layer at the edge, where real competition exists**, that
+fits into an open core. Examples are biometric devices and ABIS, the channels for SMS and
+mobile money, and qualified trust services. You can defend it much less for a full platform.
+
+- **Choose it when** no open-source product is ready for production in this layer; or when
+  the capability is a channel inside the country, such as mobile money or local SMS, that
+  only a commercial provider gives; or when the law needs an accredited commercial provider,
+  such as a QTSP.
+- **Lock-in**: Medium to High for a proprietary agreement for a full platform. Low to Medium
+  for a provider at the edge that you can exchange, behind an open core. **Always name the
+  vector.**
 
 ### 3. Configure
-No standalone product dominates the category; deliver the capability as a **configured feature
-of an adjacent block** rather than a separate procurement.
-- **Choose when**: the block is a thin or gap market (Consent, Scheduler, QR Code,
-  eMarketplace in some contexts) and an adjacent block already provides the substrate
-  (Consent on the Information Mediator/Identity; Scheduler via Workflow or MOSIP pre-reg; QR via
-  signing libraries).
-- **Lock-in**: Low — *if* open APIs are specified. Without API discipline this silently
-  becomes Custom-build (see drift anti-pattern).
 
-### 4. Custom-build *(exception — must be justified)*
-Bespoke development. Permitted **only** when a specific, named requirement is met by no product
-and no configuration of an adjacent block.
-- **Choose when**: you can write the sentence "No product or configuration meets requirement X
-  because Y." If you cannot complete that sentence with a concrete requirement, the posture is
-  wrong — go back to Configure or Reuse.
-- **Lock-in**: Self-inflicted; this is the bespoke trap. Every Custom verdict adds to the
-  bespoke-footprint roll-up and should be challenged.
+No product dominates the category. Give the capability as a **configured feature of an
+adjacent block**, and not as a separate procurement.
+
+- **Choose it when** the market for the block is thin or empty, and an adjacent block already
+  gives the substrate. The thin markets are Consent, Scheduler, QR Code, and in some contexts
+  eMarketplace. Consent can go on the Information Mediator or on Identity. Scheduler can go
+  on Workflow, or on the pre-registration function of MOSIP. QR can use the libraries for
+  signing.
+- **Lock-in**: Low, *if* you specify open APIs. Without the discipline of an API, this
+  posture becomes a custom build in silence. See the anti-pattern about drift.
+
+### 4. Custom-build. *This is the exception, and it needs a justification*
+
+This is bespoke development. It is permitted **only** when a specific named requirement is
+met by no product and by no configuration of an adjacent block.
+
+- **Choose it when** you can write this sentence: "No product or configuration meets
+  requirement X because Y." If you cannot complete the sentence with a concrete requirement,
+  the posture is wrong. Return to Configure or to Reuse.
+- **Lock-in**: you make it yourself. This is the bespoke trap. Each Custom verdict adds to
+  the roll-up of the bespoke footprint, and a person must challenge it.
 
 ---
 
-## Decision flow per block
+## The decision flow for each block
 
 ```
 1. Does an existing system already cover this? (from BDAT/PAERA portfolio)
@@ -76,68 +93,85 @@ and no configuration of an adjacent block.
 
 ---
 
-## Lock-in taxonomy
+## The taxonomy of lock-in
 
-Score every commercial / open-core option as Low / Medium / High and name the vector(s):
+Score each commercial option and each open-core option as Low, Medium or High. Name the
+vector or the vectors.
 
-| Vector | What it is | Typical High-risk signal |
+| Vector | What it is | Typical signal of a high risk |
 |---|---|---|
-| **Data** | Your data is hard to extract in usable form | Proprietary formats, no bulk export, hosted-only |
-| **Licence** | Cost/continuation depends on a single vendor's terms | Per-seat scaling across whole-of-government; renewal leverage |
-| **Proprietary tooling** | Logic trapped in vendor-specific build tools | Low-code apps that can't be exported/migrated |
-| **Ecosystem** | Switching means replacing an interlocking suite | Single-vendor DXP/ERP where blocks are entangled |
-| **Skills** | Only the vendor's specialists can operate it | No open talent market; mandatory vendor services |
+| **Data** | It is difficult to extract your data in a form that you can use | Proprietary formats, no export of all the data, and a product that only the vendor can host |
+| **Licence** | The cost and the continuation depend on the terms of one vendor | A price for each seat, across all of government. The vendor has leverage at each renewal |
+| **Proprietary tooling** | The logic is inside build tools that only the vendor has | Low-code applications that nobody can export or migrate |
+| **Ecosystem** | To change one part, you must replace a suite that interlocks | A DXP or ERP from one vendor, where the blocks are entangled |
+| **Skills** | Only the specialists of the vendor can operate the system | There is no open market of talent. The services of the vendor are mandatory |
 
-Mitigations to recommend: open standards and APIs at every boundary; data-export and exit
-clauses in contract; multi-sourcing of ancillary layers; an exit reserve (see
-`govstack-cost-estimator` lessons) for high-lock-in commitments.
-
----
-
-## Bespoke-footprint roll-up
-
-The headline governance metric. Target: custom code < ~20% of the delivered capability.
-
-- Count blocks by posture. Custom-build clearly counts toward the footprint.
-- At-risk Configure (no API discipline specified) counts as *latent* footprint — flag it.
-- Reuse-OSS and Reuse-Commercial do **not** add to footprint (integration glue is expected and
-  small if APIs are clean).
-- Report as: "X of N blocks land in Custom-build, plus Y at-risk Configure → roughly Z% of the
-  stack, against the <20% target." If over target, name the blocks driving it and ask whether
-  each custom requirement is truly unmet by reuse.
+Recommend these measures against lock-in: open standards and open APIs at each boundary;
+clauses for data export and for exit in the contract; more than one source for the layers at
+the edge; and a reserve for the exit, as the lessons in `ea-cost-case` describe, for a
+commitment with a high lock-in.
 
 ---
 
-## Reasoning rules (do / don't)
+## The roll-up of the bespoke footprint
 
-**Do**
-- State the *decisive* factor for each posture in one or two sentences, not a wall of pros/cons.
-- Default to reuse and make custom earn its place with a named requirement.
-- Separate the platform decision from the channel decision (e.g. Mojaloop the switch vs. MTN
-  MoMo the rail) — they have different postures.
-- Carry sovereignty and in-country availability as hard constraints, not soft preferences.
-- Tie each posture back to an enabling condition where relevant (governance authority, multi-
-  donor financing, local integration capacity, data-protection compliance).
+This is the metric that the governance uses first. The target is custom code below about 20%
+of the capability that the programme delivers.
 
-**Don't**
-- Don't recommend Custom-build without completing the "no product because…" sentence.
-- Don't treat GovStack-listing as a quality ranking or its absence as disqualifying.
-- Don't collapse build-vs-buy into cost alone — lock-in, sovereignty, and footprint are
-  first-class factors the money model doesn't capture.
-- Don't pad thin-market blocks with weak options to look complete; an honest gap is the finding.
-- Don't name products or compliance levels from memory — research live and cite.
+- Count the blocks by their posture. A Custom-build block counts in the footprint.
+- A Configure block that is at risk, because nobody specified the API discipline, counts as
+  *latent* footprint. Flag it.
+- Reuse-OSS and Reuse-Commercial do **not** add to the footprint. The programme still writes
+  code to integrate them, and that code is small when the APIs are clean.
+- Report it in this form: "X of N blocks are Custom-build, and Y more are Configure at risk.
+  This is about Z% of the stack, against the target of less than 20%." If the number is above
+  the target, name the blocks that cause it. Then ask whether reuse truly fails to meet each
+  custom requirement.
 
 ---
 
-## Enabling-condition reminders (theory-to-practice)
+## The rules for the reasoning
 
-A "reuse" posture only delivers its promised savings if the conditions hold. Note any that are
-absent for the country in question:
-- The building block is available *before* programmes need to build (sequencing).
+**Do these five things**
+
+- Give the *decisive* factor for each posture in one or two sentences. Do not give a wall of
+  advantages and disadvantages.
+- Make reuse the default. Make a custom build earn its place with a named requirement.
+- Keep the decision about the platform separate from the decision about the channel. Mojaloop
+  is the switch and MTN MoMo is the rail. They have different postures.
+- Treat sovereignty and availability in the country as hard constraints. They are not soft
+  preferences.
+- Connect a posture to the condition that it needs, where one applies: the authority to
+  govern, financing from more than one donor, the capacity to integrate locally, and
+  compliance with data protection.
+
+**Do not do these five things**
+
+- Do not recommend Custom-build before you complete the sentence "no product, because…".
+- Do not use a GovStack listing as a ranking of quality. Do not use the absence of a listing
+  to remove a product.
+- Do not reduce build versus buy to the cost. Lock-in, sovereignty and the footprint are also
+  primary factors, and the cost model does not capture them.
+- Do not fill a thin market with weak options to make the list look complete. An honest gap
+  is the finding.
+- Do not name a product or a compliance level from memory. Research it live, and cite it.
+
+---
+
+## The conditions that a reuse posture needs
+
+A reuse posture gives the savings that you promise only when these conditions are true.
+Record each condition that the country does not have.
+
+- The building block is available *before* the programmes need to build. This is a question
+  of sequence.
 - A governance authority with a legal mandate owns the shared block.
-- Sustained multi-donor / state financing covers operations, not just build.
-- Local integration capacity (or a credible SI market) exists in-country.
-- Data-protection / PDPA compliance is treated as a feature of the shared infrastructure.
+- Financing from the state or from several donors continues, and it covers the operations and
+  not only the build.
+- The capacity to integrate exists in the country, or there is a credible market of system
+  integrators.
+- The country treats compliance with data protection as a feature of the shared
+  infrastructure.
 
-If these are absent, a theoretically-correct Reuse-OSS posture may underperform in practice —
-say so rather than presenting the posture as risk-free.
+If these conditions are absent, a Reuse-OSS posture that is correct in theory can give a
+worse result in practice. Say so. Do not give the posture as a posture with no risk.

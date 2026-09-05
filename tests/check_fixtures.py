@@ -50,6 +50,13 @@ ph = open(f"{PLUGIN}/shared/provenance-header.md").read()
 for field in FIELDS:
     check(f"**{field}**" in ph, f"shared/provenance-header.md: field {field!r} undefined")
 
+# Its worked example names a version. A release that bumps plugin.json and forgets the
+# example ships fourteen copies of a stale one, so the bump is checked, not remembered.
+version = json.load(open(f"{PLUGIN}/.claude-plugin/plugin.json"))["version"]
+check(f"v{version}" in ph,
+      f"shared/provenance-header.md: header example does not name v{version}, "
+      f"the version in plugin.json")
+
 # --- 2: README maps every play to its primary skill --------------------------
 readme = open(f"{PLUGIN}/README.md").read() if os.path.isfile(f"{PLUGIN}/README.md") else ""
 for pid, m in MAP.items():

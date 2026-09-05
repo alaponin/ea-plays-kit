@@ -1,139 +1,149 @@
 ---
 name: ea-legal-context
 description: >-
-  Assemble the national legal register an EA programme touches — data-protection act,
-  e-government or e-transactions law, public procurement act, statistics act, civil
-  registration and identity acts, the act establishing the ICT agency or digital ministry,
-  any e-government decree or cabinet directive, and the access-to-information act — each
-  with its citation, status, the regulator it creates, and the one line of it that matters
-  for architecture. Serves the Governance Board ToR whose binding-decision scope must cite
-  real statutes (1.7, 3.4), the principle card that dies if it cites the wrong statute
-  (2.3), the body classification (2.4), the joint business-IT agenda's constraints (1.4)
-  and the Discovery brief's legal collection area (4.2). Use when someone says "which laws
-  apply", "what is the legal basis for sharing this data", "does the country have a data
-  protection act", "cite the statute for this principle", "legal constraints on a shared
-  platform", "can we share learner data", "what does the procurement law allow". Reads the
-  national gazette and law portal first, then UNCTAD's Cyberlaw Tracker, DLA Piper's Data
-  Protection Laws of the World, World Bank ID4D diagnostics and OGP action plans. It never
-  drafts legal text and every output ends with the legal-counsel flag.
+  Assemble the national legal register that an EA programme touches: the data-protection
+  act, the e-government or e-transactions law, the public procurement act, the statistics
+  act, the civil registration and identity acts, the act that establishes the ICT agency or
+  digital ministry, any e-government decree or cabinet directive, and the access-to-
+  information act. Give each one with its citation, its status, the regulator that it
+  creates, and the one line of it that matters for architecture. Serves the Governance Board
+  ToR whose binding-decision scope must cite real statutes (1.7, 3.4), the principle card
+  that dies if it cites the wrong statute (2.3), the body classification (2.4), the joint
+  business-IT agenda's constraints (1.4) and the Discovery brief's legal collection area
+  (4.2). Use when someone says "which laws apply", "what is the legal basis for sharing this
+  data", "does the country have a data protection act", "cite the statute for this
+  principle", "legal constraints on a shared platform", "can we share learner data", "what
+  does the procurement law allow". Reads the national gazette and law portal first, then
+  UNCTAD's Cyberlaw Tracker, DLA Piper's Data Protection Laws of the World, World Bank ID4D
+  diagnostics and OGP action plans. It never drafts legal text and every output ends with
+  the legal-counsel flag.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 ---
 
 ## What this skill does
 
-Builds the **legal register**: the instruments an EA programme actually touches, each with
-its citation, its status, the regulator it creates, and the single line of it that
-constrains an architecture.
+This skill builds the **legal register**. The register lists the instruments that an EA
+programme touches. It gives the citation, the status, the regulator that the instrument
+creates, and the one line of the instrument that constrains an architecture.
 
-It exists because of one sentence in 2.3 — *a principle card that cites the wrong statute
-will not survive its first challenge* — and because a Governance Board ToR whose
-binding-decision scope is invented does more damage than one that was never written.
+The skill exists because of one sentence in play 2.3: *a principle card that cites the
+wrong statute will not survive its first challenge*. It also exists because a Governance
+Board ToR with an invented scope for binding decisions does more damage than a ToR that
+nobody wrote.
 
-**This skill does not give legal advice and does not draft legal text.** It finds
-instruments, states what they say, and hands the interpretation to counsel.
+**This skill does not give legal advice. It does not write legal text.** It finds
+instruments and says what they contain. Counsel does the interpretation.
 
 ## Inputs
 
-The country. Optionally a sector, which adds the sector act and any sector-specific data
-rules, and a question ("can we share learner data with the social register?") which the
-register is then built to answer.
+The skill needs the country. It can also use a sector, which adds the sector act and the
+data rules of that sector. It can also use a question, for example "can we share learner
+data with the social register?". The skill then builds the register to answer that
+question.
 
-If the learner has A0 §7, deepen it rather than rebuilding: §7 is the first pass; this adds
-the citation, the regulator, the amendment history and the architecture line.
+If the learner has A0 §7, add to it. Do not build it again. Section §7 is the first pass.
+This skill adds the citation, the regulator, the history of amendments and the architecture
+line.
 
 ## Procedure
 
-1. **Search the national gazette or law portal first** (T1). The gazette is the authority;
-   a ministry's PDF may be an earlier version. Where no portal exists, try the parliament's
-   bill tracker, then the ministry of justice, then FAOLEX (which carries far more than
-   agriculture), then a regional body's legal repository.
+1. **Search the national gazette or the law portal first** (T1). The gazette is the
+   authority. A PDF on the site of a ministry can be an earlier version. If there is no
+   portal, try the bill tracker of the parliament, then the ministry of justice, then
+   FAOLEX, which contains much more than agriculture, then the legal repository of a
+   regional body.
 
-2. **Then the trackers**, to find what you missed and to cross-check status (T2):
-   the UNCTAD Global Cyberlaw Tracker for data protection, e-transactions, cybercrime and
-   consumer law; DLA Piper's *Data Protection Laws of the World*; World Bank ID4D country
-   diagnostics for identity and civil-registration law; OGP action plans for
-   access-to-information and open-data commitments.
+2. **Then search the trackers** (T2). They show what you did not find, and they help you to
+   check a status. Use the UNCTAD Global Cyberlaw Tracker for data protection,
+   e-transactions, cybercrime and consumer law. Use *Data Protection Laws of the World* by
+   DLA Piper. Use the World Bank ID4D country diagnostics for identity law and civil-
+   registration law. Use the OGP action plans for access-to-information and open-data
+   commitments.
 
-   A tracker tells you an act **exists**. It does not tell you the current text. Chase every
-   tracker entry to the instrument.
+   A tracker tells you that an act **exists**. It does not give you the current text. Go
+   from each tracker entry to the instrument.
 
-3. **For each instrument record**: title · year · citation as it should be cited ·
-   **status** (in force / amended / bill / draft / repealed / enacted-but-not-commenced) ·
-   the body that owns it · the **regulator it creates**, if any, and whether that regulator
-   is operative · **the one line that matters for EA**.
+3. **Record these items for each instrument**: the title · the year · the citation in its
+   correct form · the **status**, which is in force, amended, bill, draft, repealed, or
+   enacted but not commenced · the body that owns it · the **regulator that it creates**,
+   if it creates one, and whether that regulator operates · **the one line that matters for
+   EA**.
 
-   *Enacted but not commenced* is a real and common state — an act passed with commencement
-   left to a minister's order that never came. Treat it as its own status, never as *in
-   force*.
+   *Enacted but not commenced* is a true state and a common one. The parliament passes an
+   act, and a minister must make a commencement order that never comes. Use it as its own
+   status. Never record it as *in force*.
 
-4. **Establish currency.** Search the title plus "amendment" and plus "repeal"; check the
-   gazette index for the years since; see whether the body's own site cites something later.
-   Where currency cannot be established, mark ⚠ *currency not established* — never present
-   an unconfirmed clause as in force.
+4. **Establish that the text is current.** Search the title with the word "amendment", and
+   then with the word "repeal". Look in the gazette index for the years after the act. Look
+   at the site of the owning body for a later citation. If you cannot establish that the
+   text is current, mark it ⚠ *currency not established*. Never give a clause as in force
+   when you did not confirm it.
 
-5. **Write the architecture line.** One sentence, in an architect's language, on what the
-   instrument does to a design. Not a summary of the act — the constraint.
+5. **Write the architecture line.** Write one sentence in the language of an architect on
+   what the instrument does to a design. Do not summarise the act. Give the constraint.
 
    > *Data Protection Act 2023 §14: a legal basis is required for processing a minor's data;
    > parental consent is not sufficient for a statutory register, and is required for
    > anything beyond it. Consequence: a learner registry needs a statutory basis, not a
    > consent flow.*
 
-6. **Record the regulator's capability separately from the law's existence.** An act in
-   force with a regulator that has six staff and has taken no enforcement action is two
-   facts, and a design depends on both. Say so.
+6. **Record what a regulator can do. Do this separately from the existence of the law.** An
+   act in force, and a regulator with six staff that has never enforced it, are two facts. A
+   design depends on both facts. Say so.
 
-7. **Run `cite-or-discard`** before returning. A fabricated section number in a Board ToR is
-   the single most damaging output this kit can produce.
+7. **Run `cite-or-discard` before you give the output to the learner.** An invented section
+   number in a Board ToR is the most damaging output that this kit can make.
 
 ## Output contract
 
-Provenance header first (`references/provenance-header.md`), then:
+Write the provenance header first (`references/provenance-header.md`). Then write this
+table:
 
 ```
 | Instrument | Citation | Year | Status | Owning body | Regulator created (operative?) | The one line that matters for EA | Source | Tier | Checked |
 ```
 
-Then, in order:
+Then write these four sections in this order:
 
-- **Answering the question asked**, where the learner asked one — the instruments that
-  bear on it, what each permits and forbids, and what remains unresolved on the public
-  record.
-- **Gaps** — the instruments an EA programme would expect and that do not appear to exist.
-  Name them: no e-transactions act, no data-sharing regulation, no statistics act. An
-  absence is a design constraint.
-- **⚠ Currency not established** — every instrument whose amendment history you could not
-  confirm.
-- **The legal-counsel flag** (below). Always. Every output, without exception.
+- **Answering the question asked**, if the learner asked a question. Give the instruments
+  that apply, what each one permits, what each one forbids, and what the public record does
+  not answer.
+- **Gaps** — the instruments that an EA programme expects and that do not exist. Name them:
+  no e-transactions act, no data-sharing regulation, no statistics act. An absence is a
+  constraint on the design.
+- **⚠ Currency not established** — each instrument whose history of amendments you could
+  not confirm.
+- **The legal-counsel flag**, which is below. Write it in each output. There is no
+  exception.
 
-Text in the chat. No file. Posts, not names — cite the *office* that owns an instrument,
-never the minister who signed it. No reasoning before the header. See
+Write text in the chat. Do not make a file. Posts, not names: cite the *office* that owns
+an instrument, not the minister who signed it. Write no analysis before the header. See
 `references/output-contract.md`.
 
 ## Safeguard handed back
 
-**This register is a finding aid, not legal advice, and nothing in it has been read by a
-lawyer.**
+**This register helps you to find instruments. It is not legal advice. No lawyer has read
+it.**
 
-Before any of it reaches a Terms of Reference, a principle card, a consent design or a
-data-sharing agreement:
+Do these steps before any part of it goes into a Terms of Reference, a principle card, a
+consent design, or a data-sharing agreement:
 
-- **National counsel must confirm every citation and every status.** Search results
-  systematically favour original acts over their amendments, and a repealed section reads
-  exactly like a live one.
-- **Ask counsel the question, not the answer.** "Does §14 permit this flow?" — not "we
-  believe §14 permits this flow".
-- Anything marked ⚠, *inferred*, or *currency not established* is not usable until
-  confirmed.
-- Where the register says an instrument does not exist, that is the absence of a *public
-  record* of it, which is not the same as its absence.
+- **National counsel must confirm each citation and each status.** A search gives the
+  original act more frequently than its amendments. A section that is repealed looks
+  exactly like a section that is live.
+- **Ask counsel the question. Do not give counsel the answer.** Ask "Does §14 permit this
+  flow?". Do not write "we believe §14 permits this flow".
+- Each item marked ⚠, *inferred*, or *currency not established* is not usable until a
+  person confirms it.
+- The register can say that an instrument does not exist. This means that there is no
+  *public record* of the instrument. It does not mean that the instrument does not exist.
 
 ## References
 
-- `references/instrument-checklist.md` — the instruments to look for, why each one bears on
-  an architecture, and what its absence implies.
-- `references/law-sources.md` — where national law is published, the trackers and what each
-  can and cannot prove, and how to establish currency.
+- `references/instrument-checklist.md` — the instruments to look for, why each one applies
+  to an architecture, and what its absence means.
+- `references/law-sources.md` — where a country publishes its law, the trackers and what
+  each one can prove, and how to establish that a text is current.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.

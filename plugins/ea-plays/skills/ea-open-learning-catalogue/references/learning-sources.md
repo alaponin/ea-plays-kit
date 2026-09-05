@@ -1,46 +1,47 @@
 # The sources to check
 
-Fetch every one at run time. This file says what to expect and what the trap is; it does not
-say what is currently there.
+Read each source when you run the skill. This file tells what to expect and what the trap
+is. It does not tell what is on the site now.
 
-| Source | What it offers | Trap |
+| Source | What it gives | Trap |
 | --- | --- | --- |
-| **PAERA** (paera.govstack.global) | The specification itself, and whatever learning material accompanies it | Version. A learner reading v1.0 when v1.1 is published will cite the wrong sections. Check the version and say which. |
-| **GovStack** | Building-block specifications, the sandbox, and learning material | Specification maturity varies by block. Some are drafts. Say which blocks are stable. |
-| **ITU Academy** | Courses on digital development and regulation, some free | Registration required; some courses are cohort-based with fixed dates, so "available" may mean "next intake in March". Record the enrolment model. |
-| **Digital Public Goods Alliance registry** | The registry itself, useful for tooling rather than for courses | Not a learning resource as such; use it for the tooling track. |
-| **The Knowledge Product playlists and GitBook** | This course — the videos, the plays, the worked examples | Modules are published progressively; check what exists rather than assuming the full set. |
-| **World Bank Open Learning Campus (OLC)** | Free courses on digital government, GovTech, procurement, PFM | Course catalogues are reorganised often; deep links rot faster than the top level. Link to the course, verify, and record the catalogue path as a fallback. |
-| **The Open Group** | ArchiMate and TOGAF material; certification | Most of it is paid. The specifications are readable free; the training and exams are not. Record the cost honestly rather than implying it is open. |
-| **Community channels** | GovStack and DPI working groups, national and regional practitioner communities | The most valuable and least documented. Check whether the channel is active — a Slack with no message in six months is not a resource. |
+| **PAERA** (paera.govstack.global) | The specification, and the learning material that comes with it | The version. A learner who reads v1.0 when v1.1 is published cites the wrong sections. Check the version and say which version you used. |
+| **GovStack** | The specifications of the building blocks, the sandbox, and learning material | The maturity of a specification is different for each block. Some are drafts. Say which blocks are stable. |
+| **ITU Academy** | Courses on digital development and on regulation. Some are free | The learner must register. Some courses have a fixed start date for each cohort, so "available" can mean "the next intake is in March". Record the enrolment model. |
+| **The registry of the Digital Public Goods Alliance** | The registry itself. It is useful for tooling and not for courses | It is not a learning resource. Use it for the track on tooling. |
+| **The Knowledge Product playlists and the GitBook** | This course: the videos, the plays and the worked examples | The modules are published one after another. Check what exists. Do not assume the full set. |
+| **The Open Learning Campus of the World Bank (OLC)** | Free courses on digital government, GovTech, procurement and PFM | The catalogue changes frequently, and a deep link breaks faster than the top level. Link to the course, verify the link, and record the path in the catalogue as a fallback. |
+| **The Open Group** | Material on ArchiMate and TOGAF, and certification | Most of it costs money. You can read the specifications free. The training and the exams are not free. Record the cost. Do not suggest that everything is open. |
+| **Community channels** | The working groups of GovStack and DPI, and the practitioner communities of a country or a region | These are the most valuable and the least documented. Check whether the channel is active. A Slack channel with no message in six months is not a resource. |
 
-## Judging currency
+## How to judge that an item is current
 
-An item is **stale**, not current, when any of these hold:
+An item is **stale**, and not current, when one of these is true:
 
-- it refers to a superseded version of the specification it teaches;
-- its examples are drawn from a programme that has since changed or been cancelled;
-- it has a "last updated" date more than two or three years old in a field this fast;
-- its links are dead — a course whose own references have rotted teaches rot.
+- it teaches a version of a specification that another version superseded;
+- its examples come from a programme that changed or that a government cancelled;
+- it has a "last updated" date more than two or three years old, and this field moves fast;
+- its links are dead. A course whose own references broke teaches material that broke.
 
-Say which of these applies. "Stale" without a reason is not actionable.
+Say which one applies. The word "stale" with no reason does not tell the learner what to do.
 
 ## Registration and access
 
-Record three things per item, because each is a real barrier in a ministry:
+Record these three items for each entry, because each one is a true barrier in a ministry:
 
-- **Registration** — none / free account / institutional email / approval required.
-- **Cost** — free / free tier / paid, with the figure.
-- **Access** — whether it needs a connection good enough for video, which decides whether it
-  can be done from a district office at all.
+- **Registration** — none, a free account, an institutional email, or approval by a person.
+- **Cost** — free, a free tier, or paid with the figure.
+- **Access** — whether the item needs a connection that is good enough for video. This
+  decides whether a person can use it in a district office.
 
 ## The three layers
 
-| Layer | Carries | Sources |
+| Layer | Gives | Sources |
 | --- | --- | --- |
-| **Open materials** | The frameworks, the vocabulary, the specifications | Everything above |
-| **Taught instruction or mentoring** | Applying it to a real sector; the judgement calls | An experienced architect, a workshop, a paired assignment |
-| **Doing the work** | Everything that matters | The first sector, done alongside someone who has done it |
+| **Open materials** | The frameworks, the vocabulary and the specifications | Each source above |
+| **Instruction or a mentor** | How to apply the material to a real sector, and the judgements | An architect with experience, a workshop, or a paired assignment |
+| **Doing the work** | Everything that matters | The first sector, with a person who did it before |
 
-Most of an architect's capability sits in the third layer. A plan built only from the first
-is a reading list, and reading lists are why capability plans fail quietly.
+Most of the capability of an architect is in the third layer. A plan that has only the first
+layer is a reading list, and reading lists are the reason that capability plans fail
+quietly.

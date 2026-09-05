@@ -1,4 +1,4 @@
-# GovStack Cost Model — TCO Formulas and Methodology
+# The GovStack cost model — the TCO formulas and the method
 
 ---
 
@@ -34,11 +34,11 @@ TCO(bb, scenario, years) =
 | Change cycle (5yr) | 5–12% | 1–4% (with policy-as-code) |
 | Governance | — | 5–10% |
 
-**Key insight**: Operations dominates short-term cost. Over a 10–15 year horizon, the replacement cliff and change-cycle costs often dominate — and these are exactly the costs that bespoke siloed architectures bear most heavily.
+**The key insight**: across a short period, the operations cost is the largest cost. Across 10 to 15 years, the replacement cliff and the change-cycle costs are frequently the largest, and a siloed bespoke architecture carries most of them.
 
 ### The Lifecycle Principle
 
-The cost of a system is its total cost of ownership over its lifetime, not its implementation cost. A system that is quickly implemented but creates long-term maintenance burden is more expensive than one that takes longer to implement but is sustainable. Cost models that stop at go-live or at a 3-year horizon systematically undervalue sustainable architectures.
+The cost of a system is its total cost of ownership across its life. It is not the cost to implement the system. A team can implement a system quickly, and the system then needs much maintenance. That system costs more than a system that takes longer to implement and that a team can sustain. A cost model that stops at the go-live date, or at three years, always gives an architecture that a team can sustain a value that is too low.
 
 For any government system intended to operate for 10+ years, model:
 - The full O&M curve (which typically grows as the system accumulates complexity)
@@ -66,7 +66,7 @@ A_total = Σ_programmes Σ_BBs [
 
 ### Point-to-Point Integration Explosion (Information Mediator only)
 
-If programmes are NOT using a shared Information Mediator, each needs to integrate directly with the others for data exchange. Use the network formula:
+When the programmes do NOT use a shared Information Mediator, each programme must integrate directly with each other programme to exchange data. Use the formula for a network:
 
 ```
 N_integrations = N_programmes × (N_programmes - 1) / 2
@@ -84,15 +84,15 @@ This is often the most dramatic illustration of siloed cost escalation.
 
 ### Hidden Costs in Scenario A (often missed in initial estimates)
 
-1. **Duplicate beneficiary management**: Each programme maintains its own beneficiary database. Cross-referencing requires manual processes or bespoke integrations. Estimated cost: $50K–$300K per cross-reference project
-2. **Ghost beneficiary / fraud losses**: Without shared identity, duplicate beneficiaries are common. World Bank estimates 10–30% of social transfer leakage in countries without shared ID. This is a programme cost, not IT cost, but should be noted
-3. **Procurement overhead**: Each programme runs its own vendor selection. Rough cost: 3–8% of contract value in staff time and consultants
-4. **Knowledge fragmentation**: Each programme's IT team reinvents the wheel. Estimated cost: 6–12 additional months per programme for identity/payment implementation
-5. **Security fragmentation**: N separate systems = N separate attack surfaces, N separate audit exercises
-6. **Replacement cycle (year 10–15)**: Bespoke siloed systems typically enter crisis state at year 10–15. Replacement programmes overrun original estimates by 2–3× and require multi-year dual-running. This is the largest hidden cost in long-horizon analysis — see Lifecycle Replacement Modelling below
-7. **Bespoke maintenance premium**: Each percentage point of Bespoke Footprint above the 20% target carries higher per-year maintenance load, slower change cycles, and key-person dependency. As staff turn over, knowledge of custom code is lost
-8. **Peak provisioning waste**: Siloed on-premise systems must be sized for peak demand. For spiky workloads (filing seasons, monthly disbursement, emergency surge), utilisation outside peak windows is often <30%
-9. **Change-cycle drag**: Where rules are embedded in operational code rather than expressed as configurable policy, every legal/regulatory change becomes a full SDLC cycle — code change, test, deploy. Across N programmes, every change is multiplied N times
+1. **Duplicate management of the beneficiaries**: each programme maintains its own database of beneficiaries. To compare two databases needs a manual process or a bespoke integration. The estimated cost is $50K to $300K for each project that compares them
+2. **Losses to ghost beneficiaries and to fraud**: without a shared identity, one beneficiary is in more than one database frequently. The World Bank estimates that a country with no shared ID loses 10% to 30% of its social transfers. This is a cost of the programme and not a cost of the IT, but you must record it
+3. **The overhead of the procurement**: each programme selects its own vendor. The approximate cost is 3% to 8% of the value of the contract, in the time of the staff and in consultants
+4. **Fragmentation of the knowledge**: the IT team of each programme solves a problem that another team already solved. The estimated cost is 6 to 12 more months for each programme, to implement identity and payments
+5. **Fragmentation of the security**: N separate systems give N separate surfaces to attack, and N separate audits
+6. **The replacement cycle, in year 10 to year 15**: a siloed bespoke system usually reaches a crisis in year 10 to year 15. A replacement programme costs 2 to 3 times its first estimate, and the country must operate both systems for some years. In an analysis across a long period, this is the largest cost that people do not see. See the section on the model for the replacement of the lifecycle, below
+7. **The premium to maintain bespoke code**: each percentage point of the bespoke footprint above the target of 20% adds maintenance work each year, makes each change slower, and creates a dependency on one person. When the staff change, the knowledge of the custom code is lost
+8. **The waste from provisioning for the peak**: a siloed system on the premises must have the size of the peak demand. Some workloads have short peaks, such as a filing season, a monthly disbursement, or an emergency. Outside the peak, these systems frequently use less than 30% of their capacity
+9. **The drag of the change cycle**: a team can put the rules in the operational code, or express them as a policy that a person configures. When the rules are in the code, each change in the law or the regulation needs a full development cycle: change the code, test it, deploy it. Across N programmes, each change happens N times
 
 ---
 
@@ -105,8 +105,8 @@ For horizons ≥10 years, replacement-cycle costs become a material part of Scen
 - **Years 0–5**: Initial build delivers value; user satisfaction high
 - **Years 5–10**: Feature creep accumulates; complexity grows; change cycles slow
 - **Years 10–15**: Crisis state — replacement is discussed but blocked by complexity
-- **Replacement programme**: Expected 3 years, actually takes 7–10 years and costs 2–3× original estimate
-- **Dual-running period**: Old and new systems both operational, effectively doubling annual ops cost during transition
+- **The replacement programme**: a government expects 3 years. The programme takes 7 to 10 years, and it costs 2 to 3 times the first estimate
+- **The period when both systems operate**: the old system and the new system both operate. This makes the annual operations cost two times larger during the transition
 
 ### Probability-weighted replacement cost
 
@@ -124,7 +124,7 @@ C_replace_expected = C_original_build × overrun_factor × p_replacement(horizon
   - Horizon 15 years: ~0.75
   - Horizon 20 years: ~0.95
 
-Shared GovStack-aligned architectures with low Bespoke Footprint and modular domain separation can defer or substantially reduce replacement-cliff exposure, because individual components can be replaced incrementally without disrupting the whole system. Reflect this by reducing `p_replacement` by 40–60% in Scenario B.
+A shared architecture can move the replacement cliff later, or make it much smaller. Such an architecture follows GovStack, has a low bespoke footprint, and separates its domains into modules. A team can replace one component at a time, and the other components continue to operate. To show this, make `p_replacement` 40% to 60% smaller in Scenario B.
 
 ---
 
@@ -138,14 +138,14 @@ Bespoke_Footprint = lines_of_custom_code / total_lines_in_production
 
 **Targets and triggers**:
 - Target: <20% across the platform
-- Review trigger: >25% (investigate why code is being written instead of configured/purchased)
+- The trigger for a review is above 25%. Then find why a team writes code instead of configuring a product or buying one
 - Crisis indicator: >50% (high replacement-cliff risk)
 
-**Cost coupling**: Each percentage point of Bespoke Footprint above 20% can be modelled as a ~1–2% uplift on annual maintenance cost for that component, plus accelerated replacement-cycle risk.
+**How the footprint couples to the cost**: model each percentage point of the bespoke footprint above 20% as about 1% to 2% more maintenance cost each year for that component. It also makes the risk in the replacement cycle come sooner.
 
 **Typical footprints by sourcing approach**:
 - Pure bespoke ITAS / monolithic build: 80–95% bespoke
-- COTS heavily customised: 50–70% bespoke (worst of both worlds — vendor upgrade pain + custom maintenance)
+- A commercial product with many customisations: 50% to 70% bespoke. This gives both problems: the upgrades of the vendor are difficult, and the team must maintain the custom code
 - COTS configured + minimal custom integration: 5–15% bespoke
 - Low-code platform + custom integrations only: 5–10% bespoke
 - Open-source DPG (MOSIP, X-Road, Mifos) + local configuration: 10–25% bespoke
@@ -154,33 +154,33 @@ Bespoke_Footprint = lines_of_custom_code / total_lines_in_production
 
 ## The Configuration Dividend
 
-Where commodity capabilities are delivered on COTS or low-code platforms (rather than bespoke), expect substantial reductions in custom code volume and corresponding TCO benefits:
+A team can deliver a commodity capability on a commercial product or a low-code platform, and not as a bespoke build. Then expect much less custom code, and expect the benefits below in the TCO:
 
-- **~80% reduction in custom development**: Bespoke implementation of a commodity capability typically requires 50,000+ lines of custom code; equivalent delivery on a low-code platform requires <5,000 lines (primarily for custom integrations to legacy systems)
-- **Faster change cycles**: Workflow changes that take weeks of SDLC effort on bespoke become hours of configuration on low-code
-- **Reduced upgrade pain**: Platform vendor maintains the underlying framework; configurations remain compatible across versions
-- **Lower key-person risk**: Configuration is more accessible to a wider talent pool than bespoke code maintenance
+- **About 80% less custom development**: a bespoke implementation of a commodity capability usually needs more than 50,000 lines of custom code. The same capability on a low-code platform needs fewer than 5,000 lines, and most of those lines integrate the legacy systems
+- **A faster change cycle**: a change to a workflow needs weeks of development on a bespoke system. On a low-code platform it needs hours of configuration
+- **An upgrade is easier**: the vendor of the platform maintains the framework below, and the configurations continue to work in the new version
+- **Less risk from one key person**: more people can configure a platform than can maintain bespoke code
 
 **When to apply the configuration dividend**:
-- Commodity capabilities (case management, generic workflow, document management, intake forms, dashboards): apply full dividend
-- Differentiating capabilities (capabilities where deep domain knowledge creates a competitive asset): do NOT apply — bespoke build may be the right choice
+- For a commodity capability, apply the full dividend. The commodity capabilities are case management, generic workflow, document management, intake forms and dashboards
+- For a differentiating capability, do NOT apply the dividend. These are the capabilities where deep knowledge of the domain creates an asset, and a bespoke build can be the correct decision
 
-This distinction is critical: applying one sourcing assumption across the whole stack systematically overestimates cost in commodity domains and may underestimate cost (or misallocate strategic effort) in differentiating domains.
+This difference is important. One sourcing assumption across the full stack always makes the cost of a commodity domain too high. It can also make the cost of a differentiating domain too low, or put the strategic effort in the wrong place.
 
 ---
 
 ## Lock-In Exit Reserve
 
-Vendor lock-in is a contingent financial cost. Procurement is not a one-shot decision; over a 10–15 year horizon, vendors may raise prices, discontinue products, be acquired, or pursue directions incompatible with the organisation's needs.
+Lock-in to a vendor is a financial cost that can occur. A procurement is not one decision at one time. Across 10 to 15 years a vendor can increase its prices or stop a product. Another company can buy the vendor. The vendor can also move in a direction that the organisation cannot use.
 
-**Recommended approach**: Include a budgeted reserve for vendor switching at year 5–7 of the horizon.
+**The recommended approach**: put a reserve in the budget, to change the vendor in year 5 to year 7.
 
 ```
 C_lockin_exit = C_build_original × portability_difficulty × switch_probability
 ```
 
 **portability_difficulty**:
-- 0.15–0.25 for systems with strong open standards, documented APIs, exportable data formats
+- Use 0.15 to 0.25 for a system with strong open standards, documented APIs and data formats that a team can export
 - 0.30–0.50 for COTS systems with partial standards compliance
 - 0.60–1.00 for proprietary systems with custom data formats or restrictive contracts
 
@@ -189,7 +189,7 @@ C_lockin_exit = C_build_original × portability_difficulty × switch_probability
 - Commercial COTS with multi-vendor market: 0.20–0.35
 - Single-vendor proprietary: 0.40–0.60
 
-Shared GovStack-aligned scenarios reduce both factors because of API contracts as vendor boundaries, multi-vendor strategies (e.g. Case Management can run on multiple low-code platforms), and contractual data portability clauses.
+A shared scenario that follows GovStack makes both factors smaller. The API contract is the boundary of the vendor. The strategy uses more than one vendor, because, for example, Case Management runs on several low-code platforms. The contract also has clauses for the portability of the data.
 
 ---
 
@@ -201,7 +201,7 @@ Government workloads are often spiky:
 - Emergency cash transfer surges (disaster response, pandemic relief)
 - Year-end and audit cycle peaks
 
-**Peak provisioning penalty**: Siloed on-premise systems must be provisioned for peak demand. Off-peak utilisation is often 20–40%, meaning 60–80% of capacity sits idle most of the year.
+**The penalty for provisioning for the peak**: a siloed system on the premises must have the capacity of the peak demand. Outside the peak it frequently uses 20% to 40% of that capacity. Therefore 60% to 80% of the capacity does nothing for most of the year.
 
 **Elastic factor in cost modelling**:
 ```
@@ -215,13 +215,13 @@ C_ops_effective = C_ops_baseline × elastic_factor
 | Highly spiky (deadline-driven) | 1.0× | 0.50–0.70× |
 | Surge-prone (emergency) | 1.0–1.3× | 0.40–0.60× |
 
-Apply on top of the scalability_factor in Scenario B for spiky workloads. The savings stack: shared infra means fewer concurrent peak provisioning needs across programmes, AND elastic scaling means each peak is served only when it happens.
+For a workload with short peaks, apply this factor and the scalability_factor together in Scenario B. The two savings add together. A shared infrastructure has fewer peaks at the same time across the programmes. Elastic scaling gives the capacity for a peak only when the peak happens.
 
 ---
 
 ## Change-Cycle Cost Modelling
 
-Policy, eligibility, regulatory, and procedural changes are continuous facts of life in government systems. Their marginal cost varies dramatically by architecture:
+A government system changes continuously: the policy, the eligibility rules, the regulation and the procedure. The cost of one more change is very different in each architecture:
 
 ```
 C_change_per_event = engineering_hours × hourly_rate + testing_overhead + deployment_overhead
@@ -236,9 +236,9 @@ C_change_per_event = engineering_hours × hourly_rate + testing_overhead + deplo
 | COTS configured | $5K–$15K | $10K–$40K |
 | Policy-as-code / rules engine | $1K–$5K | $3K–$15K |
 
-**Across siloed programmes**: every cross-cutting policy change is multiplied by N programmes if each implements it separately.
+**Across siloed programmes**: when each programme implements a change separately, one policy change that crosses the programmes costs N times more.
 
-**Over a 15-year horizon at 10 policy changes/year**: change-cycle cost can exceed the original build cost for bespoke architectures, and be a small fraction of it for rules-engine architectures.
+**Across 15 years, with 10 policy changes each year**: in a bespoke architecture, the cost of the change cycle can be more than the cost of the first build. In an architecture with a rules engine, it is a small part of that cost.
 
 ---
 
@@ -287,7 +287,7 @@ Includes: steering committee, API management team, SLA monitoring, dispute resol
 
 ## Break-Even Analysis
 
-Scenario B has higher upfront cost (setup_premium) but lower ongoing costs. Break-even is when cumulative B cost < cumulative A cost.
+Scenario B costs more at the start, because of the setup_premium. It then costs less each year. The break-even point is the year when the total cost of B becomes less than the total cost of A.
 
 ```
 Year_0:  A = Σ build costs (all programmes)  |  B = shared build × setup_premium
@@ -326,7 +326,7 @@ Always run at least two sensitivity scenarios:
 
 ## Risk-Adjusted Scenario Comparison
 
-For decisions involving large-scale modernisation (big-bang replacement vs. phased delivery, single-vendor vs. multi-vendor), point estimates are misleading. Compute Expected Value:
+Some decisions are about modernisation at a large scale: to replace everything at one time or to deliver in phases, and to use one vendor or several vendors. For these decisions, one number gives the wrong answer. Calculate the expected value:
 
 ```
 EV(scenario) = Σ [ probability(outcome) × Cost(outcome) ]
@@ -336,20 +336,20 @@ EV(scenario) = Σ [ probability(outcome) × Cost(outcome) ]
 
 **Big-bang ITAS-style replacement** (siloed, monolithic):
 - Base-case cost: $X
-- Failure mode 1: severe overrun (2–3× cost, 2–3 year delay) — probability 0.30–0.50
+- Failure mode 1: the programme costs 2 to 3 times more and is 2 to 3 years late. The probability is 0.30 to 0.50
 - Failure mode 2: project abandonment / restart — probability 0.10–0.25
 - Service disruption cost (if failure during cutover): 0.5–2× annual ops cost
 
 **Phased delivery** (3–6 month increments, e.g. GovStack-aligned modular rollout):
 - Base-case cost: ~1.1–1.2× big-bang base case (higher coordination overhead)
 - Failure mode: phase abandonment with isolated impact — probability 0.10–0.20
-- Service disruption: typically minimal (each phase deploys non-disruptively alongside legacy)
+- The disruption to the service is usually small, because each phase deploys next to the legacy system and does not stop it
 
-**EV comparison typically favours phased delivery once failure probability is priced in**, even though its base case is higher. Real-world cases show big-bang replacement programmes overrunning by 100–200% and sometimes being abandoned after 5+ years and billions in spend.
+**When you price the probability of failure, the expected value usually prefers delivery in phases**, although its base case costs more. In real cases, a programme that replaced everything at one time cost 100% to 200% more than its estimate. Some governments stopped such a programme after more than 5 years and billions of dollars.
 
 ### Decision rule
 
-When the EV of phased delivery is within 20% of the big-bang point estimate, phased delivery is the rational choice — the variance reduction alone is worth more than the coordination premium.
+When the expected value of delivery in phases is inside 20% of the single estimate for the big-bang approach, choose delivery in phases. The smaller variance alone is worth more than the premium that you pay to coordinate the phases.
 
 ### Worked logic
 
@@ -358,7 +358,7 @@ Big-bang:  EV = 0.5 × $100M + 0.3 × $250M + 0.2 × $400M = $205M
 Phased:    EV = 0.85 × $115M + 0.15 × $160M = $122M
 ```
 
-The phased point estimate ($115M) is 15% higher than the big-bang point estimate ($100M), but the risk-adjusted EV is 40% lower.
+The estimate for the phased approach is $115M. It is 15% more than the estimate for the big-bang approach, which is $100M. But the expected value, adjusted for the risk, is 40% less.
 
 ---
 
@@ -374,7 +374,7 @@ These are from GovStack documentation, World Bank, and development partner asses
 | Kenya Integrated Financial Management (payments) | 25–35% savings in G2P disbursement costs vs. siloed | World Bank Kenya |
 | Generic GovStack estimate (3 BBs, 5 programmes, 5yr) | 40–65% TCO reduction in Scenario B vs. A | GovStack Initiative modelling |
 
-**Important caveat**: These are reference ranges. Actual savings depend heavily on country context, procurement efficiency, and political economy of shared-service adoption.
+**An important caveat**: these are reference ranges. The true saving depends on the context of the country, the efficiency of its procurement, and the political economy of the move to a shared service.
 
 ---
 
@@ -403,7 +403,7 @@ These are from GovStack documentation, World Bank, and development partner asses
 **ROI**: 307%  
 **Break-even**: Year 1
 
-*Note: This example uses mid-range LMIC figures. Real analysis requires country-specific data.*
+*Note: this example uses figures in the middle of the LMIC range. A true analysis needs the data of the country.*
 
 ---
 
@@ -415,10 +415,10 @@ The most counter-intuitive saving comes from the Information Mediator. Without i
 - Total: $600K–$1.5M just for point-to-point plumbing, with no audit trail
 
 With a shared Information Mediator:
-- Each programme integrates once to the hub: 5 integrations × $40K–$120K = $200K–$600K
+- Each programme integrates one time to the hub: 5 integrations × $40K–$120K = $200K–$600K
 - Plus: every future programme adds only 1 integration, not N-1
 
-This is the "compound interest" of shared infrastructure — the more programmes, the more dramatic the saving.
+This is the compound interest of a shared infrastructure. With each new programme, the saving becomes larger.
 
 ---
 
@@ -426,9 +426,9 @@ This is the "compound interest" of shared infrastructure — the more programmes
 
 Scenario B is not free of risk. Always flag:
 
-1. **Migration costs**: Existing programmes with legacy identity/payment systems face migration effort ($200K–$1M per programme, depending on complexity)
-2. **Coordination costs**: Governance structures, MOUs between ministries, legal frameworks for data sharing — often underestimated
-3. **Political economy**: Ministries may resist surrendering "their" systems; change management is real
-4. **Phased adoption is strongly recommended**: Big-bang transitions to shared infrastructure carry the same failure-mode risks as big-bang ITAS replacements. Most successful country implementations roll out shared BBs incrementally over 18–30 months, with each phase delivering standalone value. Model phased scenario explicitly when relevant — see Risk-Adjusted Scenario Comparison above
+1. **The cost to migrate**: a programme that has a legacy system for identity or payments must migrate it. This costs $200K to $1M for each programme, and the figure depends on how complex the system is
+2. **The cost to coordinate**: the governance structures, the memoranda of understanding between the ministries, and the legal frameworks to share data. People make this figure too small frequently
+3. **The political economy**: a ministry can refuse to give up the system that it calls its own. The work to manage that change is real work
+4. **Adopt the blocks in phases. This is the strong recommendation**: a move to a shared infrastructure at one time has the same risks of failure as a replacement of an ITAS at one time. Most countries that succeeded deployed the shared blocks one after another, across 18 to 30 months, and each phase gave value on its own. Model the phased scenario when it applies. See the section above on the comparison of the scenarios, adjusted for risk
 
-**Recommended framing**: Present Scenario B as an investment with a clear payback period, not just a cost reduction. The language of "shared digital infrastructure as DPI" helps move the conversation from IT cost to national strategic asset. For ministerial audiences, lead with: (1) the avoided replacement cliff over a 15-year horizon, (2) the freed budget for service delivery, and (3) the risk-adjusted EV advantage of phased shared rollout over siloed big-bang procurement.
+**The recommended frame**: give Scenario B as an investment with a payback period that you state. Do not give it only as a reduction of the cost. The words "shared digital infrastructure as DPI" move the conversation from the cost of the IT to a strategic asset of the country. For a minister, start with these three points: (1) the replacement cliff that the country avoids across 15 years; (2) the budget that this frees for the delivery of services; and (3) the advantage in the expected value, adjusted for risk, of a shared rollout in phases against a siloed procurement that happens at one time.

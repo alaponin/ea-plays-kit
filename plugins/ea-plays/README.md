@@ -1,12 +1,13 @@
 # ea-plays
 
-The **"with the kit"** layer for the Knowledge Product AI plays on government enterprise
-architecture. Fourteen skills that build sourced country context, verify every claim against
-tiered public sources, and produce artefacts that chain into a country workbook.
+This is the **"with the kit"** layer for the Knowledge Product AI plays on government
+enterprise architecture. It has fourteen skills. They build a country context that has its
+sources, they verify each claim against public sources in four tiers, and they make artefacts
+that go into a country workbook.
 
-**The plays run bare in any assistant.** They are the product; this kit is optional. What it
-adds is the step learners skip: bringing the named source in before the draft is written,
-and checking it afterwards.
+**The plays run bare in any assistant.** They are the product. This kit is optional. It adds
+the step that a learner does not do: it brings in the named source before it writes the
+draft, and it checks the draft after.
 
 ## Install
 
@@ -15,43 +16,44 @@ and checking it afterwards.
 /plugin install ea-plays@ea-plays-kit
 ```
 
-Choose **user** scope so the kit follows you across folders. Later, `/plugin marketplace
-update ea-plays-kit` pulls a new version.
+Choose the **user** scope, so that the kit follows you into each folder. Later, run
+`/plugin marketplace update ea-plays-kit` to get a new version.
 
-Not using Claude Code? Two other routes, same source tree:
+Do you not use Claude Code? There are two other routes, from the same source tree:
 
-- **Cowork** — download `ea-plays-<version>.plugin` from the GitHub release and install it
-  from Settings → Capabilities.
-- **The Claude app, one skill at a time** — download this repo (**Code → Download ZIP**, or
-  clone it) and upload any single folder under `plugins/ea-plays/skills/` at Settings →
-  Capabilities → Skills. Every skill folder is self-contained.
+- **Cowork** — download `ea-plays-v<version>.plugin` from the release on GitHub. Then install
+  it from Settings → Capabilities.
+- **The Claude app, one skill at a time** — download this repository with **Code → Download
+  ZIP**, or clone it. Then upload one folder from `plugins/ea-plays/skills/` at Settings →
+  Capabilities → Skills. Each skill folder is self-contained.
 
 ## What you get
 
 | Skill | What it does |
 | --- | --- |
-| `country-context-pack` | Play 0 — the seven-section A0 pack every other play consumes |
-| `cite-or-discard` | Verifies every claim against its source; drops what does not survive |
-| `bb-landscape-check` | Which shared building blocks a country actually has **live** |
-| `ea-institution-mapper` | Public bodies, legal mandates, systems, posts, PAERA classification |
-| `ea-legal-context` | The national legal register an EA programme touches |
-| `ea-comparator-evidence` | Comparator countries with primary sources and a contested case |
-| `ea-cost-case` | The re-use business case, assumptions first, benchmarks cited |
-| `paera-reference-check` | Checks against PAERA as published, not the teaching simplification |
-| `ea-method-runner` | The five-phase lifecycle, reading and writing the workbook |
-| `ea-governance-drafter` | Board ToR, RACI, repository, gate checklist, scorecard, risk register |
-| `ea-tool-evaluator` | EA tool scoring on verifiable facts, plus a real export test |
-| `ea-open-learning-catalogue` | A capability plan whose links were checked today |
-| `bdat-assessor` | The four-layer read of a body or sector, and the change-impact trace |
-| `bb-sourcing-researcher` | Which products could supply a block the country lacks |
+| `country-context-pack` | Play 0 — the A0 pack of seven sections that each other play uses |
+| `cite-or-discard` | Verifies each claim against its source, and drops the claims that fail |
+| `bb-landscape-check` | Which shared building blocks a country has **live** |
+| `ea-institution-mapper` | The public bodies, their legal mandates, their systems, the posts, and the PAERA classification |
+| `ea-legal-context` | The national legal register that an EA programme touches |
+| `ea-comparator-evidence` | Comparator countries, with primary sources and one contested case |
+| `ea-cost-case` | The business case for re-use: the assumptions first, and each benchmark cited |
+| `paera-reference-check` | Checks against PAERA as published, and not against the simplification in the videos |
+| `ea-method-runner` | The lifecycle of five phases. It reads the workbook and writes to it |
+| `ea-governance-drafter` | The Board ToR, the RACI, the repository, the gate checklist, the scorecard and the risk register |
+| `ea-tool-evaluator` | Scores an EA tool on facts that you can verify, and gives a real export test |
+| `ea-open-learning-catalogue` | A capability plan. Each of its links was checked today |
+| `bdat-assessor` | Reads a body or a sector in four layers, and traces the impact of a change |
+| `bb-sourcing-researcher` | Which products can supply a block that the country does not have |
 
-Every output opens with a provenance header — country, date, sources by tier, unverified
-count — so the next play can consume it and you can see what it rests on.
+Each output starts with a provenance header. The header gives the country, the date, the
+count of sources in each tier, and the count of unverified lines. The next play can then use
+the output, and you can see what the output depends on.
 
 ## Play → skill
 
-Exactly one primary skill per play. `cite-or-discard` runs inside most of the others rather
-than being invoked directly.
+Each play has exactly one primary skill. `cite-or-discard` runs inside most of the other
+skills. You do not call it directly.
 
 **Play 0**
 
@@ -123,13 +125,16 @@ than being invoked directly.
 
 ## The rules every skill follows
 
-- **Text in, text out.** No files, no charts, no images — the next play has to read it.
-- **Posts, not names.** Never a real office-holder's name, however public.
-- **Cite or discard.** Every claim carries a URL, a tier and a date, or it is marked ⚠ or
-  dropped. A refused fetch is *unverified*, never *unsupported*.
-- **The safeguard comes back to you.** Every output ends with what remains your judgement.
+- **Text in, text out.** No file, no chart, no image. The next play must read the output.
+- **Posts, not names.** Never write the name of a real office-holder, also when the name is
+  public.
+- **Cite or discard.** Each claim has a URL, a tier and a date. If it does not, a skill marks
+  it ⚠ or drops it. A fetch that a server refuses gives *unverified*. It never gives
+  *unsupported*.
+- **The safeguard comes back to you.** Each output ends with what stays your judgement.
 
 ## Licence
 
-Content (skills, references, this README) — CC BY 4.0, see `LICENSE-CONTENT`.
-Scripts — MIT, see `LICENSE-CODE`.
+The content uses CC BY 4.0. The content is the skills, the references and this README. See
+`LICENSE-CONTENT`.
+The scripts use MIT. See `LICENSE-CODE`.

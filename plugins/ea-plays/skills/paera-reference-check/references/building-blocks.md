@@ -56,18 +56,25 @@ Source: https://specs.govstack.global and https://paera.govstack.global
 ### Phase 4 (Mass Scale)
 - All GovStack BBs deployed across entire public sector
 
-## Key Selection Criteria for Building Blocks
-A GovStack Building Block must be:
-- Reusable across multiple sectors/use cases
-- Interoperable via open APIs
-- Based on open standards
-- Cloud-deployable
-- Independently deployable (loosely coupled)
-- Compliant with GovStack specs (testable against defined specs → GS Marketplace)
+## The criteria that select a building block
 
-## Red Flags (Anti-Patterns)
-- Custom-building something a BB already covers → increases fragmentation
-- Single-agency, single-use systems → silo development  
-- No API layer → limits future interoperability
-- No lifecycle/decommissioning plan → future legacy risk
-- No alignment with national interoperability platform → island system
+A GovStack building block must have these six properties:
+
+- more than one sector or use case can reuse it;
+- it is interoperable through open APIs;
+- it uses open standards;
+- a team can deploy it to a cloud;
+- a team can deploy it on its own, because it is loosely coupled;
+- it conforms to the GovStack specifications, and a person can test it against them and
+  then put it in the GovStack Marketplace.
+
+## Red flags
+
+- A team builds a function that a building block already covers. This increases the
+  fragmentation.
+- A system serves one agency and one use case. This builds a silo.
+- The system has no API layer. This limits the interoperability in the future.
+- The system has no plan for its lifecycle or for its decommissioning. This creates a legacy
+  system.
+- The system does not align with the national interoperability platform. This makes an
+  island.

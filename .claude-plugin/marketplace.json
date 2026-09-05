@@ -3,14 +3,14 @@
   "description": "The learner kit for the Knowledge Product AI plays on government enterprise architecture — sourced country context, verified claims, and the artefacts that chain into a country workbook.",
   "owner": {
     "name": "FiscalAdmin OÜ",
-    "url": "https://github.com/aarelaponin"
+    "url": "https://github.com/alaponin"
   },
   "plugins": [
     {
       "name": "ea-plays",
       "source": "./plugins/ea-plays",
       "description": "The 'with the kit' layer for the KP1 Government Enterprise Architecture AI plays",
-      "version": "0.1.3"
+      "version": "0.2.0"
     }
   ]
 }

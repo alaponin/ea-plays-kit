@@ -1,14 +1,15 @@
-# Research Method: Source Map and Search Patterns
+# The research method: the source map and the search patterns
 
-This file tells you *where to look* and *how to search* for each building block, and what to
-expect (maturity priors). It does not hard-code vendor names beyond stable anchors, because
-the market moves — always confirm current products with live research.
+This file tells you *where to look* for each building block, *how to search* for it, and
+what to expect, which is the maturity prior. It gives the name of a vendor only for a stable
+anchor product, because the market moves. Always confirm the products that exist now with
+live research.
 
 ---
 
 ## The 18 blocks and the capability each delivers
 
-### Infrastructure blocks (Phase 1+ — always needed)
+### The infrastructure blocks. A country needs these from Phase 1
 1. **Identity** — digital identity, authentication, e-signature
 2. **Payment** — payment processing and (at scale) interoperable real-time switching
 3. **Information Mediator** — secure, decentralised inter-agency data exchange (X-Road model)
@@ -22,7 +23,7 @@ the market moves — always confirm current products with live research.
 11. **Adapters** — legacy-system integration into the BB ecosystem
 12. **No-code/Low-code** — rapid application development
 
-### Functional blocks (Phase 2+)
+### The functional blocks. A country adds these from Phase 2
 13. **MyGov / Citizen Portal** — one-stop citizen/business front-end
 14. **Digital Wallet** — citizen-held verifiable credentials and documents
 15. **Analytics** — analytics, dashboards, reporting
@@ -32,51 +33,62 @@ the market moves — always confirm current products with live research.
 
 ---
 
-## Source map — where to look, in priority order
+## The source map — where to look, in the order of priority
 
-### Tier 1 — Curated, government-vetted (always check first)
-- **GovStack Building Block Software catalogue** — `govstack.global/software/`. Filter by
-  building block. Records the product, model (open-source/proprietary), and **compliance
-  level** (Level 1 ⭐ / Level 2 ⭐⭐). Self-assessed, submission-ordered, product-agnostic.
-- **GovMarket** — `govstack.global/our-offerings/govmarket/` for the broader software/service
-  directory.
-- **Digital Public Goods Alliance (DPGA) registry** — vetted DPGs. The authoritative list of
-  open-source candidates with a development/standards endorsement.
+### Tier 1 — curated sources that a government body checked. Look here first
+- The **GovStack Building Block Software catalogue** — `govstack.global/software/`. Filter it
+  by building block. It records the product, the model, which is open-source or proprietary,
+  and the **compliance level**, which is Level 1 ⭐ or Level 2 ⭐⭐. Each product assessed
+  itself. The list is in the order of submission. It does not prefer a product.
+- **GovMarket** — `govstack.global/our-offerings/govmarket/`, for the wider directory of
+  software and services.
+- The registry of the **Digital Public Goods Alliance (DPGA)** — the digital public goods
+  that the alliance checked. It is the authoritative list of open-source candidates that have
+  an endorsement for their development and their standards.
 
-### Tier 2 — Project / product primary sources
-- Project sites and docs for the anchor DPGs: MOSIP, Mojaloop / Mifos, X-Road (NIIS), OpenG2P,
-  OpenSPP, OpenCRVS, DHIS2, RapidPro, QGIS/GeoServer, EU DSS / EUDI wallet reference.
-- GitHub orgs for licence, activity, and module structure (e.g. `github.com/mosip`,
-  `github.com/openMF`, `github.com/nordic-institute/X-Road`).
+### Tier 2 — the primary sources of a project or a product
+- The sites and the documentation of the anchor digital public goods: MOSIP, Mojaloop and
+  Mifos, X-Road (NIIS), OpenG2P, OpenSPP, OpenCRVS, DHIS2, RapidPro, QGIS and GeoServer, and
+  the reference implementations of EU DSS and the EUDI wallet.
+- The GitHub organisations, for the licence, the activity and the structure of the modules.
+  Examples are `github.com/mosip`, `github.com/openMF` and
+  `github.com/nordic-institute/X-Road`.
 
-### Tier 3 — Comparison / landscape sources
-- OSS comparison write-ups (e.g. BPM-engine comparisons, OSS-GIS guides) to surface options
-  not yet in the curated catalogues. Treat as leads to verify, not as authority.
-- Vendor sites for commercial options — confirm positioning, not marketing claims.
+### Tier 3 — sources that compare products or describe the landscape
+- Articles that compare open-source products, such as a comparison of BPM engines or a guide
+  to open-source GIS. They show you options that the curated catalogues do not have yet.
+  Treat them as leads to verify. They are not an authority.
+- The sites of the vendors, for a commercial option. Confirm the position of the product in
+  the market. Do not confirm a marketing claim.
 
-### Tier 4 — In-country grounding
-- Use `country-context-data` skill for in-country SI presence, mobile-money rails, local SMS
-  aggregators, cloud/data-residency rules. A globally-strong product that has no in-country
-  integrator or violates data-residency law is not realistically available.
+### Tier 4 — the reality inside the country
+- Use the `country-context-pack` skill for the system integrators that are present in the
+  country, the mobile-money rails, the local SMS aggregators, and the rules for the cloud and
+  for data residency. A product that is strong globally is not available in this country when
+  it has no integrator there, or when it breaks the law on data residency.
 
 ---
 
-## Search-query patterns that work
+## The patterns of search query that work
 
-- Per block, not combined: `"<block capability> open source government DPI"` then
+- Search for one block at a time. Do not combine the blocks. Search
+  `"<block capability> open source government DPI"`, then
   `"<block capability> vendor / commercial provider government"`.
-- Anchor + alternatives: `"<anchor product> alternatives <block>"` (e.g. "X-Road alternatives
-  data exchange", "Camunda alternatives BPM open source").
-- Catalogue scan: fetch `govstack.global/software/` and read the listing for each block.
-- Deployment evidence: `"<product> deployed <country/region>"` to verify real-world use.
-- Licence/lock-in: open the GitHub repo or licence page rather than trusting a summary.
-- Avoid stale years — use the current year or no year, never a past year, in queries.
+- Search for the alternatives to an anchor product: `"<anchor product> alternatives <block>"`.
+  Examples are "X-Road alternatives data exchange" and "Camunda alternatives BPM open
+  source".
+- Scan the catalogue: read `govstack.global/software/` and read the entries for each block.
+- Find the evidence of a deployment: `"<product> deployed <country/region>"`.
+- For the licence and the lock-in, open the GitHub repository or the licence page. Do not
+  trust a summary.
+- Do not put an old year in a query. Use the current year, or use no year.
 
 ---
 
 ## Maturity priors (what to expect before you search)
 
-These priors set expectations and the likely sourcing posture; **verify, don't assume**.
+A prior tells you what to expect, and the sourcing posture that is probable. **Verify each
+prior. Do not assume it.**
 
 | Block | OSS market | Likely default posture | Notes |
 |---|---|---|---|
@@ -101,9 +113,9 @@ These priors set expectations and the likely sourcing posture; **verify, don't a
 
 ---
 
-## Capture template per candidate
+## What to record for each candidate
 
-For every product surfaced, record:
+Record these nine items for each product that you find:
 
 ```
 Product:            <name>
@@ -116,4 +128,4 @@ Lock-in vector:     <none | data | licence | proprietary tooling | ecosystem>
 Fit note:           <one line: where it fits, caveats>
 ```
 
-If a field cannot be evidenced from research, mark it "unconfirmed" rather than guessing.
+If your research gives no evidence for a field, write "unconfirmed" in it. Do not guess.

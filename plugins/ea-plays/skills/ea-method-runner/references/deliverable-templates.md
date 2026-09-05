@@ -1,15 +1,16 @@
-# Deliverable Templates
+# The deliverable templates
 
-Ready-to-fill formats for the six EA lifecycle deliverables plus the
-recurring gate-decision-log entry used in Execute & Govern. Swap in the
-country's institutions and the sector's data domain; keep the structure.
+These are the formats for the six deliverables of the EA lifecycle. They also give the entry
+for the gate decision log, which the Execute and Govern phase uses again and again. Put the
+institutions of the country and the data domains of the sector into the templates. Keep the
+structure.
 
 ---
 
 ## 1. Discovery Brief
 
-Rule at the top of every Discovery brief: **describe what is; do not
-recommend. Recommendations belong to Assess.**
+Write this rule at the top of each Discovery brief: **describe what exists. Do not
+recommend. A recommendation belongs to the Assess phase.**
 
 ### 1.1 Strategies in Force
 
@@ -85,9 +86,9 @@ recommend. Recommendations belong to Assess.**
 
 ### 2.3 Honesty Flags
 
-State plainly, for any gap touching a powerful stakeholder: which body,
-what they stand to lose, and why softening the finding would fail later.
-Don't resolve the politics here — name it for the decision-maker to act on.
+A gap can apply to a stakeholder with political power. For each such gap, say plainly which
+body it is, what that body loses, and why a weaker finding fails later. Do not resolve the
+politics here. Name the politics, so that the decision-maker can act.
 
 **Sign-off:** *"Does this gap analysis reflect ground truth — including the
 parts that are politically uncomfortable?"*
@@ -113,9 +114,11 @@ parts that are politically uncomfortable?"*
 
 ### 3.3 Flags
 
-- Any BUILD that duplicates an existing shared block.
-- Any BUY that risks vendor lock-in (no API layer, no data-export clause, single-vendor dependency).
-- Any SHARE call where the platform being shared doesn't fully exist yet — note it as a flagged dependency, not a clean call.
+- Each BUILD decision that repeats a shared block that exists.
+- Each BUY decision with a risk of lock-in to a vendor: no API layer, no clause for data
+  export, or a dependency on one vendor.
+- Each SHARE decision where the platform does not fully exist yet. Record it as a dependency
+  with a flag. It is not a clean decision.
 
 **Sign-off:** *"Are the localised framework and sourcing approach
 approved?"*
@@ -141,11 +144,13 @@ approved?"*
 
 ### 4.4 Target Technology Standards
 
-- Open APIs / open standards for every exchange.
-- Exchange model (federated / centralised — state which and why).
-- No-legacy lifecycle limit for any bought component.
-- Verification/certification standard for the sector's core output.
-- Any context-specific standard (offline tolerance, low-bandwidth design, etc.).
+- Open APIs and open standards for each exchange.
+- The model of exchange, which is federated or centralised. Say which one, and say why.
+- A limit on the lifecycle of each component that the programme buys, so that it does not
+  become a legacy system.
+- The standard that verifies or certifies the main output of the sector.
+- Each standard that this context needs, such as tolerance of an offline period, or a design
+  for low bandwidth.
 
 ### 4.5 First-Cut Integration Map
 
@@ -159,8 +164,8 @@ For every element above:
 | Target element | Closes gap | Sourcing decision | Path to obtain it | Flag if unreachable |
 |---|---|---|---|---|
 
-**Sign-off:** designed and approved together with the sourcing matrix — the
-agreed destination the roadmap sequences toward.
+**Sign-off:** a person designs and approves this together with the sourcing matrix. It is the
+destination that the roadmap puts into a sequence.
 
 ---
 
@@ -173,22 +178,20 @@ agreed destination the roadmap sequences toward.
 | 3 — Build-out | | Wave 2 | Platform |
 | 4 — Mass scale | | Wave 3 | Platform + procurement |
 
-Note explicitly, for the Board: which wave lands the decision-maker's
-promised outcome (should be Wave 2, inside the first year — not Wave 4).
+Tell the Board which wave delivers the outcome that the decision-maker promised. It must be
+Wave 2, inside the first year. It must not be Wave 4.
 
-**Sign-off:** *"Does the Board approve this roadmap and commit the
-budget?"* — state whether a multi-year envelope or an annual line is being
-requested, and recommend the envelope.
+**Sign-off:** *"Does the Board approve this roadmap and commit the budget?"* Say whether you
+ask for an envelope for several years, or for a line for one year. Recommend the envelope.
 
 ---
 
 ## 6. Gate Decision Log
 
-Use this template every time a project proposes to build something that
-might duplicate a shared block already named in the sourcing matrix or
-target architecture.
+Use this template each time that a project proposes to build something that can repeat a
+shared block. The sourcing matrix or the target architecture already names that block.
 
-### Gate Questions (answer each)
+### Gate questions. Answer each one
 
 1. Does a shared block already exist for what this builds?
 2. Which data domain(s) does it touch, and does it consume the owner's copy?
@@ -197,9 +200,9 @@ target architecture.
 
 ### Ruling
 
-State, per element the project proposes: **consume the shared block**, or
-**grant a written exception** (sunset date + reason + governance owner of
-the exception).
+For each element that the project proposes, give one of two rulings: **use the shared
+block**, or **grant a written exception**. An exception has a sunset date, a reason, and a
+person in the governance who owns it.
 
 ### Decision-Log Entry
 

@@ -10,10 +10,10 @@ Below are my ranked gaps for [country X]'s [sector] sector, my adopted architect
 
 ## What the fixture supplies
 
-Country: **Progressa** · Sector: **Education**. Substitute for every bracketed
-placeholder above. The named input is A24, A11, BB status register of `tests/progressa.md`; paste
-those sections verbatim.
+Country: **Progressa** · Sector: **Education**. Put these two values in the place of each
+placeholder in brackets above. The named input is A24, A11, BB status register of `tests/progressa.md`. Paste
+those sections without a change.
 
-Where the play consumes an artefact from an earlier play (A1, A3, A22 …), run that
-play on Progressa first — the chain is in
+If this play consumes an artefact from an earlier play, such as A1, A3 or A22, run that play
+on Progressa first. The chain is in
 [`shared/workbook-chain.md`](../../../plugins/ea-plays/shared/workbook-chain.md).

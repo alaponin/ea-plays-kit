@@ -1,33 +1,36 @@
 <!-- fixture: Progressa (fictional) · canonical: tests/progressa.md · keep consistent with it -->
-# Change-Impact Template: Tracing Cross-Layer Consequences
+# The change-impact template: how to trace the consequences in each layer
 
-Use this template whenever the assessment involves a proposed change — a new building
-block, a system retirement, a platform migration, a policy change — not just a
-current-state description.
+Use this template when the assessment covers a proposed change. The change can be a new
+building block, the retirement of a system, a migration to a platform, or a change of policy.
+Do not use this template for a description of the current state only.
 
-BDAT's most valuable use is not describing what exists. It is tracing what changes
-when something new is introduced or something old is removed. This is where
-architecture justifies investment decisions.
+The most valuable use of BDAT is not to describe what exists. It is to trace what changes
+when a body introduces something new, or removes something old. Here the architecture gives
+the reason for an investment decision.
 
 ---
 
-## When to Use This Template
+## When to use this template
 
-- A new GovStack building block is being proposed (identity, payments, data exchange)
-- An existing system is being retired or replaced
-- A new platform or cloud provider is being adopted
-- A policy change creates a new capability requirement
-- A donor project proposes to build or procure a system
-- A shared platform is being extended to a new sector
+Use it in these six cases:
+
+- a body proposes a new GovStack building block: identity, payments or data exchange;
+- a body retires or replaces a system that exists;
+- a body adopts a new platform or a new cloud provider;
+- a change of policy creates a requirement for a new capability;
+- a donor project proposes to build or to procure a system;
+- a body extends a shared platform to a new sector.
 
 ---
 
 ## The Change-Impact Trace
 
-For any proposed change, trace consequences through all four layers — both downward
-(what the change requires below) and upward (what the change enables above).
+For each proposed change, trace the consequences through the four layers. Trace downward,
+for what the change needs from the layers below. Trace upward, for what the change makes
+possible in the layers above.
 
-### 1. Name the Change
+### 1. Name the change
 
 | Field | Content |
 |-------|---------|
@@ -38,29 +41,38 @@ For any proposed change, trace consequences through all four layers — both dow
 
 ---
 
-### 2. Downward Trace — What the Change Requires
+### 2. The downward trace — what the change needs
 
-Start at the layer the change enters and trace what it demands from each layer below.
+Start at the layer where the change enters. Then trace what the change needs from each layer
+below it.
 
-**If the change is at the Business layer** (new policy, new capability mandate):
-- Data: What new domains does this capability require? Who will own them?
-- Application: What new applications are needed, or which existing ones must be extended?
-- Technology: What infrastructure must be in place for the applications to function?
+**If the change enters at the Business layer**, as a new policy or a new mandate for a
+capability:
+- Data: which new domains does this capability need? Who will own them?
+- Application: which new applications does it need? Which applications that exist must a team
+  extend?
+- Technology: which infrastructure must exist before the applications can operate?
 
-**If the change is at the Application layer** (new system, new building block):
-- Data: What data domains does the new application use? Are they already owned by a named body, or does ownership need to be assigned?
-- Technology: What infrastructure does the new application require? Is it already in place, or does it need to be procured or built?
+**If the change enters at the Application layer**, as a new system or a new building block:
+- Data: which data domains does the new application use? Does a named body already own them,
+  or must somebody assign the ownership?
+- Technology: which infrastructure does the new application need? Does it exist, or must a
+  body procure it or build it?
 
-**If the change is at the Technology layer** (new platform, new hosting, new backbone):
-- Application: Which applications depend on the component being changed? What integration work is required?
-- Data: Does the change affect how data is stored or exchanged? Are data standards preserved?
-- Business: Does a technology constraint limit what capabilities can realistically be delivered? (Upward pressure — name it honestly.)
+**If the change enters at the Technology layer**, as a new platform, new hosting or a new
+backbone:
+- Application: which applications depend on the component that changes? How much work does
+  the integration need?
+- Data: does the change affect how a system stores the data or exchanges it? Do the data
+  standards stay the same?
+- Business: does a constraint in the technology limit the capabilities that a team can
+  deliver? This is the pressure upward. Name it honestly.
 
 ---
 
-### 3. Upward Trace — What the Change Enables
+### 3. The upward trace — what the change makes possible
 
-Trace what the change makes possible in layers above.
+Trace what the change makes possible in the layers above.
 
 | Layer | What is now possible that was not before |
 |-------|------------------------------------------|
@@ -71,9 +83,9 @@ Trace what the change makes possible in layers above.
 
 ---
 
-### 4. Cross-Body Consequences
+### 4. The consequences for the other bodies
 
-Changes rarely affect only one body. For each body in scope, note:
+A change rarely affects one body only. Record these items for each body in the scope:
 
 | Body | Impact | Action Required |
 |------|--------|----------------|
@@ -81,7 +93,7 @@ Changes rarely affect only one body. For each body in scope, note:
 
 ---
 
-### 5. Architecture Trap Check for This Change
+### 5. The check for the architecture traps in this change
 
 | Trap | Assessment |
 |------|-----------|
@@ -90,10 +102,10 @@ Changes rarely affect only one body. For each body in scope, note:
 
 ---
 
-### 6. Enabling Conditions
+### 6. The conditions that the change needs
 
-Name what must be true for the change to be successfully implemented.
-Theoretical benefits do not materialise if enabling conditions are absent.
+Name what must be true before a team can implement the change. A benefit in theory does not
+occur when the conditions are absent.
 
 | Condition | Status |
 |-----------|--------|
@@ -106,36 +118,39 @@ Theoretical benefits do not materialise if enabling conditions are absent.
 
 ---
 
-## Worked Example: Introducing a National Learner Registry
+## A worked example: the introduction of a National Learner Registry
 
-**Change**: Introduce the National Learner Registry (PLR) as a shared state registry. The
-Education Sector Plan 2023–2028 calls for it and it has **not started**. Today a learner is
-held three times — in the district EMIS, in the PNEA candidate list, and in the Social
-Protection Agency's beneficiary register — each on its own numbering, and the three do not
-agree.
+**The change**: introduce the National Learner Registry (PLR) as a shared state registry.
+The Education Sector Plan 2023–2028 asks for it, and it is **not started**. Today three
+systems hold a learner: the district EMIS, the list of candidates of PNEA, and the register
+of beneficiaries of the Social Protection Agency. Each one uses its own numbers, and the
+three do not agree.
 
-**Initiating layer**: Application (a new shared system is being introduced)
-**Owner**: MoEYS — named in the Education Sector Plan 2023–2028 and in §2. Note two things
-about that owner before going further: MoEYS is **not a Linkup member**, and the sector has
-**no data-standards function** (§6).
-**Trigger**: World Bank human-capital programme — USD 6.5m over three years (§2, item 1)
+**The layer where the change enters**: Application, because a body introduces a new shared
+system.
+**The owner**: MoEYS. The Education Sector Plan 2023–2028 and §2 name it. Record two facts
+about the owner before you continue: MoEYS is **not a member of Linkup**, and the sector has
+**no function for data standards** (§6).
+**The trigger**: the human-capital programme of the World Bank, USD 6.5m across three years
+(§2, item 1).
 
-### Downward Trace
+### The downward trace
 
-- **Data**: A new Learner domain must be defined, with PLR as the single owner. Ownership
-  must be formally assigned; the three existing partial lists must be reconciled and
-  retired. The Person domain is owned by PNIA — but **PNIA issues IDs only at 16**, so for a
-  primary-school child the National ID cannot be the anchor. The legal identity anchor is
-  the Civil Registration Department: paper-first, 71% birth registration (§1, §7). A design
-  that assumes the National ID will fail on the registry's main population, and the missing
-  29% of birth registrations becomes an enrolment barrier rather than a data-quality
-  footnote.
-- **Technology**: PLR must reach its consuming bodies (PNEA, MoEYS schools, the Social
-  Protection Agency). The exchange layer already exists — Linkup, X-Road 7.x, live in pilot
-  with four members and a documented onboarding procedure — but MoEYS is not one of the
-  four. **The gap is membership, not infrastructure.** If that is not fixed, PLR either
-  becomes a silo reached by direct integration, or gets a point-to-point link of the kind
-  the tax authority built to the business register in 2022 and has not migrated since.
+- **Data**: somebody must define a new Learner domain, and PLR must be its single owner. A
+  body must assign that ownership formally. A team must reconcile the three partial lists
+  that exist, and then retire them. PNIA owns the Person domain, but **PNIA issues an ID only
+  at 16 years**. Therefore the National ID cannot be the anchor for a child in a primary
+  school. The anchor for the legal identity is the Civil Registration Department, which works
+  on paper first and registers 71% of the births (§1, §7). A design that uses the National ID
+  fails for the main population of the registry. The 29% of births that nobody registered
+  then stops a child from enrolling. It is not a footnote about the quality of the data.
+- **Technology**: PLR must reach the bodies that use it, which are PNEA, the schools of
+  MoEYS, and the Social Protection Agency. The layer for exchange exists. It is Linkup, on
+  X-Road 7.x, live as a pilot with four members and a documented onboarding procedure. MoEYS
+  is not one of the four. **The gap is the membership. It is not the infrastructure.** If
+  nobody closes that gap, PLR becomes a silo that other systems reach with a direct
+  integration. It can also get a point-to-point link, like the link that the tax authority
+  built to the business register in 2022 and never migrated.
 
 ### Upward Trace
 
@@ -145,7 +160,7 @@ about that owner before going further: MoEYS is **not a Linkup member**, and the
 | Data → Business | The "register a learner once" capability becomes real rather than aspirational — today no body claims it |
 | Business → Service | Once-only enrolment across schools, the examination authority and the scholarship programme becomes deliverable; the parent stops proving the child's identity on paper at every counter |
 
-### Cross-Body Consequences
+### The consequences for the other bodies
 
 | Body | Impact | Action Required |
 |------|--------|----------------|
@@ -156,19 +171,21 @@ about that owner before going further: MoEYS is **not a Linkup member**, and the
 | Civil Registration Department | Becomes the identity anchor for learners below 16 | An electronic route into the civil register, which is paper-first today |
 | PDGA | Onboards MoEYS to Linkup; coordinates, but cannot compel | Member onboarding; a data catalogue, which Linkup does not publish |
 
-### Architecture Trap Check
+### The check for the architecture traps
 
-- **Bespoke trap**: **Present in the sector.** The Social Protection Agency's beneficiary
-  register was built in 2016 by a vendor under a World Bank programme rather than assembled
-  from shared registries, and it is now one of the three learner lists. PLR is funded the
-  same way, by the same donor, and nothing yet requires it to consume PNIA and the civil
-  register rather than build its own. The counter-example is already running in the sector.
-- **Vendor-driven trap**: **Present, and specific.** That 2016 register is under
-  single-vendor maintenance — the vendor that built it still holds the only maintenance
-  contract. Require open data export and a maintenance market at procurement, because the
-  failure mode is not hypothetical here; it is ten years old and in the next room.
+- **The bespoke trap is present in the sector.** A vendor built the register of
+  beneficiaries of the Social Protection Agency in 2016, under a World Bank programme. The
+  team did not assemble it from the registries that the country shares. It is now one of the
+  three lists of learners. The same donor funds PLR in the same way, and nothing yet obliges
+  PLR to use PNIA and the civil register instead of building its own list. The
+  counter-example already operates in the sector.
+- **The vendor-driven trap is present, and it is specific.** One vendor maintains that
+  register from 2016. The vendor that built it still holds the only maintenance contract. At
+  the procurement, require an open format for the export of the data, and require a market of
+  more than one maintainer. This failure is not hypothetical here. It is ten years old, and
+  it is in the next room.
 
-### Enabling Conditions
+### The conditions that the change needs
 
 | Condition | Status |
 |-----------|--------|
@@ -179,10 +196,11 @@ about that owner before going further: MoEYS is **not a Linkup member**, and the
 | Data exchange available to the sector | **Ready, not joined** — Linkup is live in pilot with four members and MoEYS is not one. Onboarding, not build (§1) |
 | Recurrent funding for operations and maintenance | **Absent** — annual budget cycle, no multi-year ICT envelopes (§4, §5) |
 
-**Assessment**: The theoretical benefit of PLR — one learner record, consumed by all — is
-real. But of six enabling conditions only one is in place; four are absent or unsecured, and
-the fifth, the exchange layer, exists while the owning ministry has not joined it.
-Introducing PLR before these are resolved risks creating **a fourth list rather than
-replacing the three**. Sequence: resolve the two legal bases first, onboard MoEYS to Linkup
-second — it is procedural, not a build — then deploy PLR against the civil register for
-under-16s and the National ID above.
+**The assessment**: the benefit of PLR in theory is real. It gives one record for each
+learner, and each body uses that record. But of the six conditions, only one is in place.
+Four are absent or not secure. The fifth, which is the layer for exchange, exists, and the
+ministry that owns the change has not joined it. If a body introduces PLR before it resolves
+these conditions, PLR can become **a fourth list, and it will not replace the three**. Use
+this sequence. Resolve the two legal bases first. Then make MoEYS a member of Linkup, which
+is a procedure and not a build. Then deploy PLR, against the civil register for a child below
+16 years, and against the National ID above that age.

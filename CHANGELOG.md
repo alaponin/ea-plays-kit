@@ -8,6 +8,67 @@ Video descriptions and the GitBook link the install command, never a release num
 
 ## [Unreleased]
 
+## [0.2.0] — 2026-09-05
+
+Two passes: the dangling references, and Simplified Technical English. Minor: two skills gain
+the output contract they ship inside, and every skill file changes its wording.
+
+### Changed
+
+- **Every markdown file in the kit is written in ASD-STE100 Simplified Technical English.**
+  This covers `shared/`, the fourteen `SKILL.md` files, each file in `references/` and
+  `scripts/`, both READMEs, `tests/README.md`, `tests/progressa.md`, and the 76 play
+  fixtures. Sentences are short, the voice is active, one sentence gives one instruction, and
+  one word has one meaning. The technical names stay: artefact, play, learner, PAERA,
+  building block, and the A-numbers.
+  Three kinds of text keep their wording. The `Trigger on:` lists in each frontmatter
+  `description` are the surface that the harness matches against the words of a user, so the
+  quoted phrases are unchanged. The `What the learner types` block in each `input.md`, the
+  `The prompt of the play says:` line and the safeguard in each `expected.md` quote the
+  published play, and this repo is not their source. The released entries in this CHANGELOG
+  are a record of what the releases said, so they stay as they were written.
+- **`docs/plans/` is no longer tracked.** Both plans shipped, and both still said *Status:
+  proposed*. They stay on disk. `.gitignore` keeps them out of the repository.
+- **The citations to a build plan that is not in this repo are gone**: `plan §3.1` in
+  `.gitignore`, `§3.5` in `sync-shared.sh`, and `§3.7` in `package.sh`. `tests/README.md`
+  already said that the plan which numbered the criteria is not here.
+- `tests/progressa.md` cited `gitbook-demo/fixture.py` as its source. A learner cannot open
+  that path. The file now says that the source is outside this repo, and that this page is
+  the authority for each fact about Progressa.
+
+### Fixed
+
+- **`bdat-assessor` and `bb-sourcing-researcher` now obey the contract that they carry.** The
+  0.1.0 release carried both skills over without a change, and neither joined the contract.
+  They had no provenance header, no output contract, no `allowed-tools`, and no reference to
+  the four shared files that `sync-shared.sh` copies into them. Each folder therefore held
+  four files that the skill never read. `bdat-assessor` is the primary skill for plays 2.1,
+  2.5 and 2.6, and their `expected.md` needs the nine fields, so the fixture asked for output
+  that the skill never asked the model to write. Both skills now start with the header, name
+  `output-contract.md`, and are read-only, like the other twelve. `bb-sourcing-researcher` no
+  longer offers a `.docx` deliverable, because play 4.4 must paste the output.
+- **No skill names a skill that does not ship.** The four extended originals —
+  `country-context-data`, `paera-assessor`, `ea-lifecycle-method` and
+  `govstack-cost-estimator` — were still cited as live hand-offs: *"hand the posture to"*,
+  *"pull these in"*, and *"load it when §1 needs a figure"*. A learner who installs this kit
+  does not have them. Each citation now names its successor in the kit, and the *Inherited*
+  notes drop the name.
+- The owner URL in both manifests was `github.com/aarelaponin`. The install command in both
+  READMEs, and the git remote, are `alaponin/ea-plays-kit`.
+- The plugin README told a learner to download `ea-plays-<version>.plugin`. `package.sh`
+  builds `ea-plays-v<version>.plugin`.
+- Release 0.1.2 said that 0.1.1 "was tagged but never released". There is no `v0.1.1` tag,
+  here or on the remote.
+- The root README said that CI runs all four commands in the *Working on it* block. The
+  fourth command loads the plugin for a session. CI runs the validation of the marketplace
+  instead.
+
+### Added
+
+- **Criterion 3 also checks the version in the shared header example.** The example named
+  `v0.1.3` in fifteen copies, and nothing kept it current. Release 0.1.3 changed it by hand.
+  The checker now fails a release that changes `plugin.json` and forgets the example.
+
 ## [0.1.3] — 2026-09-05
 
 Reference and documentation fixes. No skill contract changes.
@@ -58,8 +119,8 @@ Reference and documentation fixes. No skill contract changes.
 
 ## [0.1.2] — 2026-09-05
 
-Packaging only. 0.1.1 was tagged but never released, so this is the first release
-carrying the 0.1.1 reference fixes below.
+Packaging only. 0.1.1 was never released, so this is the first release carrying the
+0.1.1 reference fixes below.
 
 ### Changed
 

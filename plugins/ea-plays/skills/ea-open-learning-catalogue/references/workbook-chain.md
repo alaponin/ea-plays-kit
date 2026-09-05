@@ -1,23 +1,23 @@
 # The country workbook chain
 
-Each play produces one artefact. The artefacts feed each other. A skill reads this
-file to fill the **Consumed** and **Feeds** fields of its provenance header, and to
-know what to ask the learner for when an input is missing.
+Each play makes one artefact. The artefacts are the inputs to each other. A skill
+reads this file for two purposes: to fill the **Consumed** and **Feeds** fields of its
+provenance header, and to know what to ask the learner for when an input is missing.
 
-**A0–A8 are frozen.** They are published on the GitBook workbook page and cited by
-Module 1's play pages; renumbering them is a major version bump. A9–A31 are defined
-here for Modules 2–5 and are stable from v0.1.0.
+**A0 to A8 are frozen.** GitBook publishes them on the workbook page, and the play
+pages of Module 1 cite them. A change to these numbers is a major version bump. This
+file defines A9 to A31 for Modules 2 to 5. They are stable from v0.1.0.
 
 ## Rule: no artefact, no guess
 
-If a skill needs an artefact the learner does not have, it says which one and which
-play produces it — *"this needs A0 §4, the roles register; run Play 0 first"* — and
-stops. It never invents the missing input, and it never proceeds on a thinner one
-without saying so in the output.
+A skill can need an artefact that the learner does not have. The skill then tells
+which artefact it needs and which play makes it, for example *"this needs A0 §4, the
+roles register; run Play 0 first"*. Then the skill stops. The skill never invents the
+missing input. If it continues with less input, it says so in the output.
 
-## A0 — the pack every play starts from
+## A0 — the pack that each play starts from
 
-Play 0 produces seven sections. Each play's input is one or two of them.
+Play 0 makes seven sections. The input to each play is one section or two sections.
 
 | A0 § | Section | Feeds |
 | --- | --- | --- |
@@ -94,8 +94,8 @@ Play 0 produces seven sections. Each play's input is one or two of them.
 
 ## Registers that are not A-numbered
 
-Three registers are produced on demand rather than by a play, and are cited by
-name in **Consumed**:
+Three registers are made on demand, not by a play. Cite them by name in
+**Consumed**:
 
 | Register | Skill | Cited as |
 | --- | --- | --- |
@@ -103,5 +103,6 @@ name in **Consumed**:
 | Legal register | `ea-legal-context` | `Legal register (<date>)` |
 | Bodies register | `ea-institution-mapper` | `Bodies register (<date>)` |
 
-They are dated because they go stale — a block that was *pilot* last quarter may
-be *live* now. Re-run rather than reuse anything older than three months.
+Each register has a date because registers go stale. A block that was *pilot* last
+quarter can be *live* now. Do not use a register that is more than three months old.
+Run the skill again.

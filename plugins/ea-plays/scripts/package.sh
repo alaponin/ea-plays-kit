@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build the release artefact from one source tree (plan §3.7).
+# Build the release artefact from one source tree.
 #
 #   package.sh            build into dist/
 #   package.sh --check    validate only; build nothing

@@ -1,49 +1,50 @@
-# Selecting comparators
+# How to select comparators
 
-State the criteria before you select. A comparator set whose basis is unstated is
-indefensible in the room where it matters.
+State the criteria before you select. You cannot defend a comparator set that does not give
+its basis, and you must defend it in the room that matters.
 
 ## The five criteria
 
-| Criterion | How to band it | Why it matters | Failure mode |
+| Criterion | How to make the bands | Why it matters | How it fails |
 | --- | --- | --- | --- |
-| **Income classification** | World Bank: low / lower-middle / upper-middle / high. Same band, or one band up. | Fiscal space determines what is buildable and what must be shared or donor-funded. | Comparing to a high-income country. Every mechanism it used costs money the learner's country does not have. |
-| **Population band** | <2m · 2–10m · 10–30m · 30–100m · >100m | Determines whether a single national registry is administratively feasible and whether sub-national delivery dominates. | Estonia (1.3m) as a general model for a country of 40m. Its once-only architecture is real; its scale assumptions are not transferable. |
-| **Governance type** | Unitary · unitary with delegated administration · unitary with devolved administration · federal. Note sub-national autonomy explicitly. | Whether a central body can mandate anything at all. This determines the entire governance design. | Citing a unitary country's national mandate to a federal one. The mechanism cannot exist there. |
-| **Region and regional bodies** | The region, plus the bodies whose instruments bind (AU, ECOWAS, EAC, SADC, EU) | Regional interoperability frameworks and data-protection instruments are often the real constraint, and the peer group is where political comparison actually lands. | Ignoring the regional instrument the country has already signed. |
-| **Maturity signal** | UN EGDI rank and band; World Bank GTMI group; OECD DGI where applicable | Establishes that the comparison is between peers, not between a country and its aspiration. | Treating the index as the finding. An EGDI rank says nothing about what a country built. |
+| **Income classification** | Use the World Bank bands: low, lower-middle, upper-middle, high. Use the same band, or one band higher. | The fiscal space decides what a country can build, and what it must share or fund with donor money. | You compare with a high-income country. Each mechanism that it used costs money that the learner's country does not have. |
+| **Population band** | <2m · 2–10m · 10–30m · 30–100m · >100m | The population decides whether one national registry is possible to administer, and whether sub-national delivery is the larger part of the work. | You use Estonia, with 1.3m people, as a general model for a country of 40m. Its once-only architecture is real. Its assumptions about scale do not transfer. |
+| **Governance type** | Unitary · unitary with delegated administration · unitary with devolved administration · federal. Also give the level of sub-national autonomy. | It decides whether a central body can mandate anything. The full design of the governance depends on it. | You cite the national mandate of a unitary country to a federal country. That mechanism cannot exist there. |
+| **Region and regional bodies** | The region, and the bodies whose instruments bind the country: the AU, ECOWAS, the EAC, SADC, the EU | The regional frameworks for interoperability and the regional data-protection instruments are frequently the true constraint. The political comparison also happens inside the peer group. | You ignore the regional instrument that the country signed. |
+| **Maturity signal** | The UN EGDI rank and band; the World Bank GTMI group; the OECD DGI, where it applies | It shows that you compare peers, and not a country against its own aspiration. | You use the index as the finding. An EGDI rank says nothing about what a country built. |
 
 ## Priority
 
-**African and developing-country examples first.** They carry more weight with the audience
-and their preconditions are closer. A high-income country earns a place only when it
-supplies a **specific transferable mechanism** — and the card must say what that mechanism
-is, not present the country as a model.
+**Use examples from Africa and from developing countries first.** They carry more weight
+with the audience, and their conditions are closer. A high-income country earns a place only
+when it gives a **specific transferable mechanism**. The card must name that mechanism. The
+card must not give the country as a model.
 
-## Three to five, not more
+## Three to five cards, and no more
 
-Five cards, each sourced, beat ten unsourced. A minister reads three. The synthesis of
-recurring elements is what carries into the business case; the cards are the evidence
-behind it.
+Five cards with sources are better than ten cards with none. A minister reads three. The
+synthesis of the recurring elements goes into the business case. The cards are the evidence
+below it.
 
 ## The contested case is mandatory
 
-At least one card must be a mixed or failed case, with both sides cited. Look for:
+A minimum of one card must be a mixed case or a failed case, with both sides cited. Look for
+these five:
 
-- a national ID or registry programme **ruled unlawful** or halted by a court;
-- a platform **abandoned** or quietly replaced;
-- a framework **published and never applied** — the most common failure, and the most
-  instructive;
-- a **cost overrun** or audit finding the government disputes;
-- a mechanism that **worked and then stopped working** when its political sponsor left.
+- a programme for a national ID or a registry that a court **ruled unlawful** or stopped;
+- a platform that a government **abandoned** or replaced quietly;
+- a framework that a government **published and never applied**. This is the most common
+  failure, and it teaches the most;
+- a **cost overrun** or a finding by an auditor that the government disputes;
+- a mechanism that **worked and then stopped** when its political sponsor left.
 
-The court judgment or audit report is the primary. The government's response is the other
-side. Named journalism (T3) is appropriate here and is paired with the primary, never
-substituted for it.
+The primary source is the judgment of the court or the report of the auditor. The other side
+is the response of the government. Journalism with a named outlet (T3) is correct here. Pair
+it with the primary source. Never use it in place of the primary source.
 
 ## What is not a comparator
 
-A country selected because the model knows a lot about it. A country selected because it
-appears in every digital-government deck. A country whose "comparability" is asserted in
-prose rather than shown against the five criteria. If a card cannot fill the *comparable
-because* row with values, it is not a comparator.
+A country that you select because the model knows much about it. A country that you select
+because it is in each deck about digital government. A country whose comparability you state
+in prose, and do not show against the five criteria. If a card cannot fill the *comparable
+because* row with values, the country is not a comparator.

@@ -1,9 +1,10 @@
 ---
 name: bb-sourcing-researcher
-description: >
-  Conduct market research on GovStack / PAERA building blocks and reason about whether each
-  block should be sourced as a reused product (open-source DPG or commercial), configured on
-  an adjacent block, or custom-built — a structured vendor-vs-bespoke (build-vs-buy) analysis.
+description: >-
+  Do market research on the GovStack and PAERA building blocks. Then reason about the way to
+  source each block: reuse a product, which can be an open-source digital public good or a
+  commercial product; configure the block on an adjacent block; or build it. This is a
+  structured vendor-versus-bespoke analysis, also called build-versus-buy.
   Use whenever a user wants to: find open-source and commercial providers for a
   digital-government capability; map building blocks to implementation options; assess lock-in
   risk; choose between a digital public good and a proprietary product; produce a
@@ -11,130 +12,150 @@ description: >
   options analysis. Trigger on: market research building blocks, vendor vs bespoke, build vs
   buy, sourcing options, DPG vs commercial, open-source alternatives, implementation providers,
   lock-in risk, sourcing decision matrix, reuse vs build, off-the-shelf vs custom, digital
-  public goods landscape. Pairs with govstack-cost-estimator, which sizes the cost; this skill
-  decides the sourcing posture per block.
+  public goods landscape. Pairs with ea-cost-case, which sizes the cost; this skill decides the
+  sourcing posture per block.
+allowed-tools: WebSearch, WebFetch, Read
+disallowed-tools: Write, Edit, NotebookEdit
 ---
 
 # Building Block Sourcing Researcher
 
-A research-and-reasoning skill that, for any GovStack / PAERA building block, (1) finds
-real open-source and commercial implementation options through live market research, and
-(2) reasons about the **sourcing posture** for each block on a four-way scale:
+This skill does research and reasoning. For any GovStack or PAERA building block it does two
+things. It finds real open-source and commercial options with live market research. Then it
+reasons about the **sourcing posture** of each block on a scale of four:
 
 **Reuse-OSS → Reuse-Commercial → Configure → Custom-build**
 
-The output is an evidence-based options analysis that a government, donor, or advisor can
-take into procurement. This skill decides *what kind of thing to procure*; hand the chosen
-posture to `govstack-cost-estimator` to put numbers on it.
+The output is an options analysis with evidence. A government, a donor or an advisor can
+take it into a procurement. This skill decides *what kind of thing to procure*. Give the
+posture that you choose to `ea-cost-case`, which puts numbers on it.
 
 ---
 
-## Core stance (read first)
+## The core stance (read this first)
 
-1. **Reuse is the default; custom is the exception that must be justified.** The burden of
-   proof sits on bespoke build, not on reuse. Every "custom" recommendation must name the
-   specific requirement that no existing product or configuration meets.
-2. **GovStack is product-agnostic.** "GovStack-listed" means a product self-assessed against
-   the specs and appears in the catalogue with a compliance level (Level 1 / Level 2). It is
-   a transparency aid, **not** an endorsement or quality ranking. Absence from the catalogue
-   is not evidence against a product — the catalogue is small and submission-ordered.
-3. **Prefer the DPG, procure the integrator.** For mature blocks the most defensible route is
-   an open-source digital public good deployed and operated under a competitively tendered
-   system-integrator / support contract. State this explicitly rather than framing OSS as
-   "free but unsupported."
-4. **Evidentiary conservatism.** Every named product and every claim about it must come from
-   research conducted in-session (live web research or a cited reference file). Do not invent
-   vendors, compliance levels, deployment counts, or licence terms. If the market for a block
-   is thin, say so — an honest gap is more useful than a padded list.
-5. **Name the lock-in.** For every commercial option, state the lock-in vector (data,
-   licence, proprietary tooling, ecosystem) so the reader can weigh it.
+1. **Reuse is the default. Custom is the exception, and it needs a justification.** The
+   burden of proof is on the bespoke build, not on the reuse. Each recommendation to build
+   must name the specific requirement that no product and no configuration meets.
+2. **GovStack does not endorse products.** "GovStack-listed" means that a product assessed
+   itself against the specifications, and that the catalogue shows it with a compliance
+   level, which is Level 1 or Level 2. The catalogue helps transparency. It is **not** an
+   endorsement and it is not a ranking of quality. A product that is not in the catalogue is
+   not a worse product. The catalogue is small, and it is in the order of submission.
+3. **Prefer the digital public good. Procure the integrator.** For a mature block, the route
+   that you can defend best is an open-source digital public good. A system integrator
+   deploys and operates it under a support contract that you tender competitively. State this
+   route. Do not describe open-source software as "free but unsupported".
+4. **Be conservative with evidence.** Each product that you name, and each claim about it,
+   must come from research in this session. This is live web research, or a reference file
+   that you cite. Do not invent a vendor, a compliance level, a count of deployments, or a
+   licence term. If the market for a block is thin, say so. An honest gap is more useful than
+   a list that you filled.
+5. **Name the lock-in.** For each commercial option, give the lock-in vector: the data, the
+   licence, the proprietary tooling, or the ecosystem. The reader then can judge it.
 
 ---
 
 ## Step 0 — Scope the request
 
-Establish before researching (ask for all missing items in ONE message; don't re-ask what's
-already given):
+Establish these six items before you research. Ask for all the items that you do not have in
+ONE message. Do not ask again for an item that the learner gave you.
 
 | Parameter | Why it matters |
 |---|---|
-| **Blocks in scope** | One block, a subset (e.g. KP3 DPI Roadmap blocks), or all 18 |
-| **Country / region** | Determines which vendors are realistically available, in-country SIs, mobile-money rails, data-residency rules |
-| **Sector / use case** | Education vs health changes which products are relevant (e.g. DHIS2 SEMIS for education analytics) |
-| **Existing systems** | What is already deployed (reuse/extend beats greenfield) — pull from any prior BDAT assessment |
-| **Decision purpose** | Landscape scan, procurement options analysis, lock-in audit, or bespoke-footprint sizing |
-| **Sovereignty constraints** | Is self-hosting / data residency mandatory? (Rules out some commercial SaaS) |
+| **Blocks in scope** | One block, a subset such as the KP3 DPI Roadmap blocks, or all 18 |
+| **Country / region** | It decides which vendors are available, which system integrators are in the country, which mobile-money rails exist, and which data-residency rules apply |
+| **Sector / use case** | Education and health need different products, for example DHIS2 SEMIS for education analytics |
+| **Existing systems** | What the country already operates. To reuse or extend is better than to start again. Take this from a BDAT assessment, if one exists |
+| **Decision purpose** | A landscape scan, a procurement options analysis, a lock-in audit, or a measurement of the bespoke footprint |
+| **Sovereignty constraints** | Is self-hosting or data residency mandatory? This removes some commercial SaaS products |
 
-If a prior `bdat-assessor` or `paera-assessor` output exists for this sector, read it first —
-the application-portfolio and gap analysis tell you what already exists and what is missing.
+If a prior `bdat-assessor` or `paera-reference-check` output exists for this sector, read it
+first. Its application portfolio and its gap analysis tell you what exists and what is
+missing.
 
 ---
 
-## Step 1 — Load the reference scaffolding
+## Step 1 — Load the reference material
 
-Read `references/research-method.md` for:
-- The canonical 18-block list and the capability each block delivers
-- The **source map** — where to look for each block (GovStack catalogue, DPGA registry,
-  project sites, OSS comparison sources) and the search-query patterns that work
-- Maturity priors per block (which blocks have strong OSS markets vs thin/gap markets)
+Read `references/research-method.md` for these three items:
 
-Read `references/build-vs-buy.md` for:
-- The four-way sourcing-posture scale and its decision criteria
-- The lock-in taxonomy and how to score it
-- The reasoning rules that turn research findings into a recommended posture
+- the canonical list of 18 blocks, and the capability that each block gives;
+- the **source map**, which gives where to look for each block, which is the GovStack
+  catalogue, the DPGA registry, the project sites and the sources that compare open-source
+  products, and the patterns of search query that work;
+- the maturity prior for each block, which tells which blocks have a strong open-source
+  market and which have a thin market or no market.
 
-Read `references/worked-example.md` for a complete eighteen-block analysis (Progressa education
-context) to follow or compare against.
+Read `references/build-vs-buy.md` for these three items:
+
+- the scale of four sourcing postures and the criteria to decide between them;
+- the taxonomy of lock-in and how to score it;
+- the rules that turn a research finding into a recommended posture.
+
+Read `references/worked-example.md` for a complete analysis of eighteen blocks in the
+Progressa education context. Follow it or compare against it.
 
 ---
 
 ## Step 2 — Research each block
 
-For each block in scope, run live research (do **not** rely on memory for current products):
+For each block in the scope, do live research. Do **not** use your memory for the products
+that exist now.
 
-1. **Anchor on the curated sources first** (see source map): the GovStack Building Block
-   Software catalogue and the DPGA registry give vetted, government-relevant candidates.
-2. **Then widen** to project sites and OSS comparison sources for options not yet in those
-   catalogues.
-3. **Capture for each candidate**: name, model (OSS / Commercial / Open-core / DPG),
-   GovStack-listed? (with level), maintainer/backer, evidence of real government deployments,
-   licence, and the lock-in vector (for commercial/open-core).
-4. **Note the channel reality**: some blocks (Payments, Messaging) depend on in-country rails
-   (mobile money, local SMS aggregators) that must be integrated regardless of platform choice.
+1. **Start with the curated sources**, in the source map. The GovStack Building Block
+   Software catalogue and the DPGA registry give candidates that somebody checked and that
+   are relevant to a government.
+2. **Then look wider.** Use the project sites and the sources that compare open-source
+   products, to find options that the catalogues do not have yet.
+3. **Record these seven items for each candidate**: the name; the model, which is OSS,
+   Commercial, Open-core or DPG; whether GovStack lists it, and at which level; the
+   maintainer or the backer; the evidence of real deployments in a government; the licence;
+   and the lock-in vector, for a commercial or open-core product.
+4. **Record the reality of the channel.** Some blocks, such as Payments and Messaging, depend
+   on rails inside the country. These are mobile money and local SMS aggregators. You must
+   integrate them, whichever platform you choose.
 
-Scale effort to the request: a single-block question may need 1–3 searches; a full 18-block
-landscape may need 8–15. Search per block rather than one combined query — combined queries
-return shallow results for all of them.
+Make the effort fit the request. A question about one block can need one to three searches. A
+landscape of 18 blocks can need eight to fifteen. Search for each block separately. One
+combined query gives shallow results for each block.
 
 ---
 
-## Step 3 — Reason about sourcing posture per block
+## Step 3 — Reason about the sourcing posture of each block
 
-Apply the four-way scale from `build-vs-buy.md`. For each block, produce:
+Apply the scale of four from `build-vs-buy.md`. Give these four items for each block:
 
-- **Recommended posture**: Reuse-OSS / Reuse-Commercial / Configure / Custom-build
-- **Why**: the one or two decisive factors (market maturity, fit, sovereignty, lock-in)
-- **Lock-in risk**: Low / Medium / High, with the vector named
-- **Bespoke-footprint contribution**: does this block add to custom code, or not?
+- the **recommended posture**: Reuse-OSS, Reuse-Commercial, Configure or Custom-build;
+- **why**: the one or two factors that decided it, which are market maturity, fit,
+  sovereignty or lock-in;
+- the **lock-in risk**: Low, Medium or High, with the vector named;
+- the **contribution to the bespoke footprint**: does this block add custom code?
 
-The four postures, in preference order:
+These are the four postures, in the order of preference:
 
-1. **Reuse-OSS** — a mature DPG/OSS product fits; procure an SI to deploy/operate it.
-   *Default for Identity, Payments, Data Exchange, Registries, Analytics, GIS.*
-2. **Reuse-Commercial** — a competitively sourced commercial product or channel is the
-   realistic route, usually for ancillary competitive layers (biometric devices, SMS/mobile
-   money, qualified trust services) slotting into an open core.
-3. **Configure** — no standalone product dominates; deliver as a configured feature of an
-   adjacent block (e.g. Consent on the Information Mediator; Scheduler via Workflow).
-   *Specify open APIs so it doesn't silently become custom.*
-4. **Custom-build** — justified only by a named requirement no product or configuration meets.
-   Every custom recommendation triggers the bespoke-footprint flag.
+1. **Reuse-OSS** — a mature DPG or open-source product fits. Procure a system integrator to
+   deploy it and operate it. *This is the default for Identity, Payments, Data Exchange,
+   Registries, Analytics and GIS.*
+2. **Reuse-Commercial** — a commercial product or channel that you source competitively is
+   the realistic route. This is usually for a competitive layer at the edge, such as
+   biometric devices, SMS, mobile money, or qualified trust services. These fit into an open
+   core.
+3. **Configure** — no product dominates the category. Give the capability as a configured
+   feature of an adjacent block, for example Consent on the Information Mediator, or a
+   Scheduler through Workflow. *Specify open APIs, or the feature becomes a custom build with
+   no decision.*
+4. **Custom-build** — this posture needs a named requirement that no product and no
+   configuration meets. Each recommendation to build raises the flag for the bespoke
+   footprint.
 
 ---
 
 ## Step 4 — Assemble the output
 
-Default structure (adapt to the decision purpose):
+Write the provenance header first (`references/provenance-header.md`), then the analysis.
+
+This is the default structure. Adapt it to the purpose of the decision.
 
 ```
 ## Building Block Sourcing Analysis: [scope / country / sector]
@@ -161,68 +182,80 @@ Default structure (adapt to the decision purpose):
  "confirm against live procurement terms before sourcing".]
 ```
 
-The default deliverable is **plain prose plus tables** (Word/markdown). The user prefers
-structured text over interactive widgets for reference and briefing documents — do not render
-card layouts or dashboards unless explicitly asked. For a downloadable document use the `docx`
-skill; for a quick in-chat answer, markdown tables are fine.
+**Text in, text out.** Write markdown tables and sections with headings, in the chat. Never
+make a file, a `.docx`, a chart or an image. Play 4.4 must paste this output into the
+sourcing matrix. Posts, not names. Write no analysis before the header. See
+`references/output-contract.md`.
 
 ---
 
 ## Step 5 — Hand-off and adjacency
 
-- **To `govstack-cost-estimator`**: once each block has a posture, the estimator turns
-  reuse/configure/custom into siloed-vs-shared TCO. Sourcing posture is the *input* to the
-  cost model, not a duplicate of it — do not re-derive costs here.
-- **From `bdat-assessor` / `paera-assessor`**: their gap and portfolio findings tell you which
-  blocks already exist (extend, don't re-buy) and which are genuinely missing.
-- **With `country-context-data`**: pull in-country vendor presence, mobile-money rails, and
-  data-residency law to ground "is this vendor realistically available here" judgments.
+- **To `ea-cost-case`**: when each block has a posture, the cost case turns reuse, configure
+  and custom into a siloed-versus-shared TCO. The sourcing posture is the *input* to the cost
+  model. It is not a copy of it. Do not calculate costs here.
+- **From `bdat-assessor` and `paera-reference-check`**: their gap findings and portfolio
+  findings tell you which blocks exist, and which blocks are truly missing. Extend a block
+  that exists. Do not buy it again.
+- **With `country-context-pack`**: take the vendors that are present in the country, the
+  mobile-money rails, and the data-residency law. They support your judgement on whether a
+  vendor is available in this country.
 
 ---
 
 ## Anti-patterns to flag in any analysis
 
-- **Bespoke trap** — custom-building something a product already covers, increasing
-  fragmentation and future legacy cost. The single most important thing this skill exists to
-  prevent.
-- **Generic-ESB-as-mediator** — choosing a generic enterprise service bus over an X-Road-style
-  Information Mediator, recreating point-to-point integration without the security/audit envelope.
-- **Silent configure-to-custom drift** — a block labelled "configure" that, without open-API
-  discipline, becomes a bespoke build nobody decided to fund.
-- **SaaS sovereignty mismatch** — recommending a commercial cloud SaaS where data-residency law
-  or sovereignty policy forbids it.
-- **Catalogue-as-endorsement** — treating GovStack-listing as a quality score, or absence from
-  it as disqualifying.
-- **Memory-sourced vendors** — naming products or compliance levels from training data rather
-  than live research. Always research; always cite.
+- **The bespoke trap** — to build something that a product already covers. It increases
+  fragmentation and the future cost of legacy systems. To prevent this is the most important
+  purpose of this skill.
+- **A generic ESB as the mediator** — to choose a generic enterprise service bus instead of
+  an Information Mediator in the style of X-Road. This makes point-to-point integration again,
+  and it has no envelope for security and audit.
+- **Silent drift from configure to custom** — a block with the label "configure" that becomes
+  a bespoke build that nobody decided to fund, because nobody applied the discipline of open
+  APIs.
+- **A SaaS product against the sovereignty rules** — to recommend a commercial cloud SaaS
+  product where the data-residency law or the sovereignty policy forbids it.
+- **The catalogue as an endorsement** — to use a GovStack listing as a score for quality, or
+  to use absence from the catalogue to remove a product.
+- **Vendors from memory** — to name a product or a compliance level from training data and
+  not from live research. Always research. Always cite.
 
 ---
 
-## Important caveats to always include
+## Caveats to include each time
 
-1. Vendor characterisations reflect general market positioning at the time of research and
-   must be confirmed against live procurement terms before any sourcing decision.
-2. This is an options analysis, not a procurement recommendation or a substitute for a full
-   business case / feasibility study.
-3. Product markets move quickly (especially Digital Wallet and AI/ML) — re-run research if the
-   analysis is more than a few months old.
-4. A "reuse" verdict still requires real implementation effort (configuration, integration,
-   operation) — reuse reduces, but does not eliminate, cost and risk.
+1. The description of a vendor gives its general position in the market at the time of the
+   research. Confirm it against the live procurement terms before any sourcing decision.
+2. This is an options analysis. It is not a procurement recommendation. It does not replace a
+   full business case or a feasibility study.
+3. Product markets move quickly, and the markets for Digital Wallet and for AI/ML move
+   fastest. Do the research again if the analysis is more than a few months old.
+4. A verdict of "reuse" still needs real work to implement: configuration, integration and
+   operation. Reuse makes the cost and the risk smaller. It does not remove them.
 
 ---
 
-## Reference Files
+## Reference files
 
-- `references/research-method.md` — 18-block list, source map, search patterns, maturity priors
-- `references/build-vs-buy.md` — four-way posture scale, lock-in taxonomy, reasoning rules
+- `references/research-method.md` — the list of 18 blocks, the source map, the search
+  patterns, and the maturity priors.
+- `references/build-vs-buy.md` — the scale of four postures, the taxonomy of lock-in, and the
+  rules for reasoning.
 
 ### Fixture material
 
-- `references/worked-example.md` — full eighteen-block analysis in an education context, with
-  three blocks reusing a national system that already exists.
+- `references/worked-example.md` — a full analysis of eighteen blocks in an education
+  context. Three blocks reuse a national system that already exists.
 
-  Progressa is the fictional demonstration country shared by every play; the canonical
+  Progressa is the fictional demonstration country that each play shares. The canonical
   description is `tests/progressa.md` in the kit repo.
 
-Read these when you need the detail they contain. For anything not covered, research live and
-cite.
+### The shared contract
+
+- `references/source-tiers.md` · `references/provenance-header.md` ·
+  `references/output-contract.md` · `references/workbook-chain.md` — read them before you
+  write the output. They are the same four files that each skill in this kit obeys.
+
+Read these files when you need the detail in them. For a subject that they do not cover, do
+live research and cite it.

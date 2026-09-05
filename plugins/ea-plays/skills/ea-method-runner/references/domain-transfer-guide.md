@@ -1,62 +1,61 @@
-# Domain Transfer Guide
+# Domain transfer guide
 
-Use this to move fast when the method is being run on a sector or country
-for the first time in this engagement.
+Use this guide to move quickly when you run the method on a sector or a country for the
+first time in this engagement.
 
 ---
 
-## Institution Classification Taxonomy
+## The taxonomy that classifies an institution
 
-Every public body encountered in Discovery should be classified as one (or
-occasionally two) of these five types. The classification isn't cosmetic —
-it predicts what capabilities the body needs and what its role should be in
-the target architecture.
+Classify each public body that you find in Discovery as one of these five types. Sometimes a
+body is two types. The classification is not decoration. It tells you which capabilities the
+body needs, and which role the body must have in the target architecture.
 
-| Type | Definition | Needs (per PAERA org typology) | Typical target-architecture role |
+| Type | Definition | Needs, per the PAERA organisation typology | Typical role in the target architecture |
 |---|---|---|---|
-| **Policy unit** | Sets policy, funds delivery, does not run frontline services itself | Document/content management, analytics | Sets standards; consumes sector-wide reporting from the shared platforms |
-| **Regulatory agency** | Licenses, certifies, or enforces standards within a domain | Policy-unit capabilities + a digital service-delivery platform (forms, licensing, payments) | Certifies against the authoritative registry rather than maintaining its own list |
-| **Service-delivery authority** | Delivers a service at scale to citizens/businesses | Regulatory-agency capabilities + registration, compliance, customer management at industrial scale | Consumes identity + the core registry; owns only its own service-execution data |
-| **State registry** | The legally designated owner of a "who/what is registered" list (identity, land, business, learner, patient) | Registration BB, strong data-quality and audit requirements | Becomes (or should become) the authoritative source other bodies read from |
-| **Shared platform** | Provides infrastructure or a capability every sector reuses (identity, payments, data exchange, hosting) | Interoperability, uptime, governance of consuming bodies | The thing everything else in the target architecture consumes |
+| **Policy unit** | Sets the policy and funds the delivery. It does not operate frontline services | Document and content management, analytics | It sets the standards. It consumes the reporting of the sector from the shared platforms |
+| **Regulatory agency** | Licenses, certifies or enforces the standards of a domain | The capabilities of a policy unit, and a digital platform for service delivery: forms, licensing and payments | It certifies against the authoritative registry. It does not maintain its own list |
+| **Service-delivery authority** | Delivers a service at scale to citizens and businesses | The capabilities of a regulatory agency, and registration, compliance and customer management at industrial scale | It uses identity and the core registry. It owns only the data that it needs to execute its service |
+| **State registry** | The legal owner of a list of who or what is registered: identity, land, business, learner or patient | The Registration building block, and strong requirements for data quality and audit | It is the authoritative source that the other bodies read, or it must become that source |
+| **Shared platform** | Gives infrastructure or a capability that each sector reuses: identity, payments, data exchange, hosting | Interoperability, uptime, and governance of the bodies that use it | Everything else in the target architecture uses it |
 
-Some bodies span two types (e.g. an exam council can be both a
-service-delivery authority and, informally, a shadow registry if it keeps
-its own candidate list — that's usually itself one of the four common gaps).
+Some bodies are two types. An examination council can be a service-delivery authority and,
+without a mandate, also a registry, because it keeps its own list of candidates. That second
+role is usually one of the four common gaps.
 
 ---
 
-## Cross-Sector Domain Analogy Table
+## Table of analogies between the sectors
 
-The same fragmentation shapes — duplicate registries, paper re-entry,
-point-to-point integration, no clear owner, a stalled flagship — recur
-across sectors. Use this table to translate quickly.
+The same shapes of fragmentation are in each sector: duplicate registries, staff who enter
+data on paper again, point-to-point integration, no clear owner, and a flagship programme
+that stopped. Use this table to translate quickly between sectors.
 
-| Sector | The duplicated "person/object" | Typical stalled flagship | Typical registries in tension | Typical shared platforms to check for reuse |
+| Sector | The person or object that is duplicated | Typical flagship that stopped | Registries typically in tension | Shared platforms to check for reuse |
 |---|---|---|---|---|
-| **Education** | The learner | A single learner record from primary school to university | School census, exam-board candidate list, tertiary records | National identity authority, national data-exchange backbone, national payment switch |
-| **Health** | The patient | A single patient record across primary care, hospitals, and insurance | Facility-level patient registers, insurance-scheme membership lists, disease-programme registers | National identity/civil registration, health information exchange, payment/claims switch |
-| **Agriculture** | The farmer / the farm plot | A single farmer registry linking land, subsidy eligibility, and extension services | Land registry, subsidy/input-scheme beneficiary lists, cooperative membership records | National identity authority, land registry, payment switch, GIS/land-parcel platform |
-| **Social protection** | The beneficiary / the household | A single social registry determining eligibility across programmes | Programme-specific beneficiary lists (cash transfer, school feeding, health insurance) | National identity authority, payment switch, data-exchange backbone |
-| **Tax / revenue** | The taxpayer | A single taxpayer identifier across income, VAT, customs, and property | Tax-type-specific taxpayer databases, customs declarant lists, property registers | National identity authority, national payment switch, business registry |
-| **Land** | The parcel / the rights-holder | A single land record resolving overlapping claims | Deeds registry, cadastral survey records, customary/traditional tenure records | National identity authority, GIS platform, data-exchange backbone |
+| **Education** | The learner | One learner record, from primary school to university | The school census, the candidate list of the examination board, the records of the tertiary institutions | The national identity authority, the national backbone for data exchange, the national payment switch |
+| **Health** | The patient | One patient record across primary care, the hospitals and the insurance | The patient registers of each facility, the membership lists of the insurance scheme, the registers of the disease programmes | National identity and civil registration, the health information exchange, the switch for payments and claims |
+| **Agriculture** | The farmer, or the plot of land | One farmer registry that links the land, the eligibility for a subsidy, and the extension services | The land registry, the beneficiary lists of the subsidy and input schemes, the membership records of the cooperatives | The national identity authority, the land registry, the payment switch, the GIS platform for land parcels |
+| **Social protection** | The beneficiary, or the household | One social registry that decides the eligibility for each programme | The beneficiary list of each programme: cash transfer, school feeding, health insurance | The national identity authority, the payment switch, the backbone for data exchange |
+| **Tax and revenue** | The taxpayer | One identifier for a taxpayer, across income, VAT, customs and property | The taxpayer database of each type of tax, the lists of the customs declarants, the property registers | The national identity authority, the national payment switch, the business registry |
+| **Land** | The parcel, or the holder of the rights | One land record that resolves the claims that overlap | The deeds registry, the records of the cadastral survey, the records of customary tenure | The national identity authority, the GIS platform, the backbone for data exchange |
 
-When starting a new sector, name the row above (or draft an equivalent one
-if the sector isn't listed) before Discovery begins — it gives the
-engagement a fast, testable hypothesis for what Assess will likely confirm.
+Before Discovery starts on a new sector, name the row above for that sector. If the sector
+is not in the table, write an equivalent row. The row gives the engagement a fast hypothesis
+that the Assess phase can test.
 
 ---
 
-## Companion Skills by Phase
+## The companion skill for each phase
 
 | Phase | Companion skill | What it adds |
 |---|---|---|
-| Discover | `country-context-data` | Public indicators, institutional structures, existing digital-ID/registry programmes for the country |
-| Assess | `paera-assessor` | GovStack/PAERA-anchored maturity scoring and formal gap-to-building-block mapping |
-| Assess / Adapt | `bdat-assessor` | Four-layer (Business/Data/Application/Technology) current-state reading of a specific body, if deeper organisational detail is needed than the sector-wide gap analysis covers |
-| Adapt | `bb-sourcing-researcher` | Real market/DPG options for BUY calls; lock-in risk assessment |
-| Adapt / Plan | `govstack-cost-estimator` | Explicit cost comparison between siloed (per-programme) and shared (whole-of-government) sourcing, to justify SHARE calls to a budget-holder |
+| Discover | `country-context-pack` | The public indicators, the institutional structures, and the programmes for digital ID and registries that the country has |
+| Assess | `paera-reference-check` | Maturity scoring against GovStack and PAERA, and a formal map from a gap to a building block |
+| Assess and Adapt | `bdat-assessor` | A reading of the current state of one body in four layers: Business, Data, Application and Technology. Use it when you need more organisational detail than the gap analysis of the sector gives |
+| Adapt | `bb-sourcing-researcher` | The real options in the market and among the digital public goods for a BUY decision, and an assessment of the lock-in risk |
+| Adapt and Plan | `ea-cost-case` | A cost comparison between siloed sourcing, for each programme, and shared sourcing, for all of government. Use it to justify a SHARE decision to a person who holds a budget |
 
-Pull these in for their specialised sub-task; this skill (`ea-lifecycle-method`)
-owns the overall five-phase sequence, the discipline at each gate, and the
-six deliverables that tie the whole engagement together.
+Use these skills for their specialised sub-task. This skill owns the sequence of the five
+phases, the discipline at each gate, and the six deliverables that hold the engagement
+together.

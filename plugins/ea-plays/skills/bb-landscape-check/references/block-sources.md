@@ -1,80 +1,83 @@
-# Sources per building block — what each can and cannot prove
+# The sources for each building block — what each one can prove
 
-Organisations, not URLs, are the stable part. Where a URL is given it is a starting point;
-if it has moved, search the organisation's name plus the dataset name, and record the new
-URL here.
+The organisations are stable. The URLs are not. A URL here is a start. If a URL moved,
+search for the name of the organisation and the name of the dataset. Then record the new URL
+in this file.
 
 ## Identity
 
 | Source | Proves | Does not prove |
 | --- | --- | --- |
-| World Bank **ID4D** dataset and country diagnostics | Coverage rates, legal framework, capabilities | Whether a specific system is live *today* — diagnostics lag |
-| The **national ID authority's own site** | Existence, enrolment figures, service catalogue | Interoperability with other sectors |
-| **ID4Africa** country profiles | Implementation maturity across 48 African members | Current status between updates |
-| **MOSIP deployment list** | That a country deployed MOSIP, and at what stage | Coverage; whether it is the *national* system |
-| **UNECA Africa Digital ID Landscape** | Country-level profiles, legal frameworks | Anything after its publication year |
+| The **ID4D** dataset and country diagnostics of the World Bank | The rates of coverage, the legal framework, and the capabilities | Whether a system is live *today*. A diagnostic is some years behind |
+| The **site of the national ID authority** | That the system exists, the enrolment figures, and the service catalogue | Interoperability with other sectors |
+| The country profiles of **ID4Africa** | The maturity of the implementation, across 48 African members | The status between two updates |
+| The **MOSIP deployment list** | That a country deployed MOSIP, and at which stage | The coverage. It also does not prove that MOSIP is the *national* system |
+| The **UNECA Africa Digital ID Landscape** | Country profiles and legal frameworks | Anything after the year of publication |
 
-Watch for: a foundational ID and a functional (sectoral) ID being conflated. Ask which one
-the claim is about. Age of issuance matters for education — an ID issued only at 16 cannot
-anchor a learner registry.
+Watch for this error: a foundational ID and a functional ID of one sector are two different
+things. Ask which one the claim is about. For education, the age of issue matters. An ID
+that a body issues only at 16 years cannot anchor a learner registry.
 
 ## Civil registration
 
 | Source | Proves |
 | --- | --- |
-| The national **CRVS agency** | The registration process, whether it is digital, coverage |
-| **UNICEF** birth-registration data | The registration rate, by year |
-| World Bank **ID4D** CRVS material | The link (or absence of one) between CRVS and the ID system |
+| The national **CRVS agency** | The registration process, whether it is digital, and the coverage |
+| The birth-registration data of **UNICEF** | The registration rate, for each year |
+| The CRVS material of **ID4D** at the World Bank | The link between CRVS and the ID system, or the absence of a link |
 
-Watch for: registration *rate* versus *certificate possession* rate — they differ, often
-by a lot, and a design that assumes a certificate needs the second figure.
+Watch for this error: the *rate of registration* and the rate of *possession of a
+certificate* are different, and frequently they are very different. A design that assumes a
+certificate needs the second figure.
 
 ## Payments
 
 | Source | Proves | Does not prove |
 | --- | --- | --- |
-| The **central bank's** instant-payment / national-switch page and **annual report** | That a switch exists, its operator, transaction volumes | Government access — a retail switch is not a G2P rail |
-| World Bank **fast-payments** material | Cross-country status of fast-payment systems | Local participation detail |
-| **GSMA** mobile-money data | Mobile-money accounts and agent networks | Anything about a government payment platform |
+| The page of the **central bank** for instant payments or the national switch, and its **annual report** | That a switch exists, who operates it, and the transaction volumes | Access for the government. A retail switch is not a rail for government-to-person payments |
+| The **fast-payments** material of the World Bank | The status of fast-payment systems across countries | The detail of who participates in the country |
+| The mobile-money data of **GSMA** | The mobile-money accounts and the networks of agents | Anything about a payment platform of the government |
 
-Watch for: "the country has mobile money" being read as "the government can disburse". G2P
-capability needs a named government payment mechanism, not a retail one.
+Watch for this error: "the country has mobile money" becomes "the government can pay
+people". A government-to-person capability needs a named payment mechanism of the
+government. A retail mechanism is not one.
 
 ## Data exchange
 
 | Source | Proves | Does not prove |
 | --- | --- | --- |
-| **NIIS X-Road world map** | That an X-Road instance is registered | Its member count, whether it is in production |
-| **GovStack country engagements** | That the country engages with GovStack | That any building block is deployed |
-| **UNDP DPI map** | A country's self-declared DPI status | Independent verification |
-| The **operator's own member list / service catalogue** | The real answer: who is connected and to what | — this is the source to reach |
+| The **X-Road world map** of NIIS | That somebody registered an X-Road instance | The number of members. It also does not prove that the instance is in production |
+| The **country engagements of GovStack** | That the country works with GovStack | That the country deployed a building block |
+| The **DPI map of UNDP** | The DPI status that the country declared for itself | An independent verification |
+| The **member list or the service catalogue of the operator** | The true answer: who is connected, and to what | — this is the source to reach |
 
-Watch for: an instance registered on a map years ago with four members still. Always find
-the member count and its date; a data-exchange layer with no data catalogue is a pilot.
+Watch for this error: somebody registered an instance on a map some years ago, and it still
+has four members. Always find the number of members and its date. A data-exchange layer with
+no catalogue of data is a pilot.
 
 ## Cloud and hosting
 
 | Source | Proves |
 | --- | --- |
-| The **national data-centre or G-cloud operator's** own pages and service catalogue | Existence, tiers offered, who may host |
-| The national **ICT agency's** annual report | Utilisation, whether ministries actually host there |
+| The pages and the service catalogue of the operator of the **national data centre or the G-cloud** | That it exists, which tiers it offers, and who can host on it |
+| The annual report of the national **ICT agency** | The use of the service, and whether the ministries host their systems there |
 
-Watch for: a data centre that exists physically but has no service catalogue, no SLA and no
-tenants. That is a building, not a building block.
+Watch for this error: a data centre exists as a building, and it has no service catalogue,
+no SLA and no tenants. That is a building. It is not a building block.
 
 ## Consent and data sharing
 
 | Source | Proves |
 | --- | --- |
-| The **data-protection regulator's** register and guidance | The legal basis regime, whether the regulator is operative |
-| Any **published consent service** | A technical consent capability |
+| The register and the guidance of the **data-protection regulator** | The regime of legal bases, and whether the regulator operates |
+| Any **consent service that is published** | A technical capability for consent |
 
-Watch for: a data-protection act in force with a regulator that has taken no action and has
-a handful of staff. Record the act as *enacted* and the enforcement capability as *unclear* —
-they are different facts and a design depends on both.
+Watch for this error: a data-protection act is in force, and its regulator has a few staff
+and has taken no action. Record the act as *enacted* and the capability to enforce it as
+*unclear*. These are two different facts, and a design depends on both.
 
 ## Sector registries
 
-The sector ministry's own systems list, and the donor project documents that built them.
-A registry named in a sector plan is *planned*; a registry with an operator, a record count
-and a maintenance contract is *live*.
+Use the systems list of the sector ministry, and the donor project documents that built the
+systems. A registry that a sector plan names is *planned*. A registry with an operator, a
+count of records and a maintenance contract is *live*.

@@ -1,48 +1,49 @@
-# Mirrors, rejects, and where the primary usually is
+# Mirrors, rejects, and where the primary source usually is
 
-Grade the domain before you fetch it. This list is not exhaustive — apply the tier
-definitions in `source-tiers.md` to anything not named here.
+Grade the domain before you read the page. This list does not contain each domain. For a
+domain that is not here, apply the tier definitions in `source-tiers.md`.
 
-## Mirrors — record, then find the original
+## Mirrors — record them, then find the original
 
-| Domain | What it is | Where the primary usually is |
+| Domain | What it is | Where the primary source usually is |
 | --- | --- | --- |
-| docplayer.* | Scraped PDF mirror | The issuing ministry's or donor's own site. Search the exact document title plus the body's name. |
-| scribd.com | Upload mirror, often paywalled | As above. |
-| slideshare.net | Deck mirror | The conference or organisation that hosted the session. |
-| coursehero, studocu | Coursework mirrors | Rarely worth chasing; the underlying claim usually has a proper source. |
-| pdfcoffee, vdocuments, dokumen.pub | PDF mirrors | As docplayer. |
-| Google cache / web.archive.org | A copy of a page | Archive.org is legitimate **for a page that has since moved or gone**: cite the archived URL and say so, and record the original URL and its capture date. It is not a way to avoid checking whether the live page still says this. |
+| docplayer.* | A mirror of PDF files that a program collected | The site of the ministry or the donor that issued it. Search for the exact title of the document and the name of the body. |
+| scribd.com | A mirror of uploaded files. It is frequently behind a paywall | The same as docplayer. |
+| slideshare.net | A mirror of presentation decks | The conference or the organisation that held the session. |
+| coursehero, studocu | Mirrors of coursework | It is rarely useful to follow these. The claim below them usually has a correct source. |
+| pdfcoffee, vdocuments, dokumen.pub | Mirrors of PDF files | The same as docplayer. |
+| Google cache and web.archive.org | A copy of a page | Archive.org is correct **for a page that moved or that is gone**. Cite the archived URL and say that it is archived. Also record the original URL and the date of the capture. Do not use an archive to avoid a check of what the live page says now. |
 
-## Rejected — never cited
+## Rejected sources — never cite these
 
-- Medium, Substack, LinkedIn articles, personal blogs — find what they were summarising.
-- Vendor marketing and "customer story" pages — a supplier's claim about a deployment
-  is a claim by an interested party. The operator's own page or the donor's project
-  document is the source.
-- Content farms and AI-generated summary sites (recognisable by no named author, no
-  date, and text that restates a search result).
-- Press-release wires reproducing a vendor announcement.
-- Wikipedia **as the source**. Use it to find the citation, then cite that.
+- Medium, Substack, LinkedIn articles and personal blogs. Find the material that they
+  summarised.
+- Vendor marketing and pages with the title "customer story". A claim by a supplier about a
+  deployment is a claim by a party with an interest. The source is the page of the operator
+  or the project document of the donor.
+- Content farms and sites with AI-generated summaries. You can recognise them: they have no
+  named author, no date, and text that says a search result again.
+- Press-release wires that print the announcement of a vendor.
+- Wikipedia **as the source**. Use Wikipedia to find the citation. Then cite the citation.
 
-## Sources that look official but are not
+## Sources that look official and are not
 
-- Draft strategies posted by a consultancy rather than the ministry — cite the ministry
-  version or say the document is a draft in circulation.
-- Conference slides describing a plan — a slide is evidence of an intention, not of a
-  live system. This matters most for building-block status.
-- A donor's *appraisal* document (a PAD) describes what a project **intends** to build.
-  Its *completion* report (ICR) describes what was built. Do not read a PAD as evidence
-  that a system exists.
+- A draft strategy that a consultancy published, and not the ministry. Cite the version of
+  the ministry, or say that the document is a draft in circulation.
+- Slides from a conference that describe a plan. A slide is evidence of an intention. It is
+  not evidence of a live system. This is most important for the status of a building block.
+- The *appraisal* document of a donor, a PAD, describes what a project **intends** to build.
+  The *completion* report, an ICR, describes what the project built. Do not use a PAD as
+  evidence that a system exists.
 
-## Where the primary usually lives
+## Where the primary source usually is
 
 | Claim about | Look first at |
 | --- | --- |
-| A law or its status | The national gazette or law portal; the parliament's bill tracker |
-| A body's mandate | Its establishing act, then its own "about" page |
-| A national strategy | The owning ministry's publications page |
-| A system going live | The operator's own announcement, then the central bank / agency annual report |
-| Coverage or enrolment figures | The operator's report or the World Bank / ITU / UN dataset — not a news summary of it |
-| A country's EA framework | The digital agency's own site; the UN E-Government Survey country page as corroboration |
-| A cancelled or litigated programme | The court's own judgment or the audit office's report, plus named journalism |
+| A law or its status | The national gazette or the law portal; the bill tracker of the parliament |
+| The mandate of a body | Its establishing act, then its own "about" page |
+| A national strategy | The publications page of the ministry that owns it |
+| A system that went live | The announcement of the operator, then the annual report of the central bank or the agency |
+| A figure for coverage or enrolment | The report of the operator, or the dataset of the World Bank, ITU or UN. Do not use a news summary of the dataset |
+| The EA framework of a country | The site of the digital agency. Use the country page of the UN E-Government Survey to confirm it |
+| A programme that stopped or went to court | The judgment of the court or the report of the audit office, and journalism with a named outlet |

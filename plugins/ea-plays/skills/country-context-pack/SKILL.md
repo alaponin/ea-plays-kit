@@ -1,9 +1,9 @@
 ---
 name: country-context-pack
 description: >-
-  Build the A0 country context pack — the seven-section input every play in this course
-  consumes, sourced from public records rather than pasted from memory. Run it once per
-  country and sector, before any other play. Returns: a digital-landscape brief (feeds 1.1,
+  Build the A0 country context pack. This is the seven-section input that each play in this
+  course uses. It comes from public records, not from memory. Run it one time for each
+  country and sector, before any other play. It gives: a digital-landscape brief (feeds 1.1,
   1.2); a programme list with budget envelopes and building-block needs (1.3, 1.5); the
   ministry operating context and constraints (1.4); an institutional roles register by post
   with confirmed/partial/gap tags (1.6, 1.7); a country-characteristics one-liner (1.8, 5.1);
@@ -20,128 +20,143 @@ disallowed-tools: Write, Edit, NotebookEdit
 
 ## What this skill does
 
-Produces **A0 — the country context pack**, the artefact at the head of the workbook
-chain, in the seven sections the plays consume. Every play in the course opens by asking
-the learner to paste context they do not have; this is the step that builds it.
+This skill makes **A0 — the country context pack**. A0 is the first artefact in the
+workbook chain. The pack has the seven sections that the plays use.
 
-It serves **Play 0**, and through A0 it serves every other play. Plays run bare in any
-assistant — with this skill their input is sourced and dated instead of remembered.
+Each play in the course starts when it asks the learner to paste context. The learner does
+not have that context. This is the step that builds it.
+
+The skill serves **Play 0**. Through A0 it serves each other play. The plays run bare in
+any assistant. With this skill, their input has sources and dates. It does not come from
+memory.
 
 ## Inputs
 
-The country name, and the sector if the learner has one (education, health, social
-protection, agriculture, tax…). Nothing else. If no sector is given, build §1–§5 and §7
-whole-of-government and ask which sector before building §6.
+The skill needs the name of the country. It also needs the sector, if the learner has one:
+education, health, social protection, agriculture, or tax. It needs nothing more.
 
-Ask at most three clarifying questions, all at once, and record the answers in the pack —
-see `references/output-contract.md` §4.
+If the learner gives no sector, build §1 to §5 and §7 for all of government. Then ask for
+the sector before you build §6.
+
+Ask a maximum of three questions, all at the same time. Record the answers in the pack.
+See `references/output-contract.md` §4.
 
 ## Procedure
 
-Build the sections in order. Each is self-contained: a learner who needs only §4 can be
-given §4 alone, with the provenance header.
+Build the sections in order. Each section is complete in itself. If a learner needs only
+§4, you can give §4 alone with the provenance header.
 
-1. **§1 Digital-landscape brief** — four paragraphs: connectivity and affordability; the
-   digital-government strategy in force and the body that owns it; the identity programme
-   and any cross-agency systems (data exchange, payments, civil registration); maturity and
-   gaps against a published index. Sources: ITU DataHub and A4AI (connectivity, T1); the
-   ministry's own publications page (strategy, T1); UN EGDI and the World Bank GTMI
-   (maturity, T1); ID4D and the operator's own site (identity, T1). Name institutions,
-   systems and documents with the year of each.
+1. **§1 Digital-landscape brief** — write four paragraphs: connectivity and affordability;
+   the digital-government strategy in force and the body that owns it; the identity
+   programme and any systems that cross agencies, such as data exchange, payments and civil
+   registration; maturity and gaps against a published index. Sources: ITU DataHub and
+   A4AI for connectivity (T1); the publications page of the ministry for the strategy (T1);
+   UN EGDI and the World Bank GTMI for maturity (T1); ID4D and the site of the operator for
+   identity (T1). Give the year with each institution, system and document.
 
-2. **§2 Programme list** — three to five current or planned programmes in the sector, each
-   with status, year, funder and budget envelope, lead body, and which of identity,
-   payments, data exchange, registration and consent it needs. Sources: the **national
-   budget document** and the ministry's annual plan (T1); **World Bank PADs and ICRs**,
-   AfDB and Global Fund project documents (T2) — a PAD describes systems in unusual detail.
-   Read a PAD as intent and an ICR as outcome; say which you are using.
+2. **§2 Programme list** — list three to five programmes in the sector that are current or
+   planned. Give the status, the year, the funder, the budget envelope and the lead body
+   for each one. Also give which of these each programme needs: identity, payments, data
+   exchange, registration and consent. Sources: the **national budget document** and the
+   annual plan of the ministry (T1); **World Bank PADs and ICRs**, and AfDB and Global Fund
+   project documents (T2). A PAD describes systems in unusual detail. A PAD gives the
+   intent and an ICR gives the outcome. Say which one you use.
 
-3. **§3 Ministry operating context** — institutional structure and degree of
-   decentralisation; policy framework and sector plan; legal, financial (including donor
-   dependence and any documented PFM failure), technical, data and human-resource
-   constraints; political context. End with one paragraph on **what is absent from the
-   public record**. That paragraph is not padding — it is what stops the next play
-   inventing the missing part.
+3. **§3 Ministry operating context** — give the institutional structure and the level of
+   decentralisation. Give the policy framework and the sector plan. Give the legal,
+   financial, technical, data and human-resource constraints. Include donor dependence and
+   any PFM failure in the record. Give the political context. End with one paragraph on
+   **what the public record does not contain**. That paragraph has a function: it stops the
+   next play from inventing the part that is missing.
 
-4. **§4 Institutional roles register** — by post. The CDO/CTO or political equivalent; the
-   head of the civil service; the national ICT or e-government agency and its board; sector
-   ministry CIOs; any existing EA function or chief architect; any cross-government
-   governance board; the procurement authority; the data-protection regulator; the budget
-   authority; the government CISO; the interoperability-standards function. Each with
-   institution, one-line mandate, and a status tag — **confirmed** (exists, post filled),
-   **partial** (exists but unclear or unstaffed), **gap** (does not exist). End with the
-   roles an EA programme needs that are missing.
+4. **§4 Institutional roles register** — record each role by post. Include the CDO or CTO
+   or the political equivalent; the head of the civil service; the national ICT or
+   e-government agency and its board; the CIOs of the sector ministries; any EA function or
+   chief architect that exists; any governance board that crosses government; the
+   procurement authority; the data-protection regulator; the budget authority; the
+   government CISO; and the function for interoperability standards. Give the institution,
+   a mandate of one line, and a status tag for each post. The status tags are **confirmed**
+   if the post exists and a person holds it, **partial** if the post exists but is unclear
+   or has no staff, and **gap** if the post does not exist. At the end, list the roles that
+   an EA programme needs and the country does not have.
 
-   Sources will hand you the names of current holders. **Drop them at the point of
-   writing.** The August 2026 test runs put real office-holders into this register and into
-   the RACI downstream; that is the failure this rule exists to prevent.
+   Sources give you the names of the persons in the posts. **Remove these names when you
+   write.** The August 2026 test runs put the names of real office-holders into this
+   register, and then into the RACI. This rule prevents that failure.
 
-5. **§5 Country characteristics one-liner** — one paragraph, for comparator search:
-   population; income classification; governance type and sub-national autonomy; region and
-   regional bodies; digital-government maturity with the index rankings; state of national
-   ID, civil registration, data exchange and payments; the coordinating digital body and
-   whether its mandate is binding; budget-cycle constraints; main donors; whether an EA
-   function or board exists.
+5. **§5 Country characteristics one-liner** — write one paragraph for the comparator
+   search. Give the population; the income classification; the type of governance and the
+   level of sub-national autonomy; the region and its regional bodies; the digital-
+   government maturity with the index rankings; the state of the national ID, the civil
+   registration, the data exchange and the payments; the digital body that coordinates, and
+   whether its mandate binds other bodies; the constraints of the budget cycle; the main
+   donors; and whether an EA function or board exists.
 
-6. **§6 Public bodies, systems and registries** — for the sector: ministry or ministries,
-   examinations or regulatory bodies, registries, and the shared-platform providers. Each
-   with mandate, known systems, known registries, and confirmed/inferred. **Where a body
-   you would expect does not appear to exist, say so** — an absence is a finding.
-   For a deeper register with legal mandates and a PAERA classification, hand off to
-   `ea-institution-mapper`.
+6. **§6 Public bodies, systems and registries** — for the sector, list the ministry or
+   ministries, the bodies for examinations or regulation, the registries, and the providers
+   of the shared platforms. Give the mandate, the known systems and the known registries
+   for each one. Mark each entry confirmed or inferred. **If a body that you expect does
+   not exist, say so.** An absence is a finding. For a deeper register with legal mandates
+   and a PAERA classification, use `ea-institution-mapper`.
 
-7. **§7 Legal and policy list** — data-protection act, procurement law and e-procurement
-   rules, e-government or digital-transactions act or decree, access-to-information act,
-   the sector act, and the strategies in force. Each with title, year, status, owning body,
-   and the one constraint it places on a data-sharing or shared-platform design. For the
-   full register with citations and the regulators created, hand off to `ea-legal-context`.
+7. **§7 Legal and policy list** — list the data-protection act, the procurement law and the
+   e-procurement rules, the e-government or digital-transactions act or decree, the
+   access-to-information act, the sector act, and the strategies in force. Give the title,
+   the year, the status and the owning body for each one. Also give the one constraint that
+   each one puts on a design for data sharing or a shared platform. For the full register
+   with citations and the regulators that each law creates, use `ea-legal-context`.
 
-8. **Run `cite-or-discard` on the whole pack** before returning it. A0 is the input to
-   every play; a fabricated URL here propagates into thirty-seven artefacts.
+8. **Run `cite-or-discard` on the full pack before you give it to the learner.** A0 is the
+   input to each play. One invented URL here goes into thirty-seven artefacts.
 
-9. **Date-stamp it.** A0 goes stale. Say so in the output: re-run before it is six months
-   old, and re-run §6 and §7 sooner if a programme or a bill is moving.
+9. **Put the date on it.** A0 goes stale. Say so in the output. Tell the learner to run it
+   again before it is six months old, and to run §6 and §7 again sooner if a programme or a
+   bill moves.
 
 ## Output contract
 
-Provenance header first (`references/provenance-header.md`), then the seven sections,
-each under a heading that names the section number and the plays it feeds:
+Write the provenance header first (`references/provenance-header.md`). Then write the
+seven sections. Each heading gives the section number and the plays that the section
+feeds:
 
 ```
 ## §4 Institutional roles register — feeds 1.6, 1.7
 ```
 
-§2, §4, §6 and §7 are tables. §1, §3 and §5 are prose. Every claim carries its URL, tier
-and access date **inline in the row or the sentence**, not in a bibliography.
+Write §2, §4, §6 and §7 as tables. Write §1, §3 and §5 as prose. Each claim carries its
+URL, tier and access date **in the same row or the same sentence**. Do not use a
+bibliography.
 
-Text in the chat. No file, no chart. **Posts, never names.** No reasoning before the
-header. See `references/output-contract.md`.
+Write text in the chat. Do not make a file or a chart. **Posts, never names.** Write no
+analysis before the header. See `references/output-contract.md`.
 
-Where a section cannot be built — no public budget document, no law portal — return the
-section with the heading, the reason, and what the learner should ask for internally.
-A missing section is not a reason to omit the heading; the next play looks for it.
+You can be unable to build a section, because there is no public budget document or no law
+portal. Then give the section with its heading, the reason, and what the learner must ask
+for inside the government. A section that you cannot build is not a reason to remove the
+heading. The next play looks for the heading.
 
 ## Safeguard handed back
 
-A0 is the public record, and the public record is thin, dated and sometimes wrong.
-Before the pack carries a play into a briefing:
+A0 is the public record. The public record is thin, it is not current, and sometimes it is
+wrong. Do these steps before the pack goes into a briefing:
 
-- **§2 budgets**: confirm the envelope with the budget department. Donor documents state
-  approved amounts, not disbursed ones.
-- **§4 status tags**: a post that exists on an organogram may be vacant. Confirm the
-  *partial* and *gap* rows with someone inside.
-- **§6 and §7**: confirm each body's mandate against its establishing instrument, and each
-  law's status against the gazette — a bill in the public record may have been enacted or
-  dropped since.
-- Anything the pack marks ⚠ or "absent from the public record" is your homework, not a
-  finding.
+- **§2 budgets**: confirm the envelope with the budget department. Donor documents give
+  the amounts that were approved, not the amounts that were paid.
+- **§4 status tags**: a post on an organogram can have no person in it. Confirm each
+  *partial* row and each *gap* row with a person inside the government.
+- **§6 and §7**: confirm the mandate of each body against its establishing instrument.
+  Confirm the status of each law against the gazette. A bill in the public record can have
+  become law, or can have stopped, after the record was written.
+- Each item that the pack marks ⚠ or "absent from the public record" is work for you. It
+  is not a finding.
 
 ## References
 
-- `references/api-guide.md` — query patterns and indicator codes for the statistical APIs
-  (World Bank, UNESCO UIS, UN SDG, ITU DataHub, UNICEF, Giga). Inherited from
-  `country-context-data`; load it when §1 or §5 needs a figure.
+- `references/api-guide.md` — the query patterns and indicator codes for the statistical
+  APIs (World Bank, UNESCO UIS, UN SDG, ITU DataHub, UNICEF, Giga). Inherited; read it when
+  §1 or §5 needs a figure.
 - `references/source-selection.md` — which source answers which question. Inherited.
-- `references/a0-sections.md` — the seven sections' exact columns and the play each feeds.
+- `references/a0-sections.md` — the exact columns of the seven sections, and the play that
+  each section feeds.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.

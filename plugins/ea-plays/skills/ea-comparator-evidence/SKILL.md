@@ -1,98 +1,106 @@
 ---
 name: ea-comparator-evidence
 description: >-
-  Find comparator countries that actually resemble yours and document what each one really
-  built, from its published EA framework or digital-government coordination instrument —
-  three to five cards, a Tier 1 source per claim, one transferable mechanism each, and at
-  least one contested or mixed case with both sides cited. Serves the comparator signposts
-  play (1.8) and the evidence play (5.1), and feeds the proof section of the ministerial
-  business case (5.4) and the closing case (5.7). Use when someone says "which countries are
-  like mine", "find comparator countries", "has anyone actually done this", "is this proven
-  or just theory", "what did Rwanda/Ghana/Estonia actually build", "give me evidence for the
-  minister", "show me a country that failed at this", "signpost countries for my context".
-  Selects by World Bank income classification, population band, governance type and region,
-  with priority to African and developing-country examples; reads published national EA
-  frameworks, the UN EGDI, the World Bank GovTech Maturity Index and the OECD Digital
-  Government Index. Runs cite-or-discard on itself before returning — the 1.8 test run
-  produced comparators sourced to document mirrors and blog posts, and this is the fix.
+  Find comparator countries that truly resemble the learner's country, and record what each
+  one built, from its published EA framework or its digital-government coordination
+  instrument. Give three to five cards, a Tier 1 source for each claim, one transferable
+  mechanism for each country, and a minimum of one contested or mixed case with both sides
+  cited. Serves the comparator signposts play (1.8) and the evidence play (5.1), and feeds
+  the proof section of the ministerial business case (5.4) and the closing case (5.7).
+  Use when someone says "which countries are like mine", "find comparator countries", "has
+  anyone actually done this", "is this proven or just theory", "what did Rwanda/Ghana/
+  Estonia actually build", "give me evidence for the minister", "show me a country that
+  failed at this", "signpost countries for my context". Selects by World Bank income
+  classification, population band, governance type and region, with priority to African and
+  developing-country examples; reads published national EA frameworks, the UN EGDI, the
+  World Bank GovTech Maturity Index and the OECD Digital Government Index. Runs
+  cite-or-discard on itself before returning — the 1.8 test run produced comparators sourced
+  to document mirrors and blog posts, and this is the fix.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 ---
 
 ## What this skill does
 
-Selects comparator countries on stated criteria and documents what each actually built,
-with a primary source per claim and one mechanism the learner's country could transfer.
+This skill selects comparator countries against criteria that it states. For each country
+it records what the country built. Each claim has a primary source. Each card gives one
+mechanism that the learner's country can adopt.
 
-The August 2026 run of 1.8 produced five comparators with URLs — a real improvement on the
-video's four unsourced signposts — but some of those URLs were document mirrors and Medium
-posts. This skill exists to make the sourcing survive a check, and to stop the set being
-a list of successes.
+The August 2026 run of play 1.8 gave five comparators with URLs. This was better than the
+four signposts in the video, which had no sources. But some of those URLs were document
+mirrors and Medium posts. This skill makes the sources survive a check. It also stops the
+set from becoming a list of successes.
 
 ## Inputs
 
-**A0 §5, the country-characteristics one-liner.** That is the whole input. If the learner
-does not have it, build it (or hand off to `country-context-pack`) — comparators selected
-without it are selected on the model's impression of the country, which is how Estonia ends
-up as a comparator for a country of 200 million.
+**A0 §5, the country-characteristics one-liner.** This is the only input.
 
-If the learner has A8 from an earlier run, extend and re-verify it rather than starting again.
+If the learner does not have §5, build it, or use `country-context-pack`. Comparators
+selected without §5 come from the impression that the model has of the country. That is how
+Estonia becomes a comparator for a country of 200 million people.
+
+If the learner has A8 from an earlier run, add to it and verify it again. Do not start
+again.
 
 ## Procedure
 
-1. **State the selection criteria before selecting.** Write them out: income classification,
-   population band, governance type (unitary / federal, and the degree of sub-national
-   autonomy), region, and the maturity signal. Then say which countries meet them. A
-   comparator set whose criteria are not stated cannot be argued with, and it will be
-   argued with.
+1. **State the selection criteria before you select.** Write the income classification, the
+   population band, the type of governance, the region, and the maturity signal. For the
+   type of governance, give unitary or federal, and the level of sub-national autonomy.
+   Then say which countries agree with the criteria. Nobody can argue with a comparator set
+   that does not state its criteria, and somebody will argue with it.
 
-2. **Give priority to African and developing-country examples.** A minister who is shown
-   Estonia and Singapore is being shown countries with a different fiscal and institutional
-   reality, and knows it. Estonia earns a place for a specific transferable mechanism
-   (X-Road governance, the once-only obligation in law), not as a general model.
+2. **Give priority to examples from Africa and from developing countries.** A minister who
+   sees Estonia and Singapore sees countries with a different fiscal reality and a different
+   institutional reality, and knows it. Estonia earns a place for one transferable
+   mechanism, such as X-Road governance or the once-only obligation in law. It does not earn
+   a place as a general model.
 
-3. **Use the maturity indices as the comparability signal, not as the finding**: the UN
-   E-Government Survey EGDI, the World Bank GovTech Maturity Index, the OECD Digital
-   Government Index. They say a country is comparable. They do not say what it built.
+3. **Use the maturity indices as the signal for comparability. Do not use them as the
+   finding.** The indices are the UN E-Government Survey EGDI, the World Bank GovTech
+   Maturity Index, and the OECD Digital Government Index. They tell you that a country is
+   comparable. They do not tell you what the country built.
 
-4. **For each comparator, find what it actually built** — from its **published EA
-   framework** or its digital-government coordination instrument (T1). Kenya's GEA, Ghana's
-   GEA, South Africa's GWEA, Rwanda's RISA framework, India's IndEA, Estonia's X-Road
-   governance are known starting points; search for others rather than reusing this list.
-   Peer-reviewed case studies are T1. Donor evaluations are T2.
+4. **Find what each comparator built.** Use its **published EA framework** or its
+   digital-government coordination instrument (T1). These are known starting points: the
+   GEA of Kenya, the GEA of Ghana, the GWEA of South Africa, the RISA framework of Rwanda,
+   IndEA of India, and the X-Road governance of Estonia. Search for other countries. Do not
+   use only this list. Peer-reviewed case studies are T1. Donor evaluations are T2.
 
-   The card records **the instrument**, not the intention: the framework as published, the
-   act or directive that made it binding, and what is documented as having happened since.
+   The card records **the instrument**, not the intention. Give the framework as published,
+   the act or directive that made it binding, and what the record says happened after it.
 
-5. **Find the transferable mechanism.** One per card: the specific device this country used
-   that the learner's could adopt. The 2026 test run surfaced Liberia's "Technical
-   Clearance" and a spending-gate authority — that is exactly the level of specificity
-   wanted. "They had political commitment" is not a mechanism.
+5. **Find the transferable mechanism.** Give one mechanism for each card. It is the specific
+   device that this country used and that the learner's country can adopt. The 2026 test run
+   found the "Technical Clearance" of Liberia and a spending-gate authority. That is the
+   level of detail to give. "They had political commitment" is not a mechanism.
 
-6. **Include at least one contested or mixed case, with both sides cited.** This is
-   mandatory, not a nice-to-have. A national ID ruled unlawful, a platform abandoned, a
-   framework published and never applied, a cost overrun the government disputes. Cite the
-   court judgment or audit report **and** the government's response. Named journalism (T3)
-   is appropriate here and must be paired with the primary.
+6. **Include a minimum of one contested or mixed case. Cite both sides.** This is
+   mandatory. Examples are a national ID that a court ruled unlawful, a platform that
+   stopped, a framework that a government published and never applied, and a cost overrun
+   that a government disputes. Cite the judgment of the court or the report of the auditor
+   **and** the response of the government. Journalism with a named outlet (T3) is correct
+   here, and you must add the primary source to it.
 
-   A set of five successes is not evidence; it is a brochure, and a minister's advisor will
-   find the counter-example you omitted.
+   A set of five successes is not evidence. It is a brochure, and an advisor to a minister
+   will find the counter-example that you left out.
 
-7. **Synthesise the recurring elements** — what appears in three or more cards. That
-   synthesis, not the individual cards, is what carries into 5.4 and 5.7.
+7. **Bring the recurring elements together.** Give what is in three cards or more. This
+   synthesis goes into plays 5.4 and 5.7. The individual cards do not.
 
-8. **Run `cite-or-discard` on your own output** before returning it. Every URL fetched,
-   every mirror chased to its primary, every claim graded. This step is not optional and it
-   is named in the output.
+8. **Run `cite-or-discard` on your own output before you give it to the learner.** Read
+   every URL. Follow every mirror to its primary source. Grade every claim. This step is
+   mandatory, and you name it in the output.
 
 ## Output contract
 
-Provenance header first (`references/provenance-header.md`), then:
+Write the provenance header first (`references/provenance-header.md`). Then write these
+five sections.
 
-**Selection criteria** — the five criteria with the learner's country's values, and the
-countries that met them.
+**Selection criteria** — the five criteria with the values for the learner's country, and
+the countries that agree with them.
 
-**Comparator cards**, three to five, each:
+**Comparator cards** — three to five cards. Use this shape:
 
 ```
 ### <Country> — <one-line why it is comparable>
@@ -106,39 +114,40 @@ countries that met them.
 | **Sources** | URL · tier · checked on — one row per claim above |
 ```
 
-**Contested case** — its own card, both sides, both cited, and one line on what the dispute
+**Contested case** — its own card, with both sides cited, and one line on what the dispute
 means for the learner's country.
 
-**Recurring elements** — what appears in three or more cards, and what appears in none.
+**Recurring elements** — what is in three cards or more, and what is in no card.
 
-**Verification summary** — the `cite-or-discard` result: how many claims kept, rewritten,
-dropped, ⚠; which sources were mirrors and whether the primary was found.
+**Verification summary** — the result from `cite-or-discard`: how many claims you kept,
+wrote again, dropped and marked ⚠; which sources were mirrors; and whether you found the
+primary source.
 
-Text in the chat, tables not charts. Posts, not names. No reasoning before the header.
-See `references/output-contract.md`.
+Write text in the chat. Use tables, not charts. Posts, not names. Write no analysis before
+the header. See `references/output-contract.md`.
 
 ## Safeguard handed back
 
-Comparators persuade, which is exactly why they are dangerous.
+Comparators persuade people. This is why they are dangerous.
 
-- **Open the two or three sources the argument rests on** before this goes to a minister.
-  A framework published is not a framework applied, and the gap between them is where every
-  comparator argument fails under questioning.
-- **Check the dates.** A country's framework from 2019 may have been superseded, and its
-  agency may have been restructured twice since.
-- **Be ready for the counter-example.** You included one contested case; the room may know
-  another. Better to have searched for it.
-- **A mechanism transfers only with its preconditions.** Liberia's technical clearance
-  works because something gives it teeth. Name what that is in your country, or say it is
-  missing — that absence is the real finding.
-- Anything marked ⚠ is unverified, not verified-as-true.
+- **Read the two or three sources that the argument depends on** before this output goes to
+  a minister. A framework that a government published is not a framework that a government
+  applies. Every comparator argument fails at that difference under questioning.
+- **Check the dates.** A framework from 2019 can be superseded. The agency can have changed
+  its structure two times after it.
+- **Prepare for the counter-example.** You included one contested case. The room can know
+  another one. It is better to have searched for it.
+- **A mechanism transfers only with the conditions that it needs.** The technical clearance
+  of Liberia works because something gives it power. Name that thing in your country, or say
+  that it is missing. That absence is the true finding.
+- Each item marked ⚠ is unverified. It is not verified as true.
 
 ## References
 
-- `references/comparator-selection.md` — the five criteria, how to band them, and the
-  failure modes of each.
-- `references/known-frameworks.md` — published national EA frameworks and coordination
-  instruments known at the time of writing, with what each one is and is not, and the
-  contested cases worth knowing about. A starting point for search, never a substitute.
+- `references/comparator-selection.md` — the five criteria, how to make bands from them, and
+  how each one fails.
+- `references/known-frameworks.md` — the national EA frameworks and coordination instruments
+  that were published when this file was written, what each one is and is not, and the
+  contested cases to know. Use it to start a search. Do not use it in place of a search.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.

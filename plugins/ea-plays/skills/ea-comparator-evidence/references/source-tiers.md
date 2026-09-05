@@ -1,50 +1,52 @@
 # Trusted sources and the cite-or-discard loop
 
-Shared by every skill in this kit. Do not restate this policy inside a SKILL.md —
-name this file and apply it.
+Each skill in this kit uses this file. Do not write this policy again in a SKILL.md.
+Give the name of this file and apply it.
 
 ## The four tiers
 
-| Tier | What counts | How to treat it |
+| Tier | What counts | How to use it |
 | --- | --- | --- |
-| **1 — Primary / official** | Government gazettes and national law portals; ministries' and agencies' own sites; national digital strategies as published; establishing acts; UN, World Bank, ITU, OECD, IMF, UNESCO, UNICEF datasets and reports; the PAERA and GovStack specifications; the Open Group and other standards bodies; peer-reviewed journals | Cite freely. One Tier 1 source is enough to state a claim as fact. |
-| **2 — Reputable secondary** | DIAL / ADLI snapshots, ID4Africa, GSMA, Smart Africa, UNECA, the Digital Public Goods Alliance registry, MOSIP and X-Road (NIIS) deployment lists, established think tanks (CGD, ODI, Brookings, Carnegie), donor project documents (World Bank PADs and ICRs, EU and FCDO evaluations) | Cite, labelled *secondary*. Chase the primary it points to and prefer that. |
-| **3 — Journalism** | Named national and international outlets with an editorial process | Use for **events** (a system launched, a court ruling, a project cancelled) and for contested cases. Always pair with the primary if one exists. |
-| **Reject** | Document mirrors (docplayer, scribd), personal blogs and Medium posts, vendor marketing, Wikipedia as an end source, content farms, AI-generated summary sites | Never cite. Wikipedia may be used to *find* a Tier 1 source, never as the source. |
+| **1 — Primary / official** | Government gazettes and national law portals; the sites of ministries and agencies; national digital strategies as published; establishing acts; UN, World Bank, ITU, OECD, IMF, UNESCO, UNICEF datasets and reports; the PAERA and GovStack specifications; the Open Group and other standards bodies; peer-reviewed journals | Cite it. One Tier 1 source is enough to write a claim as a fact. |
+| **2 — Reputable secondary** | DIAL / ADLI snapshots, ID4Africa, GSMA, Smart Africa, UNECA, the Digital Public Goods Alliance registry, MOSIP and X-Road (NIIS) deployment lists, established think tanks (CGD, ODI, Brookings, Carnegie), donor project documents (World Bank PADs and ICRs, EU and FCDO evaluations) | Cite it with the label *secondary*. Then find the primary source that it points to, and use the primary source. |
+| **3 — Journalism** | National and international outlets that have a name and an editorial process | Use it for events: a system that started, a court ruling, or a project that stopped. Use it also for contested cases. Always add the primary source if one exists. |
+| **Reject** | Document mirrors (docplayer, scribd), personal blogs and Medium posts, vendor marketing, Wikipedia as an end source, content farms, sites with AI-generated summaries | Never cite these sources. You can use Wikipedia to find a Tier 1 source. Do not use Wikipedia as the source. |
 
 ## The verification loop
 
-For every claim you emit, record four things before you write the line:
+Record these four items for each claim before you write the line:
 
 1. the **URL**,
-2. the **access date** (the day you fetched it),
+2. the **access date**, which is the day that you read the page,
 3. the **tier**,
-4. a **one-line quotation or close paraphrase** of the passage that supports the claim.
+4. a **quotation of one line**, or a close paraphrase, of the passage that supports
+   the claim.
 
-Then, before returning anything to the learner, fetch each URL and confirm the
-passage is there. Resolve each claim to one of five states:
+Then read each URL again before you give anything to the learner. Make sure that the
+passage is there. Give each claim one of these five states:
 
 | State | Meaning | Action |
 | --- | --- | --- |
-| **supported** | The passage says what the claim says | Keep. |
-| **partly supported** | The source supports a weaker version | Rewrite the claim down to what the source says. |
-| **not supported** | The source does not say it | Drop the claim, not just the citation. |
-| **could not fetch** | The site refused, timed out, or is paywalled | Keep the claim, mark it ⚠ *unverified — learner to confirm*, and say the fetch failed. **Never downgrade a claim because a server refused you.** |
-| **contested** | Sources disagree | Keep both, cite both, say which is which. |
+| **supported** | The passage says what the claim says | Keep the claim. |
+| **partly supported** | The source supports a weaker claim | Write the claim again. Make it agree with the source. |
+| **not supported** | The source does not say it | Remove the claim. Do not remove only the citation. |
+| **could not fetch** | The site refused, the request timed out, or the page is behind a paywall | Keep the claim. Mark it ⚠ *unverified — learner to confirm*. Tell the learner that the fetch failed. **Never make a claim weaker because a server refused you.** |
+| **contested** | The sources do not agree | Keep both claims. Cite both sources. Tell which source says what. |
 
-A claim that survives as *not supported* is never kept silently. A claim marked
-⚠ carries that mark all the way into the artefact and into the provenance header's
-unverified count.
+Never keep a *not supported* claim without a message to the learner. A claim that has
+a ⚠ mark keeps that mark in the artefact. It also counts in the unverified count in
+the provenance header.
 
 ## Contested cases
 
-Where a programme is disputed — a national ID ruled unlawful, a platform
-abandoned, a cost overrun denied — the artefact must carry **both** sides with a
-source each. A comparator set with no contested case in it has not been searched
-hard enough.
+Some programmes are disputed. A court can rule that a national ID is unlawful, a
+platform can stop, or a government can deny a cost overrun. The artefact must give
+**both** sides, with one source for each side. If a comparator set contains no
+contested case, you did not search enough.
 
 ## When a registry moves
 
-This file names the **organisation**, never the URL. URLs live in each skill's
-`references/` so a moved dataset is a one-file fix. If a named source cannot be
-found at all, say so in the output rather than substituting an unnamed one.
+This file gives the name of the **organisation**. It does not give the URL. The URLs
+are in the `references/` folder of each skill. Thus a dataset that moves is a change
+to one file. If you cannot find a named source, say so in the output. Do not put a
+source with no name in its place.

@@ -10,10 +10,10 @@ Draft a one-page business case for a national EA programme, addressed to the min
 
 ## What the fixture supplies
 
-Country: **Progressa** · Sector: **Education**. Substitute for every bracketed
-placeholder above. The named input is A3, A8 rev.2, A21 rev.2, A26 of `tests/progressa.md`; paste
-those sections verbatim.
+Country: **Progressa** · Sector: **Education**. Put these two values in the place of each
+placeholder in brackets above. The named input is A3, A8 rev.2, A21 rev.2, A26 of `tests/progressa.md`. Paste
+those sections without a change.
 
-Where the play consumes an artefact from an earlier play (A1, A3, A22 …), run that
-play on Progressa first — the chain is in
+If this play consumes an artefact from an earlier play, such as A1, A3 or A22, run that play
+on Progressa first. The chain is in
 [`shared/workbook-chain.md`](../../../plugins/ea-plays/shared/workbook-chain.md).
