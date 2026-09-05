@@ -8,6 +8,7 @@
   9  Progressa appears in the plugin only as tagged fixture material that agrees
      with tests/progressa.md, no real country leaks in, and the fixture tree holds
      one country
+ 10  the workbook chain agrees with itself — what a play consumes, its producer feeds
 
 Run: python3 tests/check_fixtures.py
 """
@@ -128,10 +129,30 @@ for pid in sorted(os.listdir(f"{ROOT}/tests/plays")):
     check(not extra, f"tests/plays/{pid}: not a Progressa-only fixture folder: {sorted(extra)}")
 
 
+# --- 10: the workbook chain agrees with itself ------------------------------
+# Every artefact a play consumes must list that play in its producer's Feeds cell.
+# A0 is exempt: its Feeds cell is prose, and the section table above it routes §1-§7.
+CHAIN_ROW = re.compile(
+    r"^\|\s*\*\*(A\d+(?: rev\.\d+)?)\*\*[^|]*\|\s*([^|]+?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*$",
+    re.M)
+chain = CHAIN_ROW.findall(open(f"{PLUGIN}/shared/workbook-chain.md").read())
+check(len(chain) == 38, f"workbook-chain.md: parsed {len(chain)} artefact rows, expected 38")
+produces = {art: set(re.findall(r"\b\d+\.\d+\b", fd)) for art, _, _, fd in chain}
+for art, play, consumed, _ in chain:
+    if not re.fullmatch(r"\d+\.\d+", play):
+        continue
+    for dep in re.findall(r"\bA\d+(?: rev\.\d+)?\b", consumed):
+        if dep == "A0":
+            continue
+        check(dep in produces, f"workbook-chain.md: {play} consumes {dep}, which has no row")
+        check(dep not in produces or play in produces[dep],
+              f"workbook-chain.md: {play} consumes {dep}, but {dep} Feeds does not list {play}")
+
+
 if fails:
     print(f"FAIL — {len(fails)} problem(s):", file=sys.stderr)
     for f in fails:
         print(f"  - {f}", file=sys.stderr)
     sys.exit(1)
-print(f"ok — {len(MAP)} plays, {len(shipped)} skills, provenance fields, README table "
-      f"and one tagged Progressa all check out")
+print(f"ok — {len(MAP)} plays, {len(shipped)} skills, provenance fields, README table, "
+      f"one tagged Progressa and a consistent workbook chain all check out")
