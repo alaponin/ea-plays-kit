@@ -1,3 +1,4 @@
+<!-- fixture: Progressa (fictional) · canonical: tests/progressa.md · keep consistent with it -->
 # The body taxonomy — seven types, and the five the videos teach
 
 ## Read this first
@@ -54,8 +55,10 @@ In outline, and to be confirmed against the annex:
 
 ```
 Progressa Digital Government Authority — Shared Platform [teaching type: Shared Platform]
-  · confidence: confirmed (Establishment Decree 2019 §3)
-  · hybrid: also Policy Unit — the same decree gives it standards-setting authority
+  · basis: coordinating but not binding mandate; a unit under the Ministry of ICT (§1, §4)
+  · confidence: confirmed (A0 §1)
+  · hybrid: also Policy Unit — the 2021 e-Government Interoperability Framework gives it a
+    standards role that is published, not applied (§7)
 ```
 
 Three rules:

@@ -1,7 +1,10 @@
+<!-- fixture: Progressa (fictional) · canonical: tests/progressa.md · keep consistent with it -->
 # Worked Example: Progressa Education Sector
 
-Progressa is a demonstration country. All institutions are fictional.
-Use this as a concrete model to follow or compare against when assessing a real sector.
+All facts from `tests/progressa.md` §1, §6, §7 and the sector-problem paragraph. Progressa
+is fictional; the example carries no sources.
+
+Use it as a concrete model to follow or compare against when assessing a real sector.
 
 ---
 
@@ -9,13 +12,23 @@ Use this as a concrete model to follow or compare against when assessing a real 
 
 | Body | Classification | Expected Profile |
 |------|---------------|-----------------|
-| Ministry of Education, Youth and Sport (MoEYS) | Policy Unit | Sets education policy and owns rules; funds schools; does not run services at scale |
-| National Examination Authority (PNEA) | Service-Delivery Authority with regulatory edge | Runs examinations at scale; certifies results; holds authoritative record of results |
-| Learner Registry (PLR) | State Registry | Authoritative single source for who is a learner; owned centrally, consumed by others |
-| National Identity Authority (PNIA) | State Registry + Shared Platform | Owns the person identity every sector reuses; issues identity tokens |
-| Digital Government Authority (PDGA) | Shared Platform Provider | Runs data-exchange backbone and payments infrastructure; no sector owns it |
+| Ministry of Education, Youth and Skills (MoEYS) | Policy Unit | Sets education policy, funds schools; runs district EMIS with its own learner numbering |
+| Progressa National Examination Authority (PNEA) | Service-Delivery Authority with regulatory edge | Runs examinations, certifies results; holds a candidate list on its own numbering |
+| Progressa Learner Registry (PLR) | State Registry | Intended single list of learners. Status: **planned** — called for in the Education Sector Plan 2023–2028, not started. Runs nothing and holds nothing yet |
+| Progressa National ID Authority (PNIA) | State Registry + Shared Platform | Owns person identity; National ID since 2018 at 78% adult coverage, e-KYC since 2024. Issues IDs only at 16 |
+| Progressa Digital Government Authority (PDGA) | Shared Platform Provider | Coordinates digital government and runs the shared data exchange, Linkup. Coordinating mandate, not binding; a unit under the Ministry of ICT |
+| Social Protection Agency | Service-Delivery Authority | Social grants; beneficiary register built 2016 by a vendor under a World Bank programme |
+| Civil Registration Department (Ministry of Interior) | State Registry | Birth and death registration, paper-first, 71% birth registration |
+| Central Bank of Progressa | Shared Platform Provider | Operates PayPro, the national fast-payment system |
 
 Classification takes one minute. It tells you what to expect before the first interview.
+
+**Read the PLR row twice.** The registry that would resolve the sector's problem does not
+exist. Every finding below follows from its absence, not from its design.
+
+**Read the Civil Registration row too.** It is the legal identity anchor for a child under
+the Civil Registration Act, and because PNIA issues no ID before 16, the National ID cannot
+be the learner key for a primary-school child.
 
 ---
 
@@ -25,25 +38,32 @@ Classification takes one minute. It tells you what to expect before the first in
 
 | Capability | Owner |
 |-----------|-------|
-| Register a learner | PLR |
+| Set education policy and fund schools | MoEYS |
 | Run an examination | PNEA |
 | Certify an examination result | PNEA |
-| Prove the identity of a person | PNIA |
-| Set education policy and fund schools | MoEYS |
+| Prove the identity of a person aged 16 or over | PNIA |
+| Establish the legal identity of a child | Civil Registration Department |
+| Determine social-grant eligibility | Social Protection Agency |
 | Exchange data between bodies | PDGA |
+| Settle a payment between accounts | Central Bank of Progressa |
+| Register a learner | **unowned** — the PLR that would own it is not started |
 
 **Services** (how capabilities reach citizens or other bodies):
 
 | Service | Capability served | Delivered by |
 |---------|------------------|-------------|
-| Enrol a child in school | Register a learner | PLR via MoEYS schools |
-| Sit a national examination | Run an examination | PNEA |
+| Enrol a child in school | Register a learner | the school, on paper; the head teacher keys it into district EMIS |
+| Sit a national examination | Run an examination | PNEA, from its own candidate list |
 | Receive an examination certificate | Certify a result | PNEA |
-| Transfer between schools | Register a learner | PLR |
+| Receive a scholarship | Determine eligibility; settle a payment | MoEYS, by cheque |
 
-**Quality test result**: ✅ Capabilities describe what each body does — not how it is organised internally.
+**Quality test result**: ⚠️ Capabilities describe what each body does — but one capability
+has no owner, which is the finding, not a formatting fault.
 
-**Gap to note**: If both MoEYS and PNEA each claim a "manage learner data" capability, that is a duplicate claim — the first gap, visible from the Business layer alone.
+**Gap confirmed**: MoEYS and PNEA both maintain learner data as a side-effect of their own
+capabilities, and the Social Protection Agency holds a third list. No body claims "register
+a learner" as its capability. A capability nobody owns is held three times by nobody's
+design.
 
 ---
 
@@ -51,16 +71,21 @@ Classification takes one minute. It tells you what to expect before the first in
 
 | Domain | Owner | Authoritative Copy Location | Consuming Bodies |
 |--------|-------|----------------------------|-----------------|
-| Person | PNIA | National Identity Authority | All |
-| Learner | PLR | Learner Registry | PNEA, MoEYS, schools |
-| Examination result | PNEA | Examination Authority | MoEYS, PLR (reference) |
-| School | MoEYS | Ministry | PLR, PNEA |
+| Person (16+) | PNIA | National ID register | tax authority, business register, PDGA members |
+| Legal identity of a child | Civil Registration Department | Civil register, paper-first | none electronically |
+| Learner | **none** | three partial copies, none authoritative | — |
+| Examination result | PNEA | Examination Authority | MoEYS |
+| School | MoEYS | School census | — |
+| Grant beneficiary | Social Protection Agency | Beneficiary register (2016) | — |
 
-**Once-only rule applied**: When PNEA needs to know who a learner is, it consumes PLR and PNIA — it does not maintain its own private copy of the learner that drifts out of date.
+**Once-only rule applied**: it is not. A parent proves the child's identity on paper at
+every counter, because no system trusts another's.
 
-**Quality test result**: ✅ One domain, one owner, one authoritative copy named for each.
+**Quality test result**: ❌ One domain — Learner — has no owner and no authoritative copy.
 
-**Gap to flag**: If the Examination Authority is found to maintain its own learner list, that is a duplicate registry. Write it down; it is not a detail.
+**Gap confirmed, not suspected**: learner data is held three times, in the district EMIS,
+in the PNEA candidate list and in the Social Protection beneficiary register, each on its
+own numbering. None of the three lists agree.
 
 ---
 
@@ -68,17 +93,22 @@ Classification takes one minute. It tells you what to expect before the first in
 
 | Application | Capability served | Data domains used | Owner |
 |------------|------------------|------------------|-------|
-| Enrolment system | Register a learner | Learner, Person | PLR |
-| Examination management system | Run an examination; Certify a result | Learner, Person, Examination result | PNEA |
-| Identity verification service | Prove identity | Person | PNIA |
-| School management system | Set policy; fund schools | School | MoEYS |
-| Data exchange backbone | Exchange data | All (infrastructure) | PDGA |
+| District EMIS | Fund schools; school census | Learner (partial), School | MoEYS |
+| Candidate management system | Run an examination; certify a result | Learner (partial), Examination result | PNEA |
+| National ID and e-KYC platform | Prove identity (16+) | Person | PNIA |
+| Linkup (X-Road 7.x) | Exchange data | all, for its four members | PDGA |
+| Beneficiary register | Determine eligibility | Learner (partial), Grant beneficiary | Social Protection Agency |
+| PayPro | Settle a payment | — | Central Bank of Progressa |
+| — | Register a learner | Learner | no application exists |
 
-**Quality test result**: ✅ Every application points to a capability and to the data domains it uses.
+**Quality test result**: ⚠️ Every application points to a capability, and the three that
+hold the Learner domain each hold a different partial copy.
 
-**Cross-layer check**: The examination management system uses Learner and Person domains owned by other bodies — those cross-body data flows must pass through the PDGA data-exchange backbone, not custom point-to-point connections.
+**Cross-layer check**: three applications carry learner data and none of them consumes
+another. There is no application to consume: the PLR is not started.
 
-**Gap to flag**: If the examination management system holds its own copy of the learner record rather than consuming PLR via the backbone, that is both a duplicate registry (Data layer) and a point-to-point integration risk (Technology layer).
+**Gap confirmed**: this is both a duplicate registry (Data layer) and, because the copies
+are reconciled by hand or by spreadsheet, a point-to-point problem at the Technology layer.
 
 ---
 
@@ -86,13 +116,23 @@ Classification takes one minute. It tells you what to expect before the first in
 
 | Component | Role | Standard |
 |-----------|------|----------|
-| Shared identity platform | Issues and verifies identity tokens | OpenID Connect |
-| Data-exchange backbone | Routes data between bodies with audit trail | X-Road or equivalent |
-| Government hosting | Hosts PLR, PNEA, MoEYS systems | To be standardised |
+| National ID and e-KYC (PNIA) | Issues and verifies identity, 16+ | documented API; no sector adoption framework |
+| Linkup (PDGA) | Routes data between members with an audit trail | X-Road 7.x — live pilot, four members: PNIA, the business register, the tax authority, PDGA |
+| PayPro (Central Bank of Progressa) | Settles a payment between accounts | used by the tax authority; the scholarship programme still pays by cheque |
+| e-Government Interoperability Framework 2021 | Names message formats and an approved-standards list | published, not applied; its governance committee no longer meets |
+| Government hosting | Hosts the sector's systems | not standardised |
 
-**Quality test result**: ⚠️ Standards named for identity and exchange; hosting standard not yet defined (a gap).
+**Quality test result**: ❌ A standards instrument exists and is not applied; the exchange
+layer exists and the education sector is not on it. **MoEYS is not a Linkup member.**
 
-**Single points of failure**: The data-exchange backbone and the identity platform — if either is unavailable, cross-body services fail. Uptime and redundancy requirements must be specified.
+**Point-to-point finding — Confirmed, not a risk.** The tax-to-business-register link was
+built as a direct database link in 2022, before Linkup existed, and has not been migrated.
+MoEYS and the Ministry of Health exchange data by spreadsheet on request. Both are
+point-to-point integrations running alongside an exchange layer that could carry them.
+
+**Single points of failure**: Linkup and the National ID platform. Neither yet carries an
+education-sector flow, so the sector's exposure is not to their downtime but to its own
+absence from them.
 
 ---
 
@@ -105,16 +145,20 @@ Service: Sit an examination; receive a certificate
   ↓ delivered by
 Capability: Run-an-examination + Certify-a-result (owner: PNEA)
   ↓ supported by
-Application: Examination management system (owner: PNEA)
+Application: Candidate management system (owner: PNEA)
   ↓ uses
-Data Domains: Learner (owner: PLR) + Person (owner: PNIA) + Examination result (owner: PNEA)
+Data Domains: Examination result (owner: PNEA)
+            + Learner — no owner; PNEA keeps its own candidate numbering
+            + legal identity of the child (owner: Civil Registration Department, on paper)
   ↓ reached via
-Technology: Data-exchange backbone (PDGA) + Identity platform (PNIA)
+Technology: none — MoEYS is not a Linkup member; the school file reaches PNEA on paper
   ↓ running on
-Technology: Government hosting
+Technology: government hosting, not standardised
 ```
 
-This single thread — from citizen service to infrastructure — is a complete architectural reading. Every link is named, owned, and traceable. Any broken link in this chain is a gap.
+The trace is a complete architectural reading precisely because it breaks. Two links —
+the Learner owner and the exchange route — are empty, and every symptom the minister
+describes hangs off those two gaps.
 
 ---
 
@@ -122,15 +166,26 @@ This single thread — from citizen service to infrastructure — is a complete 
 
 | Gap | Status | Evidence |
 |-----|--------|---------|
-| Duplicate registries | **Risk** — PNEA may hold its own learner list | Check whether exam system queries PLR or maintains its own |
-| Orphan systems | **Unknown** — school-level legacy systems not inventoried | MoEYS school management system scope unclear |
-| Point-to-point spaghetti | **Risk** — no confirmation PDGA backbone is in use for all cross-body flows | Confirm all PNEA ↔ PLR ↔ PNIA connections route through PDGA |
-| No clear owner | **Clear for named domains** — gaps possible for school-level sub-domains | District-level school data ownership not specified |
+| Duplicate registries | **Confirmed** | A learner is held three times: district EMIS, PNEA candidate list, Social Protection beneficiary register — each on its own numbering, and the lists do not agree |
+| Orphan systems | **Risk** | Provincial secondary files and school-level records are named in §3 but not inventoried |
+| Point-to-point spaghetti | **Confirmed** | Tax ↔ business register by direct database link since 2022, unmigrated; MoEYS ↔ Health by spreadsheet; Linkup has four members and MoEYS is not one |
+| No clear owner | **Confirmed** | The Learner domain has no owner. The PLR that would own it is not started |
+| No standards function | **Confirmed** | §6 records no education-sector data-standards function; the 2021 Interoperability Framework is published, not applied |
 
 ---
 
 ## Architecture Traps in Progressa
 
-**Bespoke trap — present risk**: If a donor-funded education project decides to build its own learner registration rather than consume PLR, it adds a fifth version of the learner record. Flag at procurement stage; require project to demonstrate why PLR cannot be used.
+**Bespoke trap — present.** The Social Protection Agency's beneficiary register was built in
+2016 by a vendor under a World Bank programme rather than assembled from shared registries,
+and it is now the third place a learner appears. Four more donor-funded systems are in the
+same shape: five programmes across five ministries, each with its own identity and exchange
+needs, funded by three donors on separate timetables. The National Learner Registry at
+USD 6.5m is the next one to be procured, and nothing yet requires it to consume PNIA and
+the civil register rather than build a sixth list.
 
-**Vendor-driven trap — present risk**: If the examination management system is a proprietary product and examination result data is stored in a vendor-specific format, extracting results for a future system requires vendor cooperation. Require open data export format at procurement.
+**Vendor-driven trap — present.** The same 2016 register is under single-vendor maintenance:
+the vendor that built it still holds the only maintenance contract. That is the fixture's
+vendor-lock-in case, already realised, not a procurement risk to guard against later.
+Require an open export format and a maintenance market before the PLR contract is signed,
+because the counter-example is already running in the same sector.
