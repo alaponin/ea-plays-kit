@@ -11,7 +11,7 @@ and checking it afterwards.
 ## Install
 
 ```
-/plugin marketplace add aarelaponin/ea-plays-kit
+/plugin marketplace add alaponin/ea-plays-kit
 /plugin install ea-plays@ea-plays-kit
 ```
 

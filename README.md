@@ -4,7 +4,7 @@ The learner kit for the Knowledge Product AI plays on government enterprise arch
 One Claude Code plugin, `ea-plays`, with fourteen skills.
 
 ```
-/plugin marketplace add aarelaponin/ea-plays-kit
+/plugin marketplace add alaponin/ea-plays-kit
 /plugin install ea-plays@ea-plays-kit
 ```
 
