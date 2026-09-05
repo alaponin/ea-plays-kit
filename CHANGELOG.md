@@ -58,16 +58,8 @@ Reference fixes only. No skill contract changes.
 
 ### Added
 
-- **A fixture marker.** Every file under `plugins/` that carries Progressa material opens with
-  `<!-- fixture: Progressa (fictional) · canonical: tests/progressa.md · keep consistent with
-  it -->`, and its `SKILL.md` declares it under a `Fixture material` sub-heading. A skill is
-  not "a Progressa skill"; a file contains fixture material, and it says so — the
-  standalone-upload route has no `tests/` to point at.
-- **`check_fixtures.py` acceptance criterion 9.** Enforces the above rather than requesting
-  it: fixture tokens require the marker, a deny-list catches each divergence the 2026-09-05
-  review found, no file outside `known-frameworks.md` and `api-guide.md` may name a real
-  comparator country as its own context, and `tests/plays/*/` may hold only `input.md` and
-  `expected.md`.
+- **Fixture marker and `Fixture material` convention**, enforced by `check_fixtures.py`
+  criterion 9 — see `tests/README.md`.
 
 ## [0.1.0] — 2026-09-05
 

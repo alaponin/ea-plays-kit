@@ -42,7 +42,7 @@ Not using Claude Code? Two other routes, same source tree:
 | `ea-governance-drafter` | Board ToR, RACI, repository, gate checklist, scorecard, risk register |
 | `ea-tool-evaluator` | EA tool scoring on verifiable facts, plus a real export test |
 | `ea-open-learning-catalogue` | A capability plan whose links were checked today |
-| `bdat-assessor` | The four-layer read and the metamodel conformance check |
+| `bdat-assessor` | The four-layer read of a body or sector, and the change-impact trace |
 | `bb-sourcing-researcher` | Which products could supply a block the country lacks |
 
 Every output opens with a provenance header — country, date, sources by tier, unverified

@@ -1,14 +1,5 @@
 #!/usr/bin/env python3
-"""The repo's one runnable check. Guards acceptance criteria 2, 3 and 8.
-
-  2  every play id in play-map.json has a fixture folder and a README row,
-     with exactly one primary skill, and that skill ships in the plugin
-  3  every expected.md declares the full provenance-header field set
-  8  the shared references are in sync (delegated to sync-shared.sh --check)
-  9  Progressa appears in the plugin only as tagged fixture material that agrees
-     with tests/progressa.md, no real country leaks in, and the fixture tree holds
-     one country
- 10  the workbook chain agrees with itself — what a play consumes, its producer feeds
+"""Guards the machine-checkable acceptance criteria; the list is in tests/README.md.
 
 Run: python3 tests/check_fixtures.py
 """
@@ -76,11 +67,11 @@ check(r.returncode == 0, f"shared references drifted:\n{r.stderr.strip()}")
 # --- 9: Progressa appears in the plugin only as tagged, consistent fixture material
 FIXTURE_TOKENS = re.compile(r"\b(Progressa|PDGA|PNIA|PNEA|MoEYS|PLR|Linkup|PayPro)\b")
 MARKER = "<!-- fixture: Progressa (fictional)"
-# The shared references name Progressa as a field rule, not as fixture content, and a
-# SKILL.md declares its fixture files under a `Fixture material` sub-heading instead of
-# carrying the marker itself.
-EXEMPT = {"provenance-header.md", "output-contract.md", "workbook-chain.md",
-          "source-tiers.md", "SKILL.md"}
+EXEMPT = {
+    "provenance-header.md",  # names Progressa as a field rule, not as fixture content
+    "output-contract.md",    # same
+    "SKILL.md",              # declares its fixture files under a sub-heading instead
+}
 # Every divergence a review has found; add to it, never prune it. One regex each, kept
 # next to the fixture they guard rather than in a parser.
 DENY = [
@@ -102,8 +93,12 @@ CANON = [
     (r"\bPayPro\b", "Central Bank of Progressa"),
     (r"\(PLR\)\s*\|", "not started"),  # the bodies-table row, not any mention
 ]
-GAMBIA_OK = ("ea-comparator-evidence/references/known-frameworks.md",
-             "country-context-pack/references/api-guide.md")
+# The 30 Aug 2026 test country is legitimate in exactly two files: one comparator among
+# several, and one entry in a source list.
+REAL_COUNTRY_AS_COMPARATOR_OK = (
+    "ea-comparator-evidence/references/known-frameworks.md",
+    "country-context-pack/references/api-guide.md",
+)
 
 for path in sorted(glob.glob(f"{PLUGIN}/**/*.md", recursive=True)):
     rel = os.path.relpath(path, ROOT)
@@ -117,8 +112,9 @@ for path in sorted(glob.glob(f"{PLUGIN}/**/*.md", recursive=True)):
         for pat, must in CANON:
             check(not re.search(pat, text) or must in text,
                   f"{rel}: matches {pat!r} but never says {must!r}, as tests/progressa.md does")
-    check("Gambia" not in text or rel.endswith(GAMBIA_OK),
-          f"{rel}: real-country material — the fixture country is Progressa")
+    check("Gambia" not in text or rel.endswith(REAL_COUNTRY_AS_COMPARATOR_OK),
+          f"{rel}: the 30 Aug 2026 test country is back as this file's own context; "
+          f"it belongs only as one comparator among several")
 
 # The fixture tree is one-country: nothing but the two files each play needs.
 for pid in sorted(os.listdir(f"{ROOT}/tests/plays")):

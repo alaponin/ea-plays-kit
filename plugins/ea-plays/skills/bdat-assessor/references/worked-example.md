@@ -16,10 +16,10 @@ Use it as a concrete model to follow or compare against when assessing a real se
 | Progressa National Examination Authority (PNEA) | Service-Delivery Authority with regulatory edge | Runs examinations, certifies results; holds a candidate list on its own numbering |
 | Progressa Learner Registry (PLR) | State Registry | Intended single list of learners. Status: **planned** — called for in the Education Sector Plan 2023–2028, not started. Runs nothing and holds nothing yet |
 | Progressa National ID Authority (PNIA) | State Registry + Shared Platform | Owns person identity; National ID since 2018 at 78% adult coverage, e-KYC since 2024. Issues IDs only at 16 |
-| Progressa Digital Government Authority (PDGA) | Shared Platform Provider | Coordinates digital government and runs the shared data exchange, Linkup. Coordinating mandate, not binding; a unit under the Ministry of ICT |
+| Progressa Digital Government Authority (PDGA) | Shared Platform | Coordinates digital government and runs the shared data exchange, Linkup. Coordinating mandate, not binding; a unit under the Ministry of ICT |
 | Social Protection Agency | Service-Delivery Authority | Social grants; beneficiary register built 2016 by a vendor under a World Bank programme |
 | Civil Registration Department (Ministry of Interior) | State Registry | Birth and death registration, paper-first, 71% birth registration |
-| Central Bank of Progressa | Shared Platform Provider | Operates PayPro, the national fast-payment system |
+| Central Bank of Progressa | Shared Platform | Operates PayPro, the national fast-payment system |
 
 Classification takes one minute. It tells you what to expect before the first interview.
 
@@ -179,7 +179,7 @@ describes hangs off those two gaps.
 **Bespoke trap — present.** The Social Protection Agency's beneficiary register was built in
 2016 by a vendor under a World Bank programme rather than assembled from shared registries,
 and it is now the third place a learner appears. Four more donor-funded systems are in the
-same shape: five programmes across five ministries, each with its own identity and exchange
+same shape: five programmes across four ministries, each with its own identity and exchange
 needs, funded by three donors on separate timetables. The National Learner Registry at
 USD 6.5m is the next one to be procured, and nothing yet requires it to consume PNIA and
 the civil register rather than build a sixth list.

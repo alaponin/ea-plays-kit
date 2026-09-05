@@ -25,8 +25,29 @@ fixture:
 claude --plugin-dir plugins/ea-plays
 ```
 
-## Acceptance criterion 7
+## Fixture material inside skills
 
-Criterion 7 (at least as specific as the real-country run of 30 August 2026) is a manual
-side-by-side read against the private synthesis record, which is not in this repo. It is
-not machine-checked.
+Some skills carry Progressa material in `references/` so a single uploaded skill folder
+still has a worked example. Every such file opens with
+`<!-- fixture: Progressa (fictional) · canonical: tests/progressa.md · keep consistent with it -->`
+and its `SKILL.md` lists it under a `Fixture material` sub-heading. `check_fixtures.py`
+fails on an untagged fixture token and on every divergence a review has found; the
+authority for a Progressa fact is `progressa.md`, always.
+
+## Acceptance criteria
+
+| # | Criterion | Checked by |
+| --- | --- | --- |
+| 1 | Both manifests validate strict, and their versions agree | `claude plugin validate --strict` · `package.sh` |
+| 2 | Every play in `play-map.json` has a fixture folder and a README row, with one primary skill that ships in the plugin | `check_fixtures.py` |
+| 3 | Every `expected.md` declares the nine provenance fields | `check_fixtures.py` |
+| 4 | Every `expected.md` carries the output-contract safeguards — posts not names, text only | `check_fixtures.py` |
+| 5 | Every skill folder is self-contained; nothing depends on `${CLAUDE_PLUGIN_ROOT}` | `package.sh` |
+| 6 | The fixture tree covers every play in `play-map.json` and nothing else | `check_fixtures.py` |
+| 7 | A run is at least as specific as the real-country run of 30 August 2026 | **manual** — side-by-side against the private 30 Aug 2026 record, which is not in this repo |
+| 8 | The shared references are in sync across all fourteen skills | `sync-shared.sh --check` |
+| 9 | Progressa appears in the plugin only as tagged, consistent fixture material, and the 30 Aug 2026 test country does not come back except as one comparator among several | `check_fixtures.py` |
+| 10 | The workbook chain agrees with itself — what a play consumes, its producer feeds | `check_fixtures.py` |
+
+Criteria 1, 4, 5 and 6 are written here from what the tooling actually tests: the build
+plan that originally numbered them is not in this repo.
