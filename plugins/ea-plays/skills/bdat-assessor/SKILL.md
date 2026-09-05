@@ -264,10 +264,18 @@ as met when only an intention exists — fails quietly and expensively, a year l
 
 ## Reference Files
 
-- `references/worked-example.md` — Progressa sector walkthrough (education sector,
-  fictional demonstration country): how to classify, read four layers, trace a service,
-  and name gaps. Read this when the user needs a concrete model to follow or compare against.
 - `references/change-impact-template.md` — Template for tracing the cross-layer
   consequences of a proposed change (new BB, system retirement, platform migration).
   Read this when the assessment involves a proposed investment or intervention, not
   just a current-state description.
+
+### Fixture material
+
+- `references/worked-example.md` — the education-sector walkthrough: how to classify, read
+  four layers, trace a service, and name gaps. Read this when the user needs a concrete
+  model to follow or compare against.
+- `references/change-impact-template.md` — its filled example introduces the Learner
+  Registry the fixture calls for but has not started.
+
+  Progressa is the fictional demonstration country shared by every play; the canonical
+  description is `tests/progressa.md` in the kit repo.

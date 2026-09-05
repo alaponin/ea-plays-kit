@@ -5,10 +5,13 @@
      with exactly one primary skill, and that skill ships in the plugin
   3  every expected.md declares the full provenance-header field set
   8  the shared references are in sync (delegated to sync-shared.sh --check)
+  9  Progressa appears in the plugin only as tagged fixture material that agrees
+     with tests/progressa.md, no real country leaks in, and the fixture tree holds
+     one country
 
 Run: python3 tests/check_fixtures.py
 """
-import json, os, re, subprocess, sys
+import glob, json, os, re, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PLUGIN = f"{ROOT}/plugins/ea-plays"
@@ -69,9 +72,62 @@ r = subprocess.run(["bash", f"{PLUGIN}/scripts/sync-shared.sh", "--check"],
                    capture_output=True, text=True)
 check(r.returncode == 0, f"shared references drifted:\n{r.stderr.strip()}")
 
+# --- 9: Progressa appears in the plugin only as tagged, consistent fixture material
+FIXTURE_TOKENS = re.compile(r"\b(Progressa|PDGA|PNIA|PNEA|MoEYS|PLR|Linkup|PayPro)\b")
+MARKER = "<!-- fixture: Progressa (fictional)"
+# The shared references name Progressa as a field rule, not as fixture content, and a
+# SKILL.md declares its fixture files under a `Fixture material` sub-heading instead of
+# carrying the marker itself.
+EXEMPT = {"provenance-header.md", "output-contract.md", "workbook-chain.md",
+          "source-tiers.md", "SKILL.md"}
+# The divergences the 2026-09-05 review found. One regex each, kept next to the fixture
+# they guard rather than in a parser.
+DENY = [
+    (r"Youth and Sport", "MoEYS is the Ministry of Education, Youth and Skills"),
+    (r"PDGA[^.\n]*payments|payments[^.\n]*PDGA",
+     "payments are the Central Bank of Progressa's PayPro, not PDGA's"),
+    (r"Establishment Decree",
+     "the fixture gives PDGA no decree — a coordinating mandate, a unit under the "
+     "Ministry of ICT (§1, §4)"),
+    (r"Enrolment system", "PLR runs no system — it is planned, not started (§6)"),
+]
+# trigger → the exact string tests/progressa.md uses, which the file must also carry
+CANON = [
+    (r"Ministry of Education, Youth and \w+", "Ministry of Education, Youth and Skills"),
+    (r"\bPayPro\b", "Central Bank of Progressa"),
+    (r"\(PLR\)\s*\|", "not started"),  # the bodies-table row, not any mention
+]
+GAMBIA_OK = ("ea-comparator-evidence/references/known-frameworks.md",
+             "country-context-pack/references/api-guide.md")
+
+for path in sorted(glob.glob(f"{PLUGIN}/**/*.md", recursive=True)):
+    rel = os.path.relpath(path, ROOT)
+    text = open(path).read()
+    if FIXTURE_TOKENS.search(text):
+        check(os.path.basename(path) in EXEMPT or text.startswith(MARKER),
+              f"{rel}: names Progressa material but line 1 is not the fixture marker")
+        for pat, why in DENY:
+            check(not re.search(pat, text),
+                  f"{rel}: diverges from tests/progressa.md — {why}")
+        for pat, must in CANON:
+            check(not re.search(pat, text) or must in text,
+                  f"{rel}: matches {pat!r} but never says {must!r}, as tests/progressa.md does")
+    check("Gambia" not in text or rel.endswith(GAMBIA_OK),
+          f"{rel}: real-country material — the fixture country is Progressa")
+
+# The fixture tree is one-country: nothing but the two files each play needs.
+for pid in sorted(os.listdir(f"{ROOT}/tests/plays")):
+    d = f"{ROOT}/tests/plays/{pid}"
+    if not os.path.isdir(d):
+        continue
+    extra = set(os.listdir(d)) - {"input.md", "expected.md", ".DS_Store"}
+    check(not extra, f"tests/plays/{pid}: not a Progressa-only fixture folder: {sorted(extra)}")
+
+
 if fails:
     print(f"FAIL — {len(fails)} problem(s):", file=sys.stderr)
     for f in fails:
         print(f"  - {f}", file=sys.stderr)
     sys.exit(1)
-print(f"ok — {len(MAP)} plays, {len(shipped)} skills, provenance fields and README table all check out")
+print(f"ok — {len(MAP)} plays, {len(shipped)} skills, provenance fields, README table "
+      f"and one tagged Progressa all check out")

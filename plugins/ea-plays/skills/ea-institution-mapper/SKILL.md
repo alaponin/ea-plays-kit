@@ -131,9 +131,16 @@ governments more often than outside them.
 
 ## References
 
-- `references/paera-a1-2.md` — the seven-type taxonomy, the five-type teaching subset, how
-  they map, and when to re-read the published annex.
 - `references/mandate-sources.md` — where establishing instruments are published, by
   document type, and how to tell an amended act from a superseded one.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.
+
+### Fixture material
+
+- `references/paera-a1-2.md` — the seven-type taxonomy, the five-type teaching subset, how
+  they map, and when to re-read the published annex. Its worked classification is of a
+  fixture body.
+
+  Progressa is the fictional demonstration country shared by every play; the canonical
+  description is `tests/progressa.md` in the kit repo.

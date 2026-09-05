@@ -4,8 +4,8 @@ Every artefact this kit produces opens with it. Three blockquote lines, before
 any prose, any table and any reasoning.
 
 ```
-> **Artefact** A6 — Roles register · **Country** The Gambia · **Sector** Education · **Built** 2026-09-03
-> **Skill** ea-institution-mapper v0.1.0 · **Consumed** A0 §1, A0 §6 · **Feeds** 1.6, 1.7
+> **Artefact** A6 — Phase RACI and role-gap list · **Country** Progressa · **Sector** Education · **Built** 2026-09-05
+> **Skill** ea-governance-drafter v0.1.1 · **Consumed** A0 §4, A4, A5 · **Feeds** 1.7
 > **Sources** 4 × Tier 1, 2 × Tier 2, 0 × Tier 3 · **Unverified lines** 1 (marked ⚠)
 ```
 

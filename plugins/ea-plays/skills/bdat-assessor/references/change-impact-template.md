@@ -1,3 +1,4 @@
+<!-- fixture: Progressa (fictional) · canonical: tests/progressa.md · keep consistent with it -->
 # Change-Impact Template: Tracing Cross-Layer Consequences
 
 Use this template whenever the assessment involves a proposed change — a new building
