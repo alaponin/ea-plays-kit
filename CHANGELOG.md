@@ -8,6 +8,55 @@ Video descriptions and the GitBook link the install command, never a release num
 
 ## [Unreleased]
 
+## [0.1.1] — 2026-09-05
+
+Reference fixes only. No skill contract changes.
+
+### Fixed
+
+- **The shared provenance-header example is a Progressa run.** It named a real country two
+  lines above the rule that says fixture runs are `Progressa`, and attributed A6 to the wrong
+  skill. It is now `A6 — Phase RACI and role-gap list`, `ea-governance-drafter`, consistent
+  with `tests/plays/1.6/expected.md`.
+- **`bdat-assessor/references/worked-example.md` rewritten against `tests/progressa.md`.** It
+  had forked from the canonical fixture: MoEYS as "Youth and Sport", PDGA running payments,
+  and a Learner Registry modelled as an operating body with an enrolment system. The fixture
+  says Skills, says the Central Bank of Progressa operates PayPro, and says the PLR is planned
+  and not started — its absence *is* the sector problem. Duplicate registries and
+  point-to-point integration are now **Confirmed** findings with the fixture's evidence, not
+  hypothetical risks, and the Civil Registration Department and Central Bank rows are present.
+- **`ea-institution-mapper/references/paera-a1-2.md`** cited an "Establishment Decree 2019 §3"
+  that the fixture does not contain. Replaced with PDGA's stated basis — a coordinating but not
+  binding mandate, a unit under the Ministry of ICT — and a hybrid note pointing at the 2021
+  Interoperability Framework, published but not applied.
+
+### Changed
+
+- **`bb-sourcing-researcher/references/worked-example.md` is a Progressa run.** It was a
+  real-country analysis while `bdat-assessor`'s was Progressa — two example-country
+  conventions in one kit. The eighteen product columns are unchanged; the country frame is the
+  fixture's, and Identity, Payment and Information Mediator become *Reuse existing* (PNIA,
+  PayPro, Linkup) rather than deploy-OSS postures. Analytics loses its extend-an-existing-
+  platform argument.
+- **The eight `tests/plays/1.*/gambia.md` baselines are removed.** The fixture tree is
+  one-country, and real-country material does not belong in a public CC BY kit. They were
+  excerpts of a synthesis document that is in no repo, covering 8 of 38 plays, and
+  `check_fixtures.py` never read them. `tests/README.md` now says plainly that acceptance
+  criterion 7 is a manual read against a private record and is not machine-checked.
+
+### Added
+
+- **A fixture marker.** Every file under `plugins/` that carries Progressa material opens with
+  `<!-- fixture: Progressa (fictional) · canonical: tests/progressa.md · keep consistent with
+  it -->`, and its `SKILL.md` declares it under a `Fixture material` sub-heading. A skill is
+  not "a Progressa skill"; a file contains fixture material, and it says so — the
+  standalone-upload route has no `tests/` to point at.
+- **`check_fixtures.py` acceptance criterion 9.** Enforces the above rather than requesting
+  it: fixture tokens require the marker, a deny-list catches each divergence the 2026-09-05
+  review found, no file outside `known-frameworks.md` and `api-guide.md` may name a real
+  comparator country as its own context, and `tests/plays/*/` may hold only `input.md` and
+  `expected.md`.
+
 ## [0.1.0] — 2026-09-05
 
 First release of the learner kit.
@@ -43,7 +92,7 @@ First release of the learner kit.
   provenance header, the six output-contract rules, and the A0–A31 workbook chain.
   `sync-shared.sh` copies them into every skill so each folder is self-contained.
 - **`tests/`** — the canonical Progressa fixture, a folder for all 37 plays plus Play 0,
-  eight Gambia baselines, and `check_fixtures.py`.
+  eight real-country baselines (removed in 0.1.1), and `check_fixtures.py`.
 - **`scripts/package.sh`** — the Cowork `.plugin` and the standalone skills zip.
 - CI: `sync-shared.sh --check`, `check_fixtures.py`, and `claude plugin validate --strict`
   on both manifests.
