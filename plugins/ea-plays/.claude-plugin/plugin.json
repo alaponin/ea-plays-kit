@@ -1,7 +1,19 @@
 {
   "name": "ea-plays",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "The 'with the kit' layer for the Knowledge Product AI plays on government enterprise architecture: builds sourced country context (Play 0), verifies every claim against tiered public sources (cite-or-discard), checks which shared building blocks are actually live, maps public bodies and national law, finds comparator-country evidence with primary sources, and grounds the Module 2-5 artefacts in PAERA v1.0. Plays run bare in any assistant; this kit adds the sources and the verification.",
-  "author": { "name": "FiscalAdmin OÜ", "url": "https://github.com/aarelaponin" },
-  "keywords": ["enterprise-architecture", "paera", "govstack", "dpi", "digital-government", "itu", "giga", "ai-plays"]
+  "author": {
+    "name": "FiscalAdmin OÜ",
+    "url": "https://github.com/aarelaponin"
+  },
+  "keywords": [
+    "enterprise-architecture",
+    "paera",
+    "govstack",
+    "dpi",
+    "digital-government",
+    "itu",
+    "giga",
+    "ai-plays"
+  ]
 }
