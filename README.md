@@ -51,5 +51,11 @@ attach `dist/*` to the release on GitHub. Do not commit a build product.
 
 ## Licence
 
-The content uses CC BY 4.0. See `plugins/ea-plays/LICENSE-CONTENT`.
+The content uses CC BY 4.0. `LICENSE` at the root of the repository carries the full text.
+`plugins/ea-plays/LICENSE-CONTENT` says which files the licence covers, and it travels inside
+the packaged plugin.
+
 The scripts use MIT. See `plugins/ea-plays/LICENSE-CODE`.
+
+Each `SKILL.md` declares `license: CC-BY-4.0` and `metadata.provider` in its frontmatter, as
+the Giga Skills Marketplace needs.

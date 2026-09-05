@@ -136,5 +136,5 @@ skills. You do not call it directly.
 ## Licence
 
 The content uses CC BY 4.0. The content is the skills, the references and this README. See
-`LICENSE-CONTENT`.
+`LICENSE-CONTENT` here, and `LICENSE` at the root of the repository for the full text.
 The scripts use MIT. See `LICENSE-CODE`.

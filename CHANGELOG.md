@@ -8,6 +8,25 @@ Video descriptions and the GitBook link the install command, never a release num
 
 ## [Unreleased]
 
+## [0.2.1] — 2026-09-05
+
+Marketplace metadata. No skill contract changes.
+
+### Added
+
+- **The frontmatter of each skill declares `license` and `metadata.provider`.** The Giga
+  Skills Marketplace scans a public repository, and each directory that holds a `SKILL.md`
+  becomes one skill. Its automated checks fail a skill that does not declare a name, a
+  description, a licence and a provider. The fourteen skills declared the first two only.
+  They now also declare `license: CC-BY-4.0` and `metadata.provider: FiscalAdmin OÜ`.
+- **`LICENSE` at the root of the repository.** The marketplace needs a licence file at the
+  root. It shows the licence as provenance in the catalogue, and a moderator reads it. The
+  two licence files were under `plugins/ea-plays/`, with names that GitHub does not detect,
+  so GitHub reported no licence for this repository. The new file carries the full text of
+  CC BY 4.0, from creativecommons.org, under one line of copyright.
+  `LICENSE-CONTENT` and `LICENSE-CODE` stay where they are, because `package.sh` puts them
+  inside the plugin that a learner installs.
+
 ## [0.2.0] — 2026-09-05
 
 Two passes: the dangling references, and Simplified Technical English. Minor: two skills gain

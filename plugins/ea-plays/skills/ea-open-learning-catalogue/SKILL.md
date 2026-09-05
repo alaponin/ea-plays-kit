@@ -15,6 +15,9 @@ description: >-
   materials, and the true risk is that the architect you trained leaves.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
+license: CC-BY-4.0
+metadata:
+  provider: FiscalAdmin OÜ
 ---
 
 ## What this skill does

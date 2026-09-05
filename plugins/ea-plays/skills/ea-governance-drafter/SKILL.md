@@ -18,6 +18,9 @@ description: >-
   decision.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
+license: CC-BY-4.0
+metadata:
+  provider: FiscalAdmin OÜ
 ---
 
 ## What this skill does

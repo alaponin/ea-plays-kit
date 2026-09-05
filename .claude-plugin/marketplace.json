@@ -10,7 +10,7 @@
       "name": "ea-plays",
       "source": "./plugins/ea-plays",
       "description": "The 'with the kit' layer for the KP1 Government Enterprise Architecture AI plays",
-      "version": "0.2.0"
+      "version": "0.2.1"
     }
   ]
 }
