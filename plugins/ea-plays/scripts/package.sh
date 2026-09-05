@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
-# Build the three release artefacts from one source tree (plan §3.7).
+# Build the release artefact from one source tree (plan §3.7).
 #
 #   package.sh            build into dist/
 #   package.sh --check    validate only; build nothing
 #
-# Outputs (never committed — attached to the GitHub release):
-#   dist/ea-plays-v<version>.plugin         Cowork: a stored zip of the plugin folder
-#   dist/skills-standalone-v<version>.zip   the Claude app: 14 self-contained skill folders
+# Output (never committed — attached to the GitHub release):
+#   dist/ea-plays-v<version>.plugin   Cowork: a stored zip of the plugin folder
+#
+# The Claude app's one-skill-at-a-time route uploads a folder straight from the source
+# tree, so it needs no artefact of its own.
 set -euo pipefail
 
 plugin="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -44,16 +46,13 @@ echo "==> dist/ea-plays-v$version.plugin"
     .claude-plugin skills shared scripts README.md LICENSE-CODE LICENSE-CONTENT \
     -x '*.DS_Store' )
 
-# Standalone skills — each folder self-contained, because sync-shared.sh already copied
-# shared/*.md into every references/. A learner uploads one folder; no plugin root needed.
-echo "==> dist/skills-standalone-v$version.zip"
-( cd "$plugin" && zip -q -r "$dist/skills-standalone-v$version.zip" skills -x '*.DS_Store' )
-
-# A skill folder that still points at ${CLAUDE_PLUGIN_ROOT} would break on upload.
+# Every skill folder must stay self-contained — sync-shared.sh copied shared/*.md into
+# each references/, and a folder that still points at ${CLAUDE_PLUGIN_ROOT} would break
+# when a learner uploads it to the Claude app on its own.
 if grep -rl 'CLAUDE_PLUGIN_ROOT' "$plugin/skills" >/dev/null 2>&1; then
   echo "skills reference \${CLAUDE_PLUGIN_ROOT}; they must be self-contained" >&2
   exit 1
 fi
 
 ls -lh "$dist"
-echo "==> done. Attach both to the GitHub release; neither is committed."
+echo "==> done. Attach it to the GitHub release; it is not committed."

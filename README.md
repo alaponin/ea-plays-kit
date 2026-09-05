@@ -24,7 +24,7 @@ plugins/ea-plays/                 the plugin
   shared/                         source tiers · provenance header · workbook chain · output contract
   skills/<name>/SKILL.md          fourteen skills, each self-contained
   scripts/sync-shared.sh          shared/*.md -> every skill's references/
-  scripts/package.sh              the .plugin and the standalone zip
+  scripts/package.sh              the Cowork .plugin
 tests/                            the Progressa fixture, 38 play folders, the checker
 ```
 

@@ -22,9 +22,9 @@ Not using Claude Code? Two other routes, same source tree:
 
 - **Cowork** — download `ea-plays-<version>.plugin` from the GitHub release and install it
   from Settings → Capabilities.
-- **The Claude app, one skill at a time** — download `skills-standalone-<version>.zip` from
-  the release and upload any single folder under Settings → Capabilities → Skills. Every
-  skill folder is self-contained.
+- **The Claude app, one skill at a time** — download this repo (**Code → Download ZIP**, or
+  clone it) and upload any single folder under `plugins/ea-plays/skills/` at Settings →
+  Capabilities → Skills. Every skill folder is self-contained.
 
 ## What you get
 
