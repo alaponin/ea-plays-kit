@@ -8,6 +8,54 @@ Video descriptions and the GitBook link the install command, never a release num
 
 ## [Unreleased]
 
+## [0.1.3] — 2026-09-05
+
+Reference and documentation fixes. No skill contract changes.
+
+### Fixed
+
+- **`bdat-assessor/references/change-impact-template.md` carried the fixture marker but not
+  the fixture's content.** Its filled example was the pre-review fork: "DGA" for PDGA, the
+  learner registry "contested between MoEYS and DGA" where §2 assigns it to MoEYS, a backbone
+  "not yet operational" where Linkup is live and the real gap is MoEYS membership, a sixth
+  learner list where the fixture has three, and no Data Protection Act row under legal basis.
+  Criterion 9 passed it because the deny-list encoded the first review's divergences, not
+  these.
+- **The workbook chain disagreed with itself in ten rows.** A6 said *Feeds 1.7* while A21
+  (3.7) and A30 (5.5) both listed A6 under *Consumed*; A3, A7, A8, A11, A13, A16 and A26 had
+  the same fault, A7's cell saying "Module 3" where 3.3 and 3.4 consume it. A skill filling
+  its **Feeds** field from this file was under-reporting where its artefact goes. The header
+  example, which copies the A6 row, inherited the error.
+- Five programmes across **four** ministries, not five — §2 puts the National Learner
+  Registry and the Scholarship Management Platform both under MoEYS.
+- **Shared Platform**, PAERA's term, not "Shared Platform Provider".
+- `change-impact-template.md` was listed twice in `bdat-assessor/SKILL.md`.
+- The plugin README credited `bdat-assessor` with the metamodel conformance check. That is
+  play 2.2 and `paera-reference-check`'s, whose own row already says so.
+
+### Changed
+
+- **`tests/README.md` owns the fixture rules and the acceptance criteria.** Both lived only
+  in a CHANGELOG entry and checker comments; the criteria were cited by number in prose and
+  never listed. They are now a table with a *Checked by* column, criterion 7 included as the
+  manual row it has always been. Criteria 1, 4, 5 and 6 are written from what the tooling
+  actually tests — the build plan that numbered them is not in this repo, and the README says
+  so.
+- **Every checker exemption earns its line.** `workbook-chain.md` and `source-tiers.md` leave
+  `EXEMPT` (neither carries a fixture token); the three that stay carry a comment saying why.
+  `GAMBIA_OK` becomes `REAL_COUNTRY_AS_COMPARATOR_OK`, and its failure message claims what it
+  checks rather than "no real country leaks in".
+- The two plan documents are committed under `docs/plans/`.
+
+### Added
+
+- **Criterion 10 — the workbook chain agrees with itself.** Parses the table and checks that
+  every artefact a play consumes lists that play in its producer's *Feeds* cell. This is the
+  class of error that had just happened; it found nine more instances of it. A0 is exempt —
+  its Feeds cell is prose, and the section table above it does the routing.
+- Three deny-list entries for the divergences above. `DENY` is a ledger of every divergence a
+  review has found, not a snapshot of the last one.
+
 ## [0.1.2] — 2026-09-05
 
 Packaging only. 0.1.1 was tagged but never released, so this is the first release
