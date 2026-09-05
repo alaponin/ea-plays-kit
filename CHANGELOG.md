@@ -8,6 +8,18 @@ Video descriptions and the GitBook link the install command, never a release num
 
 ## [Unreleased]
 
+## [0.1.2] — 2026-09-05
+
+Packaging only. 0.1.1 was tagged but never released, so this is the first release
+carrying the 0.1.1 reference fixes below.
+
+### Changed
+
+- **`skills-standalone-<version>.zip` is no longer built.** The Claude app uploads one skill
+  folder, so a zip of all fourteen under a `skills/` root made the learner unzip and re-zip
+  anyway — which GitHub's own source download already gives them. `package.sh` now builds the
+  Cowork `.plugin` alone, and the README points that route at the source tree.
+
 ## [0.1.1] — 2026-09-05
 
 Reference fixes only. No skill contract changes.
@@ -38,10 +50,6 @@ Reference fixes only. No skill contract changes.
   fixture's, and Identity, Payment and Information Mediator become *Reuse existing* (PNIA,
   PayPro, Linkup) rather than deploy-OSS postures. Analytics loses its extend-an-existing-
   platform argument.
-- **`skills-standalone-<version>.zip` is no longer built.** The Claude app uploads one skill
-  folder, so a zip of all fourteen under a `skills/` root made the learner unzip and re-zip
-  anyway — which GitHub's own source download already gives them. `package.sh` now builds the
-  Cowork `.plugin` alone, and the README points that route at the source tree.
 - **The eight `tests/plays/1.*/gambia.md` baselines are removed.** The fixture tree is
   one-country, and real-country material does not belong in a public CC BY kit. They were
   excerpts of a synthesis document that is in no repo, covering 8 of 38 plays, and
