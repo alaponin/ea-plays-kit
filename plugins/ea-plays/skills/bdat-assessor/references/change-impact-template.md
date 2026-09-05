@@ -108,62 +108,81 @@ Theoretical benefits do not materialise if enabling conditions are absent.
 
 ## Worked Example: Introducing a National Learner Registry
 
-**Change**: Introduce a National Learner Registry (PLR) as a shared state registry,
-where none currently exists. Each ministry and examination authority currently holds
-its own partial learner list.
+**Change**: Introduce the National Learner Registry (PLR) as a shared state registry. The
+Education Sector Plan 2023–2028 calls for it and it has **not started**. Today a learner is
+held three times — in the district EMIS, in the PNEA candidate list, and in the Social
+Protection Agency's beneficiary register — each on its own numbering, and the three do not
+agree.
 
 **Initiating layer**: Application (a new shared system is being introduced)
-**Owner**: To be assigned — currently contested between MoEYS and Digital Government Authority
-**Trigger**: Donor-funded digital education programme
+**Owner**: MoEYS — named in the Education Sector Plan 2023–2028 and in §2. Note two things
+about that owner before going further: MoEYS is **not a Linkup member**, and the sector has
+**no data-standards function** (§6).
+**Trigger**: World Bank human-capital programme — USD 6.5m over three years (§2, item 1)
 
 ### Downward Trace
 
-- **Data**: A new Learner domain must be defined, with PLR as the single owner.
-  Ownership must be formally assigned; all existing partial lists must be retired.
-  Person domain (already owned by PNIA) must be linked — PLR uses PNIA as its
-  identity anchor.
-- **Technology**: PLR requires access to the data-exchange backbone to serve
-  consuming bodies (PNEA, MoEYS, schools). If no backbone exists, PLR becomes
-  a silo accessible only by direct integration — defeating its purpose.
+- **Data**: A new Learner domain must be defined, with PLR as the single owner. Ownership
+  must be formally assigned; the three existing partial lists must be reconciled and
+  retired. The Person domain is owned by PNIA — but **PNIA issues IDs only at 16**, so for a
+  primary-school child the National ID cannot be the anchor. The legal identity anchor is
+  the Civil Registration Department: paper-first, 71% birth registration (§1, §7). A design
+  that assumes the National ID will fail on the registry's main population, and the missing
+  29% of birth registrations becomes an enrolment barrier rather than a data-quality
+  footnote.
+- **Technology**: PLR must reach its consuming bodies (PNEA, MoEYS schools, the Social
+  Protection Agency). The exchange layer already exists — Linkup, X-Road 7.x, live in pilot
+  with four members and a documented onboarding procedure — but MoEYS is not one of the
+  four. **The gap is membership, not infrastructure.** If that is not fixed, PLR either
+  becomes a silo reached by direct integration, or gets a point-to-point link of the kind
+  the tax authority built to the business register in 2022 and has not migrated since.
 
 ### Upward Trace
 
 | Layer | Enabled |
 |-------|---------|
-| Application → Data | Other systems stop maintaining their own learner copies; the Learner domain gains a single authoritative source |
-| Data → Business | The "register a learner once" capability becomes real rather than aspirational |
-| Business → Service | Once-only enrolment across schools, examination bodies, and scholarship programmes becomes deliverable |
+| Application → Data | The three partial learner lists stop being maintained separately; the Learner domain gains a single authoritative source |
+| Data → Business | The "register a learner once" capability becomes real rather than aspirational — today no body claims it |
+| Business → Service | Once-only enrolment across schools, the examination authority and the scholarship programme becomes deliverable; the parent stops proving the child's identity on paper at every counter |
 
 ### Cross-Body Consequences
 
 | Body | Impact | Action Required |
 |------|--------|----------------|
-| PNEA | Must retire its private learner list and consume PLR | Integration with backbone; decommissioning plan for internal list |
-| MoEYS | Must define which school-level sub-domains remain under ministry and which migrate to PLR | Data governance decision |
-| PNIA | PLR must consume PNIA for person identity; no new identity function | API agreement; SLA for availability |
-| PDGA | Backbone must be in place and serving PLR before PLR can serve others | Infrastructure readiness confirmation |
+| MoEYS | Owns the change, and holds one of the three lists in its district EMIS | Join Linkup; define which school-level sub-domains stay with the ministry and which migrate; retire the district learner numbering |
+| PNEA | Must retire its candidate-list numbering as a learner identifier and consume PLR | Integration via Linkup; decommissioning plan for the internal list |
+| Social Protection Agency | Holds the third learner list inside its beneficiary register | Consume PLR for learner identity; reconcile against the existing register before retiring anything |
+| PNIA | PLR consumes the National ID for those aged 16+; no new identity function | API agreement; SLA for availability |
+| Civil Registration Department | Becomes the identity anchor for learners below 16 | An electronic route into the civil register, which is paper-first today |
+| PDGA | Onboards MoEYS to Linkup; coordinates, but cannot compel | Member onboarding; a data catalogue, which Linkup does not publish |
 
 ### Architecture Trap Check
 
-- **Bespoke trap**: Clear — PLR is the shared building block; the trap to watch for is
-  any consuming body that refuses to retire its own list and continues maintaining a
-  private copy.
-- **Vendor-driven trap**: Risk — if PLR is procured from a vendor and learner data is
-  stored in a proprietary schema, migration to a future system is expensive. Require
-  open data export and national data standard compliance at procurement.
+- **Bespoke trap**: **Present in the sector.** The Social Protection Agency's beneficiary
+  register was built in 2016 by a vendor under a World Bank programme rather than assembled
+  from shared registries, and it is now one of the three learner lists. PLR is funded the
+  same way, by the same donor, and nothing yet requires it to consume PNIA and the civil
+  register rather than build its own. The counter-example is already running in the sector.
+- **Vendor-driven trap**: **Present, and specific.** That 2016 register is under
+  single-vendor maintenance — the vendor that built it still holds the only maintenance
+  contract. Require open data export and a maintenance market at procurement, because the
+  failure mode is not hypothetical here; it is ten years old and in the next room.
 
 ### Enabling Conditions
 
 | Condition | Status |
 |-----------|--------|
-| Legal basis for PLR as authoritative registry | Needed — no existing law designates a single learner registry |
-| Named owner (ministry or agency) | Contested — MoEYS and DGA both claim it |
-| Data-exchange backbone available | Gap — backbone not yet operational |
-| PNEA agreement to retire private learner list | Not yet secured |
-| Recurrent funding post-donor project | Unknown |
+| Legal basis for PLR as authoritative registry | **Needed** — no instrument designates an authoritative learner registry (§7) |
+| Legal basis for sharing minors' data | **Needed** — the Data Protection Act 2023 requires one, and parental consent for non-statutory uses. The Data Protection Commission has 6 staff and no enforcement action yet (§7) |
+| Named owner for the Learner domain | **Named** — MoEYS, in the Education Sector Plan 2023–2028 and §2 |
+| Governance board able to enforce cross-body data agreements | **Absent** — no EA Governance Board; the ICT Steering Committee met twice in 2024 and not since, and PDGA's mandate is coordinating, not binding (§1, §4) |
+| Data exchange available to the sector | **Ready, not joined** — Linkup is live in pilot with four members and MoEYS is not one. Onboarding, not build (§1) |
+| Recurrent funding for operations and maintenance | **Absent** — annual budget cycle, no multi-year ICT envelopes (§4, §5) |
 
-**Assessment**: The theoretical benefit of PLR — one learner record, consumed by all —
-is real. But four of five enabling conditions are absent or contested. Introducing PLR
-before these are resolved risks creating a sixth version of the learner record rather
-than replacing the five that exist. Sequence: resolve ownership and legal basis first,
-confirm backbone readiness second, then deploy PLR.
+**Assessment**: The theoretical benefit of PLR — one learner record, consumed by all — is
+real. But of six enabling conditions only one is in place; four are absent or unsecured, and
+the fifth, the exchange layer, exists while the owning ministry has not joined it.
+Introducing PLR before these are resolved risks creating **a fourth list rather than
+replacing the three**. Sequence: resolve the two legal bases first, onboard MoEYS to Linkup
+second — it is procedural, not a build — then deploy PLR against the civil register for
+under-16s and the National ID above.

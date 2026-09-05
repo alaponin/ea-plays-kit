@@ -80,8 +80,8 @@ MARKER = "<!-- fixture: Progressa (fictional)"
 # carrying the marker itself.
 EXEMPT = {"provenance-header.md", "output-contract.md", "workbook-chain.md",
           "source-tiers.md", "SKILL.md"}
-# The divergences the 2026-09-05 review found. One regex each, kept next to the fixture
-# they guard rather than in a parser.
+# Every divergence a review has found; add to it, never prune it. One regex each, kept
+# next to the fixture they guard rather than in a parser.
 DENY = [
     (r"Youth and Sport", "MoEYS is the Ministry of Education, Youth and Skills"),
     (r"PDGA[^.\n]*payments|payments[^.\n]*PDGA",
@@ -90,6 +90,10 @@ DENY = [
      "the fixture gives PDGA no decree — a coordinating mandate, a unit under the "
      "Ministry of ICT (§1, §4)"),
     (r"Enrolment system", "PLR runs no system — it is planned, not started (§6)"),
+    (r"\bDGA\b", "the body is PDGA — Progressa Digital Government Authority"),
+    (r"backbone not yet operational|no backbone exists",
+     "Linkup is live in pilot; the gap is MoEYS membership (§1)"),
+    (r"contested between MoEYS", "the fixture assigns the NLR to MoEYS (§2)"),
 ]
 # trigger → the exact string tests/progressa.md uses, which the file must also carry
 CANON = [
