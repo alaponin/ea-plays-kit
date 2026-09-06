@@ -1,8 +1,8 @@
 # Play 5.1 — Generate comparator-country evidence tuned to your context · fixture input
 
-**Consumes:** A0 §5, A8 — from [`tests/progressa.md`](../../progressa.md).
+**Consumes:** A0 §5 — from [`tests/progressa.md`](../../progressa.md).
 **Primary skill:** `ea-comparator-evidence` · also runs: `cite-or-discard`
-**Produces:** A8 rev.2 — Comparator evidence, sourced
+**Produces:** A8 — Comparator-country cards, sourced
 
 ## What the learner types
 
@@ -11,7 +11,7 @@ My country is [country X], with these characteristics: [population, income class
 ## What the fixture supplies
 
 Country: **Progressa** · Sector: **Education**. Put these two values in the place of each
-placeholder in brackets above. The named input is A0 §5, A8 of `tests/progressa.md`. Paste
+placeholder in brackets above. The named input is A0 §5 of `tests/progressa.md`. Paste
 those sections without a change.
 
 If this play consumes an artefact from an earlier play, such as A1, A3 or A22, run that play

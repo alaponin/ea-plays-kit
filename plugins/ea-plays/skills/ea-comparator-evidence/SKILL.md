@@ -5,8 +5,8 @@ description: >-
   one built, from its published EA framework or its digital-government coordination
   instrument. Give three to five cards, a Tier 1 source for each claim, one transferable
   mechanism for each country, and a minimum of one contested or mixed case with both sides
-  cited. Serves the comparator signposts play (1.8) and the evidence play (5.1), and feeds
-  the proof section of the ministerial business case (5.4) and the closing case (5.7).
+  cited. Serves the comparator evidence play (5.1), and feeds
+  the proof section of the ministerial business case (5.4) and the closing case (5.6).
   Use when someone says "which countries are like mine", "find comparator countries", "has
   anyone actually done this", "is this proven or just theory", "what did Rwanda/Ghana/
   Estonia actually build", "give me evidence for the minister", "show me a country that
@@ -14,7 +14,7 @@ description: >-
   classification, population band, governance type and region, with priority to African and
   developing-country examples; reads published national EA frameworks, the UN EGDI, the
   World Bank GovTech Maturity Index and the OECD Digital Government Index. Runs
-  cite-or-discard on itself before returning — the 1.8 test run produced comparators sourced
+  cite-or-discard on itself before returning — the August 2026 comparator test run produced comparators sourced
   to document mirrors and blog posts, and this is the fix.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
@@ -29,7 +29,7 @@ This skill selects comparator countries against criteria that it states. For eac
 it records what the country built. Each claim has a primary source. Each card gives one
 mechanism that the learner's country can adopt.
 
-The August 2026 run of play 1.8 gave five comparators with URLs. This was better than the
+The August 2026 run of the comparator play (then numbered 1.8, now 5.1) gave five comparators with URLs. This was better than the
 four signposts in the video, which had no sources. But some of those URLs were document
 mirrors and Medium posts. This skill makes the sources survive a check. It also stops the
 set from becoming a list of successes.
@@ -89,7 +89,7 @@ again.
    will find the counter-example that you left out.
 
 7. **Bring the recurring elements together.** Give what is in three cards or more. This
-   synthesis goes into plays 5.4 and 5.7. The individual cards do not.
+   synthesis goes into plays 5.4 and 5.6. The individual cards do not.
 
 8. **Run `cite-or-discard` on your own output before you give it to the learner.** Read
    every URL. Follow every mirror to its primary source. Grade every claim. This step is

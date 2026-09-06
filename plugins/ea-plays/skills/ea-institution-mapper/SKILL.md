@@ -7,7 +7,7 @@ description: >-
   confidence and a hybrid flag. Serves every play that begins "here are the main bodies in
   [sector]": the ministerial explainer (1.2), the phase RACI's roles input (1.6), classify a
   body (2.4), the sector BDAT skeleton (2.5), the demonstration canvas (4.1), the transfer
-  plan (4.8) and the second-sector map (5.3). Use when someone says "who are the bodies in
+  plan (4.8) and the second-sector map (5.3b). Use when someone says "who are the bodies in
   [country]'s [sector]", "classify this agency", "what is this ministry's legal mandate",
   "which body owns the learner registry", "build my roles register", "is this a registry or
   a service authority", "fill in the demonstration canvas". Returns the A5 bodies register,

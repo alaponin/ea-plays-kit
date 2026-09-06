@@ -72,7 +72,6 @@ skills. You do not call it directly.
 | 1.5 | A5 — PAERA foundation coverage map | `paera-reference-check` | `cite-or-discard` |
 | 1.6 | A6 — Phase RACI and role-gap list | `ea-governance-drafter` | `ea-institution-mapper` |
 | 1.7 | A7 — EA Governance Board ToR | `ea-governance-drafter` | `ea-legal-context` |
-| 1.8 | A8 — Comparator-country cards | `ea-comparator-evidence` | `cite-or-discard` |
 
 **Module 2 — Reading a government**
 
@@ -115,13 +114,15 @@ skills. You do not call it directly.
 
 | Play | Artefact | Primary skill | Also runs |
 | --- | --- | --- | --- |
-| 5.1 | A8 rev.2 — Comparator evidence, sourced | `ea-comparator-evidence` | `cite-or-discard` |
+| 5.1 | A8 — Comparator-country cards, sourced | `ea-comparator-evidence` | `cite-or-discard` |
 | 5.2 | A21 rev.2 — Programme risk register | `ea-governance-drafter` | — |
-| 5.3 | A28 rev.2 — Second-sector map | `ea-method-runner` | `bb-landscape-check`, `ea-institution-mapper` |
+| 5.3 | A31 — National rollout wave plan | `ea-method-runner` | `bb-landscape-check` |
+| 5.3b | A28 rev.2 — Second-sector map (GitBook-only companion play, no video) | `ea-method-runner` | `bb-landscape-check`, `ea-institution-mapper` |
 | 5.4 | A29 — Ministerial business case | `ea-cost-case` | `ea-comparator-evidence`, `cite-or-discard` |
 | 5.5 | A30 — Capability-building plan | `ea-open-learning-catalogue` | — |
-| 5.6 | A31 — National rollout wave plan | `ea-method-runner` | `bb-landscape-check` |
-| 5.7 | A29 rev.2 — Closing one-page case | `ea-comparator-evidence` | `cite-or-discard`, `ea-cost-case` |
+| 5.6 | A29 rev.2 — Closing one-page case | `ea-comparator-evidence` | `cite-or-discard`, `ea-cost-case` |
+
+Play ids follow KP1 v0.2 (3 September 2026). 1.8 is retired: its comparator play is 5.1.
 
 ## The rules every skill follows
 

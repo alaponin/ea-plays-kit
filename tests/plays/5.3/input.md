@@ -1,17 +1,17 @@
-# Play 5.3 — Map the method to a second sector · fixture input
+# Play 5.3 — Sequence your national rollout into waves · fixture input
 
-**Consumes:** A28, BB status register — from [`tests/progressa.md`](../../progressa.md).
-**Primary skill:** `ea-method-runner` · also runs: `bb-landscape-check`, `ea-institution-mapper`
-**Produces:** A28 rev.2 — Second-sector map
+**Consumes:** A26, A28, BB status register — from [`tests/progressa.md`](../../progressa.md).
+**Primary skill:** `ea-method-runner` · also runs: `bb-landscape-check`
+**Produces:** A31 — National rollout wave plan
 
 ## What the learner types
 
-I have run, or plan to run, the EA method on [country X]'s [first sector]. I am considering [second sector]. Here are its main bodies [list them, one line each]. Produce a one-page map. (1) Classify each body (policy unit / regulatory agency / service-delivery authority / state registry / shared platform). (2) Name this sector's equivalent of the central duplicated record (the learner, the patient, the farmer, the beneficiary) and the flagship it is blocking. (3) Name the six deliverables for this sector. (4) List what this sector can REUSE from the first sector's work — the identity platform, the data-exchange backbone, the team, the framework, the governance — versus what is genuinely new. Output: a one-page map under those four headings.
+I am planning a national EA rollout for [country X] across these sectors [list them, with the flagship outcome each has if known]. Sequence it into waves. (1) Wave 1: recommend the foundation sector — the one with the clearest flagship — and note that Wave 1 also stands up the permanent team, the governance board, and the first shared platforms (identity, data exchange). (2) Waves 2 onward: order the remaining sectors, and for each name what it REUSES from earlier waves (which shared platforms) versus what is new. (3) The national scorecard: the few metrics to report quarterly (sectors live, re-use rate, shared platforms in place). Output: a wave sequence with reuse noted per wave, plus the scorecard metrics.
 
 ## What the fixture supplies
 
 Country: **Progressa** · Sector: **Education**. Put these two values in the place of each
-placeholder in brackets above. The named input is A28, BB status register of `tests/progressa.md`. Paste
+placeholder in brackets above. The named input is A26, A28, BB status register of `tests/progressa.md`. Paste
 those sections without a change.
 
 If this play consumes an artefact from an earlier play, such as A1, A3 or A22, run that play

@@ -2,8 +2,8 @@
 name: cite-or-discard
 description: >-
   Verify each claim in a draft against its source before you use the draft, and drop the
-  claims that fail. Run it on comparator-country cards (1.8, 5.1), a business case or a
-  ministerial one-pager (1.3, 5.4, 5.7), a foundation map (1.5), a tool comparison (3.2),
+  claims that fail. Run it on comparator-country cards (5.1), a business case or a
+  ministerial one-pager (1.3, 5.4, 5.6), a foundation map (1.5), a tool comparison (3.2),
   a learning plan (5.5), or any output that has URLs. The audit mode does the opposite:
   for an input pack, it tells which lines have a source, and which lines are an assertion
   by the learner or the model. This is how the source column of the Discovery brief (4.2)

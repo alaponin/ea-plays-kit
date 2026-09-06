@@ -6,7 +6,7 @@ description: >-
   country and sector, before any other play. It gives: a digital-landscape brief (feeds 1.1,
   1.2); a programme list with budget envelopes and building-block needs (1.3, 1.5); the
   ministry operating context and constraints (1.4); an institutional roles register by post
-  with confirmed/partial/gap tags (1.6, 1.7); a country-characteristics one-liner (1.8, 5.1);
+  with confirmed/partial/gap tags (1.6, 1.7); a country-characteristics one-liner (5.1);
   the public bodies, systems and registries table (2.1, 2.4, 2.5, 4.1); and the legal and
   policy list (2.3, 1.7). Use when someone says "build my country context", "run Play 0",
   "I need the input for play 1.1", "what do I paste into this prompt", "research [country]

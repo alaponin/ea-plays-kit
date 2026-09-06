@@ -1,4 +1,4 @@
-# Play 5.7 — expected output shape
+# Play 5.3b — expected output shape
 
 This file gives the **shape** of the output. It does not give the wording. A run passes when
 each line below is present. The words are different in each run.
@@ -6,8 +6,8 @@ each line below is present. The words are different in each run.
 ## Provenance header — the first three lines of the output
 
 ```
-> **Artefact** A29 rev.2 — Closing one-page case · **Country** Progressa · **Sector** Education · **Built** <ISO date>
-> **Skill** ea-comparator-evidence v<version> · **Consumed** A29, A31, A8 rev.2 · **Feeds** <play ids from workbook-chain.md>
+> **Artefact** A28 rev.2 — Second-sector map · **Country** Progressa · **Sector** Education · **Built** <ISO date>
+> **Skill** ea-method-runner v<version> · **Consumed** A28, A31, BB status register · **Feeds** <play ids from workbook-chain.md>
 > **Sources** <n> × Tier 1, <n> × Tier 2, <n> × Tier 3 · **Unverified lines** <n>
 ```
 
@@ -15,13 +15,13 @@ All nine fields must be present. Write `—` in a field with no value. Never lea
 
 ## The artefact
 
-a one-page closing case
+a one-page transfer map, including what is reused
 
-The prompt of the play says: a one-page case under those headings plus the closing paragraph
+The prompt of the play says: a one-page map under those four headings
 
 ## The safeguard, given back as the next action for the learner
 
-The case must be true to survive cabinet — verify every comparator claim against a real public source before presenting, and keep the 'necessary now' argument to what you can defend; an overstated claim, challenged, undermines the proven and portable points alongside it.
+This is a starting structure, not an assessment — confirm the gaps by running discovery on the real sector. And verify that the shared platforms it assumes can be reused are actually authoritative and available, not merely planned, before you cost the second sector as cheaper.
 
 ## Contract checks, for each play
 

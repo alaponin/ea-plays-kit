@@ -7,7 +7,7 @@ each line below is present. The words are different in each run.
 
 ```
 > **Artefact** A29 — Ministerial business case · **Country** Progressa · **Sector** Education · **Built** <ISO date>
-> **Skill** ea-cost-case v<version> · **Consumed** A3, A8 rev.2, A21 rev.2, A26 · **Feeds** <play ids from workbook-chain.md>
+> **Skill** ea-cost-case v<version> · **Consumed** A3, A8, A21 rev.2, A26 · **Feeds** <play ids from workbook-chain.md>
 > **Sources** <n> × Tier 1, <n> × Tier 2, <n> × Tier 3 · **Unverified lines** <n>
 ```
 

@@ -5,7 +5,7 @@ description: >-
   with shared building blocks. State the assumption block before the numbers. Name the
   benchmark sources with their URLs. Take the programme list and the budget envelopes from
   the country context instead of asking the learner for them. Serves the re-use business
-  case (1.3) and the ministerial business case (5.4), and feeds the closing case (5.7).
+  case (1.3) and the ministerial business case (5.4), and feeds the closing case (5.6).
   Use when someone says "build the business case for shared building blocks", "what does
   duplication cost us", "cost the re-use argument", "siloed vs shared", "how much would a
   shared identity layer save", "I need numbers for the minister", "TCO for these
@@ -79,7 +79,7 @@ this, and it was correct. Do not stop for numbers that the public record does no
 6. **Run `cite-or-discard` on each benchmark URL.** People quote a cost case more than any
    other artefact. An invented benchmark in a cabinet paper cannot be corrected.
 
-7. **For plays 5.4 and 5.7, assemble the case. Do not build it again.** Use this case, the
+7. **For plays 5.4 and 5.6, assemble the case. Do not build it again.** Use this case, the
    proof section from `ea-comparator-evidence`, and the risk register. Write one page, with
    the ask at the top.
 

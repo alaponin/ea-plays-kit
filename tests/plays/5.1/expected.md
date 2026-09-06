@@ -6,8 +6,8 @@ each line below is present. The words are different in each run.
 ## Provenance header — the first three lines of the output
 
 ```
-> **Artefact** A8 rev.2 — Comparator evidence, sourced · **Country** Progressa · **Sector** Education · **Built** <ISO date>
-> **Skill** ea-comparator-evidence v<version> · **Consumed** A0 §5, A8 · **Feeds** <play ids from workbook-chain.md>
+> **Artefact** A8 — Comparator-country cards, sourced · **Country** Progressa · **Sector** Education · **Built** <ISO date>
+> **Skill** ea-comparator-evidence v<version> · **Consumed** A0 §5 · **Feeds** <play ids from workbook-chain.md>
 > **Sources** <n> × Tier 1, <n> × Tier 2, <n> × Tier 3 · **Unverified lines** <n>
 ```
 

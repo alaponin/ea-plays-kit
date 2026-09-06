@@ -1,6 +1,6 @@
 # Play 5.4 — Draft the one-page ministerial business case · fixture input
 
-**Consumes:** A3, A8 rev.2, A21 rev.2, A26 — from [`tests/progressa.md`](../../progressa.md).
+**Consumes:** A3, A8, A21 rev.2, A26 — from [`tests/progressa.md`](../../progressa.md).
 **Primary skill:** `ea-cost-case` · also runs: `ea-comparator-evidence`, `cite-or-discard`
 **Produces:** A29 — Ministerial business case
 
@@ -11,7 +11,7 @@ Draft a one-page business case for a national EA programme, addressed to the min
 ## What the fixture supplies
 
 Country: **Progressa** · Sector: **Education**. Put these two values in the place of each
-placeholder in brackets above. The named input is A3, A8 rev.2, A21 rev.2, A26 of `tests/progressa.md`. Paste
+placeholder in brackets above. The named input is A3, A8, A21 rev.2, A26 of `tests/progressa.md`. Paste
 those sections without a change.
 
 If this play consumes an artefact from an earlier play, such as A1, A3 or A22, run that play

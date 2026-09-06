@@ -1,6 +1,6 @@
 # Play 1.7 — Draft a Terms of Reference for your EA Governance Board · fixture input
 
-**Consumes:** A0 §4, A0 §7, A3, A6, A8 — from [`tests/progressa.md`](../../progressa.md).
+**Consumes:** A0 §4, A0 §7, A3, A6 — from [`tests/progressa.md`](../../progressa.md).
 **Primary skill:** `ea-governance-drafter` · also runs: `ea-legal-context`
 **Produces:** A7 — EA Governance Board ToR
 
@@ -11,7 +11,7 @@ Draft a Terms of Reference for an EA Governance Board in [country X]. Include: (
 ## What the fixture supplies
 
 Country: **Progressa** · Sector: **Education**. Put these two values in the place of each
-placeholder in brackets above. The named input is A0 §4, A0 §7, A3, A6, A8 of `tests/progressa.md`. Paste
+placeholder in brackets above. The named input is A0 §4, A0 §7, A3, A6 of `tests/progressa.md`. Paste
 those sections without a change.
 
 If this play consumes an artefact from an earlier play, such as A1, A3 or A22, run that play

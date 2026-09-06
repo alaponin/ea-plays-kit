@@ -37,7 +37,7 @@ blocks.
 
 Posts, never names. See `output-contract.md` §2.
 
-## §5 Country characteristics — feeds 1.8, 5.1
+## §5 Country characteristics — feeds 5.1
 
 Write one paragraph. Do not use a table. Give these items in order: population · income
 classification · type of governance and sub-national autonomy · region and regional bodies ·

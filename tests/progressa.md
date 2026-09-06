@@ -58,7 +58,7 @@ The context: today a parent enrols a child on paper at the school. The head teac
 - Ministry of Finance budget department (annual budget cycle; no multi-year envelopes for ICT)
 - No EA Governance Board exists; an ICT Steering Committee met twice in 2024 and not since
 
-## §5 Country characteristics one-liner — feeds 1.8, 5.1
+## §5 Country characteristics one-liner — feeds 5.1
 
 The population is 16.8 million. The income group is lower-middle. It is a unitary state with 10 provinces, and their administration is delegated, not devolved. The region is East and Southern Africa. It is a member of GovStack and a pilot country for 50-in-5. The National ID covers 78% of the adults. The layer for exchange uses X-Road and is in pilot. The digital agency, PDGA, coordinates and has no authority that binds. The budget cycle is one year, and there is no ICT envelope for several years. Three donors fund separate systems for separate sectors: the World Bank, the AfDB and the Global Fund. There is no EA function and no governance board.
 

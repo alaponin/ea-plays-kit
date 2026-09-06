@@ -5,7 +5,7 @@ blockquote lines. Put the header before all prose, all tables, and all analysis.
 
 ```
 > **Artefact** A6 — Phase RACI and role-gap list · **Country** Progressa · **Sector** Education · **Built** 2026-09-05
-> **Skill** ea-governance-drafter v0.2.1 · **Consumed** A0 §4, A4, A5 · **Feeds** 1.7, 3.7, 5.5
+> **Skill** ea-governance-drafter v0.2.2 · **Consumed** A0 §4, A4, A5 · **Feeds** 1.7, 3.7, 5.5
 > **Sources** 4 × Tier 1, 2 × Tier 2, 0 × Tier 3 · **Unverified lines** 1 (marked ⚠)
 ```
 

@@ -71,17 +71,7 @@
    "ea-legal-context"
   ],
   "artefact": "A7 — EA Governance Board ToR",
-  "consumes": "A0 §4, A0 §7, A3, A6, A8"
- },
- "1.8": {
-  "play": "Generate comparator-country signposts that fit your context",
-  "subtopic": "Four signposts — three African, one international",
-  "skill": "ea-comparator-evidence",
-  "also": [
-   "cite-or-discard"
-  ],
-  "artefact": "A8 — Comparator-country cards",
-  "consumes": "A0 §5"
+  "consumes": "A0 §4, A0 §7, A3, A6"
  },
  "2.1": {
   "play": "Generate a four-layer reading template for a ministry",
@@ -289,8 +279,8 @@
   "also": [
    "cite-or-discard"
   ],
-  "artefact": "A8 rev.2 — Comparator evidence, sourced",
-  "consumes": "A0 §5, A8"
+  "artefact": "A8 — Comparator-country cards, sourced",
+  "consumes": "A0 §5"
  },
  "5.2": {
   "play": "Build your programme's sustainment risk register",
@@ -301,15 +291,25 @@
   "consumes": "A21, A27"
  },
  "5.3": {
+  "play": "Sequence your national rollout into waves",
+  "subtopic": "Roll it out across sectors — and why the second is cheaper",
+  "skill": "ea-method-runner",
+  "also": [
+   "bb-landscape-check"
+  ],
+  "artefact": "A31 — National rollout wave plan",
+  "consumes": "A26, A28, BB status register"
+ },
+ "5.3b": {
   "play": "Map the method to a second sector",
-  "subtopic": "Will it work for your other sectors? — the portability case",
+  "subtopic": "Roll it out across sectors — companion play (GitBook only, no video)",
   "skill": "ea-method-runner",
   "also": [
    "bb-landscape-check",
    "ea-institution-mapper"
   ],
   "artefact": "A28 rev.2 — Second-sector map",
-  "consumes": "A28, BB status register"
+  "consumes": "A28, A31, BB status register"
  },
  "5.4": {
   "play": "Draft the one-page ministerial business case",
@@ -320,7 +320,7 @@
    "cite-or-discard"
   ],
   "artefact": "A29 — Ministerial business case",
-  "consumes": "A3, A8 rev.2, A21 rev.2, A26"
+  "consumes": "A3, A8, A21 rev.2, A26"
  },
  "5.5": {
   "play": "Build your team's capability-building plan",
@@ -331,16 +331,6 @@
   "consumes": "A6"
  },
  "5.6": {
-  "play": "Sequence your national rollout into waves",
-  "subtopic": "Roll it out — from one sector to a national EA practice",
-  "skill": "ea-method-runner",
-  "also": [
-   "bb-landscape-check"
-  ],
-  "artefact": "A31 — National rollout wave plan",
-  "consumes": "A26, A28 rev.2, BB status register"
- },
- "5.7": {
   "play": "Draft your closing one-page case for the minister",
   "subtopic": "The closing case — proven, portable, and necessary now",
   "skill": "ea-comparator-evidence",
@@ -349,6 +339,6 @@
    "ea-cost-case"
   ],
   "artefact": "A29 rev.2 — Closing one-page case",
-  "consumes": "A29, A31, A8 rev.2"
+  "consumes": "A29, A31, A8"
  }
 }

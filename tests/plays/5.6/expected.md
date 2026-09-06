@@ -6,8 +6,8 @@ each line below is present. The words are different in each run.
 ## Provenance header — the first three lines of the output
 
 ```
-> **Artefact** A31 — National rollout wave plan · **Country** Progressa · **Sector** Education · **Built** <ISO date>
-> **Skill** ea-method-runner v<version> · **Consumed** A26, A28 rev.2, BB status register · **Feeds** <play ids from workbook-chain.md>
+> **Artefact** A29 rev.2 — Closing one-page case · **Country** Progressa · **Sector** Education · **Built** <ISO date>
+> **Skill** ea-comparator-evidence v<version> · **Consumed** A29, A31, A8 · **Feeds** <play ids from workbook-chain.md>
 > **Sources** <n> × Tier 1, <n> × Tier 2, <n> × Tier 3 · **Unverified lines** <n>
 ```
 
@@ -15,13 +15,13 @@ All nine fields must be present. Write `—` in a field with no value. Never lea
 
 ## The artefact
 
-a national wave sequence with per-wave reuse, plus the scorecard metrics
+a one-page closing case
 
-The prompt of the play says: a wave sequence with reuse noted per wave, plus the scorecard metrics
+The prompt of the play says: a one-page case under those headings plus the closing paragraph
 
 ## The safeguard, given back as the next action for the learner
 
-Directional sequencing, not a plan of record — a sector scheduled before its shared platform is authoritative will slip. Check each wave's prerequisites against the earlier waves, and confirm the foundation platforms are real and available before later waves are costed as cheaper.
+The case must be true to survive cabinet — verify every comparator claim against a real public source before presenting, and keep the 'necessary now' argument to what you can defend; an overstated claim, challenged, undermines the proven and portable points alongside it.
 
 ## Contract checks, for each play
 

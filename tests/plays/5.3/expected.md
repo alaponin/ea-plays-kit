@@ -6,8 +6,8 @@ each line below is present. The words are different in each run.
 ## Provenance header — the first three lines of the output
 
 ```
-> **Artefact** A28 rev.2 — Second-sector map · **Country** Progressa · **Sector** Education · **Built** <ISO date>
-> **Skill** ea-method-runner v<version> · **Consumed** A28, BB status register · **Feeds** <play ids from workbook-chain.md>
+> **Artefact** A31 — National rollout wave plan · **Country** Progressa · **Sector** Education · **Built** <ISO date>
+> **Skill** ea-method-runner v<version> · **Consumed** A26, A28, BB status register · **Feeds** <play ids from workbook-chain.md>
 > **Sources** <n> × Tier 1, <n> × Tier 2, <n> × Tier 3 · **Unverified lines** <n>
 ```
 
@@ -15,13 +15,13 @@ All nine fields must be present. Write `—` in a field with no value. Never lea
 
 ## The artefact
 
-a one-page transfer map, including what is reused
+a national wave sequence with per-wave reuse, plus the scorecard metrics
 
-The prompt of the play says: a one-page map under those four headings
+The prompt of the play says: a wave sequence with reuse noted per wave, plus the scorecard metrics
 
 ## The safeguard, given back as the next action for the learner
 
-This is a starting structure, not an assessment — confirm the gaps by running discovery on the real sector. And verify that the shared platforms it assumes can be reused are actually authoritative and available, not merely planned, before you cost the second sector as cheaper.
+Directional sequencing, not a plan of record — a sector scheduled before its shared platform is authoritative will slip. Check each wave's prerequisites against the earlier waves, and confirm the foundation platforms are real and available before later waves are costed as cheaper.
 
 ## Contract checks, for each play
 

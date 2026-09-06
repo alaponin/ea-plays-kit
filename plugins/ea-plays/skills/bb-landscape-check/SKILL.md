@@ -6,7 +6,7 @@ description: >-
   GovStack Information Mediator), civil registration, G-cloud and hosting, consent.
   Use whenever a play asks "which shared building blocks already exist", before the two-trap
   screen (2.7), the sourcing matrix (4.4), the target architecture (4.5), the review gate
-  (3.5), the gate decision (4.7), the second-sector map (5.3) or the rollout waves (5.6), or
+  (3.5), the gate decision (4.7), the rollout waves (5.3) or the second-sector map (5.3b), or
   whenever someone says "is the national ID live", "does the country have a data-exchange
   layer", "what DPI exists in [country]", "is the payment switch real", "can we reuse
   identity here", "verify the shared block is authoritative and available". Reads ID4D, the
@@ -30,7 +30,7 @@ the operator, a coverage figure, and a source that says so.
 Modules 2, 4 and 5 repeat one safeguard more than any other: *verify the shared block is
 authoritative and available, not merely planned*. The plays leave this work to the learner
 with the words "note if unknown". This skill does the work. It serves 2.7, 3.5, 4.4, 4.5,
-4.7, 5.3 and 5.6.
+4.7, 5.3 and 5.3b.
 
 `bb-sourcing-researcher` answers a different question: **which products can supply** a
 block that the country does not have. This skill answers **what the country has**. Run

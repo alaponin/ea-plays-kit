@@ -7,7 +7,7 @@ each line below is present. The words are different in each run.
 
 ```
 > **Artefact** A7 — EA Governance Board ToR · **Country** Progressa · **Sector** Education · **Built** <ISO date>
-> **Skill** ea-governance-drafter v<version> · **Consumed** A0 §4, A0 §7, A3, A6, A8 · **Feeds** <play ids from workbook-chain.md>
+> **Skill** ea-governance-drafter v<version> · **Consumed** A0 §4, A0 §7, A3, A6 · **Feeds** <play ids from workbook-chain.md>
 > **Sources** <n> × Tier 1, <n> × Tier 2, <n> × Tier 3 · **Unverified lines** <n>
 ```
 

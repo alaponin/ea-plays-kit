@@ -139,7 +139,7 @@ CHAIN_ROW = re.compile(
     r"^\|\s*\*\*(A\d+(?: rev\.\d+)?)\*\*[^|]*\|\s*([^|]+?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*$",
     re.M)
 chain = CHAIN_ROW.findall(open(f"{PLUGIN}/shared/workbook-chain.md").read())
-check(len(chain) == 38, f"workbook-chain.md: parsed {len(chain)} artefact rows, expected 38")
+check(len(chain) == 37, f"workbook-chain.md: parsed {len(chain)} artefact rows, expected 37")
 produces = {art: set(re.findall(r"\b\d+\.\d+\b", fd)) for art, _, _, fd in chain}
 for art, play, consumed, _ in chain:
     if not re.fullmatch(r"\d+\.\d+", play):

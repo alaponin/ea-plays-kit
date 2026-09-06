@@ -5,7 +5,7 @@ reads this file for two purposes: to fill the **Consumed** and **Feeds** fields 
 provenance header, and to know what to ask the learner for when an input is missing.
 
 **A0 to A8 are frozen.** GitBook publishes them on the workbook page, and the play
-pages of Module 1 cite them. A change to these numbers is a major version bump. This
+pages of Module 1 cite them (A8 is now made by 5.1, but its number does not change). A change to these numbers is a major version bump. This
 file defines A9 to A31 for Modules 2 to 5. They are stable from v0.1.0.
 
 ## Rule: no artefact, no guess
@@ -25,7 +25,7 @@ Play 0 makes seven sections. The input to each play is one section or two sectio
 | §2 | Programme list with budget envelopes and building-block needs | 1.3, 1.5 |
 | §3 | Ministry operating context and constraints | 1.4 |
 | §4 | Institutional roles register, by post, status-tagged | 1.6, 1.7 |
-| §5 | Country characteristics one-liner | 1.8, 5.1 |
+| §5 | Country characteristics one-liner | 5.1 |
 | §6 | Public bodies, systems and registries | 2.1, 2.4, 2.5, 4.1 |
 | §7 | Legal and policy list | 2.3, 1.7 |
 
@@ -40,8 +40,7 @@ Play 0 makes seven sections. The input to each play is one section or two sectio
 | **A4** Joint business–IT agenda | 1.4 | A0 §3, A2 | 1.6 |
 | **A5** PAERA foundation coverage map | 1.5 | A0 §2, A1 | 1.6, 2.5 |
 | **A6** Phase RACI and role-gap list | 1.6 | A0 §4, A4, A5 | 1.7, 3.7, 5.5 |
-| **A7** EA Governance Board ToR | 1.7 | A0 §4, A0 §7, A3, A6, A8 | 3.3, 3.4, 4.7 |
-| **A8** Comparator-country cards | 1.8 | A0 §5 | 1.7, 5.1, 5.4, 5.7 |
+| **A7** EA Governance Board ToR | 1.7 | A0 §4, A0 §7, A3, A6 | 3.3, 3.4, 4.7 |
 
 ## Module 2 — reading a government
 
@@ -76,21 +75,26 @@ Play 0 makes seven sections. The input to each play is one section or two sectio
 | **A14 rev.2** Ranked gap analysis | 4.3 | A23, A14 | 4.4 |
 | **A24** Sourcing matrix | 4.4 | A14 rev.2, BB status register | 4.5 |
 | **A25** Target architecture | 4.5 | A24, A11, BB status register | 4.6 |
-| **A26** Wave roadmap | 4.6 | A25, A3 | 4.7, 4.8, 5.4, 5.6 |
+| **A26** Wave roadmap | 4.6 | A25, A3 | 4.7, 4.8, 5.3, 5.4 |
 | **A27** Gate decision paper | 4.7 | A26, A19, A7 rev.2, BB status register | 5.2 |
-| **A28** Sector transfer plan | 4.8 | A26, A0 §6 (next sector) | 5.3 |
+| **A28** Sector transfer plan | 4.8 | A26, A0 §6 (next sector) | 5.3, 5.3b |
 
 ## Module 5 — the case and the rollout
 
 | Artefact | Play | Consumes | Feeds |
 | --- | --- | --- | --- |
-| **A8 rev.2** Comparator evidence, sourced | 5.1 | A0 §5, A8 | 5.4, 5.7 |
+| **A8** Comparator-country cards, sourced | 5.1 | A0 §5 | 5.4, 5.6 |
 | **A21 rev.2** Programme risk register | 5.2 | A21, A27 | 5.4 |
-| **A28 rev.2** Second-sector map | 5.3 | A28, BB status register | 5.6 |
-| **A29** Ministerial business case | 5.4 | A3, A8 rev.2, A21 rev.2, A26 | 5.7 |
+| **A31** National rollout wave plan | 5.3 | A26, A28, BB status register | 5.3b, 5.6 |
+| **A28 rev.2** Second-sector map | 5.3b | A28, A31, BB status register | — |
+| **A29** Ministerial business case | 5.4 | A3, A8, A21 rev.2, A26 | 5.6 |
 | **A30** Capability-building plan | 5.5 | A6 | — |
-| **A31** National rollout wave plan | 5.6 | A26, A28 rev.2, BB status register | 5.7 |
-| **A29 rev.2** Closing one-page case | 5.7 | A29, A31, A8 rev.2 | — |
+| **A29 rev.2** Closing one-page case | 5.6 | A29, A31, A8 | — |
+
+Play ids follow KP1 v0.2 (3 September 2026): 1.8 is retired and its comparator play is
+5.1; 5.3 is the merged rollout video and carries the rollout-waves play; **5.3b** is the
+sector-transfer play that lives on the 5.3 GitBook page only, with no video; the closing
+case is 5.6. A8 keeps its number — the artefact did not move, only the play that makes it.
 
 ## Registers that are not A-numbered
 

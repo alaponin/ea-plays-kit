@@ -8,6 +8,26 @@ Video descriptions and the GitBook link the install command, never a release num
 
 ## [Unreleased]
 
+## [0.2.2] — 2026-09-06
+
+Play ids aligned with KP1 v0.2 (the 3 September 2026 tightening). Patch: no artefact number
+changes, no skill name changes, no output contract changes — only which play makes what.
+
+### Changed
+
+- **1.8 is retired.** KP1 v0.2 folded its comparator play into 5.1. The `1.8` fixture and
+  play-map entry are gone; 5.1 now makes **A8 — Comparator-country cards, sourced** from
+  A0 §5 in one pass, and the "A8 rev.2" label is dropped. A8 keeps its number because the
+  artefact did not move. 1.7 no longer consumes A8 (it comes later in the course now).
+- **5.3 is the rollout-waves play** (A31), formerly 5.6, because the portability video and
+  the rollout video were merged into one 5.3.
+- **5.3b is the sector-transfer play** (A28 rev.2), formerly 5.3. It lives on the 5.3
+  GitBook page only, with no video; the `b` suffix keeps one fixture folder per play id.
+- **5.6 is the closing case** (A29 rev.2), formerly 5.7. Module 5 has six videos.
+- `shared/workbook-chain.md`, `tests/play-map.json`, the plugin README play table, the
+  fixture folders and every SKILL.md that named the old ids now say the same thing;
+  `check_fixtures.py` expects 37 chain rows.
+
 ### Removed
 
 - **The old tags.** `v0.1.0`, `v0.1.2`, `v0.1.3` and `v0.0.1-baseline` are deleted, with

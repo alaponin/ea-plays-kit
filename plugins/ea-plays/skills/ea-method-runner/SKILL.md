@@ -7,7 +7,7 @@ description: >-
   provenance header. Serves all of Module 4: the Discovery brief (4.2), the ranked gap
   analysis (4.3), the sourcing matrix (4.4), the target architecture (4.5), the wave roadmap
   (4.6) and the gate decision (4.7). It also serves the transfer plays: the transfer plan
-  (4.8), the second-sector map (5.3) and the national rollout waves (5.6). Use when someone
+  (4.8), the national rollout waves (5.3) and the second-sector map (5.3b). Use when someone
   says "run the method on my sector", "draft my Discovery brief", "rank these gaps", "build
   the sourcing matrix", "design the target architecture", "sequence the roadmap", "run a
   gate decision", "take this to another sector", "what phase am I in". Calls
@@ -42,7 +42,7 @@ artefacts that exist. Name the artefacts that do not exist.
 | Plan — target (4.5) | A24, A11 principles, **BB status register** | A25 target architecture |
 | Plan — roadmap (4.6) | A25, A3 cost case | A26 wave roadmap |
 | Execute & Govern (4.7) | A26, A19 gate checklist, A7 rev.2 ToR, **BB status register** | A27 gate decision paper |
-| Transfer (4.8, 5.3, 5.6) | A26, A0 §6 for the next sector | A28 transfer plan, A28 rev.2, A31 |
+| Transfer (4.8, 5.3, 5.3b) | A26, A0 §6 for the next sector | A28 transfer plan, A28 rev.2, A31 |
 
 **No artefact, no guess.** If the input to a phase is missing, name the artefact and the
 play that makes it. Then stop. An example is *"4.4 needs A14 rev.2; run 4.3 first"*. Never
@@ -88,7 +88,7 @@ artefact.
    of the gate. In the test runs of this course, a status three months old was already wrong
    one time. The gate decision gives the decision, the evidence for it, and the conditions.
 
-8. **Transfer (4.8, 5.3, 5.6).** Use A0 and the BB status register from the first sector
+8. **Transfer (4.8, 5.3, 5.3b).** Use A0 and the BB status register from the first sector
    again. Build only the bodies of the new sector again, and use `ea-institution-mapper` for
    the A0 §6 of that sector. See `references/domain-transfer-guide.md`. The method and the
    shared blocks transfer. The institutions are new each time.
