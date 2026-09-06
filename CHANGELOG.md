@@ -8,6 +8,14 @@ Video descriptions and the GitBook link the install command, never a release num
 
 ## [Unreleased]
 
+### Removed
+
+- **The old tags.** `v0.1.0`, `v0.1.2`, `v0.1.3` and `v0.0.1-baseline` are deleted, with
+  the GitHub releases for 0.1.2 and 0.1.3. The remote now carries `v0.2.0` and `v0.2.1`,
+  and each of the two has its `.plugin` attached to a release. The entries for the old
+  versions stay in this file, because they are the record of what each release said. Two
+  of those entries pointed at the baseline tag, and they now say that it is gone.
+
 ## [0.2.1] — 2026-09-05
 
 Marketplace metadata. No skill contract changes.
@@ -240,11 +248,18 @@ First release of the learner kit.
   paera.govstack.global at run time rather than embedded — its licence terms for verbatim
   excerpts are unconfirmed. Embedding it is a future minor bump.
 - The four extended originals (`country-context-data`, `paera-assessor`,
-  `ea-lifecycle-method`, `govstack-cost-estimator`) are in the `v0.0.1-baseline` tag but
-  are **not shipped**, so two skills never compete for one trigger. Their `references/`
-  are inherited by the extensions.
+  `ea-lifecycle-method`, `govstack-cost-estimator`) are **not shipped**, so two skills
+  never compete for one trigger. Their `references/` are inherited by the extensions.
+  (The `v0.0.1-baseline` tag that held them was never pushed, and was deleted after
+  0.2.1. See the note under 0.0.1-baseline below.)
 
 ## [0.0.1-baseline] — 2026-09-05
 
 The six account skills exactly as exported from the Claude app, in no way modified, so that
 every extension is a diff against a versioned baseline. Not a release.
+
+**The tag is gone.** It stayed on one machine and nobody pushed it, so no person who
+cloned this repository could reach it. It was deleted after 0.2.1, with the 0.1 tags. The
+four extended originals are therefore in no tag of this repository. Their content survives
+in the `references/` folder of the skill that extends each one, which is where a reader
+needs it.
