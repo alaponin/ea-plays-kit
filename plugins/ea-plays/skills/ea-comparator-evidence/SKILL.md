@@ -3,19 +3,16 @@ name: ea-comparator-evidence
 description: >-
   Find comparator countries that truly resemble the learner's country, and record what each
   one built, from its published EA framework or its digital-government coordination
-  instrument. Give three to five cards, a Tier 1 source for each claim, one transferable
-  mechanism for each country, and a minimum of one contested or mixed case with both sides
-  cited. Serves the comparator evidence play (5.1), and feeds
-  the proof section of the ministerial business case (5.4) and the closing case (5.6).
-  Use when someone says "which countries are like mine", "find comparator countries", "has
-  anyone actually done this", "is this proven or just theory", "what did Rwanda/Ghana/
-  Estonia actually build", "give me evidence for the minister", "show me a country that
-  failed at this", "signpost countries for my context". Selects by World Bank income
-  classification, population band, governance type and region, with priority to African and
-  developing-country examples; reads published national EA frameworks, the UN EGDI, the
-  World Bank GovTech Maturity Index and the OECD Digital Government Index. Runs
-  cite-or-discard on itself before returning — the August 2026 comparator test run produced comparators sourced
-  to document mirrors and blog posts, and this is the fix.
+  instrument. Serves the comparator evidence play (5.1), and feeds the proof section of the
+  ministerial business case (5.4) and the closing case (5.6). It also serves the KP2
+  Government Interoperability Framework plays that adopt published standards rather than
+  write them: the standards-to-reuse shortlist (1.7, B7) and the standards portfolio (4.3,
+  B22). Use when someone says "which countries are like mine", "find comparator countries",
+  "has anyone actually done this", "is this proven or just theory", "what did
+  Rwanda/Ghana/Estonia actually build", "give me evidence for the minister", "show me a
+  country that failed at this", "signpost countries for my context", "which standards should
+  we reuse", "standards portfolio", "standard version and binding date", "what did Estonia
+  or the EU adopt".
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 license: CC-BY-4.0
@@ -145,6 +142,16 @@ Comparators persuade people. This is why they are dangerous.
   that it is missing. That absence is the true finding.
 - Each item marked ⚠ is unverified. It is not verified as true.
 
+## KP2 plays
+
+| KP2 play | Artefact | This skill supplies |
+| --- | --- | --- |
+| 1.7 | B7 — Standards-to-reuse shortlist | the comparator ecosystems (X-Road countries, the EU once-only system) with primary sources, and each candidate standard's publisher, licence and current version, fetched |
+| 4.3 | B22 — Standards portfolio | every version confirmed against the standard's own publication on the day, cited; the contested case where a standard was superseded or abandoned |
+
+`paera-reference-check` runs beside it for the PAERA anchors. A24 from KP1 enters at 4.3
+if the learner has it. The chain is in `references/workbook-chain-kp2.md`.
+
 ## References
 
 - `references/comparator-selection.md` — the five criteria, how to make bands from them, and
@@ -153,4 +160,5 @@ Comparators persuade people. This is why they are dangerous.
   that were published when this file was written, what each one is and is not, and the
   contested cases to know. Use it to start a search. Do not use it in place of a search.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
-  `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.
+  `references/output-contract.md` · `references/workbook-chain.md` ·
+  `references/workbook-chain-kp2.md` — the shared contract.

@@ -8,6 +8,82 @@ Video descriptions and the GitBook link the install command, never a release num
 
 ## [Unreleased]
 
+## [0.3.0] — 2026-09-12
+
+The KP2 layer. The KP2 GitBook of 12 September names three skills in its AI tips —
+`gif-decree-draft`, `gif-semantic-map`, `gif-openapi-gen` — that did not exist, and sixteen
+of its thirty-eight plays said *no skill yet, so the prompt runs bare*. Every KP2 play now
+has a primary skill, and the three named skills ship under exactly those names.
+
+Minor: eight new skills, a second workbook chain, no change to any KP1 artefact number, skill
+name or output contract.
+
+### Added
+
+- **Eight `gif-*` skills**, one per KP2 artefact family: `gif-four-layer-map` (1.2),
+  `gif-foundation-drafter` (1.4, the home-page storyboard), `gif-decree-draft` (2.2–2.5),
+  `gif-consistency-check` (2.6, 5.9), `gif-semantic-map` (4.4, 4.6), `gif-openapi-gen`
+  (4.5, 4.7), `gif-federation-standup` (5.4–5.6), `gif-bus-monitor` (5.8). Each follows the
+  output contract, runs `cite-or-discard` where it cites, and keeps every identifier, code
+  value and legal citation the country's own registries or statutes must confirm as
+  `[confirm]`. Three carry Progressa fixture material from the KP2 build pack — the
+  semantic map, the identity-service contract and wiring, the federation and its acceptance
+  — each under the fixture marker.
+- **`shared/workbook-chain-kp2.md`** — the B1–B38 chain, the A0 §8–§10 sections, the KP1
+  hand-offs (A0, A7, A24), and the frozen Progressa federation identifiers. Synced into every
+  skill's `references/` like the other shared files.
+- **`tests/kp2/`** — `progressa-supplement.md` (A0 §8–§10 for Progressa, the once-only
+  scenario and the federation), `play-map.json` for the 38 KP2 plays, and one fixture folder
+  per play. KP1 and KP2 share play ids, so the KP2 fixtures live in their own tree.
+- **`tests/check_fixtures.py`** — a KP2 block with the same criteria: fixtures complete,
+  skills shipped, nine provenance fields, README rows, the B-chain consistent in both
+  directions, the map equal to the chain, and the three tip-named skills present.
+- **`country-context-pack/references/a0-kp2-supplement.md`** — how to build A0 §8–§10.
+
+### Changed
+
+- **Eight existing skills gained a `## KP2 plays` section and KP2 trigger phrases** in
+  their descriptions: `country-context-pack`, `ea-institution-mapper`,
+  `ea-comparator-evidence`, `ea-legal-context`, `ea-governance-drafter`,
+  `bb-landscape-check`, `ea-method-runner`, `paera-reference-check`. Their KP1 behaviour is
+  unchanged.
+- **`shared/provenance-header.md`** — the Artefact field says A- for KP1 and B- for KP2;
+  the Feeds field names which chain to read.
+- The plugin README carries a second play → skill table for KP2; both manifests say 0.3.0.
+
+### Not in this release
+
+- The KP2 GitBook still says *no skill yet* on sixteen play pages and lists fourteen skills
+  on the kit page. `KP2-GIF/gitbook/play-map.json` (`skill`, `also`) and `KIT_SKILLS` in
+  `kp-gitbook-render` are the two edits, then a re-render; the KP2 skill mapping is
+  `tests/kp2/play-map.json` here.
+
+## [0.2.3] — 2026-09-07
+
+The workbook chain agreed with itself in one direction only. Ten artefacts named a play in
+their **Feeds** cell that did not name them back in its **Consumes** cell — A10 → 2.5,
+A15 → 4.4 and 4.7, A17 → 3.1, A18 → 3.5, A13 → 4.1 among them. `check_fixtures.py` walked
+Consumes → Feeds and never the reverse, so the one-way edges passed every run, and the KP1
+GitBook rendered 2.2 and 2.7 as dead ends because it reads the map rather than the chain.
+
+Patch: no artefact number, skill name or output contract changed.
+
+### Fixed
+
+- **`shared/workbook-chain.md`** — the nine Consumes cells missing an input now carry it.
+  One correction went the other way: **A7** listed 4.7 in its Feeds, but 4.7 consumes
+  **A7 rev.2** (the standing ToR from 3.4), so 4.7 was left alone and A7's Feeds corrected.
+- **`tests/play-map.json`** — `consumes` synced from the chain for ten plays. The chain is
+  the source; the map had drifted both wider (1.2 carried A0 §6, which the chain routes to
+  2.1, 2.4, 2.5 and 4.1) and narrower.
+
+### Added
+
+- **`tests/check_fixtures.py` 10b** — walks Feeds → Consumes, so a one-way edge now fails.
+- **`tests/check_fixtures.py` 10c** — compares `play-map.json` `consumes` against the chain
+  cell by cell: the drift the KP1 structure draft §10.1 predicted when the two are
+  maintained apart.
+
 ## [0.2.2] — 2026-09-06
 
 Play ids aligned with KP1 v0.2 (the 3 September 2026 tightening). Patch: no artefact number

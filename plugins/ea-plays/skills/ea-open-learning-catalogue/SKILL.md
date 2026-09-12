@@ -1,18 +1,11 @@
 ---
 name: ea-open-learning-catalogue
 description: >-
-  Build a plan to develop the capability of a team, from open learning materials. On the day
-  that the plan is written, check that each item resolves. Give each item a URL and a
-  "checked on" date, and flag each item that is behind a paywall, that moved, or that is
-  stale. Serves play 5.5. Use when someone says "how do I build my team's capability", "what
-  should my architects learn", "training plan for the EA team", "free EA and DPI learning
-  resources", "onboard a new architect", "what courses exist for government enterprise
-  architecture", "capability plan for the minister". Reads the PAERA site, the GovStack
-  specifications and learning material, the ITU Academy, the DPGA registry, the Knowledge
-  Product video playlists and GitBook, and the World Bank Open Learning Campus. Returns a
-  plan in sequence by role and by starting point, what to fund, and how to keep the
-  capability after the team has it. The true cost is the time of the team, not the
-  materials, and the true risk is that the architect you trained leaves.
+  Build a plan to develop the capability of a team, from open learning materials, with every
+  item link-checked on the day the plan is written. Serves play 5.5. Use when someone says
+  "how do I build my team's capability", "what should my architects learn", "training plan
+  for the EA team", "free EA and DPI learning resources", "onboard a new architect", "what
+  courses exist for government enterprise architecture", "capability plan for the minister".
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 license: CC-BY-4.0
@@ -131,4 +124,5 @@ make it too small more than any other item.**
 - `references/learning-sources.md` — the sources to check, what each one gives, and the
   traps for registration and currency in each one.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
-  `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.
+  `references/output-contract.md` · `references/workbook-chain.md` ·
+  `references/workbook-chain-kp2.md` — the shared contract.

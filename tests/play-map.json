@@ -23,7 +23,7 @@
   "skill": "ea-institution-mapper",
   "also": [],
   "artefact": "A2 — Ministerial explainer slide",
-  "consumes": "A0 §1, A0 §6"
+  "consumes": "A0 §1"
  },
  "1.3": {
   "play": "Build the whole-of-government business case for building-block re-use",
@@ -51,7 +51,7 @@
    "cite-or-discard"
   ],
   "artefact": "A5 — PAERA foundation coverage map",
-  "consumes": "A0 §2, the initiatives list, A1"
+  "consumes": "A0 §2, A1, the initiatives list"
  },
  "1.6": {
   "play": "Draft a phase-by-phase RACI for your country's EA programme",
@@ -115,7 +115,7 @@
    "ea-institution-mapper"
   ],
   "artefact": "A13 — Sector BDAT skeleton",
-  "consumes": "A0 §6, A5, A9, A12"
+  "consumes": "A0 §6, A5, A9, A12, A10"
  },
  "2.6": {
   "play": "Turn AS-IS notes into a scored gap analysis",
@@ -141,7 +141,7 @@
   "skill": "ea-governance-drafter",
   "also": [],
   "artefact": "A16 — EA repository structure",
-  "consumes": "A13"
+  "consumes": "A13, A17"
  },
  "3.2": {
   "play": "Score EA tool options against lock-in and fit",
@@ -151,7 +151,7 @@
    "cite-or-discard"
   ],
   "artefact": "A17 — EA tool comparison + export test",
-  "consumes": "A16 and a candidate list"
+  "consumes": "A16, candidate list"
  },
  "3.3": {
   "play": "Draft the repository update policy",
@@ -179,7 +179,7 @@
    "bb-landscape-check"
   ],
   "artefact": "A19 — Review-gate checklist",
-  "consumes": "A7 rev.2, A11, BB status register"
+  "consumes": "A7 rev.2, A11, BB status register, A18"
  },
  "3.6": {
   "play": "Build your EA health scorecard",
@@ -203,7 +203,7 @@
   "skill": "ea-institution-mapper",
   "also": [],
   "artefact": "A22 — Demonstration canvas",
-  "consumes": "A0 §6, A12, the sector problem paragraph"
+  "consumes": "A0 §6, A12, A13, the sector problem paragraph"
  },
  "4.2": {
   "play": "Draft your Discovery brief outline",
@@ -232,7 +232,7 @@
    "bb-sourcing-researcher"
   ],
   "artefact": "A24 — Sourcing matrix",
-  "consumes": "A14 rev.2, BB status register"
+  "consumes": "A14 rev.2, BB status register, A15"
  },
  "4.5": {
   "play": "Design a first-cut target architecture from your gaps",
@@ -260,7 +260,7 @@
    "bb-landscape-check"
   ],
   "artefact": "A27 — Gate decision paper",
-  "consumes": "A26, A19, A7 rev.2, BB status register"
+  "consumes": "A26, A19, A7 rev.2, BB status register, A15"
  },
  "4.8": {
   "play": "Map the Progressa method to your sector",
@@ -270,7 +270,7 @@
    "ea-institution-mapper"
   ],
   "artefact": "A28 — Sector transfer plan",
-  "consumes": "A26, A0 §6 for the next sector"
+  "consumes": "A26, A0 §6 (next sector)"
  },
  "5.1": {
   "play": "Generate comparator-country evidence tuned to your context",

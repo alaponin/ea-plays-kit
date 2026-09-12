@@ -2,17 +2,14 @@
 name: cite-or-discard
 description: >-
   Verify each claim in a draft against its source before you use the draft, and drop the
-  claims that fail. Run it on comparator-country cards (5.1), a business case or a
-  ministerial one-pager (1.3, 5.4, 5.6), a foundation map (1.5), a tool comparison (3.2),
-  a learning plan (5.5), or any output that has URLs. The audit mode does the opposite:
-  for an input pack, it tells which lines have a source, and which lines are an assertion
-  by the learner or the model. This is how the source column of the Discovery brief (4.2)
-  gets its content. Use whenever someone says "check these sources", "verify this
-  citation", "is this claim real", "did you make this up", "which of these URLs are
-  primary", "fact-check this table", "is docplayer a source", or before anything goes to a
-  minister. Reads every URL, grades it against the four source tiers, and gives keep /
-  downgrade / drop for each claim. Plays run bare in any assistant; this makes the
-  safeguard real.
+  claims that fail. The audit mode does the opposite: for an input pack, it tells which
+  lines have a source, and which lines are an assertion by the learner or the model. Run it
+  on comparator-country cards (5.1), a business case or a ministerial one-pager (1.3, 5.4,
+  5.6), a foundation map (1.5), a tool comparison (3.2), a learning plan (5.5), the source
+  column of the Discovery brief (4.2), or any output that has URLs. Use whenever someone
+  says "check these sources", "verify this citation", "is this claim real", "did you make
+  this up", "which of these URLs are primary", "fact-check this table", "is docplayer a
+  source", or before anything goes to a minister.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 license: CC-BY-4.0
@@ -132,5 +129,6 @@ cabinet briefing because it is in this table.
 - `references/known-mirrors.md` — the domains that are mirrors or that you must reject,
   and where the primary source usually is.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
-  `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.
-  Read `source-tiers.md` before you grade a source.
+  `references/output-contract.md` · `references/workbook-chain.md` ·
+  `references/workbook-chain-kp2.md` — the shared contract. Read `source-tiers.md` before
+  you grade a source.

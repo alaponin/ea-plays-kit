@@ -1,19 +1,19 @@
 ---
 name: bb-landscape-check
 description: >-
-  Find which shared digital building blocks a country has LIVE, not planned, and give a
-  status register with sources: national ID, instant payments, data exchange (X-Road,
-  GovStack Information Mediator), civil registration, G-cloud and hosting, consent.
-  Use whenever a play asks "which shared building blocks already exist", before the two-trap
-  screen (2.7), the sourcing matrix (4.4), the target architecture (4.5), the review gate
-  (3.5), the gate decision (4.7), the rollout waves (5.3) or the second-sector map (5.3b), or
-  whenever someone says "is the national ID live", "does the country have a data-exchange
-  layer", "what DPI exists in [country]", "is the payment switch real", "can we reuse
-  identity here", "verify the shared block is authoritative and available". Reads ID4D, the
-  MOSIP deployment list, the NIIS X-Road map, GovStack country engagements, central-bank
-  payment pages, UNICEF CRVS and national G-cloud pages; every status carries an operator, a
-  coverage figure where one exists, a URL, a tier and a date. Answers what the country HAS —
-  for which products could supply a block, use bb-sourcing-researcher.
+  Find which shared digital building blocks a country has LIVE, not planned — national ID,
+  instant payments, data exchange (X-Road, GovStack Information Mediator), civil
+  registration, G-cloud and hosting, consent — and give a status register with sources.
+  Serves the two-trap screen (2.7), the review gate (3.5), the sourcing matrix (4.4), the
+  target architecture (4.5), the gate decision (4.7), the rollout waves (5.3) and the
+  second-sector map (5.3b), and the KP2 component-to-layer map (4.1, B20), trust-zone trace
+  (4.2, B21) and technical layer of the four-layer exchange map (1.2). Use whenever a play
+  asks "which shared building blocks already exist", or someone says "is the national ID
+  live", "does the country have a data-exchange layer", "what DPI exists in [country]", "is
+  the payment switch real", "can we reuse identity here", "verify the shared block is
+  authoritative and available", "component-to-layer map", "functional layers of the bus",
+  "trust zones", "trust-zone trace", "is the exchange layer live". Answers what the country
+  HAS — for which products could supply a block, use bb-sourcing-researcher.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 license: CC-BY-4.0
@@ -127,10 +127,21 @@ A register says that a block exists. It does not say that you can use the block.
 - Each item marked ⚠ or *unclear* is a decision that you make with a person. You do not
   make it with this table.
 
+## KP2 plays
+
+| KP2 play | Artefact | This skill supplies |
+| --- | --- | --- |
+| 4.1 | B20 — Component-to-layer map | which components are already provided by the live exchange layer (the X-Road software adopted), so a 'missing' component is not procured twice |
+| 4.2 | B21 — Trust-zone trace | the live trust services — the certification authority, OCSP, timestamping — and whether each is a production service or a test one |
+| 1.2 | the technical layer of B2 | the data-exchange row of the BB status register: live, pilot, planned or none |
+
+The chain is in `references/workbook-chain-kp2.md`.
+
 ## References
 
 - `references/block-sources.md` — the registries and pages for each block, what each one
   can prove, what each one cannot prove, and where each one moved to.
 - `references/status-rubric.md` — the evidence that each of the five statuses needs.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
-  `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.
+  `references/output-contract.md` · `references/workbook-chain.md` ·
+  `references/workbook-chain-kp2.md` — the shared contract.

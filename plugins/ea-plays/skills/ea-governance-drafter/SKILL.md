@@ -1,21 +1,23 @@
 ---
 name: ea-governance-drafter
 description: >-
-  Draft the institutional documents that an EA practice needs. Draft them from the templates
-  of this kit, not from general knowledge. Take the roles from a real roles register, and
-  make the binding scope cite real statutes. Covers the Governance Board terms of reference
-  (1.7, 3.4), the phase RACI and role-gap list (1.6), the repository structure (3.1) and its
-  update policy (3.3), the architecture review-gate checklist (3.5), the EA health scorecard
-  (3.6) and the sustainment risk register (3.7, 5.2). Use when someone says "draft the Board
-  ToR", "terms of reference for an architecture board", "build a RACI for the EA phases",
-  "how should the repository be structured", "write the update policy", "review gate
-  checklist", "EA metrics", "what will kill this programme in year two", "sustainment
-  risks", "what do I ask my minister for". Consumes the legal register, so that the
-  binding-decision scope cites statutes that exist, and the roles register, so that the RACI
-  names posts that exist. Cites two or three published real-world exemplars for each
-  document type. For a gate decision inside a running workbook chain (4.7), use
-  ea-method-runner instead — this skill drafts the standing instrument, that one takes the
-  decision.
+  Draft the standing institutional documents that an EA practice needs: the Governance Board
+  terms of reference (1.7, 3.4), the phase RACI and role-gap list (1.6), the repository
+  structure (3.1) and its update policy (3.3), the architecture review-gate checklist (3.5),
+  the EA health scorecard (3.6) and the sustainment risk register (3.7, 5.2). It also drafts
+  the KP2 Government Interoperability Framework Governance Pack and member documents: the
+  governance RACI (3.3, B16), the member obligations and membership agreement (3.4, B17),
+  the four Technical Working Group charters (3.5, B18), the change-control process with the
+  standards register and semantic-registry charter (3.6, B19), the Member Requirements
+  checklist (5.2, B29) and the Service-Level Agreement template (5.3, B30). Use when someone
+  says "draft the Board ToR", "terms of reference for an architecture board", "build a RACI
+  for the EA phases", "how should the repository be structured", "write the update policy",
+  "review gate checklist", "EA metrics", "what will kill this programme in year two",
+  "sustainment risks", "what do I ask my minister for", "member agreement", "membership
+  obligations", "working group charter", "change control process", "standards register",
+  "member requirements checklist", "SLA template". For a gate decision inside a running
+  workbook chain (4.7), use ea-method-runner instead — this skill drafts the standing
+  instrument, that one takes the decision.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 license: CC-BY-4.0
@@ -123,6 +125,20 @@ authority.**
 - The exemplars are the documents of other countries. They show how a government wrote one.
   They are not text to adopt.
 
+## KP2 plays
+
+| KP2 play | Artefact | This skill supplies |
+| --- | --- | --- |
+| 3.3 | B16 — Governance RACI | one Accountable per decision, checked against the mandate each body holds (B14, B15) and, where the decision compels an agency, against the decree article |
+| 3.4 | B17 — Member obligations and agreement | common, provider and consumer obligations from published member models (the NIIS X-Road ecosystems), cited; every enforcement power marked [confirm] against the legal layer |
+| 3.5 | B18 — Four Working Group charters | Technical, Semantics, Security, Operations — with the authority each member must hold to bind their agency |
+| 3.6 | B19 — Change control, standards register (with conformance fields) and semantic-registry charter | a process light enough to be used; the register's fields — standard, version, profile, binding date, transition, conformance approach, owner |
+| 5.2 | B29 — Member Requirements checklist | an evidence column per requirement; the high-risk rows (clean data, lawful basis) named for spot-check |
+| 5.3 | B30 — Service-Level Agreement template | pilot and production targets per service, each [confirm] with the provider |
+
+Keep the regulator and the operator apart in every document, as B14 splits them. The
+chain is in `references/workbook-chain-kp2.md`.
+
 ## References
 
 - `references/document-templates.md` — the seven document structures, the function of each
@@ -130,4 +146,5 @@ authority.**
 - `references/exemplar-search.md` — where governments publish governance documents, and how
   to see the difference between an adopted instrument and the draft of a consultant.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
-  `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.
+  `references/output-contract.md` · `references/workbook-chain.md` ·
+  `references/workbook-chain-kp2.md` — the shared contract.

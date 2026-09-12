@@ -1,22 +1,24 @@
 ---
 name: ea-legal-context
 description: >-
-  Assemble the national legal register that an EA programme touches: the data-protection
+  Assemble the national legal register that an EA programme touches — the data-protection
   act, the e-government or e-transactions law, the public procurement act, the statistics
   act, the civil registration and identity acts, the act that establishes the ICT agency or
-  digital ministry, any e-government decree or cabinet directive, and the access-to-
-  information act. Give each one with its citation, its status, the regulator that it
-  creates, and the one line of it that matters for architecture. Serves the Governance Board
-  ToR whose binding-decision scope must cite real statutes (1.7, 3.4), the principle card
-  that dies if it cites the wrong statute (2.3), the body classification (2.4), the joint
-  business-IT agenda's constraints (1.4) and the Discovery brief's legal collection area
-  (4.2). Use when someone says "which laws apply", "what is the legal basis for sharing this
-  data", "does the country have a data protection act", "cite the statute for this
-  principle", "legal constraints on a shared platform", "can we share learner data", "what
-  does the procurement law allow". Reads the national gazette and law portal first, then
-  UNCTAD's Cyberlaw Tracker, DLA Piper's Data Protection Laws of the World, World Bank ID4D
-  diagnostics and OGP action plans. It never drafts legal text and every output ends with
-  the legal-counsel flag.
+  digital ministry, any e-government decree or cabinet directive, and the
+  access-to-information act — each with its citation, its status, the regulator it creates,
+  and the one line of it that matters for architecture. Serves the Governance Board ToR
+  whose binding-decision scope must cite real statutes (1.7, 3.4), the principle card (2.3),
+  the body classification (2.4), the joint business-IT agenda's constraints (1.4) and the
+  Discovery brief's legal collection area (4.2); and the KP2 plays: A0 §10 of the
+  supplement, the legal-readiness assessment for cross-agency exchange (2.1, B8), the
+  data-protection envelope of one exchange (4.8, B27), and the legal register that
+  `gif-decree-draft` reads to fill its [confirm] placeholders. Use when someone says "which
+  laws apply", "what is the legal basis for sharing this data", "does the country have a
+  data protection act", "cite the statute for this principle", "legal constraints on a
+  shared platform", "can we share learner data", "what does the procurement law allow",
+  "legal readiness for cross-agency exchange", "lawful basis for this exchange",
+  "data-protection envelope", "letter of interest between agencies". It never drafts legal
+  text.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 license: CC-BY-4.0
@@ -142,6 +144,19 @@ consent design, or a data-sharing agreement:
 - The register can say that an instrument does not exist. This means that there is no
   *public record* of the instrument. It does not mean that the instrument does not exist.
 
+## KP2 plays
+
+| KP2 play | Artefact | This skill supplies |
+| --- | --- | --- |
+| Play 0 supplement | A0 §10 — Data-protection law and DPA | the act, the public-sector sharing section, the authority and whether it operates — the first pass the register deepens |
+| 2.1 | B8 — Legal-readiness assessment | for each planned exchange type: permitted, blocked or silent, with the instrument and section cited; what the decree must establish |
+| 4.8 | B27 — Data-protection envelope | the lawful-basis finding for one exchange (AUTHORISED / NOT AUTHORISED / UNCLEAR, with the decree article and the data-protection act section), the Letter of Interest draft by post, the data-protection-by-design checklist |
+| 2.2–2.5 | the register `gif-decree-draft` reads | a placeholder the register can fill is filled with a citation; the rest stay [confirm] |
+
+Also the legal layer of 1.2, through `gif-four-layer-map`. If 4.8 finds NOT AUTHORISED,
+say so first: the exchange must not go live however well it is built. The chain is in
+`references/workbook-chain-kp2.md`.
+
 ## References
 
 - `references/instrument-checklist.md` — the instruments to look for, why each one applies
@@ -149,4 +164,5 @@ consent design, or a data-sharing agreement:
 - `references/law-sources.md` — where a country publishes its law, the trackers and what
   each one can prove, and how to establish that a text is current.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
-  `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.
+  `references/output-contract.md` · `references/workbook-chain.md` ·
+  `references/workbook-chain-kp2.md` — the shared contract.

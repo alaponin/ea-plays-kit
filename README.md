@@ -1,7 +1,8 @@
 # ea-plays-kit
 
 This is the learner kit for the Knowledge Product AI plays on government enterprise
-architecture. It is one Claude Code plugin, `ea-plays`, with fourteen skills.
+architecture (KP1) and the government interoperability framework (KP2). It is one Claude
+Code plugin, `ea-plays`, with twenty-two skills.
 
 ```
 /plugin marketplace add alaponin/ea-plays-kit
@@ -22,11 +23,12 @@ Cowork, and one skill at a time in the Claude app.
 .claude-plugin/marketplace.json   the marketplace
 plugins/ea-plays/                 the plugin
   .claude-plugin/plugin.json      the manifest — no other file is here
-  shared/                         source tiers · provenance header · workbook chain · output contract
-  skills/<name>/SKILL.md          fourteen skills, each one self-contained
+  shared/                         source tiers · provenance header · the KP1 and KP2 workbook chains · output contract
+  skills/<name>/SKILL.md          twenty-two skills, each one self-contained
   scripts/sync-shared.sh          copies shared/*.md into the references/ of each skill
   scripts/package.sh              builds the Cowork .plugin
-tests/                            the Progressa fixture, 38 play folders, the checker
+tests/                            the Progressa fixture, 37 KP1 play folders, the checker
+  kp2/                            the KP2 supplement to the fixture and its 38 play folders
 ```
 
 The `shared/` folder exists one time. `sync-shared.sh` **copies** it into the `references/`

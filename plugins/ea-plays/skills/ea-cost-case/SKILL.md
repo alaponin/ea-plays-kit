@@ -2,18 +2,13 @@
 name: ea-cost-case
 description: >-
   Build the whole-of-government re-use business case, which compares siloed building blocks
-  with shared building blocks. State the assumption block before the numbers. Name the
-  benchmark sources with their URLs. Take the programme list and the budget envelopes from
-  the country context instead of asking the learner for them. Serves the re-use business
-  case (1.3) and the ministerial business case (5.4), and feeds the closing case (5.6).
-  Use when someone says "build the business case for shared building blocks", "what does
-  duplication cost us", "cost the re-use argument", "siloed vs shared", "how much would a
-  shared identity layer save", "I need numbers for the minister", "TCO for these
-  programmes", "is this worth it". Returns a per-programme table, a five-year country total,
-  the point-to-point integration count, and a how-to-read-this-model note — as TEXT TABLES,
-  never charts, because the next play has to consume them. Reads GovStack cost-benefit
-  material, ID4D cost models, published X-Road operating costs and World Bank project cost
-  tables, and names every benchmark it applies.
+  with shared building blocks. Serves the re-use business case (1.3) and the ministerial
+  business case (5.4), and feeds the closing case (5.6). Use when someone says "build the
+  business case for shared building blocks", "what does duplication cost us", "cost the
+  re-use argument", "siloed vs shared", "how much would a shared identity layer save", "I
+  need numbers for the minister", "TCO for these programmes", "is this worth it". Pairs with
+  bb-sourcing-researcher, which decides the sourcing posture per block; this skill sizes the
+  cost.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 license: CC-BY-4.0
@@ -140,4 +135,5 @@ price.**
 - `references/benchmark-sources.md` — where the published cost benchmarks are, what each
   one covers, and how to cite a figure that you derived.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
-  `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.
+  `references/output-contract.md` · `references/workbook-chain.md` ·
+  `references/workbook-chain-kp2.md` — the shared contract.

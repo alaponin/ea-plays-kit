@@ -3,17 +3,12 @@ name: ea-tool-evaluator
 description: >-
   Score EA tool candidates on facts that you can check online, not on the claims of a
   vendor: the licence and whether OSI lists it, the ArchiMate tool certification register of
-  the Open Group, the export formats that the documentation gives, whether the user can
-  extend the metamodel as the vendor's own documentation says, the published pricing page,
-  and the DPGA registry for open tools such as Archi. Serves play 3.2 only, but 3.2 is where
+  the Open Group, the documented export formats, whether the metamodel can be extended, the
+  published pricing page, and the DPGA registry. Serves play 3.2 only, but 3.2 is where
   vendor marketing does the most damage. Use when someone says "which EA tool should we
   use", "compare Archi and [vendor]", "score EA tools", "is this tool open", "will we be
   locked in", "can we get our models out", "do we need a dedicated EA tool or is a
-  spreadsheet enough", "ArchiMate certified tools". Returns the comparison table that the
-  play asks for, and an export-test script: load ten entities, export them, and open the
-  file without the tool. The safeguard says to score the export that you performed, not the
-  export that the brochure promises. It asks two questions first: how many entities you will
-  hold, and your budget posture.
+  spreadsheet enough", "ArchiMate certified tools".
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 license: CC-BY-4.0
@@ -146,4 +141,5 @@ with a real export of real data before you sign. A demo is not a test.**
 - `scripts/export-test.md` — the export test with ten entities, step by step, with the pass
   criteria.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
-  `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.
+  `references/output-contract.md` · `references/workbook-chain.md` ·
+  `references/workbook-chain-kp2.md` — the shared contract.

@@ -2,19 +2,15 @@
 name: paera-reference-check
 description: >-
   Check a draft model, an initiative list or a principle against the PAERA specification
-  itself, and not against the simplification that the videos teach. Use the full Annex 2
-  metamodel, the full Annex A1.2 taxonomy, the §5.2 principles as they are worded, and the
-  section map behind the five foundations. Serves the metamodel conformance check (2.2), the
-  five-foundations map (1.5) and the principle card (2.3). Use when someone says "check this
-  against PAERA", "is this metamodel conformant", "map our initiatives to the five
-  foundations", "which PAERA section covers this", "what does PAERA actually say about
-  principles", "adopt a PAERA principle for my country", "is this entity type in the
-  metamodel", "PAERA compliance check". Returns a conformance table against the full
-  specification, the foundation-to-PAERA-section map, and a clear note wherever the
-  learner's element is in the teaching subset but not in the full metamodel — the
-  simplification is right for a four-minute video and wrong for a deliverable. Reads
-  paera.govstack.global again when the published version differs from the one this kit
-  records.
+  itself — the full Annex 2 metamodel, the full Annex A1.2 taxonomy, the §5.2 principles as
+  they are worded, and the section map behind the five foundations — and not against the
+  simplification that the videos teach. Serves the metamodel conformance check (2.2), the
+  five-foundations map (1.5) and the principle card (2.3), and runs beside
+  `ea-comparator-evidence` in the KP2 plays 1.7 and 4.3 to check each PAERA anchor those
+  pages cite. Use when someone says "check this against PAERA", "is this metamodel
+  conformant", "map our initiatives to the five foundations", "which PAERA section covers
+  this", "what does PAERA actually say about principles", "adopt a PAERA principle for my
+  country", "is this entity type in the metamodel", "PAERA compliance check".
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 license: CC-BY-4.0
@@ -150,6 +146,13 @@ Write text in the chat. Do not make a file. Write no analysis before the header.
 - **The published PAERA version can be later than the reference file of this kit.** Then
   trust the site, and record that the kit is behind.
 
+## KP2 plays
+
+KP2 cites PAERA at §3.4.3 (interoperability framing), §5.2 Principle #5 (Once-Only),
+§3.1.3 (institutional setup) and §3.2 (the legal layer). When a KP2 play names one of
+these, check the anchor as published and report where the KP2 simplification departs from
+the text, as this skill does for KP1. The chain is in `references/workbook-chain-kp2.md`.
+
 ## References
 
 - `references/paera-sections.md` — the section map behind the five foundations, the PAERA
@@ -158,4 +161,5 @@ Write text in the chat. Do not make a file. Write no analysis before the header.
 - `references/building-blocks.md` — the GovStack building-block catalogue. Inherited.
 - `references/state-registries.md` — the state-registry material. Inherited.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
-  `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.
+  `references/output-contract.md` · `references/workbook-chain.md` ·
+  `references/workbook-chain-kp2.md` — the shared contract.

@@ -1,0 +1,375 @@
+{
+ "1.1": {
+  "play": "Diagnose where your country procures interoperability instead of planning it",
+  "subtopic": "Why interoperability can't be bought, only built",
+  "kind": "diagnostic",
+  "skill": "country-context-pack",
+  "also": [
+   "cite-or-discard"
+  ],
+  "artefact": "B1 — Procured-vs-planned diagnostic",
+  "consumes": "A0 §1, A0 §8"
+ },
+ "1.2": {
+  "play": "Map a planned exchange across the four layers — and find the missing one",
+  "subtopic": "The four layers of interoperability",
+  "kind": "diagnostic",
+  "skill": "gif-four-layer-map",
+  "also": [
+   "bb-landscape-check",
+   "ea-legal-context"
+  ],
+  "artefact": "B2 — Four-layer exchange map",
+  "consumes": "A0 §1, A0 §9"
+ },
+ "1.3": {
+  "play": "Find your country's highest-value once-only exchange",
+  "subtopic": "The once-only promise",
+  "kind": "diagnostic",
+  "skill": "country-context-pack",
+  "also": [
+   "cite-or-discard"
+  ],
+  "artefact": "B3 — Highest-value once-only exchange",
+  "consumes": "A0 §2, A0 §9"
+ },
+ "1.4": {
+  "play": "Draft your Strategic Foundation Document",
+  "subtopic": "The Strategic Foundation Document",
+  "kind": "drafting",
+  "skill": "gif-foundation-drafter",
+  "also": [
+   "ea-legal-context"
+  ],
+  "artefact": "B4 — Strategic Foundation Document",
+  "consumes": "B1, B3, A0 §7"
+ },
+ "1.5": {
+  "play": "Build your Use-Case Catalogue from your integration map",
+  "subtopic": "The Use-Case Catalogue",
+  "kind": "drafting",
+  "skill": "country-context-pack",
+  "also": [
+   "cite-or-discard"
+  ],
+  "artefact": "B5 — Use-Case Catalogue",
+  "consumes": "A0 §9, B3"
+ },
+ "1.6": {
+  "play": "Map your stakeholders into tiers and provider/consumer roles",
+  "subtopic": "Mapping your stakeholders",
+  "kind": "diagnostic",
+  "skill": "ea-institution-mapper",
+  "also": [],
+  "artefact": "B6 — Stakeholder tier map",
+  "consumes": "A0 §4, A0 §6"
+ },
+ "1.7": {
+  "play": "Find the published standards your sector should reuse",
+  "subtopic": "What the world already proved",
+  "kind": "diagnostic",
+  "skill": "ea-comparator-evidence",
+  "also": [
+   "paera-reference-check"
+  ],
+  "artefact": "B7 — Standards-to-reuse shortlist",
+  "consumes": "A0 §1"
+ },
+ "2.1": {
+  "play": "Assess your legal readiness for cross-agency exchange",
+  "subtopic": "Why the platform needs a legal mandate",
+  "kind": "diagnostic",
+  "skill": "ea-legal-context",
+  "also": [],
+  "artefact": "B8 — Legal-readiness assessment",
+  "consumes": "A0 §7, A0 §10"
+ },
+ "2.2": {
+  "play": "Outline your decree's five components from your foundation",
+  "subtopic": "Anatomy of an interoperability decree",
+  "kind": "drafting",
+  "skill": "gif-decree-draft",
+  "also": [
+   "ea-legal-context"
+  ],
+  "artefact": "B9 — Decree outline (five components)",
+  "consumes": "B4, B8"
+ },
+ "2.3": {
+  "play": "Generate the Explanatory Memorandum and Preamble (gif-decree-draft)",
+  "subtopic": "The Explanatory Memorandum and Preamble",
+  "kind": "drafting",
+  "skill": "gif-decree-draft",
+  "also": [
+   "ea-legal-context",
+   "cite-or-discard"
+  ],
+  "artefact": "B10 — Explanatory Memorandum and Preamble",
+  "consumes": "B4, B9"
+ },
+ "2.4": {
+  "play": "Draft one operative article against a published model (gif-decree-draft)",
+  "subtopic": "The Draft Articles Package",
+  "kind": "drafting",
+  "skill": "gif-decree-draft",
+  "also": [
+   "ea-legal-context",
+   "cite-or-discard"
+  ],
+  "artefact": "B11 — Operative article draft",
+  "consumes": "B9, B5"
+ },
+ "2.5": {
+  "play": "Draft the Cover Note and the Two-Track Regulatory Memo",
+  "subtopic": "The Cover Note and Two-Track Regulatory Memo",
+  "kind": "drafting",
+  "skill": "gif-decree-draft",
+  "also": [
+   "ea-legal-context"
+  ],
+  "artefact": "B12 — Cover Note and two-track memo",
+  "consumes": "B10, B11"
+ },
+ "2.6": {
+  "play": "Check your decree authorises exactly your catalogue (the legal acceptance check)",
+  "subtopic": "The decree as configuration",
+  "kind": "diagnostic",
+  "skill": "gif-consistency-check",
+  "also": [],
+  "artefact": "B13 — Legal acceptance check",
+  "consumes": "B5, B11"
+ },
+ "3.1": {
+  "play": "Define the owner's mandate — and split the regulator from the operator",
+  "subtopic": "Why a bus needs an owner",
+  "kind": "drafting",
+  "skill": "ea-institution-mapper",
+  "also": [],
+  "artefact": "B14 — Owner's mandate, regulator and operator split",
+  "consumes": "A0 §6, B4"
+ },
+ "3.2": {
+  "play": "Draft the three-tier governance structure for your country",
+  "subtopic": "The three tiers of governance",
+  "kind": "drafting",
+  "skill": "ea-institution-mapper",
+  "also": [],
+  "artefact": "B15 — Three-tier governance structure",
+  "consumes": "A0 §4, B14"
+ },
+ "3.3": {
+  "play": "Draft the governance RACI for your framework's key decisions",
+  "subtopic": "The RACI matrix",
+  "kind": "drafting",
+  "skill": "ea-governance-drafter",
+  "also": [],
+  "artefact": "B16 — Governance RACI",
+  "consumes": "B15, B6"
+ },
+ "3.4": {
+  "play": "Draft the member obligations and membership agreement",
+  "subtopic": "Member obligations",
+  "kind": "drafting",
+  "skill": "ea-governance-drafter",
+  "also": [],
+  "artefact": "B17 — Member obligations and agreement",
+  "consumes": "B16, B6"
+ },
+ "3.5": {
+  "play": "Charter the four Technical Working Groups",
+  "subtopic": "The four Technical Working Groups",
+  "kind": "drafting",
+  "skill": "ea-governance-drafter",
+  "also": [],
+  "artefact": "B18 — Four Working Group charters",
+  "consumes": "B15"
+ },
+ "3.6": {
+  "play": "Set up your change-control process and standards-portfolio register",
+  "subtopic": "Governance as living configuration",
+  "kind": "drafting",
+  "skill": "ea-governance-drafter",
+  "also": [],
+  "artefact": "B19 — Change control, standards register (with conformance fields) and semantic-registry charter",
+  "consumes": "B16, B18"
+ },
+ "4.1": {
+  "play": "Map your platform components to the four functional layers",
+  "subtopic": "Place every component — the four functional layers",
+  "kind": "diagnostic",
+  "skill": "bb-landscape-check",
+  "also": [],
+  "artefact": "B20 — Component-to-layer map",
+  "consumes": "A0 §6"
+ },
+ "4.2": {
+  "play": "Trace an exchange across the trust zones and name its security",
+  "subtopic": "Secure every call — the three trust zones",
+  "kind": "drafting",
+  "skill": "bb-landscape-check",
+  "also": [],
+  "artefact": "B21 — Trust-zone trace",
+  "consumes": "B5, B20"
+ },
+ "4.3": {
+  "play": "Assemble your standards portfolio from the published menu",
+  "subtopic": "Adopt the standards portfolio",
+  "kind": "diagnostic",
+  "skill": "ea-comparator-evidence",
+  "also": [
+   "paera-reference-check"
+  ],
+  "artefact": "B22 — Standards portfolio",
+  "consumes": "B7, B20"
+ },
+ "4.4": {
+  "play": "Generate a semantic map for an exchange (gif-semantic-map)",
+  "subtopic": "Generate the semantic map",
+  "kind": "drafting",
+  "skill": "gif-semantic-map",
+  "also": [
+   "cite-or-discard"
+  ],
+  "artefact": "B23 — Semantic map",
+  "consumes": "B5, B22"
+ },
+ "4.5": {
+  "play": "Generate an OpenAPI service contract (gif-openapi-gen)",
+  "subtopic": "Generate a service contract",
+  "kind": "drafting",
+  "skill": "gif-openapi-gen",
+  "also": [],
+  "artefact": "B24 — OpenAPI service contract",
+  "consumes": "B23, B22"
+ },
+ "4.6": {
+  "play": "Map a real sector data source through bronze/silver/gold onto the bus",
+  "subtopic": "Put a real data source on the bus — the Giga case",
+  "kind": "drafting",
+  "skill": "gif-semantic-map",
+  "also": [
+   "gif-openapi-gen"
+  ],
+  "artefact": "B25 — Bronze/silver/gold source map",
+  "consumes": "B23"
+ },
+ "4.7": {
+  "play": "Generate the X-Road service description and wiring checklist",
+  "subtopic": "Wire a service onto the bus",
+  "kind": "drafting",
+  "skill": "gif-openapi-gen",
+  "also": [],
+  "artefact": "B26 — X-Road service description and wiring checklist",
+  "consumes": "B24, B6"
+ },
+ "4.8": {
+  "play": "Draft the data-protection envelope for an exchange",
+  "subtopic": "Make the exchange lawful — the data-protection envelope",
+  "kind": "drafting",
+  "skill": "ea-legal-context",
+  "also": [],
+  "artefact": "B27 — Data-protection envelope",
+  "consumes": "B5, B11"
+ },
+ "5.1": {
+  "play": "Draft your implementation plan — the phased schedule and the four plans beside it",
+  "subtopic": "Plan the build in four phases",
+  "kind": "drafting",
+  "skill": "ea-method-runner",
+  "also": [],
+  "artefact": "B28 — Implementation plan: phased schedule, investment, procurement, workforce, risk register and metrics",
+  "consumes": "B5, B6"
+ },
+ "5.2": {
+  "play": "Draft the Member Requirements checklist",
+  "subtopic": "State what a member must have — the Member Requirements",
+  "kind": "drafting",
+  "skill": "ea-governance-drafter",
+  "also": [],
+  "artefact": "B29 — Member Requirements checklist",
+  "consumes": "B22, B13"
+ },
+ "5.3": {
+  "play": "Draft the Service-Level Agreement template",
+  "subtopic": "Make 'connected' mean 'dependable' — the SLA",
+  "kind": "drafting",
+  "skill": "ea-governance-drafter",
+  "also": [],
+  "artefact": "B30 — Service-Level Agreement template",
+  "consumes": "B17"
+ },
+ "5.4": {
+  "play": "Generate the X-Road member registration (subsystem + ACL)",
+  "subtopic": "Register a member on X-Road",
+  "kind": "drafting",
+  "skill": "gif-federation-standup",
+  "also": [
+   "gif-openapi-gen"
+  ],
+  "artefact": "B31 — X-Road member registration",
+  "consumes": "B26, B29"
+ },
+ "5.5": {
+  "play": "Draft the federation stand-up run book",
+  "subtopic": "Stand up the federation",
+  "kind": "drafting",
+  "skill": "gif-federation-standup",
+  "also": [],
+  "artefact": "B32 — Federation stand-up run book",
+  "consumes": "B31"
+ },
+ "5.6": {
+  "play": "Script and verify the once-only exchange (the acceptance check)",
+  "subtopic": "Run the once-only exchange, live",
+  "kind": "drafting",
+  "skill": "gif-federation-standup",
+  "also": [],
+  "artefact": "B33 — Once-only acceptance script",
+  "consumes": "B32, B27"
+ },
+ "5.7": {
+  "play": "Build the demonstration-to-production gap checklist",
+  "subtopic": "From demonstration to production",
+  "kind": "diagnostic",
+  "skill": "ea-method-runner",
+  "also": [],
+  "artefact": "B34 — Demonstration-to-production gap checklist",
+  "consumes": "B32, B28"
+ },
+ "5.8": {
+  "play": "Summarise bus health and flag anomalies from the logs",
+  "subtopic": "Watch the bus — monitoring and anomaly detection",
+  "kind": "diagnostic",
+  "skill": "gif-bus-monitor",
+  "also": [],
+  "artefact": "B35 — Bus-health summary and anomaly list",
+  "consumes": "B33"
+ },
+ "5.9": {
+  "play": "Cross-check the decree, Governance Pack and standards portfolio for drift",
+  "subtopic": "Keep the documents honest — the consistency cross-check",
+  "kind": "diagnostic",
+  "skill": "gif-consistency-check",
+  "also": [],
+  "artefact": "B36 — Document-consistency report",
+  "consumes": "B11, B19, B22"
+ },
+ "5.10": {
+  "play": "Map your framework's sector-portable vs sector-specific parts for a new sector",
+  "subtopic": "Carry the framework to the next sector",
+  "kind": "drafting",
+  "skill": "ea-method-runner",
+  "also": [],
+  "artefact": "B37 — Sector-portability map",
+  "consumes": "B28, B22, B23"
+ },
+ "home": {
+  "play": "Draft your country's no-framework-to-first-service storyboard",
+  "subtopic": "From no framework to first service — the storyboard",
+  "kind": "drafting",
+  "skill": "gif-foundation-drafter",
+  "also": [],
+  "artefact": "B38 — Country storyboard",
+  "consumes": "B5, B28"
+ }
+}

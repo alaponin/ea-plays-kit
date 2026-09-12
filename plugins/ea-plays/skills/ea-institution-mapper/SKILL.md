@@ -1,19 +1,19 @@
 ---
 name: ea-institution-mapper
 description: >-
-  Find the public bodies that matter in a country and a sector. For each body, record its
-  legal mandate with the instrument that grants it, the systems and registries that it
-  operates, the post that heads it, and its PAERA Annex A1.2 classification with a
-  confidence and a hybrid flag. Serves every play that begins "here are the main bodies in
-  [sector]": the ministerial explainer (1.2), the phase RACI's roles input (1.6), classify a
-  body (2.4), the sector BDAT skeleton (2.5), the demonstration canvas (4.1), the transfer
-  plan (4.8) and the second-sector map (5.3b). Use when someone says "who are the bodies in
-  [country]'s [sector]", "classify this agency", "what is this ministry's legal mandate",
-  "which body owns the learner registry", "build my roles register", "is this a registry or
-  a service authority", "fill in the demonstration canvas". Returns the A5 bodies register,
-  a roles register tagged confirmed/partial/gap, and the 4.1 canvas pre-filled. Reads
-  official portals, establishing acts, national strategies, donor project documents, ID4D and
-  CRVS assessments. Posts, never names.
+  Find the public bodies that matter in a country and a sector, each with the legal mandate
+  and the instrument that grants it, the systems and registries it operates, the post that
+  heads it, and its PAERA Annex A1.2 classification. Serves every play that begins "here are
+  the main bodies in [sector]": the ministerial explainer (1.2), the phase RACI's roles
+  input (1.6), classify a body (2.4), the sector BDAT skeleton (2.5), the demonstration
+  canvas (4.1), the transfer plan (4.8) and the second-sector map (5.3b); and the KP2
+  stakeholder tier map (1.6, B6), the owner's mandate with the regulator and operator split
+  (3.1, B14) and the three-tier governance structure (3.2, B15). Use when someone says "who
+  are the bodies in [country]'s [sector]", "classify this agency", "what is this ministry's
+  legal mandate", "which body owns the learner registry", "build my roles register", "is
+  this a registry or a service authority", "fill in the demonstration canvas", "stakeholder
+  tiers", "provider and consumer roles", "operating authority mandate", "regulator and
+  operator split", "three-tier governance".
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 license: CC-BY-4.0
@@ -140,13 +140,25 @@ a government more frequently than outside it.
   government before it becomes the membership section of a Board ToR.
 - Each item marked ⚠ or *inferred* is not yet a fact.
 
+## KP2 plays
+
+| KP2 play | Artefact | This skill supplies |
+| --- | --- | --- |
+| 1.6 | B6 — Stakeholder tier map | each body's mandate and data role from the Bodies register, so a tier is a fact and an attitude is marked as the learner's reading |
+| 3.1 | B14 — Owner's mandate, regulator and operator split | the candidate host body's current mandate, cited; each power it does not hold as a gap for counsel; A7 from KP1 if the learner has it |
+| 3.2 | B15 — Three-tier governance structure | the bodies and posts of A0 §4 with their legal standing, so membership is by post and mandate |
+
+Also the organisational layer of 1.2, through `gif-four-layer-map`. The chain and the
+B-numbers are in `references/workbook-chain-kp2.md`.
+
 ## References
 
 - `references/mandate-sources.md` — where each type of establishing instrument is
   published, and how to see the difference between an amended act and an act that is
   superseded.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
-  `references/output-contract.md` · `references/workbook-chain.md` — the shared contract.
+  `references/output-contract.md` · `references/workbook-chain.md` ·
+  `references/workbook-chain-kp2.md` — the shared contract.
 
 ### Fixture material
 

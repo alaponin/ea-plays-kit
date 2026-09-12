@@ -1,7 +1,7 @@
 {
   "name": "ea-plays",
-  "version": "0.2.2",
-  "description": "The 'with the kit' layer for the Knowledge Product AI plays on government enterprise architecture: builds sourced country context (Play 0), verifies every claim against tiered public sources (cite-or-discard), checks which shared building blocks are actually live, maps public bodies and national law, finds comparator-country evidence with primary sources, and grounds the Module 2-5 artefacts in PAERA v1.0. Plays run bare in any assistant; this kit adds the sources and the verification.",
+  "version": "0.3.0",
+  "description": "The 'with the kit' layer for the Knowledge Product AI plays on government enterprise architecture (KP1) and the government interoperability framework (KP2): builds sourced country context (Play 0 and the KP2 supplement), verifies every claim against tiered public sources (cite-or-discard), checks which shared building blocks are actually live, maps public bodies and national law, finds comparator-country evidence with primary sources, grounds the KP1 Module 2-5 artefacts in PAERA v1.0, and for KP2 drafts the decree against published legal models, the semantic map and OpenAPI contract against fetched vocabularies and specifications, and the X-Road registration, run book and once-only acceptance against the NIIS guides. Plays run bare in any assistant; this kit adds the sources and the verification.",
   "author": {
     "name": "FiscalAdmin OÜ",
     "url": "https://github.com/alaponin"
@@ -14,6 +14,10 @@
     "digital-government",
     "itu",
     "giga",
-    "ai-plays"
+    "ai-plays",
+    "interoperability",
+    "x-road",
+    "once-only",
+    "decree"
   ]
 }

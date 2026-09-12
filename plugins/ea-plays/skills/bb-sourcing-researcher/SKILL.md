@@ -1,19 +1,17 @@
 ---
 name: bb-sourcing-researcher
 description: >-
-  Do market research on the GovStack and PAERA building blocks. Then reason about the way to
-  source each block: reuse a product, which can be an open-source digital public good or a
+  Do market research on the GovStack and PAERA building blocks, then reason about how to
+  source each one: reuse a product, which can be an open-source digital public good or a
   commercial product; configure the block on an adjacent block; or build it. This is a
-  structured vendor-versus-bespoke analysis, also called build-versus-buy.
-  Use whenever a user wants to: find open-source and commercial providers for a
-  digital-government capability; map building blocks to implementation options; assess lock-in
-  risk; choose between a digital public good and a proprietary product; produce a
-  sourcing-decision matrix; size a programme's bespoke footprint; or build a procurement
-  options analysis. Trigger on: market research building blocks, vendor vs bespoke, build vs
-  buy, sourcing options, DPG vs commercial, open-source alternatives, implementation providers,
-  lock-in risk, sourcing decision matrix, reuse vs build, off-the-shelf vs custom, digital
-  public goods landscape. Pairs with ea-cost-case, which sizes the cost; this skill decides the
-  sourcing posture per block.
+  structured vendor-versus-bespoke analysis, also called build-versus-buy. Trigger on:
+  market research building blocks, vendor vs bespoke, build vs buy, sourcing options, DPG vs
+  commercial, open-source alternatives, implementation providers, lock-in risk, sourcing
+  decision matrix, reuse vs build, off-the-shelf vs custom, digital public goods landscape,
+  "find providers for a digital-government capability", "map building blocks to
+  implementation options", "size a programme's bespoke footprint", "procurement options
+  analysis". Pairs with ea-cost-case, which sizes the cost; this skill decides the sourcing
+  posture per block.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 license: CC-BY-4.0
@@ -257,8 +255,9 @@ sourcing matrix. Posts, not names. Write no analysis before the header. See
 ### The shared contract
 
 - `references/source-tiers.md` · `references/provenance-header.md` ·
-  `references/output-contract.md` · `references/workbook-chain.md` — read them before you
-  write the output. They are the same four files that each skill in this kit obeys.
+  `references/output-contract.md` · `references/workbook-chain.md` ·
+  `references/workbook-chain-kp2.md` — read them before you write the output. They are the
+  same five files that each skill in this kit obeys.
 
 Read these files when you need the detail in them. For a subject that they do not cover, do
 live research and cite it.

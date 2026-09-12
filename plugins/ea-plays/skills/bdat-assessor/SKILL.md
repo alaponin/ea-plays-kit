@@ -1,18 +1,17 @@
 ---
 name: bdat-assessor
 description: >-
-  Use this skill to assess a government body, a sector, or a digital initiative with the
-  BDAT model, which has the four layers Business, Data, Application and Technology. The
-  assessment is grounded in the PAERA metamodel and in the GovStack building block
-  principles. Trigger on: "BDAT
-  assessment", "assess using BDAT", "read this ministry in four layers", "enterprise
-  architecture review", "capability mapping", "data domain ownership", "application
-  portfolio review", "architecture gap analysis", "current-state architecture",
-  "target-state architecture", "orphan systems", "duplicate registry", "point-to-point
-  integration", "bespoke trap", "vendor lock-in", "government architecture audit",
-  "classify this body", "PAERA metamodel", "GovStack architecture",
-  "whole-of-government architecture". Also trigger when a user shares a strategy
-  document or sector description and asks for an architectural reading or gap analysis.
+  Assess a government body, a sector, or a digital initiative with the BDAT model, which has
+  the four layers Business, Data, Application and Technology, grounded in the PAERA
+  metamodel and the GovStack building block principles. Trigger on: "BDAT assessment",
+  "assess using BDAT", "read this ministry in four layers", "enterprise architecture
+  review", "capability mapping", "data domain ownership", "application portfolio review",
+  "architecture gap analysis", "current-state architecture", "target-state architecture",
+  "orphan systems", "duplicate registry", "point-to-point integration", "bespoke trap",
+  "vendor lock-in", "government architecture audit", "classify this body", "PAERA
+  metamodel", "GovStack architecture", "whole-of-government architecture". Also trigger when
+  a user shares a strategy document or sector description and asks for an architectural
+  reading or gap analysis.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 license: CC-BY-4.0
@@ -332,5 +331,6 @@ cost.
 ### The shared contract
 
 - `references/source-tiers.md` · `references/provenance-header.md` ·
-  `references/output-contract.md` · `references/workbook-chain.md` — read them before you
-  write the output. They are the same four files that each skill in this kit obeys.
+  `references/output-contract.md` · `references/workbook-chain.md` ·
+  `references/workbook-chain-kp2.md` — read them before you write the output. They are the
+  same five files that each skill in this kit obeys.
