@@ -50,6 +50,47 @@ name or output contract.
 - **`shared/provenance-header.md`** — the Artefact field says A- for KP1 and B- for KP2;
   the Feeds field names which chain to read.
 - The plugin README carries a second play → skill table for KP2; both manifests say 0.3.0.
+- **Every skill description is a trigger blurb again.** They had grown to 1,850 characters
+  by restating the procedure the body already carries, and all 22 load before any skill
+  runs. Each is now one sentence of identity plus its trigger list, with the sibling
+  disambiguators kept: 29,282 → 20,321 characters, roughly 2,200 tokens off the standing
+  cost. No trigger phrase was dropped, and everything below `allowed-tools:` is
+  byte-identical in all 22 files.
+- **The six KP1-only skills name `workbook-chain-kp2.md`** in their shared contract, as the
+  `gif-*` skills already did. `sync-shared.sh` copies all five shared files into all 22
+  skills and still does; making it course-aware was considered and rejected, because which
+  course a skill serves is the most volatile fact about it — this release alone moved eight
+  skills from one course to two — and a skill that loses a chain it turns out to need fails
+  inside a folder a learner has already uploaded. A file shipped and never opened costs
+  disk; a file needed and not shipped costs the learner.
+- `.claude-plugin/marketplace.json` — the marketplace description names KP2 beside KP1, as
+  the plugin entry inside it already did.
+
+### Fixed
+
+- **Progressa's coverage figures no longer leak into generic guidance.** `gif-semantic-map`
+  told the model that a national ID "covers 78% of adults", and its `identifier-rules.md`
+  named "the 22% of adults without a national ID" — the fixture's numbers, in two files
+  that carry no fixture marker, read by a learner working on a real country. Check 9 only
+  fires on named tokens (`Progressa`, `PNIA`, …), so a bare percentage walked past it.
+- **`gif-bus-monitor` and `gif-consistency-check` run `cite-or-discard`**, as the other six
+  `gif-*` skills do. Both fetch published sources — the operational monitoring protocol,
+  the current version of a standard — and both were reaching the output with those
+  citations unverified.
+- **`gif-federation-standup` no longer claims a dependency the chain does not carry.** Play
+  5.5's inputs named "the X-Road release from B22", but the chain has 5.5 consuming B31
+  alone, so B22's Feeds never reached it. The release is now asked for directly, with B22
+  as "also useful". `check_fixtures.py` compares `play-map.json` with the chain in both
+  directions but nothing compared the SKILL tables, which is why this passed every run.
+
+### Tests
+
+- **A ceiling on skill descriptions** (2b), 1,500 characters. A ratchet: lower it as the
+  longest come down, never raise it.
+- **A bidirectional reference check** (2c). A `references/x.md` a SKILL.md names must exist,
+  or the skill breaks in the folder a learner uploaded; and a skill-specific file that
+  nothing names is flagged as a dead file or a dropped mention. The five shared files are
+  exempt from the second direction — they ship everywhere by contract, not by reference.
 
 ### Not in this release
 
