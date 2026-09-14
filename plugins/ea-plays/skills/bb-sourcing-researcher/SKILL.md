@@ -64,7 +64,7 @@ ONE message. Do not ask again for an item that the learner gave you.
 
 | Parameter | Why it matters |
 |---|---|
-| **Blocks in scope** | One block, a subset such as the KP3 DPI Roadmap blocks, or all 18 |
+| **Blocks in scope** | One block, a subset such as the DPI Roadmap blocks, or all 18 |
 | **Country / region** | It decides which vendors are available, which system integrators are in the country, which mobile-money rails exist, and which data-residency rules apply |
 | **Sector / use case** | Education and health need different products, for example DHIS2 SEMIS for education analytics |
 | **Existing systems** | What the country already operates. To reuse or extend is better than to start again. Take this from a BDAT assessment, if one exists |
@@ -256,7 +256,7 @@ sourcing matrix. Posts, not names. Write no analysis before the header. See
 
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — read them before you write the output. They are the
+  `references/workbook-chain-gif.md` — read them before you write the output. They are the
   same five files that each skill in this kit obeys.
 
 Read these files when you need the detail in them. For a subject that they do not cover, do

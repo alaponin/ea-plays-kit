@@ -3,14 +3,14 @@ name: gif-foundation-drafter
 description: >-
   Draft the two Strategist narratives of a Government Interoperability Framework: the
   Strategic Foundation Document — mandate, scope, principles, success measures, about two
-  pages, signed by a minister or interoperability authority (KP2 play 1.4, B4) — and the
+  pages, signed by a minister or interoperability authority (interoperability play 1.4, B4) — and the
   country storyboard that takes a country from no framework to its first live once-only
   service across the five modules, on an honest calendar, for a minister or a funder (the
-  KP2 home-page play, B38). Use when someone says "strategic foundation document",
+  interoperability home-page play, B38). Use when someone says "strategic foundation document",
   "foundation document for the interoperability framework", "mandate scope principles
   success measures", "draft the charter for the framework", "storyboard", "from no framework
   to first service", "the journey to the first once-only service", "narrative for the
-  minister", "narrative for the funder", or names KP2 play 1.4 or the storyboard play. It
+  minister", "narrative for the funder", or names interoperability play 1.4 or the storyboard play. It
   never promises a big bang.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
@@ -21,7 +21,7 @@ metadata:
 
 ## What this skill does
 
-This skill drafts the two documents in KP2 that a Strategist signs or presents. Play 1.4
+This skill drafts the two documents in the interoperability course that a Strategist signs or presents. Play 1.4
 makes **B4, the Strategic Foundation Document**: MANDATE, SCOPE, PRINCIPLES, SUCCESS
 MEASURES, roughly two pages, formal. The home-page play makes **B38, the country
 storyboard**: one page, the journey from fragmentation to the first live once-only service
@@ -130,4 +130,4 @@ is a plan to inspire and align, not a guarantee.**
   softened.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — the shared contract.
+  `references/workbook-chain-gif.md` — the shared contract.

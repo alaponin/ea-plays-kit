@@ -1,13 +1,14 @@
 # ea-plays
 
-This is the **"with the kit"** layer for the Knowledge Product AI plays on government
-enterprise architecture and, since v0.3.0, on the government interoperability framework (KP2). It has twenty-two skills. They build a country context that has its
-sources, they verify each claim against public sources in four tiers, and they make artefacts
-that go into a country workbook.
+This is the **"with the kit"** layer for the AI plays of two Knowledge Product courses:
+**Government Enterprise Architecture** (the EA course) and, since v0.3.0, **Government
+Interoperability Framework** (the interoperability course). It has twenty-two skills. They
+build a sourced country context, verify each claim against public sources in four tiers, and
+make the artefacts that go into a country workbook.
 
-**The plays run bare in any assistant.** They are the product. This kit is optional. It adds
-the step that a learner does not do: it brings in the named source before it writes the
-draft, and it checks the draft after.
+**The plays work in any assistant without this kit.** The plays are the course material; the
+kit is optional. It adds the step a bare prompt skips: it fetches the named sources before it
+writes the draft, and it checks the draft against them afterwards.
 
 ## Install
 
@@ -50,7 +51,7 @@ Each output starts with a provenance header. The header gives the country, the d
 count of sources in each tier, and the count of unverified lines. The next play can then use
 the output, and you can see what the output depends on.
 
-## Play → skill — KP1
+## Play → skill — the EA course
 
 Each play has exactly one primary skill. `cite-or-discard` runs inside most of the other
 skills. You do not call it directly.
@@ -122,21 +123,20 @@ skills. You do not call it directly.
 | 5.5 | A30 — Capability-building plan | `ea-open-learning-catalogue` | — |
 | 5.6 | A29 rev.2 — Closing one-page case | `ea-comparator-evidence` | `cite-or-discard`, `ea-cost-case` |
 
-Play ids follow KP1 v0.2 (3 September 2026). 1.8 is retired: its comparator play is 5.1.
+Play ids follow version 0.2 of the EA course (3 September 2026). 1.8 is retired: its
+comparator play is 5.1.
 
-The KP2 plays follow, after the KP1 table.
+## Play → skill — the interoperability course
 
-## Play → skill — KP2
+The Government Interoperability Framework course makes **B-numbered** artefacts — the
+configuration of a framework: the decree, the Governance Pack, the semantic map and
+contracts, the running slice. The two courses share play ids (both have a 2.4); the artefact
+letter says which course. The chain is `shared/workbook-chain-gif.md`; the fixtures are
+under `tests/gif/`.
 
-KP2 is the Government Interoperability Framework course. Its plays make **B-numbered**
-artefacts — the configuration of a framework: the decree, the Governance Pack, the semantic
-map and contracts, the running slice. KP1 and KP2 share play ids (both have a 2.4); the
-artefact letter says which course. The chain is `shared/workbook-chain-kp2.md`; the
-fixtures are under `tests/kp2/`.
-
-Eight skills are KP2's own, all prefixed `gif-`. The three the KP2 play pages name —
-`gif-decree-draft`, `gif-semantic-map`, `gif-openapi-gen` — ship under those names. The
-other fourteen skills serve KP2 plays as the table says.
+Eight skills belong to this course only, all prefixed `gif-`. The three that the play pages
+name — `gif-decree-draft`, `gif-semantic-map`, `gif-openapi-gen` — ship under those names.
+The other fourteen skills serve interoperability plays as the table says.
 
 | Skill | What it does |
 | --- | --- |
@@ -149,7 +149,7 @@ other fourteen skills serve KP2 plays as the table says.
 | `gif-federation-standup` | The member registration, the stand-up run book and the once-only acceptance script, cited to the NIIS guides |
 | `gif-bus-monitor` | Bus health from metadata logs, with the personal-data gate first and every anomaly a question |
 
-**Play 0 supplement**
+**Play 0 — interoperability supplement**
 
 | Play | Artefact | Primary skill | Also runs |
 | --- | --- | --- | --- |
@@ -217,13 +217,13 @@ other fourteen skills serve KP2 plays as the table says.
 | 5.9 | B36 — Document-consistency report | `gif-consistency-check` | — |
 | 5.10 | B37 — Sector-portability map | `ea-method-runner` | — |
 
-**The storyboard — on the KP2 home page, no video**
+**The storyboard — on the interoperability course home page, no video**
 
 | Play | Artefact | Primary skill | Also runs |
 | --- | --- | --- | --- |
 | home | B38 — Country storyboard | `gif-foundation-drafter` | — |
 
-Play ids follow the KP2 GitBook of 12 September 2026. Module 6 is retired; its three real
+Play ids follow the interoperability course GitBook of 12 September 2026. Module 6 is retired; its three real
 plays are 5.8, 5.9 and 5.10, and its storyboard is the home-page play.
 
 ## The rules every skill follows

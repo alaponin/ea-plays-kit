@@ -1,8 +1,8 @@
 <!-- fixture: Progressa (fictional) · canonical: tests/progressa.md · keep consistent with it -->
 # The Progressa federation — Linkup and the once-only proof
 
-The worked example of plays 5.4, 5.5 and 5.6 on Progressa, as the KP2 build pack stands it
-up. Country facts from `tests/progressa.md` §1, §6 and `tests/kp2/progressa-supplement.md`.
+The worked example of plays 5.4, 5.5 and 5.6 on Progressa, as the interoperability build pack stands it
+up. Country facts from `tests/progressa.md` §1, §6 and `tests/gif/progressa-supplement.md`.
 Progressa is fictional. The exchange is the target state that the National Learner
 Registry programme delivers; in the baseline the Progressa Learner Registry (PLR) is
 planned and not started, and Linkup — X-Road 7.x, operated by the Progressa Digital
@@ -28,7 +28,7 @@ Government Authority (PDGA), a 2025 pilot with four members — has no education
 
 The Ministry of Education, Youth and Skills (MoEYS) is not a member of the demonstration
 federation; the pack retired its subsystem, and the fixture's problem statement — MoEYS is
-not on Linkup — stays true. These identifiers are frozen: KP3 and KP4 build against them.
+not on Linkup — stays true. These identifiers are frozen: later courses build against them.
 
 ## The acceptance (5.6)
 

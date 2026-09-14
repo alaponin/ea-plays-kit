@@ -8,6 +8,30 @@ Video descriptions and the GitBook link the install command, never a release num
 
 ## [Unreleased]
 
+## [0.3.1] — 2026-09-14
+
+The course acronyms are gone. A reader outside the programme could not tell what KP1 and KP2
+meant. Earlier entries still use them: **KP1** is the Government Enterprise Architecture
+course (the EA course, A-numbered artefacts), and **KP2** is the Government Interoperability
+Framework course (the interoperability course, B-numbered artefacts).
+
+Patch: no artefact number, skill name, play id or output contract changed.
+
+### Changed
+
+- **Every file names the course instead of the acronym**: the skills, the shared references,
+  the fixtures, both READMEs, both manifests and `check_fixtures.py`. Trigger phrases that
+  said "names KP2 play 4.4" now say "names interoperability play 4.4". Three other acronym
+  mentions (KP3, KP4) now say "later courses" or are dropped.
+- **Files renamed to match the `gif-` skill prefix**: `shared/workbook-chain-kp2.md` →
+  `shared/workbook-chain-gif.md` (and its copy in every skill's `references/`),
+  `country-context-pack/references/a0-kp2-supplement.md` → `a0-gif-supplement.md`, and
+  `tests/kp2/` → `tests/gif/`.
+- The plugin README's section headings are *Play → skill — the EA course* and *Play → skill —
+  the interoperability course*; `check_fixtures.py` finds the second table by that heading.
+- **The root README is rewritten for a first-time reader**: what a play and an artefact are,
+  a short glossary, and a layout that shows both fixture trees.
+
 ## [0.3.0] — 2026-09-12
 
 The KP2 layer. The KP2 GitBook of 12 September names three skills in its AI tips —

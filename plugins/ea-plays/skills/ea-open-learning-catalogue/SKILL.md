@@ -125,4 +125,4 @@ make it too small more than any other item.**
   traps for registration and currency in each one.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — the shared contract.
+  `references/workbook-chain-gif.md` — the shared contract.

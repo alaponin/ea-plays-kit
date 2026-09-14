@@ -1,6 +1,6 @@
 # The seven documents
 
-These structures come from the scripts of KP1 Modules 1, 3 and 5, and from the convention
+These structures come from the scripts of EA course Modules 1, 3 and 5, and from the convention
 for a decision log. Draft from these structures. Do not draft from your knowledge of
 governance documents.
 

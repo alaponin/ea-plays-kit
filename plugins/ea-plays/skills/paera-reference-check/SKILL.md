@@ -6,7 +6,7 @@ description: >-
   they are worded, and the section map behind the five foundations — and not against the
   simplification that the videos teach. Serves the metamodel conformance check (2.2), the
   five-foundations map (1.5) and the principle card (2.3), and runs beside
-  `ea-comparator-evidence` in the KP2 plays 1.7 and 4.3 to check each PAERA anchor those
+  `ea-comparator-evidence` in the interoperability plays 1.7 and 4.3 to check each PAERA anchor those
   pages cite. Use when someone says "check this against PAERA", "is this metamodel
   conformant", "map our initiatives to the five foundations", "which PAERA section covers
   this", "what does PAERA actually say about principles", "adopt a PAERA principle for my
@@ -146,12 +146,12 @@ Write text in the chat. Do not make a file. Write no analysis before the header.
 - **The published PAERA version can be later than the reference file of this kit.** Then
   trust the site, and record that the kit is behind.
 
-## KP2 plays
+## Interoperability course plays
 
-KP2 cites PAERA at §3.4.3 (interoperability framing), §5.2 Principle #5 (Once-Only),
-§3.1.3 (institutional setup) and §3.2 (the legal layer). When a KP2 play names one of
-these, check the anchor as published and report where the KP2 simplification departs from
-the text, as this skill does for KP1. The chain is in `references/workbook-chain-kp2.md`.
+The interoperability course cites PAERA at §3.4.3 (interoperability framing), §5.2 Principle #5 (Once-Only),
+§3.1.3 (institutional setup) and §3.2 (the legal layer). When an interoperability play names one of
+these, check the anchor as published and report where the simplification in the interoperability course departs from
+the text, as this skill does for the EA course. The chain is in `references/workbook-chain-gif.md`.
 
 ## References
 
@@ -162,4 +162,4 @@ the text, as this skill does for KP1. The chain is in `references/workbook-chain
 - `references/state-registries.md` — the state-registry material. Inherited.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — the shared contract.
+  `references/workbook-chain-gif.md` — the shared contract.

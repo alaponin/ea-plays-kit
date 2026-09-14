@@ -2,7 +2,7 @@
 name: gif-federation-standup
 description: >-
   Stand up and prove an X-Road federation for a Government Interoperability Framework — the
-  three KP2 Module 5 plays that turn configuration into a running slice: the member
+  three interoperability Module 5 plays that turn configuration into a running slice: the member
   registration, with its subsystem, service codes, access-control list and the onboarding
   checklist in the method's order (5.4, B31); the federation stand-up run book for the
   Central Server, the Test CA and one Security Server per member, each step marked where it
@@ -11,7 +11,7 @@ description: >-
   X-Road", "subsystem and ACL", "onboarding checklist", "stand up the federation", "run book
   for the Central Server", "Security Server deployment steps", "Test CA", "acceptance
   check", "once-only proof", "given when then for the exchange", "prove the exchange runs",
-  "Linkup", "build pack", or names KP2 play 5.4, 5.5 or 5.6. It never invents an identifier
+  "Linkup", "build pack", or names interoperability play 5.4, 5.5 or 5.6. It never invents an identifier
   or an address.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
@@ -34,7 +34,7 @@ The bare plays defend against invented identifiers and addresses with `[confirm]
 skill adds the **published procedure**: it reads the NIIS X-Road installation and
 administration guides at the release the portfolio adopts, so that each step of the run
 book is the guide's step, cited, and not a recollection. It also carries the shape of the
-KP2 build pack's own acceptance check, so that a learner's script proves what the
+interoperability build pack's own acceptance check, so that a learner's script proves what the
 pack proves: cross-server routing, the right record, asked once, denied when not granted,
 and field conformance.
 
@@ -146,12 +146,12 @@ that asked about another.**
 ### Fixture material
 
 - `references/progressa-federation.md` — the Progressa federation: topology, frozen
-  identifiers, the once-only scenario and its acceptance, as the KP2 build pack stands it
+  identifiers, the once-only scenario and its acceptance, as the interoperability build pack stands it
   up. Progressa is the fictional demonstration country; `tests/progressa.md` and
-  `tests/kp2/progressa-supplement.md` in the kit repo are canonical.
+  `tests/gif/progressa-supplement.md` in the kit repo are canonical.
 
 ### The shared contract
 
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md`.
+  `references/workbook-chain-gif.md`.

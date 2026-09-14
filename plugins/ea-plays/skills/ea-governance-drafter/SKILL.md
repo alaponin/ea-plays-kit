@@ -5,7 +5,7 @@ description: >-
   terms of reference (1.7, 3.4), the phase RACI and role-gap list (1.6), the repository
   structure (3.1) and its update policy (3.3), the architecture review-gate checklist (3.5),
   the EA health scorecard (3.6) and the sustainment risk register (3.7, 5.2). It also drafts
-  the KP2 Government Interoperability Framework Governance Pack and member documents: the
+  the Government Interoperability Framework Governance Pack and member documents: the
   governance RACI (3.3, B16), the member obligations and membership agreement (3.4, B17),
   the four Technical Working Group charters (3.5, B18), the change-control process with the
   standards register and semantic-registry charter (3.6, B19), the Member Requirements
@@ -125,9 +125,9 @@ authority.**
 - The exemplars are the documents of other countries. They show how a government wrote one.
   They are not text to adopt.
 
-## KP2 plays
+## Interoperability course plays
 
-| KP2 play | Artefact | This skill supplies |
+| Interoperability play | Artefact | This skill supplies |
 | --- | --- | --- |
 | 3.3 | B16 — Governance RACI | one Accountable per decision, checked against the mandate each body holds (B14, B15) and, where the decision compels an agency, against the decree article |
 | 3.4 | B17 — Member obligations and agreement | common, provider and consumer obligations from published member models (the NIIS X-Road ecosystems), cited; every enforcement power marked [confirm] against the legal layer |
@@ -137,7 +137,7 @@ authority.**
 | 5.3 | B30 — Service-Level Agreement template | pilot and production targets per service, each [confirm] with the provider |
 
 Keep the regulator and the operator apart in every document, as B14 splits them. The
-chain is in `references/workbook-chain-kp2.md`.
+chain is in `references/workbook-chain-gif.md`.
 
 ## References
 
@@ -147,4 +147,4 @@ chain is in `references/workbook-chain-kp2.md`.
   to see the difference between an adopted instrument and the draft of a consultant.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — the shared contract.
+  `references/workbook-chain-gif.md` — the shared contract.

@@ -4,12 +4,12 @@ description: >-
   Build the A0 country context pack. This is the seven-section input that each play in this
   course uses, and it comes from public records, not from memory. Run it one time for each
   country and sector, before any other play; it feeds 1.1 through 1.7, 2.1, 2.3, 2.4, 2.5,
-  4.1 and 5.1. It also makes A0 §8–§10, the KP2 supplement for the Government
+  4.1 and 5.1. It also makes A0 §8–§10, the interoperability supplement for the Government
   Interoperability Framework plays — the current exchange approach, the integration map, the
-  data-protection law and DPA — and serves KP2 plays 1.1, 1.3 and 1.5. Use when someone says
+  data-protection law and DPA — and serves interoperability plays 1.1, 1.3 and 1.5. Use when someone says
   "build my country context", "run Play 0", "I need the input for play 1.1", "what do I
   paste into this prompt", "research [country] for an EA assessment", "country brief for
-  digital government", "KP2 supplement", "integration map", "current exchange approach",
+  digital government", "interoperability supplement", "integration map", "current exchange approach",
   "how does data exchange happen today", or asks any play's question without having the
   context to hand.
 allowed-tools: WebSearch, WebFetch, Read
@@ -151,26 +151,26 @@ wrong. Do these steps before the pack goes into a briefing:
 - Each item that the pack marks ⚠ or "absent from the public record" is work for you. It
   is not a finding.
 
-## KP2 plays
+## Interoperability course plays
 
-KP2, the Government Interoperability Framework course, reads three sections that §1–§7 do
-not hold. Build them as **A0 §8–§10** with `references/a0-kp2-supplement.md` when the
-learner names KP2, an interoperability framework, a decree or a data exchange layer. The
-KP2 plays this skill leads, with their B-numbered artefacts, are in
-`references/workbook-chain-kp2.md`:
+The Government Interoperability Framework course reads three sections that §1–§7 do
+not hold. Build them as **A0 §8–§10** with `references/a0-gif-supplement.md` when the
+learner names the interoperability course, an interoperability framework, a decree or a data exchange layer. The
+interoperability plays this skill leads, with their B-numbered artefacts, are in
+`references/workbook-chain-gif.md`:
 
-| KP2 play | Artefact | This skill supplies |
+| Interoperability play | Artefact | This skill supplies |
 | --- | --- | --- |
 | Play 0 supplement | A0 §8–§10 | the three sections, sourced |
 | 1.1 | B1 — Procured-vs-planned diagnostic | A0 §1 and §8 with sources; runs `cite-or-discard` |
 | 1.3 | B3 — Highest-value once-only exchange | A0 §2 and §9 with sources |
 | 1.5 | B5 — Use-Case Catalogue | A0 §9 with sources; readiness flags marked ⚠ until confirmed |
 
-Fill **Feeds** from the KP2 chain when the artefact is B-numbered.
+Fill **Feeds** from the interoperability chain when the artefact is B-numbered.
 
 ## References
 
-- `references/a0-kp2-supplement.md` — A0 §8–§10, the three sections KP2 adds, with their sources.
+- `references/a0-gif-supplement.md` — A0 §8–§10, the three sections the interoperability course adds, with their sources.
 
 - `references/api-guide.md` — the query patterns and indicator codes for the statistical
   APIs (World Bank, UNESCO UIS, UN SDG, ITU DataHub, UNICEF, Giga). Inherited; read it when
@@ -180,4 +180,4 @@ Fill **Feeds** from the KP2 chain when the artefact is B-numbered.
   each section feeds.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — the shared contract.
+  `references/workbook-chain-gif.md` — the shared contract.

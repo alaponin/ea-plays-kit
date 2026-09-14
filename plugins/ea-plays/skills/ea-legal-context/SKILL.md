@@ -9,7 +9,7 @@ description: >-
   and the one line of it that matters for architecture. Serves the Governance Board ToR
   whose binding-decision scope must cite real statutes (1.7, 3.4), the principle card (2.3),
   the body classification (2.4), the joint business-IT agenda's constraints (1.4) and the
-  Discovery brief's legal collection area (4.2); and the KP2 plays: A0 §10 of the
+  Discovery brief's legal collection area (4.2); and the interoperability plays: A0 §10 of the
   supplement, the legal-readiness assessment for cross-agency exchange (2.1, B8), the
   data-protection envelope of one exchange (4.8, B27), and the legal register that
   `gif-decree-draft` reads to fill its [confirm] placeholders. Use when someone says "which
@@ -144,9 +144,9 @@ consent design, or a data-sharing agreement:
 - The register can say that an instrument does not exist. This means that there is no
   *public record* of the instrument. It does not mean that the instrument does not exist.
 
-## KP2 plays
+## Interoperability course plays
 
-| KP2 play | Artefact | This skill supplies |
+| Interoperability play | Artefact | This skill supplies |
 | --- | --- | --- |
 | Play 0 supplement | A0 §10 — Data-protection law and DPA | the act, the public-sector sharing section, the authority and whether it operates — the first pass the register deepens |
 | 2.1 | B8 — Legal-readiness assessment | for each planned exchange type: permitted, blocked or silent, with the instrument and section cited; what the decree must establish |
@@ -155,7 +155,7 @@ consent design, or a data-sharing agreement:
 
 Also the legal layer of 1.2, through `gif-four-layer-map`. If 4.8 finds NOT AUTHORISED,
 say so first: the exchange must not go live however well it is built. The chain is in
-`references/workbook-chain-kp2.md`.
+`references/workbook-chain-gif.md`.
 
 ## References
 
@@ -165,4 +165,4 @@ say so first: the exchange must not go live however well it is built. The chain 
   each one can prove, and how to establish that a text is current.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — the shared contract.
+  `references/workbook-chain-gif.md` — the shared contract.

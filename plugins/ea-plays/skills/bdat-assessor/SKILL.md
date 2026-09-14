@@ -332,5 +332,5 @@ cost.
 
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — read them before you write the output. They are the
+  `references/workbook-chain-gif.md` — read them before you write the output. They are the
   same five files that each skill in this kit obeys.

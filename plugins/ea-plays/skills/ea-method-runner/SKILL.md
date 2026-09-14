@@ -5,7 +5,7 @@ description: >-
   and Govern. Serves all of Module 4: the Discovery brief (4.2), the ranked gap analysis
   (4.3), the sourcing matrix (4.4), the target architecture (4.5), the wave roadmap (4.6)
   and the gate decision (4.7); and the transfer plays: the transfer plan (4.8), the national
-  rollout waves (5.3) and the second-sector map (5.3b). It also serves the KP2 Government
+  rollout waves (5.3) and the second-sector map (5.3b). It also serves the Government
   Interoperability Framework plays that plan and extend the build: the implementation plan
   (5.1, B28), the demonstration-to-production gap checklist (5.7, B34) and the
   sector-portability map (5.10, B37). Use when someone says "run the method on my sector",
@@ -129,16 +129,16 @@ The method makes drafts that you can defend. It does not make decisions.
 - **The gate decision belongs to the Board.** It does not belong to this skill. This skill
   prepares the paper.
 
-## KP2 plays
+## Interoperability course plays
 
-| KP2 play | Artefact | This skill supplies |
+| Interoperability play | Artefact | This skill supplies |
 | --- | --- | --- |
 | 5.1 | B28 — Implementation plan | the honest calendar (foundation first; the first cross-ministry exchange in the second build phase; national coverage over four to six years); every cost and duration figure [confirm] and benchmarked against a documented comparable build, cited |
 | 5.7 | B34 — Demonstration-to-production gap checklist | each demonstration-only choice of B32 mapped to the phase and cost line of B28 that closes it |
 | 5.10 | B37 — Sector-portability map | reused-unchanged versus new, tested against whether education specifics leaked into the bus, the governance or the standards |
 
-Read the B-chain, not the A-chain, when the workbook is a KP2 one; both are in
-`references/`. The chain is in `references/workbook-chain-kp2.md`.
+Read the B-chain, not the A-chain, when the workbook is an interoperability one; both are in
+`references/`. The chain is in `references/workbook-chain-gif.md`.
 
 ## References
 
@@ -150,4 +150,4 @@ Read the B-chain, not the A-chain, when the workbook is a KP2 one; both are in
   is missing, and where to call the two verification skills.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — the shared contract.
+  `references/workbook-chain-gif.md` — the shared contract.

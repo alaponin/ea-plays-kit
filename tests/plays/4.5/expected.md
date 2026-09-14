@@ -21,7 +21,7 @@ The prompt of the play says: the four target layers, the integration map, and th
 
 ## The safeguard, given back as the next action for the learner
 
-The target is a hypothesis produced by applying principles to your gaps — validate each owner assignment and each integration with the bodies that will live with them before sign-off. And the integration map here is a first cut to be designed in full by the interoperability work (KP2), not a finished interoperability design; do not commit exchange mechanisms off this draft alone.
+The target is a hypothesis produced by applying principles to your gaps — validate each owner assignment and each integration with the bodies that will live with them before sign-off. And the integration map here is a first cut to be designed in full by the interoperability work, not a finished interoperability design; do not commit exchange mechanisms off this draft alone.
 
 ## Contract checks, for each play
 

@@ -40,7 +40,7 @@ silent.
 The assembled application for the test citizen, with per-field provenance: the one
 citizen-provided field, and every bus-pre-filled field with the service it came from. It is
 the tangible *asked-once* object — the thing a minister can be shown — and the seam a
-later form (KP4) replaces. Optional further evidence: the exchange visible in the provider
+later form replaces. Optional further evidence: the exchange visible in the provider
 Security Server's message log.
 
 ## Mapping to the run

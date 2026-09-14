@@ -119,7 +119,7 @@ EXEMPT = {
     "provenance-header.md",  # names Progressa as a field rule, not as fixture content
     "output-contract.md",    # same
     "SKILL.md",              # declares its fixture files under a sub-heading instead
-    "workbook-chain-kp2.md", # names Progressa's frozen federation identifiers as a rule
+    "workbook-chain-gif.md", # names Progressa's frozen federation identifiers as a rule
 }
 # Every divergence a review has found; add to it, never prune it. One regex each, kept
 # next to the fixture they guard rather than in a parser.
@@ -219,86 +219,87 @@ for play, consumed in _chain_consumes.items():
 
 
 # =============================================================================
-# KP2 — the Government Interoperability Framework plays (v0.3.0)
-# Same criteria, second course. KP2 play ids collide with KP1's (both have a 2.4), so the
-# KP2 fixtures live under tests/kp2/, its map is tests/kp2/play-map.json, and its chain is
-# shared/workbook-chain-kp2.md with B-numbered artefacts.
+# The Government Interoperability Framework course (v0.3.0)
+# Same criteria, second course. Its play ids collide with the EA course (both have a 2.4), so
+# its fixtures live under tests/gif/, its map is tests/gif/play-map.json, and its chain is
+# shared/workbook-chain-gif.md with B-numbered artefacts.
 # =============================================================================
-KP2 = f"{ROOT}/tests/kp2"
-MAP2 = json.load(open(f"{KP2}/play-map.json"))
-check(os.path.isfile(f"{KP2}/progressa-supplement.md"),
-      "tests/kp2/progressa-supplement.md missing (A0 §8–§10 for Progressa)")
+GIF = f"{ROOT}/tests/gif"
+MAP2 = json.load(open(f"{GIF}/play-map.json"))
+check(os.path.isfile(f"{GIF}/progressa-supplement.md"),
+      "tests/gif/progressa-supplement.md missing (A0 §8–§10 for Progressa)")
 
-# --- 2: KP2 fixtures exist and are complete ---------------------------------
+# --- 2: interoperability fixtures exist and are complete ------------------------
 for pid, m in MAP2.items():
-    d = f"{KP2}/plays/{pid}"
+    d = f"{GIF}/plays/{pid}"
     for f in ("input.md", "expected.md"):
-        check(os.path.isfile(f"{d}/{f}"), f"kp2/{pid}: missing {f}")
-    check(isinstance(m["skill"], str) and m["skill"], f"kp2/{pid}: no primary skill")
+        check(os.path.isfile(f"{d}/{f}"), f"gif/{pid}: missing {f}")
+    check(isinstance(m["skill"], str) and m["skill"], f"gif/{pid}: no primary skill")
     check(m["skill"] in shipped,
-          f"kp2/{pid}: primary skill {m['skill']!r} does not ship in the plugin")
+          f"gif/{pid}: primary skill {m['skill']!r} does not ship in the plugin")
     for s in m["also"]:
-        check(s in shipped, f"kp2/{pid}: also-runs skill {s!r} does not ship")
-stray2 = set(os.listdir(f"{KP2}/plays")) - set(MAP2) - {".DS_Store"}
-check(not stray2, f"kp2 fixture folders not in tests/kp2/play-map.json: {sorted(stray2)}")
+        check(s in shipped, f"gif/{pid}: also-runs skill {s!r} does not ship")
+stray2 = set(os.listdir(f"{GIF}/plays")) - set(MAP2) - {".DS_Store"}
+check(not stray2, f"gif fixture folders not in tests/gif/play-map.json: {sorted(stray2)}")
 
-# --- 3: KP2 provenance header field set --------------------------------------
+# --- 3: interoperability provenance header field set ----------------------------
 for pid in MAP2:
-    p = f"{KP2}/plays/{pid}/expected.md"
+    p = f"{GIF}/plays/{pid}/expected.md"
     if not os.path.isfile(p):
         continue
     text = open(p).read()
     for field in FIELDS:
         check(f"**{field}**" in text,
-              f"kp2/{pid}/expected.md: provenance field {field!r} not required")
-    check("Posts, not names" in text, f"kp2/{pid}/expected.md: posts-not-names rule missing")
-    check("no file, no chart" in text, f"kp2/{pid}/expected.md: text-only rule missing")
+              f"gif/{pid}/expected.md: provenance field {field!r} not required")
+    check("Posts, not names" in text, f"gif/{pid}/expected.md: posts-not-names rule missing")
+    check("no file, no chart" in text, f"gif/{pid}/expected.md: text-only rule missing")
     check(f"**Artefact** {MAP2[pid]['artefact']}" in text,
-          f"kp2/{pid}/expected.md: header does not name {MAP2[pid]['artefact']!r}")
+          f"gif/{pid}/expected.md: header does not name {MAP2[pid]['artefact']!r}")
 
-# --- 2: the README's KP2 table maps every KP2 play to its primary skill --------
-kp2_readme = readme[readme.find("## Play → skill — KP2"):] if "## Play → skill — KP2" in readme else ""
-check(bool(kp2_readme), "plugin README: no '## Play → skill — KP2' section")
+# --- 2: the README's second table maps every interoperability play to its primary skill --
+GIF_HEADING = "## Play → skill — the interoperability course"
+gif_readme = readme[readme.find(GIF_HEADING):] if GIF_HEADING in readme else ""
+check(bool(gif_readme), f"plugin README: no '{GIF_HEADING}' section")
 for pid, m in MAP2.items():
-    row = re.search(rf"^\|\s*{re.escape(pid)}\s*\|(.+)$", kp2_readme, flags=re.M)
-    check(row is not None, f"kp2/{pid}: no row in the plugin README KP2 play table")
+    row = re.search(rf"^\|\s*{re.escape(pid)}\s*\|(.+)$", gif_readme, flags=re.M)
+    check(row is not None, f"gif/{pid}: no row in the plugin README interoperability play table")
     if row:
         check(f"`{m['skill']}`" in row.group(1),
-              f"kp2/{pid}: README KP2 row does not name its primary skill {m['skill']}")
+              f"gif/{pid}: README interoperability row does not name its primary skill {m['skill']}")
 
-# --- 10: the KP2 chain agrees with itself, both ways ------------------------
+# --- 10: the interoperability chain agrees with itself, both ways --------------
 CHAIN2_ROW = re.compile(
     r"^\|\s*\*\*(B\d+)\*\*[^|]*\|\s*([^|]+?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*$", re.M)
-chain2 = CHAIN2_ROW.findall(open(f"{PLUGIN}/shared/workbook-chain-kp2.md").read())
-check(len(chain2) == 38, f"workbook-chain-kp2.md: parsed {len(chain2)} artefact rows, expected 38")
+chain2 = CHAIN2_ROW.findall(open(f"{PLUGIN}/shared/workbook-chain-gif.md").read())
+check(len(chain2) == 38, f"workbook-chain-gif.md: parsed {len(chain2)} artefact rows, expected 38")
 PLAY2 = r"(?:\d+\.\d+|home)"
 produces2 = {art: set(re.findall(rf"\b{PLAY2}\b", fd)) for art, _, _, fd in chain2}
 consumes2 = {play: set(re.findall(r"\bB\d+\b", consumed)) for _, play, consumed, _ in chain2}
 for art, play, consumed, _ in chain2:
     for dep in re.findall(r"\bB\d+\b", consumed):
-        check(dep in produces2, f"workbook-chain-kp2.md: {play} consumes {dep}, which has no row")
+        check(dep in produces2, f"workbook-chain-gif.md: {play} consumes {dep}, which has no row")
         check(dep not in produces2 or play in produces2[dep],
-              f"workbook-chain-kp2.md: {play} consumes {dep}, but {dep} Feeds does not list {play}")
+              f"workbook-chain-gif.md: {play} consumes {dep}, but {dep} Feeds does not list {play}")
 for art, play, _, fed in chain2:
     for target in re.findall(rf"\b{PLAY2}\b", fed):
         check(target not in consumes2 or art in consumes2[target],
-              f"workbook-chain-kp2.md: {art} Feeds lists {target}, but {target} does not consume {art}")
+              f"workbook-chain-gif.md: {art} Feeds lists {target}, but {target} does not consume {art}")
 
-# --- 10c: tests/kp2/play-map.json Consumes equals the KP2 chain's -------------
+# --- 10c: tests/gif/play-map.json Consumes equals the chain's ------------------
 chain2_consumes = {play: consumed for _, play, consumed, _ in chain2}
 for play, consumed in chain2_consumes.items():
-    check(play in MAP2, f"workbook-chain-kp2.md: play {play} has no entry in tests/kp2/play-map.json")
+    check(play in MAP2, f"workbook-chain-gif.md: play {play} has no entry in tests/gif/play-map.json")
     if play in MAP2:
         check(MAP2[play]["consumes"] == consumed,
-              f"tests/kp2/play-map.json: {play} consumes {MAP2[play]['consumes']!r}, "
+              f"tests/gif/play-map.json: {play} consumes {MAP2[play]['consumes']!r}, "
               f"chain says {consumed!r}")
 for play in MAP2:
-    check(play in chain2_consumes, f"tests/kp2/play-map.json: {play} has no row in workbook-chain-kp2.md")
+    check(play in chain2_consumes, f"tests/gif/play-map.json: {play} has no row in workbook-chain-gif.md")
 
-# --- 11: every play the KP2 GitBook lists as 'no skill yet' now has a gif-* primary ----
-# The three skill names the KP2 AI tips cite must ship under exactly those names.
+# --- 11: the skills the interoperability GitBook names in its AI tips all ship --------
+# The three skill names the interoperability AI tips cite must ship under exactly those names.
 for name in ("gif-decree-draft", "gif-semantic-map", "gif-openapi-gen"):
-    check(name in shipped, f"the KP2 tips name `{name}`, which does not ship")
+    check(name in shipped, f"the interoperability tips name `{name}`, which does not ship")
 
 
 if fails:
@@ -306,5 +307,5 @@ if fails:
     for f in fails:
         print(f"  - {f}", file=sys.stderr)
     sys.exit(1)
-print(f"ok — {len(MAP)} KP1 plays, {len(MAP2)} KP2 plays, {len(shipped)} skills, provenance fields, "
+print(f"ok — {len(MAP)} EA plays, {len(MAP2)} interoperability plays, {len(shipped)} skills, provenance fields, "
       f"README tables, one tagged Progressa and two consistent workbook chains all check out")

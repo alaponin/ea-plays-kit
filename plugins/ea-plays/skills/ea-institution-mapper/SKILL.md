@@ -6,7 +6,7 @@ description: >-
   heads it, and its PAERA Annex A1.2 classification. Serves every play that begins "here are
   the main bodies in [sector]": the ministerial explainer (1.2), the phase RACI's roles
   input (1.6), classify a body (2.4), the sector BDAT skeleton (2.5), the demonstration
-  canvas (4.1), the transfer plan (4.8) and the second-sector map (5.3b); and the KP2
+  canvas (4.1), the transfer plan (4.8) and the second-sector map (5.3b); and the interoperability
   stakeholder tier map (1.6, B6), the owner's mandate with the regulator and operator split
   (3.1, B14) and the three-tier governance structure (3.2, B15). Use when someone says "who
   are the bodies in [country]'s [sector]", "classify this agency", "what is this ministry's
@@ -140,16 +140,16 @@ a government more frequently than outside it.
   government before it becomes the membership section of a Board ToR.
 - Each item marked ⚠ or *inferred* is not yet a fact.
 
-## KP2 plays
+## Interoperability course plays
 
-| KP2 play | Artefact | This skill supplies |
+| Interoperability play | Artefact | This skill supplies |
 | --- | --- | --- |
 | 1.6 | B6 — Stakeholder tier map | each body's mandate and data role from the Bodies register, so a tier is a fact and an attitude is marked as the learner's reading |
-| 3.1 | B14 — Owner's mandate, regulator and operator split | the candidate host body's current mandate, cited; each power it does not hold as a gap for counsel; A7 from KP1 if the learner has it |
+| 3.1 | B14 — Owner's mandate, regulator and operator split | the candidate host body's current mandate, cited; each power it does not hold as a gap for counsel; A7 from the EA course if the learner has it |
 | 3.2 | B15 — Three-tier governance structure | the bodies and posts of A0 §4 with their legal standing, so membership is by post and mandate |
 
 Also the organisational layer of 1.2, through `gif-four-layer-map`. The chain and the
-B-numbers are in `references/workbook-chain-kp2.md`.
+B-numbers are in `references/workbook-chain-gif.md`.
 
 ## References
 
@@ -158,7 +158,7 @@ B-numbers are in `references/workbook-chain-kp2.md`.
   superseded.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — the shared contract.
+  `references/workbook-chain-gif.md` — the shared contract.
 
 ### Fixture material
 

@@ -6,7 +6,7 @@ description: >-
   registration, G-cloud and hosting, consent — and give a status register with sources.
   Serves the two-trap screen (2.7), the review gate (3.5), the sourcing matrix (4.4), the
   target architecture (4.5), the gate decision (4.7), the rollout waves (5.3) and the
-  second-sector map (5.3b), and the KP2 component-to-layer map (4.1, B20), trust-zone trace
+  second-sector map (5.3b), and the interoperability component-to-layer map (4.1, B20), trust-zone trace
   (4.2, B21) and technical layer of the four-layer exchange map (1.2). Use whenever a play
   asks "which shared building blocks already exist", or someone says "is the national ID
   live", "does the country have a data-exchange layer", "what DPI exists in [country]", "is
@@ -127,15 +127,15 @@ A register says that a block exists. It does not say that you can use the block.
 - Each item marked ⚠ or *unclear* is a decision that you make with a person. You do not
   make it with this table.
 
-## KP2 plays
+## Interoperability course plays
 
-| KP2 play | Artefact | This skill supplies |
+| Interoperability play | Artefact | This skill supplies |
 | --- | --- | --- |
 | 4.1 | B20 — Component-to-layer map | which components are already provided by the live exchange layer (the X-Road software adopted), so a 'missing' component is not procured twice |
 | 4.2 | B21 — Trust-zone trace | the live trust services — the certification authority, OCSP, timestamping — and whether each is a production service or a test one |
 | 1.2 | the technical layer of B2 | the data-exchange row of the BB status register: live, pilot, planned or none |
 
-The chain is in `references/workbook-chain-kp2.md`.
+The chain is in `references/workbook-chain-gif.md`.
 
 ## References
 
@@ -144,4 +144,4 @@ The chain is in `references/workbook-chain-kp2.md`.
 - `references/status-rubric.md` — the evidence that each of the five statuses needs.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — the shared contract.
+  `references/workbook-chain-gif.md` — the shared contract.

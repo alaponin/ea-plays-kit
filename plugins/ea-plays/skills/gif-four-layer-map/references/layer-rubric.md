@@ -27,7 +27,7 @@ registers for the grades.
 
 ## The typical one action, by layer
 
-| Layer | The one action | KP2 builds it in |
+| Layer | The one action | Built in |
 | --- | --- | --- |
 | Technical | connect the two bodies to the live bus; or adopt the transport standard | Module 4 (4.1, 4.7), Module 5 (5.4) |
 | Semantic | agree the vocabulary and the identifier in a semantic map | Module 4 (4.4) |

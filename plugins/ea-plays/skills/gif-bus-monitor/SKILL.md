@@ -2,13 +2,13 @@
 name: gif-bus-monitor
 description: >-
   Summarise the health of a Government Interoperability Framework bus from its operational
-  logs and flag anomalies as questions for a human — the KP2 play 5.8 that produces the
+  logs and flag anomalies as questions for a human — the interoperability play 5.8 that produces the
   bus-health summary and anomaly list (B35). Reads exchange METADATA only — timestamp,
   calling subsystem, called service, outcome, latency — and refuses to proceed if the logs
   carry citizen personal data. Use when someone says "summarise the bus logs", "bus health",
   "X-Road operational monitoring", "which services are failing", "anomalies in the exchange
   logs", "a caller that never called this before", "off-hours surge", "quarterly compliance
-  note for the Steering Committee", "conformance re-check", "monitor the bus", or names KP2
+  note for the Steering Committee", "conformance re-check", "monitor the bus", or names interoperability
   play 5.8.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
@@ -22,7 +22,7 @@ metadata:
 This skill reads the operational logs of the bus and writes **B35, the bus-health summary
 and anomaly list**. It monitors the traffic. It never reads the cargo.
 
-Play 5.8 is the one play in KP2 where the learner pastes operational data rather than a
+Play 5.8 is the one play in the interoperability course where the learner pastes operational data rather than a
 document. The bare play defends the citizen with one instruction: metadata only, and stop
 if personal data appears. This skill makes that instruction a **gate that runs first**,
 before any analysis, and it adds the published reference for what an X-Road operational
@@ -127,4 +127,4 @@ not, act on that first.**
   and the question shape for each.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — the shared contract.
+  `references/workbook-chain-gif.md` — the shared contract.

@@ -9,8 +9,8 @@
     {
       "name": "ea-plays",
       "source": "./plugins/ea-plays",
-      "description": "The 'with the kit' layer for the KP1 Government Enterprise Architecture and KP2 Government Interoperability Framework AI plays",
-      "version": "0.3.0"
+      "description": "The 'with the kit' layer for the Government Enterprise Architecture and Government Interoperability Framework AI plays",
+      "version": "0.3.1"
     }
   ]
 }

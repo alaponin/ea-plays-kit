@@ -1,8 +1,8 @@
 <!-- fixture: Progressa (fictional) · canonical: tests/progressa.md · keep consistent with it -->
 # The Progressa identity service — contract and wiring
 
-The worked example of plays 4.5 and 4.7 on Progressa, as the KP2 build pack publishes it.
-The country facts come from `tests/progressa.md` and `tests/kp2/progressa-supplement.md`;
+The worked example of plays 4.5 and 4.7 on Progressa, as the interoperability build pack publishes it.
+The country facts come from `tests/progressa.md` and `tests/gif/progressa-supplement.md`;
 the identifiers are the frozen ones of the build pack. Progressa is fictional; the
 exchange is the target state that the National Learner Registry programme delivers — in
 the baseline the Progressa Learner Registry (PLR) is planned and not started.

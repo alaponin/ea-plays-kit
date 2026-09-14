@@ -91,7 +91,7 @@ Play 0 makes seven sections. The input to each play is one section or two sectio
 | **A30** Capability-building plan | 5.5 | A6 | — |
 | **A29 rev.2** Closing one-page case | 5.6 | A29, A31, A8 | — |
 
-Play ids follow KP1 v0.2 (3 September 2026): 1.8 is retired and its comparator play is
+Play ids follow version 0.2 of the EA course (3 September 2026): 1.8 is retired and its comparator play is
 5.1; 5.3 is the merged rollout video and carries the rollout-waves play; **5.3b** is the
 sector-transfer play that lives on the 5.3 GitBook page only, with no video; the closing
 case is 5.6. A8 keeps its number — the artefact did not move, only the play that makes it.

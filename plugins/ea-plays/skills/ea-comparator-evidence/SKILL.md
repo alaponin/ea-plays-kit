@@ -4,7 +4,7 @@ description: >-
   Find comparator countries that truly resemble the learner's country, and record what each
   one built, from its published EA framework or its digital-government coordination
   instrument. Serves the comparator evidence play (5.1), and feeds the proof section of the
-  ministerial business case (5.4) and the closing case (5.6). It also serves the KP2
+  ministerial business case (5.4) and the closing case (5.6). It also serves the
   Government Interoperability Framework plays that adopt published standards rather than
   write them: the standards-to-reuse shortlist (1.7, B7) and the standards portfolio (4.3,
   B22). Use when someone says "which countries are like mine", "find comparator countries",
@@ -142,15 +142,15 @@ Comparators persuade people. This is why they are dangerous.
   that it is missing. That absence is the true finding.
 - Each item marked ⚠ is unverified. It is not verified as true.
 
-## KP2 plays
+## Interoperability course plays
 
-| KP2 play | Artefact | This skill supplies |
+| Interoperability play | Artefact | This skill supplies |
 | --- | --- | --- |
 | 1.7 | B7 — Standards-to-reuse shortlist | the comparator ecosystems (X-Road countries, the EU once-only system) with primary sources, and each candidate standard's publisher, licence and current version, fetched |
 | 4.3 | B22 — Standards portfolio | every version confirmed against the standard's own publication on the day, cited; the contested case where a standard was superseded or abandoned |
 
-`paera-reference-check` runs beside it for the PAERA anchors. A24 from KP1 enters at 4.3
-if the learner has it. The chain is in `references/workbook-chain-kp2.md`.
+`paera-reference-check` runs beside it for the PAERA anchors. A24 from the EA course enters at 4.3
+if the learner has it. The chain is in `references/workbook-chain-gif.md`.
 
 ## References
 
@@ -161,4 +161,4 @@ if the learner has it. The chain is in `references/workbook-chain-kp2.md`.
   contested cases to know. Use it to start a search. Do not use it in place of a search.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — the shared contract.
+  `references/workbook-chain-gif.md` — the shared contract.

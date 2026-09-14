@@ -4,14 +4,14 @@ description: >-
   Generate the service contract of a Government Interoperability Framework exchange and the
   X-Road wiring that publishes it: an OpenAPI 3.x contract whose paths, parameters, response
   schema, error responses and security scheme are taken from the semantic map and the
-  standards portfolio (KP2 play 4.5, B24); and the X-Road service description derived from
+  standards portfolio (interoperability play 4.5, B24); and the X-Road service description derived from
   that contract — service code, version, the operations exposed, the provider's subsystem
   identity, the access-control entries naming which consumer subsystems may call it, and a
   test-call plan over the bus (4.7, B26). Use when someone says "OpenAPI contract",
   "generate the API spec for this service", "service contract for the bus", "X-Road service
   description", "REST service description X-Road", "wiring checklist", "access-control list
   for this service", "which subsystems may call", "test call over the bus", "r1 path",
-  "Information Mediation building block", "gif-openapi-gen", or names KP2 play 4.5 or 4.7.
+  "Information Mediation building block", "gif-openapi-gen", or names interoperability play 4.5 or 4.7.
   It never invents a member, subsystem or service code.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
@@ -127,12 +127,12 @@ wrong place.**
 ### Fixture material
 
 - `references/progressa-contract.md` — the PNIA identity service contract and its wiring
-  from the KP2 build pack, the worked example of 4.5 and 4.7 on Progressa. Progressa is the
+  from the interoperability build pack, the worked example of 4.5 and 4.7 on Progressa. Progressa is the
   fictional demonstration country; `tests/progressa.md` and
-  `tests/kp2/progressa-supplement.md` in the kit repo are canonical.
+  `tests/gif/progressa-supplement.md` in the kit repo are canonical.
 
 ### The shared contract
 
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md`.
+  `references/workbook-chain-gif.md`.

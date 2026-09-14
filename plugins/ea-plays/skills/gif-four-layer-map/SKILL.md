@@ -3,12 +3,12 @@ name: gif-four-layer-map
 description: >-
   Assess one planned cross-agency data exchange at the four layers of interoperability of
   the European Interoperability Framework — technical, semantic, organisational, legal — and
-  name the binding constraint: the KP2 play 1.2 that produces the four-layer exchange map
+  name the binding constraint: the interoperability play 1.2 that produces the four-layer exchange map
   (B2). Grades each layer from the registers the kit keeps rather than from the learner's
   description alone. Use when someone says "four layers", "which layer is missing", "is this
   exchange ready", "layer readiness", "what is blocking this exchange", "technical semantic
   organisational legal", "binding constraint", "EIF layers", "map this exchange", or names
-  KP2 play 1.2.
+  interoperability play 1.2.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
 license: CC-BY-4.0
@@ -33,7 +33,7 @@ in which instrument. The integration map (A0 §9) says how the exchange happens 
 grade with a register behind it carries the citation; a grade with only the learner's
 description behind it carries ⚠.
 
-The four layers are also the frame the whole KP2 uses: the decree is the legal layer's
+The four layers are also the frame the whole interoperability course uses: the decree is the legal layer's
 configuration, the Governance Pack the organisational, the semantic map the semantic, the
 contracts and wiring the technical. B2 is where a learner sees, for one exchange, which of
 those four the later modules must build.
@@ -84,7 +84,7 @@ the artefact.
    consulted*, and say so.
 
 6. **For each layer, write what is missing and the one action that closes it** — and name
-   the KP2 module that builds it (legal → Module 2; organisational → Module 3; semantic and
+   the interoperability module that builds it (legal → Module 2; organisational → Module 3; semantic and
    technical → Module 4).
 
 7. **Name the binding constraint.** One layer. Say why it binds now: the layer whose
@@ -125,4 +125,4 @@ than three months old is not evidence; run its skill again.**
   needs, and the typical "one action".
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — the shared contract.
+  `references/workbook-chain-gif.md` — the shared contract.

@@ -1,9 +1,9 @@
 <!-- fixture: Progressa (fictional) · canonical: tests/progressa.md · keep consistent with it -->
 # The Progressa semantic map — the once-only exchange
 
-This is the semantic map of the KP2 build pack, the worked example of play 4.4 on
+This is the semantic map of the interoperability build pack, the worked example of play 4.4 on
 Progressa. The facts come from `tests/progressa.md` §1 and §6 and from
-`tests/kp2/progressa-supplement.md`. Progressa is fictional, so the map carries no sources
+`tests/gif/progressa-supplement.md`. Progressa is fictional, so the map carries no sources
 for the country; the vocabulary anchors are real.
 
 **The target-state note.** In the Progressa baseline the Progressa Learner Registry (PLR)

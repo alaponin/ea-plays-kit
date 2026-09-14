@@ -8,7 +8,7 @@ This page is the **A0 country context pack for Progressa**. It has the seven sec
 Play 0 makes. Each fixture under `tests/plays/` names the sections that it uses.
 
 Source: the GEATDM demonstration fixture (GEATDM-Sector-Education-v1.0 §7.1) and the
-KP1 Module 4 script bundle, subtopic 4.1. Neither is in this repo; this page is the
+EA course Module 4 script bundle, subtopic 4.1. Neither is in this repo; this page is the
 copy the kit tests against, and the authority for every Progressa fact here.
 
 > **Artefact** A0 — Country context pack · **Country** Progressa · **Sector** Education · **Built** 2026-09-05

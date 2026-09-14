@@ -2,7 +2,7 @@
 name: gif-decree-draft
 description: >-
   Draft the components of a Government Interoperability Framework decree — the Decree
-  Drafting Kit of KP2 Module 2 — against named, published legal models, and never from
+  Drafting Kit of interoperability Module 2 — against named, published legal models, and never from
   imagination: the five-component outline (2.2, B9), the Explanatory Memorandum and the
   Preamble scaffold (2.3, B10), one operative article adapted from a published model — the
   mandatory-connection, once-only, data-protection, principles, operating-authority or
@@ -11,7 +11,7 @@ description: >-
   "draft the interoperability decree", "outline the decree", "explanatory memorandum",
   "preamble", "draft the once-only article", "mandatory connection article", "cover note to
   the Ministry of Justice", "two-track memo", "coordinate the decree with the
-  data-protection law", "decree drafting kit", "gif-decree-draft", or names a KP2 Module 2
+  data-protection law", "decree drafting kit", "gif-decree-draft", or names an interoperability Module 2
   play. It never invents a citation, a section number or an obligation.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
@@ -23,7 +23,7 @@ metadata:
 ## What this skill does
 
 This skill drafts the parts of an interoperability decree. It makes four of the six
-artefacts of KP2 Module 2: B9 the outline, B10 the Memorandum and Preamble, B11 one
+artefacts of interoperability Module 2: B9 the outline, B10 the Memorandum and Preamble, B11 one
 operative article, B12 the Cover Note and the Two-Track Regulatory Memo. B8 comes from
 `ea-legal-context`, and B13 from `gif-consistency-check`.
 
@@ -43,7 +43,7 @@ them.
 
 ## Inputs
 
-Each play names its inputs in `references/workbook-chain-kp2.md`. Ask for the missing
+Each play names its inputs in `references/workbook-chain-gif.md`. Ask for the missing
 artefact by number and stop; do not build it.
 
 | Play | Makes | Needs | Also useful |
@@ -152,4 +152,4 @@ signed instrument is cited as the document. Write no analysis before the header.
   the six operative articles, with the enforcement ladder.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — the shared contract.
+  `references/workbook-chain-gif.md` — the shared contract.

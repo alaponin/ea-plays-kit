@@ -1,6 +1,6 @@
 # Play 5.3b — Map the method to a second sector · fixture input
 
-Companion play on the 5.3 GitBook page. It has no video of its own: KP1 v0.2 merged the
+Companion play on the 5.3 GitBook page. It has no video of its own: version 0.2 of the EA course merged the
 portability case into 5.3, and the sector-transfer prompt moved to the GitBook companion.
 
 **Consumes:** A28, A31, BB status register — from [`tests/progressa.md`](../../progressa.md).

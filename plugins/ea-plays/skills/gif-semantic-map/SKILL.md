@@ -5,13 +5,13 @@ description: >-
   the semantic map that aligns two agencies' field lists for a shared entity to a published
   vocabulary — OneRoster (1EdTech), CEDS, ISO/IEC 11179, JSON-LD, W3C Verifiable
   Credentials, the GovStack Identity OIDC claims — with the term-to-term mapping, the
-  code-list reconciliation and the linking identifier (KP2 play 4.4, B23); and the
+  code-list reconciliation and the linking identifier (interoperability play 4.4, B23); and the
   bronze/silver/gold plan that takes a real sector data source through ingestion, validation
   against the map and publication onto the bus (4.6, B25). Use when someone says "semantic
   map", "align these two field lists", "map agency A's fields to agency B's", "which
   vocabulary should we use", "code-list reconciliation", "what identifier links these
   records", "bronze silver gold", "medallion pipeline for the bus", "put this dataset on the
-  bus", "de-duplication key", "gif-semantic-map", or names KP2 play 4.4 or 4.6. It never
+  bus", "de-duplication key", "gif-semantic-map", or names interoperability play 4.4 or 4.6. It never
   invents an identifier, because a wrong identifier silently merges two citizens' records.
 allowed-tools: WebSearch, WebFetch, Read
 disallowed-tools: Write, Edit, NotebookEdit
@@ -130,12 +130,12 @@ see the live registry.**
 ### Fixture material
 
 - `references/progressa-semantic-map.md` — the semantic map of the Progressa once-only
-  exchange (person, enrolment) as the KP2 build pack publishes it. Progressa is the
+  exchange (person, enrolment) as the interoperability build pack publishes it. Progressa is the
   fictional demonstration country; the canonical description is `tests/progressa.md` and
-  `tests/kp2/progressa-supplement.md` in the kit repo.
+  `tests/gif/progressa-supplement.md` in the kit repo.
 
 ### The shared contract
 
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md`.
+  `references/workbook-chain-gif.md`.

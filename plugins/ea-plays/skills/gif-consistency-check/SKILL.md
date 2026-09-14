@@ -2,7 +2,7 @@
 name: gif-consistency-check
 description: >-
   Cross-check the documents of a Government Interoperability Framework against each other
-  and report every contradiction as a question for a human — never as a ruling. Two KP2
+  and report every contradiction as a question for a human — never as a ruling. Two interoperability
   plays: the legal acceptance check, which tests whether the decree's articles authorise
   exactly the exchanges in the Use-Case Catalogue (2.6, B13); and the document-consistency
   report, which reads the decree, the Governance Pack and the standards portfolio side by
@@ -128,4 +128,4 @@ article is lawful or well drafted, and it must not resolve the drift it finds.**
   type, and the terms that drift most often.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — the shared contract.
+  `references/workbook-chain-gif.md` — the shared contract.

@@ -1,6 +1,6 @@
 # The honest calendar
 
-The method's calendar, as KP2 states it. Tell it to the minister on day one. A storyboard
+The method's calendar, as the interoperability course states it. Tell it to the minister on day one. A storyboard
 that shortens it is the storyboard that is not believed when the launch enthusiasm fades
 and the minister changes.
 

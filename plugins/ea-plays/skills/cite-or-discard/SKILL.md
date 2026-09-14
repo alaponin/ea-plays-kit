@@ -130,5 +130,5 @@ cabinet briefing because it is in this table.
   and where the primary source usually is.
 - `references/source-tiers.md` · `references/provenance-header.md` ·
   `references/output-contract.md` · `references/workbook-chain.md` ·
-  `references/workbook-chain-kp2.md` — the shared contract. Read `source-tiers.md` before
+  `references/workbook-chain-gif.md` — the shared contract. Read `source-tiers.md` before
   you grade a source.
