@@ -7,8 +7,9 @@ against the published output.
 This page is the **A0 country context pack for Progressa**. It has the seven sections that
 Play 0 makes. Each fixture under `tests/plays/` names the sections that it uses.
 
-Source: the GEATDM demonstration fixture (GEATDM-Sector-Education-v1.0 §7.1) and the
-EA course Module 4 script bundle, subtopic 4.1. Neither is in this repo; this page is the
+Source: the GEATDM demonstration fixture (GEATDM-Sector-Education-v1.0 §7.1), the
+EA course Module 4 script bundle, subtopic 4.1, and, for PHEQA, the service design course
+(pages 1.1, 1.5, 2.2 and 3.6). None of them is in this repo; this page is the
 copy the kit tests against, and the authority for every Progressa fact here.
 
 > **Artefact** A0 — Country context pack · **Country** Progressa · **Sector** Education · **Built** 2026-09-05
@@ -55,6 +56,8 @@ The context: today a parent enrols a child on paper at the school. The head teac
 - Civil Registration Department (under Ministry of Interior)
 - Progressa Public Procurement Authority
 - Data Protection Commission (established 2023, 6 staff, no enforcement action yet)
+- Registrar of PHEQA (accepts the documents of PHEQA's registration service; rules on its open lines); head of the registration desk; head of the ICT unit of PHEQA
+- Director of Higher Education (owner of the review period and of the questions on the application model in the service design course; the course does not say which body holds the post)
 - Ministry of Finance budget department (annual budget cycle; no multi-year envelopes for ICT)
 - No EA Governance Board exists; an ICT Steering Committee met twice in 2024 and not since
 
@@ -74,6 +77,7 @@ The population is 16.8 million. The income group is lower-middle. It is a unitar
 | Social Protection Agency | Social grants | Beneficiary register (2016, single-vendor maintenance) | Beneficiary register | confirmed |
 | Civil Registration Department (Ministry of Interior) | Birth and death registration | paper-first; 71% birth registration | Civil register | confirmed |
 | Central Bank of Progressa | Operates the national fast-payment system | PayPro | — | confirmed |
+| Progressa Higher Education Quality Authority (PHEQA) | Licenses higher-education institutions; the quality authority | Registration service for licences — being specified and built by a supplier (service design course) | Register of institutions (numbers of the form INS-00217) | confirmed |
 
 Not found where a person expects it: there is no function for data standards in the education sector. The Ministry of Agriculture has no CIO for the sector, and the Planning unit does that work.
 

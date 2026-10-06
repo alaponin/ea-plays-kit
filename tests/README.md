@@ -8,6 +8,7 @@ There is one folder for each play, under `plays/`. There is also the canonical P
 | `play-map.json` | The single source of truth. For each play id it gives the primary skill, the skills that also run, the artefact, and the inputs. The table in the plugin README and `check_fixtures.py` both read this file. |
 | `plays/<id>/input.md` | The prompt of the play, with Progressa in the place of the country. It also says which section of `progressa.md` to paste. |
 | `plays/<id>/expected.md` | The **shape** of an output that passes: the headings, the columns, the nine provenance fields, and the safeguard. It never gives the wording. |
+| `dpi-roadmap/plays/<id>/`, `service-design/plays/<id>/` | Fixtures for the education DPI roadmap and service design courses. Their plays run bare, so there is no play map: each `input.md` says which skill the fixture tests, and `check_fixtures.py` reads every folder there. |
 | `check_fixtures.py` | The check that you can run. CI runs it. Run it before each commit that changes a skill or the README. |
 
 ## Running it
@@ -49,6 +50,7 @@ always `progressa.md`.
 | 8 | The shared references are the same in all fourteen skills | `sync-shared.sh --check` |
 | 9 | In the plugin, Progressa appears only as fixture material that carries the marker and agrees with the fixture. The test country of 30 Aug 2026 appears only as one comparator among several | `check_fixtures.py` |
 | 10 | The workbook chain agrees with itself. When a play consumes an artefact, the *Feeds* cell of that artefact names the play | `check_fixtures.py` |
+| 11 | Each fixture of the DPI roadmap and service design courses has its two files and nothing else, the nine provenance fields, the posts and text-only rules, and a header that names the skill its `input.md` tests, which the plugin ships | `check_fixtures.py` |
 
 Criteria 1, 4, 5 and 6 are written here from what the tools test. The build plan that gave
 them their numbers is not in this repo.

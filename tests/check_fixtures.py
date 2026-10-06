@@ -302,10 +302,48 @@ for name in ("gif-decree-draft", "gif-semantic-map", "gif-openapi-gen"):
     check(name in shipped, f"the interoperability tips name `{name}`, which does not ship")
 
 
+# =============================================================================
+# The education DPI roadmap and service design courses (v0.4.0)
+# Their plays run bare; a fixture here tests a skill that serves the play, so there is no
+# play map and no chain yet — the folder is the list. decision-cards writes its one page,
+# so its contract line reads "no other file, no chart"; either wording carries the rule.
+# =============================================================================
+COURSES = ("dpi-roadmap", "service-design")
+n_course_plays = 0
+for course in COURSES:
+    plays = f"{ROOT}/tests/{course}/plays"
+    check(os.path.isdir(plays), f"tests/{course}/plays missing")
+    if not os.path.isdir(plays):
+        continue
+    for pid in sorted(p for p in os.listdir(plays) if os.path.isdir(f"{plays}/{p}")):
+        n_course_plays += 1
+        d, tag = f"{plays}/{pid}", f"{course}/{pid}"
+        extra = set(os.listdir(d)) - {"input.md", "expected.md", ".DS_Store"}
+        check(not extra, f"tests/{tag}: not a Progressa-only fixture folder: {sorted(extra)}")
+        if not all(os.path.isfile(f"{d}/{f}") for f in ("input.md", "expected.md")):
+            check(False, f"{tag}: missing input.md or expected.md")
+            continue
+        tested = re.search(r"this\s+fixture tests `([a-z0-9-]+)`", open(f"{d}/input.md").read())
+        check(tested is not None, f"{tag}/input.md: does not say which skill the fixture tests")
+        text = open(f"{d}/expected.md").read()
+        for field in FIELDS:
+            check(f"**{field}**" in text, f"{tag}/expected.md: provenance field {field!r} not required")
+        check("Posts, not names" in text, f"{tag}/expected.md: posts-not-names rule missing")
+        check("no file, no chart" in text or "no other file, no chart" in text,
+              f"{tag}/expected.md: text-only rule missing")
+        skill = re.search(r"\*\*Skill\*\* ([a-z0-9-]+) v", text)
+        check(skill is not None and skill.group(1) in shipped,
+              f"{tag}/expected.md: header names no skill that ships")
+        if skill and tested:
+            check(skill.group(1) == tested.group(1),
+                  f"{tag}: input.md tests {tested.group(1)}, expected.md's header names {skill.group(1)}")
+
+
 if fails:
     print(f"FAIL — {len(fails)} problem(s):", file=sys.stderr)
     for f in fails:
         print(f"  - {f}", file=sys.stderr)
     sys.exit(1)
-print(f"ok — {len(MAP)} EA plays, {len(MAP2)} interoperability plays, {len(shipped)} skills, provenance fields, "
+print(f"ok — {len(MAP)} EA plays, {len(MAP2)} interoperability plays, {n_course_plays} DPI roadmap and "
+      f"service design fixtures, {len(shipped)} skills, provenance fields, "
       f"README tables, one tagged Progressa and two consistent workbook chains all check out")

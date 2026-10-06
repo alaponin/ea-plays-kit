@@ -1,4 +1,4 @@
-<!-- fixture: Progressa (fictional) · canonical: tests/progressa.md, and page 3.6 of the service design course with its worked example · keep consistent with them -->
+<!-- fixture: Progressa (fictional) · canonical: tests/progressa.md · keep consistent with it -->
 # Worked example — the open lines of a review, turned into cards for the Registrar
 
 Progressa is fictional. Every body, date and figure here is invented. The example comes

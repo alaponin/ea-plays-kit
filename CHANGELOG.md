@@ -29,7 +29,13 @@ output contracts changed.
   their public addresses), `paera-tests.md` (the principles and the capability ladder as
   tests, in the kit's words) and `paera-glossary.md`. None of them carries PAERA text.
 - Fixtures for the two new courses: `tests/dpi-roadmap/plays/6.7` and
-  `tests/service-design/plays/3.6` and `4.5`. `check_fixtures.py` does not read them yet.
+  `tests/service-design/plays/3.6` and `4.5`. `check_fixtures.py` reads both trees (criterion
+  11): the two files, the nine fields, the posts and text-only rules — either *no file, no
+  chart* or *no other file, no chart* — and a header naming the skill the input tests.
+- **PHEQA in `tests/progressa.md`**: the Progressa Higher Education Quality Authority in §6
+  and its posts in §4, from the service design course, so `progressa.md` stays the one
+  authority for a Progressa fact. The marker of `decision-cards/references/worked-example.md`
+  names it alone.
 
 ### Changed
 
