@@ -1,0 +1,1659 @@
+# =============================================================================
+# Joget Application Model — schema skeleton
+# JSON Schema draft 2020-12, authored in YAML.
+#
+# Layer 1 of the spec-to-code stack: the single canonical model of one
+# application/service. Generators (gen_forms / gen_datalists / gen_userview /
+# gen_workflow / gen_dashboards, acceptance, TRACE, docs) consume projections
+# of THIS document. Nothing downstream of a validated instance is hand-edited.
+#
+# Validation layering (see README):
+#   - structural + pattern constraints .... this schema
+#   - cross-reference resolution .......... tools/validate.py (lint)
+#   - platform deltas (DX8/DX9) ........... lint rules keyed on app.platform
+#
+# Unknown "x-*" keys are allowed everywhere as annotation extension points.
+# "$comment" / "x-decision" mark open design decisions to be closed by ADR.
+# =============================================================================
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://fiscaladmin.eu/schemas/joget-application-model/0.1.6"
+title: Joget Application Model
+description: >-
+  Canonical, machine-validatable model of one Joget-delivered application or
+  service: domain entities, lifecycles, processes, UI, integrations, seed data,
+  acceptance scenarios, and the bespoke-plugin budget.
+type: object
+required: [model, app, entities]
+additionalProperties: false
+patternProperties:
+  "^x-": {}
+properties:
+
+  # ---------------------------------------------------------------- document
+  model:
+    type: object
+    description: About this spec document itself (not the app).
+    required: [schema_version, spec_version, interaction_design]
+    additionalProperties: false
+    patternProperties: { "^x-": {} }
+    properties:
+      schema_version:
+        const: "0.1.6"
+        description: Version of this schema the document targets. Const-pinned so drift fails fast. Now carries the effective_dating + views primitives (the "0.2" constructs, added without a version bump to avoid golden re-stamp churn).
+      spec_version:
+        $ref: "#/$defs/semver"
+        description: Version of this application spec (bump on every change; drives regeneration provenance).
+      status: { enum: [draft, review, approved] }
+      authors: { type: array, items: { type: string } }
+      interaction_design:
+        type: object
+        description: >-
+          The interaction design this model is written from (SDD-11, The Interaction Design,
+          section 8.1; METHOD-2026-09-25-12): the one document, settled across every goal this
+          model carries and accepted by the owner before the model was written, named by its
+          path relative to this file and its SHA-256 checksum. It is the model's statement of
+          what it was compiled from. Required. `kit validate`, `kit gen`, `tools/build_app.py`
+          and the deploy refuse a model whose entry names no document, names a file that is not
+          there or whose checksum is not the file's, or whose document does not stand at
+          baselined with a name and a date, does not cover a goal the model's forms and lists
+          name in their `use_case`, or disagrees with its Lists, References, Moves and Acts
+          tables (rule L021 in tools/validate.py; the document is read as the kit's template
+          templates/spec/INTERACTION_DESIGN.md.tmpl fixes). The refusal is an error in every
+          custody mode, and no key, setting, mode or flag turns it off. A document changed
+          after it was accepted is accepted again and named here again by its new checksum.
+        required: [path, sha256]
+        additionalProperties: false
+        properties:
+          path:
+            type: string
+            minLength: 1
+            description: "The accepted document's path, relative to this file (e.g. ../08a_interaction_design/INTERACTION_DESIGN.md)."
+          sha256:
+            type: string
+            minLength: 1
+            description: "The SHA-256 checksum of the accepted document, 64 hexadecimal characters, as `shasum -a 256` prints it."
+          losses:
+            type: array
+            description: >-
+              The disagreements with the document this model records as losses and asks the gate
+              to admit (METHOD-2026-09-26-02, point 19 (b)). Each names the gap of the kit it
+              stands on — an entry of the kit's own register of its gaps,
+              templates/spec/kit-gaps.yaml, which stands there while the estate's round that
+              removes it is open — and the rows of the document it covers, by their line in the
+              document this entry names by its checksum. Rule L021 then prints each disagreement
+              that arises from a covered row, on a check the entry touches, as a warning naming the
+              loss, the entry and the round, and admits it. It refuses, as it refuses every other
+              disagreement, a loss that names no entry, one that names an entry the register does
+              not hold, and one that covers a row on which no disagreement it may admit arises. A
+              disagreement that arises from no row of the document is never admitted, and the
+              model's own kinds — the document's words, the model's source, its starting data —
+              are never entries of the register.
+            items:
+              type: object
+              required: [id, gap, rows]
+              additionalProperties: false
+              properties:
+                id: { type: string, minLength: 1, description: "The loss's identifier in the model's own record of losses (e.g. LOSS-1)." }
+                gap: { type: string, minLength: 1, description: "The entry of the kit's register of its gaps the loss stands on (e.g. G1)." }
+                rows:
+                  type: array
+                  minItems: 1
+                  items: { type: integer, minimum: 1 }
+                  description: "The lines of the document's Lists, References, Moves or Acts tables the loss covers."
+                x-note: { type: string }
+
+  # ------------------------------------------------------- data dictionary
+  dd_ref:
+    type: string
+    description: >-
+      KP-01 (schema 0.2): relative path to the domain data dictionary
+      (<domain>.dd.yaml) whose `sets` this model's attributes bind via `semantic`.
+      The M-series authoring gate loads it; absent = gate is advisory only.
+
+  # --------------------------------------------------------------------- app
+  app:
+    type: object
+    description: Application identity and platform binding. Generators and lint rules key on `platform`.
+    required: [id, name, platform]
+    additionalProperties: false
+    patternProperties: { "^x-": {} }
+    properties:
+      id:
+        type: string
+        pattern: "^[a-zA-Z][a-zA-Z0-9_]{1,19}$"
+        description: Joget app id (APP_ID). Short; used in .jwa assembly and push tooling.
+      name: { type: string }
+      description: { type: string }
+      platform:
+        type: object
+        required: [dx, edition, db]
+        additionalProperties: false
+        properties:
+          dx:
+            enum: ["8.0", "8.1", "9.0"]
+            description: Platform version. Delta lint rules and generator conventions are keyed on this. # x-decision: reconcile DX 8.x vs 9.0.7 per inventory §8.
+          edition:
+            enum: [enterprise, community]
+            description: Enterprise-only realizations (FormGrid, MultiPagedForm, SqlChartMenu, Jasper, DashboardMenu) are lint-gated on this.
+          db: { enum: [mysql, postgres] }
+      conventions:
+        type: object
+        description: App-wide naming conventions the projector applies (numbered form-name prefixes, id style).
+        additionalProperties: true
+        properties:
+          date_format:
+            enum: ["dd/mm/yy", "dd.mm.yy", "dd-mm-yy"]
+            default: "dd/mm/yy"
+            description: >-
+              How every date control shows a date (METHOD-2026-09-25-04, items 1 and 8; the ruling
+              rulings/2026-09-25-the-interaction-design-step.yaml, point 4). Written in the
+              DatePicker's own dialect (delta D-057: `dd` the day, `mm` the month, `yy` the
+              four-digit year), and day first only: DD/MM/YYYY by default, or the same with a
+              full stop or a hyphen. A month-first form is refused here, so no model can bring
+              one back.
+      i18n:
+        type: object
+        description: "Schema 0.2 (WP-E / ADR-071): U010 — registration only in 0.2; generator realization deferred (T5)."
+        additionalProperties: false
+        properties: { resources: { type: string } }
+
+  # ------------------------------------------------------------ traceability
+  requirements:
+    type: array
+    description: FR register (or references to an upstream catalogue). Feeds the generated TRACE matrix.
+    items:
+      type: object
+      required: [id, text]
+      additionalProperties: false
+      patternProperties: { "^x-": {} }
+      properties:
+        id: { $ref: "#/$defs/freeId" }
+        text: { type: string }
+        source: { type: string, description: "Upstream document / section reference." }
+
+  features:
+    type: array
+    description: >-
+      Feature decomposition (CAD §7). Vertical slices, dependency-ordered.
+      Every major object below carries a `feature` tag; the feature-loop and
+      incremental deploy filter on it.
+    items:
+      type: object
+      required: [id, name]
+      additionalProperties: false
+      patternProperties: { "^x-": {} }
+      properties:
+        id: { $ref: "#/$defs/freeId" }           # convention: <BB>-Fnn-<slug> or Fnn
+        name: { type: string }
+        requirements: { type: array, items: { $ref: "#/$defs/freeId" } }
+        depends_on: { type: array, items: { $ref: "#/$defs/freeId" } }
+
+  # ------------------------------------------------------------------- roles
+  roles:
+    type: array
+    description: Logical roles. Projector maps them to Joget groups / userview permissions / GroupPermission allowedGroupIds.
+    items:
+      type: object
+      required: [id, name]
+      additionalProperties: false
+      patternProperties: { "^x-": {} }
+      properties:
+        id: { $ref: "#/$defs/snakeId" }
+        name: { type: string }
+        description: { type: string }
+        directory_hint: { type: string, description: "Optional mapping hint to an external directory group." }
+
+  # ------------------------------------------------------------ vocabularies
+  vocabularies:
+    type: array
+    description: >-
+      Simple code lists (code/label[, parent]). The projectors generate the MD
+      lookup form + datalist + seed load for each, and its entry in the
+      administration of lists of values (tools/lov.py, 25 Sep 2026); `fixed`
+      opts a list out. Rich, multi-attribute master data is modelled as an
+      entity of kind `md_lookup` instead.
+      # x-decision: keep this two-tier split (simple vocabulary vs md_lookup entity)?
+    items:
+      type: object
+      required: [id, name]
+      additionalProperties: false
+      patternProperties: { "^x-": {} }
+      properties:
+        id: { $ref: "#/$defs/snakeId" }
+        name: { type: string }
+        parent:
+          $ref: "#/$defs/snakeId"
+          description: Parent vocabulary id for cascading lookups (district -> centre pattern).
+        rows:
+          type: array
+          description: Inline seed rows. Alternatively use `file`.
+          items:
+            type: object
+            required: [code, name]
+            additionalProperties: true
+            properties:
+              code: { type: string }
+              name: { type: string }
+              parent_code: { type: string }
+              group:
+                type: string
+                description: >-
+                  The code of the category this value falls in, a row of the vocabulary `groups`
+                  names (METHOD-2026-09-25-04, item 7). Required on every row of a divided list.
+        file: { type: string, description: "Relative path to CSV seed (code,name[,parent_code[,group]])." }
+        groups:
+          $ref: "#/$defs/snakeId"
+          description: >-
+            METHOD-2026-09-25-04, item 7 (UX-01 IDR-05, the owner's word of 25 September 2026): the
+            vocabulary that holds this list's categories. No step of a selection offers more than
+            nine values, and seven is the aim: a list of more than nine values in force is divided
+            into categories of no more than nine, and the person chooses the category first, then
+            the value within it. Each row names its `group`. The categories are themselves a list
+            of values, administered like any other. A divided list and its categories are both
+            lists the application maintains (neither is `fixed`). Lint U026 refuses a bound list of
+            more than nine values in force with no `groups`, a category of more than nine, and a
+            list of more than nine categories — the house rule's further level, for more than nine
+            categories, is not realized by the projector, so such a list is refused, not drawn.
+        fixed:
+          type: boolean
+          default: false
+          description: >-
+            A list the application does not maintain (25 Sep 2026, METHOD-2026-09-25-02). By
+            default every vocabulary is a list of values the application maintains: the
+            projectors give it its own storage, a form to add a value and a form to change one,
+            a list, its first values from `rows` or `file`, and an entry in the administration
+            category, and every drop-down that binds it draws its options from that list, shows
+            the label only and offers only the values in force. `fixed: true` keeps the list
+            out of the administration: its drop-downs carry its rows inline, label only.
+        maintained_by:
+          $ref: "#/$defs/snakeId"
+          description: >-
+            The role that maintains this list in the application (METHOD-2026-09-25-02). Absent:
+            the application's administrator role — the one role whose id is administrator,
+            admin, system_administrator or ends in _administrator or _admin. Its administration
+            entry is visible to this role only. Ignored when `fixed` is true.
+        display_code:
+          type: boolean
+          default: false
+          description: >-
+            A list whose business code is itself what officers read (METHOD-2026-09-25-04,
+            item 1): a debt category "C4", a tax type "VAT". Every drop-down, labelled value and
+            list column shows the value's code instead of its name. Absent, a value is shown by
+            its name only, never by the identifier the model stores it under.
+
+  # ----------------------------------------------------------------- catalog
+  catalog:
+    type: array
+    description: >-
+      Runtime components from the standard library that this app uses
+      (status-framework, approval-service, form-prefill, identity-adapter, ...).
+      Every `component:` reference elsewhere in the model must resolve here.
+      Each component publishes its own config-contract schema; local `config`
+      objects are validated against that contract in lint, not here.
+    items:
+      type: object
+      required: [component, version]
+      additionalProperties: false
+      patternProperties: { "^x-": {} }
+      properties:
+        component: { $ref: "#/$defs/kebabId" }
+        version: { type: string, description: "Semver or range; pinned at generation time." }
+        scope: { enum: [global, per_use], default: per_use }
+        config: { type: object, description: "Global configuration for scope: global.", additionalProperties: true }
+
+  # ----------------------------------------------------------------- queries
+  queries:
+    type: array
+    description: Named SQL used by JDBC-bound lists, dashboards and reports. One definition, many consumers.
+    items:
+      type: object
+      required: [id, sql]
+      additionalProperties: false
+      patternProperties: { "^x-": {} }
+      properties:
+        id: { $ref: "#/$defs/snakeId" }
+        description: { type: string }
+        sql: { type: string }
+        view:
+          type: string
+          pattern: "^[a-z][a-z0-9_]{0,62}$"
+          description: >-
+            METHOD-2026-09-28-07 (the kit's gap G5; the search round's section 7, item 1): the
+            query is also a view of the application's database, of this name, which the kit makes
+            when it loads the starting data (tools/deploy_dx9.py), so that an element that reads a
+            table or a view by its name reads the query's rows. A search whose result is a list
+            sourced from this query looks in the view: the record it searches is the query's rows,
+            which can carry, beside the record the field refers to, a value another record holds
+            (the record's open case) or a copy of a value another system holds. The query takes no
+            parameter, and names each column a search reads with AS.
+        params:
+          type: array
+          items:
+            type: object
+            required: [id, type]
+            additionalProperties: false
+            properties:
+              id: { $ref: "#/$defs/snakeId" }
+              type: { enum: [string, integer, decimal, date, datetime, boolean] }
+
+  # ---------------------------------------------------------------- entities
+  entities:
+    type: array
+    minItems: 1
+    description: The domain model. Kind classification follows the CAD mapping rules.
+    items:
+      type: object
+      required: [id, name, kind, table, attributes]
+      additionalProperties: false
+      patternProperties: { "^x-": {} }
+      properties:
+        id: { $ref: "#/$defs/snakeId" }
+        name: { type: string }
+        kind:
+          enum: [main, child, junction, md_lookup, config, log_event]
+          description: CAD classification. `main` maps to a primary form/table; `child` to a grid sub-form; `log_event` is audit-generated.
+        fixed:
+          type: boolean
+          default: false
+          description: >-
+            Read for kind `md_lookup` only (METHOD-2026-09-25-02). An md_lookup entity is a list
+            of values the application maintains: the projectors give it a form and a list where
+            the model gives none, and an entry in the administration category where the model's
+            navigation opens it nowhere; its first values are its `seed` rows. `fixed: true`
+            keeps it out of the administration.
+        maintained_by:
+          $ref: "#/$defs/snakeId"
+          description: >-
+            Read for kind `md_lookup` only: the role that maintains the list in the application
+            (METHOD-2026-09-25-02). Absent: the application's administrator role, as for a
+            vocabulary. Ignored when `fixed` is true.
+        scale:
+          enum: [bounded, operational]
+          description: "Referenced-set scale (UX-01 §3 / IDR-05): operational = unbounded, grows with operations — editable refs to it render as a datalist-popup search-select, never a dropdown. Default: operational when the entity has a lifecycle, bounded otherwise."
+        table:
+          type: string
+          pattern: "^[a-z][a-zA-Z0-9_]{1,39}$"
+          description: >-
+            Physical table (platform prefixes app_fd_; columns get c_). Max 40
+            chars keeps the prefixed name inside MySQL/Postgres identifier
+            limits with headroom.
+        feature: { $ref: "#/$defs/freeId" }
+        canonical_ref:
+          type: object
+          description: Mapping to a canonical/reference model (TA-RDM, GovStack RegBB, sector model). Generalised from the CAD's TA-RDM anchor step.
+          additionalProperties: false
+          properties:
+            model: { type: string }
+            path: { type: string }
+            divergences:
+              type: array
+              items:
+                type: object
+                required: [what, reason]
+                additionalProperties: false
+                properties: { what: { type: string }, reason: { type: string } }
+        validations:
+          type: array
+          description: >-
+            Structured cross-field conditional requirements ("if X then a grid/field is
+            required"). Emitted into the RegBB `validation-rules.yaml` by the regbb emitter
+            (RB-03, 0.1.5); realized as guard/form-quality rules elsewhere.
+          items:
+            type: object
+            required: [when, message]
+            additionalProperties: false
+            properties:
+              when:
+                type: object
+                required: [field, equals]
+                additionalProperties: false
+                properties:
+                  field: { $ref: "#/$defs/attrId" }
+                  equals: { type: string }
+              require_fields: { type: array, items: { $ref: "#/$defs/attrId" } }
+              require_grids: { type: array, items: { $ref: "#/$defs/attrId" }, description: "Grid (child-form) ids; camelCase-tolerant like field ids." }
+              min_entries: { type: integer, minimum: 1 }
+              message: { type: string }
+        parent:
+          type: object
+          description: Required for kind child/junction.
+          required: [entity, fk_attr]
+          additionalProperties: false
+          properties:
+            entity: { $ref: "#/$defs/snakeId" }
+            fk_attr: { $ref: "#/$defs/attrId" }
+        parent_union:
+          type: object
+          description: "Schema 0.2 (ADR-091) — a child that may belong to ONE OF SEVERAL parents, used where an owner has ruled a consolidation (one document/check/decision table serving several case types) and a single `parent` cannot name the owner. Mutually exclusive with `parent`. Integrity is DECLARED and therefore checkable: lint resolves every member entity, requires discriminator and fk_attr to be attributes of this entity, and — where the discriminator binds a vocabulary — requires every `when` to be a code of it, covered by at most one member. Projector contract: realizes as a discriminator + id column pair plus a generated REFERENTIAL GUARD that, on write, resolves fk_attr against the entity selected by discriminator and rejects a dangling reference. A database foreign key across a union is not available and is not claimed; the guard is generated rather than trusted to a reader. `kind` is unchanged — a parent_union entity is still kind: child."
+          required: [discriminator, fk_attr, members]
+          additionalProperties: false
+          properties:
+            discriminator:
+              $ref: "#/$defs/attrId"
+              description: The attribute naming WHICH parent kind this row belongs to.
+            fk_attr:
+              $ref: "#/$defs/attrId"
+              description: The attribute holding the parent's id.
+            members:
+              type: array
+              minItems: 2
+              description: "Two minimum — a union of one is a `parent`."
+              items:
+                type: object
+                required: [entity, when]
+                additionalProperties: false
+                properties:
+                  entity: { $ref: "#/$defs/snakeId" }
+                  when:
+                    type: string
+                    description: The discriminator value selecting this member.
+        pk:
+          type: object
+          additionalProperties: false
+          properties:
+            strategy: { enum: [uuid, id_generator, natural], default: uuid }
+            format: { type: string, description: "IdGeneratorField format, e.g. PA-??????." }
+            attr: { $ref: "#/$defs/attrId", description: "Business-key attribute when strategy is natural/id_generator." }
+        attributes:
+          type: array
+          minItems: 0
+          description: >-
+            Was minItems 1. A wizard root breaks that: `farms_registry` in a deployed
+            reference-portal is a real table that three things reference (the shell form,
+            both child foreign keys, the crud menu) and it declares no columns of its
+            own — every field lives in the eight page sub-forms. An empty list is the
+            explicit statement "this table has only system columns"; the key stays
+            REQUIRED, so omitting attributes is still an error and only saying-so is
+            allowed. (2026-08-08)
+          items: { $ref: "#/$defs/attribute" }
+        lifecycle:
+          $ref: "#/$defs/lifecycle"
+          description: State machine — only for case-bearing entities. Defined here, BEFORE any process; processes reference these transitions.
+        audit:
+          enum: [none, status, full]
+          default: none
+          description: status = status-framework transition log; full = log_event entity generated per change.
+        indexes:
+          type: array
+          items:
+            type: object
+            required: [attrs]
+            additionalProperties: false
+            properties:
+              attrs: { type: array, items: { $ref: "#/$defs/attrId" }, minItems: 1 }
+              unique: { type: boolean, default: false }
+        effective_dating:
+          type: object
+          required: [from]
+          additionalProperties: false
+          description: "Schema 0.2 — marks this entity as effective-dated (a validity interval, not just plain date fields). The projector realizes as-at semantics (a currently-effective view), so temporal validity is expressed, not flattened."
+          properties:
+            from: { $ref: "#/$defs/attrId" }
+            to: { $ref: "#/$defs/attrId" }
+        bitemporal:
+          type: object
+          required: [recorded_at]
+          additionalProperties: false
+          description: "Schema 0.2 (ADR-090) — the TRANSACTION-time axis, composing with effective_dating's valid time. effective_dating says when a fact was true in the world; this says when the register learned it. An entity carrying both is bitemporal, and a correction from an external source of record (a restated interval) becomes distinguishable from a genuine change (valid time moving forward) — which single-valid-time cannot express. Projector contract: writes are append-only (a superseding row is inserted, never an UPDATE of a superseded row, never a physical delete); the generated as-at view takes BOTH axes, and a query naming neither is an error rather than a default to now/now."
+          properties:
+            recorded_at:
+              $ref: "#/$defs/attrId"
+              description: When the register learned the fact (transaction time).
+            superseded_at:
+              $ref: "#/$defs/attrId"
+              description: When this version ceased to be current knowledge. Absent = the version is closed by the arrival of its successor alone.
+            supersedes:
+              $ref: "#/$defs/attrId"
+              description: The version this one replaces, so the knowledge chain is reconstructable in both directions.
+            change_kind:
+              $ref: "#/$defs/attrId"
+              description: "The attribute separating a CORRECTION (the valid-time interval is restated — the fact was always otherwise) from a CHANGE (valid time moves forward — the fact changed). Binds a domain vocabulary; the generator never infers the distinction."
+        uniqueness:
+          type: array
+          description: "Schema 0.2 (WP-E / ADR-071): declared multi-attribute uniqueness with a scope predicate (one open case per TIN). WP-H realizes via unique-guard; D-013 / A006 verify. Schema-optional; requiredness via the U-rules."
+          items:
+            type: object
+            required: [attrs, enforcement]
+            additionalProperties: false
+            properties:
+              attrs: { type: array, items: { $ref: "#/$defs/attrId" }, minItems: 1 }
+              where: { type: string, description: "Bare predicate, e.g. status not in ('closed')." }
+              enforcement: { enum: [guard, validator, detection], description: "guard/validator -> unique-guard prevention (ADR-072/076). detection -> the key is not form-writable (id_generator-assigned / off-form / master-data), so uniqueness is WATCHED not prevented: a duplicate-rows integrity scenario + an admin datalist, plus a mandatory `waiver` recording the conscious budget (ADR-076 §6, WP-2 step 4-5). The DB unique index stays the owner's escalation, never the default." }
+              waiver: { type: string, description: "REQUIRED when enforcement: detection — the conscious-budget ruling that prevention is deferred (why the key cannot be form-guarded; that the DB-index escalation is reserved, not taken). D-013 clears the tripwire only when this is present — never a silent waive." }
+
+  # ----------------------------------------------------------------- processes
+  processes:
+    type: array
+    description: >-
+      Orchestration over case-bearing entities. Two realizations: `xpdl`
+      (joget-workflow-gen) or `approval_service` (config on the DAS catalog
+      component). Both drive the SAME entity lifecycle — a process outcome maps
+      to a declared transition; a process may never invent a state change the
+      lifecycle does not define.
+    items:
+      type: object
+      required: [id, name, entity, realization]
+      additionalProperties: false
+      patternProperties: { "^x-": {} }
+      properties:
+        id: { $ref: "#/$defs/snakeId" }
+        name: { type: string }
+        feature: { $ref: "#/$defs/freeId" }
+        entity: { $ref: "#/$defs/snakeId" }
+        realization: { enum: [xpdl, approval_service] }
+        participants:
+          type: array
+          items:
+            type: object
+            required: [id, map]
+            additionalProperties: false
+            properties:
+              id: { $ref: "#/$defs/snakeId" }
+              map:
+                type: string
+                pattern: "^(role:[a-z][a-z0-9_]*|hash:.+|plugin:.+)$"
+                description: "role:<roleId> | hash:<#var#> | plugin:<mapper> — mirrors XPDL participant mapping options."
+        activities:
+          type: array
+          items: { $ref: "#/$defs/activity" }
+        routing:
+          type: array
+          items:
+            type: object
+            required: [after, goto]
+            additionalProperties: false
+            properties:
+              after: { $ref: "#/$defs/snakeId" }
+              when: { type: string, description: "Route condition over outcomes/variables; empty = default route." }
+              goto: { $ref: "#/$defs/snakeId" }
+        deadlines:
+          type: array
+          items:
+            type: object
+            required: ["on", after]
+            additionalProperties: false
+            properties:
+              "on": { $ref: "#/$defs/snakeId" }
+              after: { type: string, pattern: "^P.*", description: "ISO-8601 duration, e.g. P2D." }
+              escalate_to: { type: string, pattern: "^role:[a-z][a-z0-9_]*$" }
+              effects: { type: array, items: { $ref: "#/$defs/effect" } }
+        approval:
+          type: object
+          description: approval_service realization config (bands, chains, quorum, SoD, delegation) — validated against the DAS config contract.
+          additionalProperties: true
+  # x-decision: realization-specific required blocks (xpdl -> activities/routing,
+  # approval_service -> approval) are lint rules in v0.1; promote to if/then
+  # hard schema in v0.2 once the DAS config contract is published.
+
+  # -------------------------------------------------------------------- forms
+  forms:
+    type: array
+    description: Logical forms. Fields either bind to an entity attribute (`attr`) and inherit its type/validation, or are form-local (`id` + `control`).
+    items:
+      type: object
+      required: [id, name, entity, purpose]
+      # `sections` was in `required` for every form. A `purpose: wizard` form is the one
+      # shape that HAS no fields of its own — a MultiPagedForm shell's content is its
+      # pages, and `registrationForm` in a deployed app carries exactly zero form
+      # controls beside its eight-page wizard. So the wizard declares its steps and every
+      # other form still declares its sections; the hole is one shape wide. (2026-08-08)
+      allOf:
+        - if:
+            properties: { purpose: { const: wizard } }
+            required: [purpose]
+          then:
+            required: [wizard]
+          else:
+            required: [sections]
+      additionalProperties: false
+      patternProperties: { "^x-": {} }
+      properties:
+        id:
+          type: string
+          pattern: "^[a-zA-Z][a-zA-Z0-9_]{0,23}$"
+          description: Joget form id — HARD 24-char platform cap (DX delta).
+        name: { type: string, description: "Display name; numbered prefix convention applied via app.conventions." }
+        description: { type: string, description: "Design-doc / section reference carried onto the generated form (D-01, PROMOTE). Supersedes the interim x-description bridge." }
+        entity: { $ref: "#/$defs/snakeId" }
+        purpose: { enum: [create, edit, view, review, wizard_step, wizard] }
+        layout: { enum: [detail_360], description: "detail_360 (ADR-068 / W-9, UX-01 CTX-02): the form renders as a tabbed record console (enterprise MultiPagedForm displayMode=tab). Sections marked header:true (default: the first section) stay pinned above the tabs as the context header; each remaining section becomes a tab bound to a projector-emitted per-tab form over the same table; a user-triggered lifecycle adds an Actions tab carrying the transition select + guard." }
+        use_case: { type: string, description: "KP-01 (schema 0.2): M15 traceability anchor — the use-case id (optionally /step or /ext) this screen realizes, e.g. UC-D02. The UC-series gate warns on an orphan screen (no behavioural anchor); becomes an error once the use-case model is bound." }
+        feature: { $ref: "#/$defs/freeId" }
+        persona: { type: string, description: "Schema 0.2 (WP-E / ADR-071): who uses this screen (U008)." }
+        trigger:
+          type: object
+          description: "Schema 0.2: how this screen is reached (U003 / U008 / CTX-01)."
+          required: [kind]
+          additionalProperties: false
+          properties:
+            kind: { enum: [worklist, record_action, event, schedule, menu] }
+            justification: { type: string, description: "Required when kind: menu (CTX-01)." }
+        created_from:
+          type: object
+          description: "Schema 0.2: PRE-03 — a create-purpose form over a case-kind entity declares its source (U003)."
+          required: [entity]
+          additionalProperties: false
+          properties:
+            entity: { $ref: "#/$defs/snakeId" }
+            mechanism: { enum: [action_on_source, worklist, event] }
+        wizard:
+          type: object
+          description: For purpose wizard — MultiPagedForm over step forms (Enterprise).
+          additionalProperties: false
+          properties:
+            id:
+              type: string
+              description: >-
+                The MultiPagedForm element id. Optional; default <formId>Wizard.
+                Added 2026-08-08: the deployed reference-portal ids
+                (registrationWizard for shell registrationForm,
+                parcelRegistrationWizard for parcelRegistration) follow no single
+                derivation from the shell id, so a round trip needs the value.
+            steps:
+              type: array
+              minItems: 2
+              description: >-
+                Ordered wizard pages. A bare string is the step form id; the object
+                form was added 2026-08-08 because a regenerated wizard could not
+                equal a deployed one without it — page labels are authored (0 of 12
+                deployed reference-portal pages match their step form's name) and
+                every deployed page carries pageN_parentSubFormId, which nothing
+                else in the model spells.
+              items:
+                anyOf:
+                  - type: string
+                  - type: object
+                    required: [form]
+                    additionalProperties: false
+                    properties:
+                      form: { type: string, description: "The wizard_step form id." }
+                      label: { type: string, description: "Page label; default = the step form's name." }
+                      parent_field: { type: string, description: "pageN_parentSubFormId — the parent-side field naming this page's slot (basic_data, location_data, ... on reference-portal)." }
+            config:
+              type: object
+              additionalProperties: true
+              description: >-
+                Residual deployed MultiPagedForm root properties, merged into
+                the emitted element LAST (gen_forms 0.9.12 props channel).
+                Added 2026-08-08: the deployed reference wizard authors
+                prevButtonlabel 'Previous' where the generator default says
+                'Prev', and nothing typed owns that knob.
+            partial_store: { type: boolean, default: true, description: "Mind the MultiPagedForm partial-store bypass delta." }
+            store_main_on_partial:
+              type: boolean
+              description: >-
+                storeMainFormOnPartiallyStore. Added 2026-08-08 — independent of
+                partial_store on the platform: the deployed registrationForm
+                carries storeMainFormOnPartiallyStore true with partiallyStore
+                EMPTY.
+        sections:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required: [id, fields]
+            additionalProperties: false
+            properties:
+              id: { $ref: "#/$defs/snakeId" }
+              label: { type: string }
+              columns: { type: integer, minimum: 1, maximum: 4, default: 2 }
+              readonly: { type: boolean, default: false }
+              header: { type: boolean, default: false, description: "layout detail_360 only: pin this section above the tabs as part of the context header (CTX-02) instead of rendering it as a tab." }
+              fields:
+                type: array
+                minItems: 1
+                items: { $ref: "#/$defs/formField" }
+        validation:
+          type: array
+          description: Form-level (cross-field) rules; realization decides validator plugin vs form-quality gate.
+          items:
+            type: object
+            required: [rule, message]
+            additionalProperties: false
+            properties:
+              rule: { type: string }
+              message: { type: string }
+              realization: { enum: [validator_plugin, form_quality, beanshell], default: validator_plugin }
+        permissions: { $ref: "#/$defs/permissions" }
+        acts:
+          type: array
+          description: >-
+            The acts this form's record offers (METHOD-2026-09-25-04, item 3), each shown as a
+            button named after it, in this order. An act either makes a MOVE of the record's
+            lifecycle (`transition`: a user-triggered transition of the form's entity that names
+            its roles) — its button opens the move's own form, is offered only in the state the
+            move leaves from, and is shown disabled with the move's guard in words where the
+            record's facts say the guard does not hold — or opens a FORM that belongs to the
+            record (`form`), carrying the record (`carries`: the entity whose record the act
+            carries; default the form's own entity) to that form, which reads it through its
+            `prefill`. Absent, a form that is not a create form offers one act per move a person
+            makes on its entity, for the form's roles; `acts: []` offers none. The form an act
+            opens must stand on a menu of a hidden category (item 4).
+          items:
+            type: object
+            required: [label]
+            additionalProperties: false
+            patternProperties: { "^x-": {} }
+            properties:
+              id: { $ref: "#/$defs/snakeId" }
+              label: { type: string, description: "The button's words, the goal's act: 'Close the case', 'Approve the closure'." }
+              transition: { $ref: "#/$defs/snakeId", description: "The move this act makes." }
+              form: { type: string, description: "The form this act opens, carrying the record." }
+              carries: { $ref: "#/$defs/snakeId", description: "The entity whose record the act carries: the form's own (default), or one a field of the form refers to." }
+              stands_on:
+                $ref: "#/$defs/attrId"
+                description: >-
+                  METHOD-2026-09-28-07 (the kit's gap G1): the value of this form the act stands on —
+                  a field the form places. The button is offered only while the value holds, that is
+                  while it is set, and the act carries the record the value names when the field
+                  refers to one: the record it follows, for an act that opens the very form it stands
+                  on for another record of it. `carries` defaults to the entity the field refers to.
+                  The form opened reads that record by its key from the address, through its
+                  `prefill` (keySources requestParam).
+              roles: { type: array, items: { $ref: "#/$defs/snakeId" }, description: "Who may use the act. Default: the move's roles; for a form act, the roles of the menu that opens the form." }
+            oneOf:
+              - required: [transition]
+              - required: [form]
+        prefill:
+          type: object
+          description: >-
+            Form-level prefill (load-binder) config, realized by the form-prefill
+            catalog component (D-10, PASSTHROUGH). The forms projector copies the body
+            verbatim (minus `component`) into the generator's `loadBinder: prefill`
+            block — it synthesizes nothing. The component's own config contract
+            validates the body (keySources, formId, matchField, filters, orderBy,
+            related, mappings, constants, …). Prefill is form-level because the
+            realizing plugin binds one load-binder per form, not per field.
+          required: [component]
+          additionalProperties: true
+          properties:
+            component: { $ref: "#/$defs/kebabId" }
+        lookup:
+          type: object
+          description: >-
+            LIVE field lookup (D-098), realized by the lookup-field catalog component.
+            The user TYPES (or picks) a business key into the `watch` field; the element
+            resolves it against `entity` on `match` and writes the mapped columns onto
+            this form immediately, with no reload and no save.
+
+            This is the construct for a register too large to be a dropdown (a SelectBox
+            over thousands of taxpayers stops being a control) and too central to be a
+            browse-the-register-first detour. It is the field-level, live sibling of
+            `prefill`, which is form-level and fires once on load; the two compose — a
+            deep link may still prefill the key, and typing over it still re-resolves.
+
+            NOT a passthrough like `prefill`: the projector derives the Joget coordinates
+            (lookup form id, table, key column) from the model, because a mistyped form
+            id here would render as a permanently empty field rather than as an error.
+
+            SR-3 — the screen helping is not the store enforcing. Unless
+            `enforce_on_save: false` is set, the projector ALSO emits an unconditional
+            `exists` precondition into this form's root guard, so a key that resolves to
+            nothing is refused at save, not merely left blank on screen.
+          required: [component, watch, entity, match, mappings]
+          additionalProperties: false
+          properties:
+            component: { $ref: "#/$defs/kebabId" }
+            watch:
+              $ref: "#/$defs/attrId"
+              description: "The field on THIS form holding the key. Must be placed on this form. A text field is typed into; a select is picked from — both are watched."
+            entity:
+              $ref: "#/$defs/snakeId"
+              description: "The entity looked up. Must have exactly one form bound to it (that form is the plugin's addressing handle)."
+            match:
+              $ref: "#/$defs/attrId"
+              description: "The attribute of `entity` the watched value is matched against."
+            mappings:
+              type: array
+              minItems: 1
+              description: "Field-to-field copy: `from` is an attribute of `entity`, `to` a field placed on THIS form. Each `to` field becomes the lookup element."
+              items:
+                type: object
+                required: [from, to]
+                additionalProperties: false
+                properties:
+                  from: { $ref: "#/$defs/attrId" }
+                  to: { $ref: "#/$defs/attrId" }
+            not_found_message:
+              type: string
+              description: "Shown on screen when the key matched nothing. The mapped fields are CLEARED in that case — never left holding the previous record's values (never-fabricate)."
+            debounce_ms: { type: integer, minimum: 0, maximum: 5000, default: 400, description: "Typed sources: pause after the last keystroke before looking up." }
+            enforce_on_save: { type: boolean, default: true, description: "SR-3. Set false ONLY where an unresolvable key is legitimately storable, and say why." }
+            enforce_message: { type: string, description: "The store's refusal message for an unresolvable key." }
+        post_processor:
+          type: object
+          description: >-
+            The form root's postProcessor, carried VERBATIM. Added 2026-08-08
+            (owner full-fidelity objective): both deployed reference-portal wizard
+            shells carry global.govstack.formquality.hook.FormQualityPostProcessor
+            {serviceId} with runOn 'both'. One shape wide - class_name +
+            properties + run_on, nothing derived, nothing else admitted. The
+            projector refuses when the entity's lifecycle also claims the root
+            slot (TransitionGuard): the root has ONE postProcessor. Distinct
+            from `post_actions`, which stays the catalog-component spelling and
+            stays refused pending the component->class contract.
+          required: [class_name]
+          additionalProperties: false
+          properties:
+            class_name: { type: string, minLength: 1, description: "Fully-qualified processor class, exactly as deployed." }
+            properties: { type: object, additionalProperties: true }
+            run_on: { enum: [create, edit, both], default: create, description: "postProcessorRunOn; 'both' on the two deployed shells." }
+        post_actions:
+          type: array
+          items:
+            type: object
+            required: ["on"]
+            additionalProperties: false
+            properties:
+              "on": { enum: [create, edit, both], description: "Mind the CrudMenu fires-on-add-only delta." }
+              component: { $ref: "#/$defs/kebabId" }
+              process: { $ref: "#/$defs/snakeId" }
+              config: { type: object, additionalProperties: true }
+
+  # -------------------------------------------------------------------- lists
+  lists:
+    type: array
+    description: Datalists. Source is either an entity (FormRowDataListBinder path) or a named query (JDBC binder path).
+    items:
+      type: object
+      required: [id, name, source, columns]
+      additionalProperties: false
+      patternProperties: { "^x-": {} }
+      properties:
+        id:
+          type: string
+          pattern: "^[a-zA-Z][a-zA-Z0-9_]{0,63}$"
+          description: >-
+            Was capped at 30 characters from the schema's first commit, with no delta
+            behind the number. A deployed reference portal carries the datalist
+            `list_subsidyApplicationOperator2025` (35 chars) in production, so the cap
+            was house style refusing a fact about a real application, not a platform
+            limit. Widened 2026-08-08. The 24-char cap on form ids and table names is
+            NOT this: D-022 records it as a measured DX behaviour and it stands.
+        name: { type: string }
+        feature: { $ref: "#/$defs/freeId" }
+        use_case: { type: string, description: "KP-01 (schema 0.2): M15 traceability anchor — the use-case id this list realizes." }
+        source:
+          type: object
+          additionalProperties: false
+          properties:
+            entity: { $ref: "#/$defs/snakeId" }
+            query: { $ref: "#/$defs/snakeId" }
+            act:
+              $ref: "#/$defs/snakeId"
+              description: >-
+                METHOD-2026-09-28-07 (the kit's gap G2): the list's rows are the records an act on
+                chosen rows was taken on — the `id` of an entry of another list's
+                `chosen_actions`. They are the records of that list's entity whose key the act's
+                record holds in the field the act names (`param`), for the act the person signed
+                in took last; the list is then an ordinary list over them, with its columns (the
+                attributes of that entity), its row acts and its menu. Projected onto the
+                platform's JDBC list binder (org.joget.plugin.enterprise.JdbcDataListBinder) with
+                the statement the kit writes from the model.
+            form: { type: string, description: "Form whose table the form-row binder reads; needed only when the entity has more than one form (DL-01, 0.1.3)." }
+            joins:
+              type: array
+              minItems: 1
+              description: >-
+                AdvancedFormRowDataListBinder joins (added 2026-08-08): child
+                TABLES joined on `<table>.<fk>` = parent `id`. Both deployed
+                reference-portal registers (list_registrationForm,
+                list_parcelRegistration) carry exactly this shape - a wizard's
+                companion register reads its columns THROUGH the joins, and
+                without the spelling the whole list was unexpressible. The join
+                key is a TABLE (measured: `location_table`, the table of form
+                residencyForm, not the form id), so L1 names the table's
+                owner - the entity. Entity source only; a query list carries
+                joins in its SQL.
+              items:
+                type: object
+                required: [entity, fk]
+                additionalProperties: false
+                properties:
+                  entity: { $ref: "#/$defs/snakeId", description: "The joined (child) entity - the binder joins its table; columns read `<table>.<column>`." }
+                  fk: { $ref: "#/$defs/attrId", description: "The child attribute joined to the parent row id (joinFieldId is always `id` - the measured shape)." }
+          oneOf:
+            - required: [entity]
+            - required: [query]
+            - required: [act]
+        extra_condition: { type: string, description: "Form-row binder Hibernate scoping predicate, passed through verbatim (DL-05, 0.1.3). Entity source only." }
+        columns:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            additionalProperties: false
+            patternProperties: { "^x-": {} }
+            properties:
+              attr: { $ref: "#/$defs/attrId" }
+              expr: { type: string, description: "Query column alias when source is a query." }
+              label: { type: string }
+              format:
+                enum: [none, date, datetime, currency, options, status_badge, link]
+                default: none
+                description: options = OptionsValueFormatter over the attr's vocabulary; status_badge = lifecycle-aware badge.
+              width: { type: string }
+            oneOf:
+              - required: [attr]
+              - required: [expr]
+        filters:
+          type: array
+          items:
+            type: object
+            required: [type]
+            additionalProperties: false
+            patternProperties: { "^x-": {} }
+            properties:
+              attr: { $ref: "#/$defs/attrId" }
+              expr: { type: string, description: "Filter column id when source is a query (DL-02, 0.1.2)." }
+              param: { $ref: "#/$defs/snakeId", description: "Query param id (#requestParam.<param># in the JDBC SQL)." }
+              type: { enum: [text, select, cascading_select, date_range, status] }
+              label: { type: string }
+              options: { type: array, items: { type: string }, description: "Explicit select options for a query-source filter with no vocabulary (DL-02, 0.1.2)." }
+        actions:
+          type: array
+          items:
+            type: object
+            required: [type]
+            additionalProperties: false
+            properties:
+              type:
+                enum: [open_form, open_list, launch_process, execute_transition, link, delete]
+                description: "open_form needs a CRUD menu for its `form` declared in `navigation`: a menu of type crud that opens an existing row with that form (its edit_form, or its form when it has no edit_form). The list projector resolves the row to that menu, and refuses the act where the model declares none (DL-06). open_list (METHOD-2026-09-28-07, the kit's gap G1) opens the list `list`, narrowed to the record the row names: the row's value goes in the address parameter `param`, which the list opened reads in its default_scope (#requestParam.<param>#), or in its query."
+              form: { type: string }
+              list: { type: string, description: "open_list: the list the act opens." }
+              record:
+                type: string
+                description: >-
+                  METHOD-2026-09-28-07 (the kit's gap G1): the column of the row whose value names
+                  the record the act carries — an attribute of the list's entity, or a column of its
+                  query (an `expr` of the list, or a name the query's SQL gives with AS). Absent, the
+                  act carries the row's own record. With `open_form`, where the form opened is a form
+                  of the record carried, the column holds that record's row identifier and the row
+                  opens it in the CRUD menu that edits a row with the form; where the form makes or
+                  reads a record for the one carried, the column holds the key the form reads it by,
+                  and the row opens the form through the menu that opens it, as a form's act does
+                  (`forms[].acts`). With `open_list`, the column holds the value the list opened reads.
+              carries:
+                $ref: "#/$defs/snakeId"
+                description: >-
+                  METHOD-2026-09-28-07: the entity whose record the act carries. Absent, the entity
+                  the attribute `record` refers to, else the row's own. Required with `record` on a
+                  list sourced from a query, whose columns name no entity.
+              param:
+                $ref: "#/$defs/snakeId"
+                description: "open_list: the address parameter the list opened reads the row's value from (#requestParam.<param>#)."
+              process: { $ref: "#/$defs/snakeId" }
+              transition: { $ref: "#/$defs/snakeId" }
+              href: { type: string }
+              href_column: { $ref: "#/$defs/attrId", description: "Row column supplying the row link's param value (rowAction; DL-03, 0.1.2)." }
+              href_param: { $ref: "#/$defs/snakeId", description: "Request param name the row link carries (DL-03, 0.1.2)." }
+              label: { type: string }
+              roles: { type: array, items: { $ref: "#/$defs/snakeId" } }
+        chosen_actions:
+          type: array
+          description: >-
+            METHOD-2026-09-28-07 (the kit's gap G1): the acts taken on the rows a person chooses.
+            Each is a button over the list, whose rows then carry a box to choose them; it opens
+            the form `form` through the menu that opens that form (a menu of a category with
+            `hidden: true`), carrying the chosen rows' records in one value, joined by ';', in the
+            address parameter `param`. `param` is a field the form places: the field receives the
+            value from the address, and the record the form saves names the records the act was
+            taken on, which a list sourced from the act (`source.act`) shows. Realized by the
+            platform's hyperlink action (org.joget.apps.datalist.lib.HyperlinkDataListAction)
+            among the list's actions, which writes each chosen row's value of the column
+            `hrefColumn`, joined by ';', into the parameter `hrefParam`.
+          items:
+            type: object
+            required: [id, label, form, param]
+            additionalProperties: false
+            patternProperties: { "^x-": {} }
+            properties:
+              id: { $ref: "#/$defs/snakeId", description: "The act's name, unique among the model's acts on chosen rows; a list sourced from it names it (`source.act`)." }
+              label: { type: string, description: "The button's words." }
+              form: { type: string, description: "The form the act opens." }
+              param: { $ref: "#/$defs/attrId", description: "The field of that form that receives the chosen records, and the address parameter that carries them." }
+              record: { type: string, description: "The column of the row whose value names each chosen record: an attribute of the list's entity, or a column of its query that holds the record's key (its business key where its entity has one, else its identifier). Absent: the row's key." }
+              carries: { $ref: "#/$defs/snakeId", description: "The entity whose records the act carries. Absent: the entity the attribute `record` refers to, else the row's own. Required, with `record`, on a list sourced from a query." }
+              roles: { type: array, items: { $ref: "#/$defs/snakeId" } }
+        sort:
+          type: object
+          additionalProperties: false
+          properties:
+            by: { type: string }
+            dir: { enum: [asc, desc], default: desc }
+        default_scope:
+          type: string
+          description: >-
+            Schema 0.2 (WP-E / ADR-071): bare predicate (D-046 style) applied on first paint —
+            WRK-04 (U005). METHOD-2026-09-25-04, item 6 (row 16): it may name the person signed
+            in, `#currentUser.username#`, and the record of the page, `#requestParam.<name>#` —
+            the address parameter the page's record arrives in (a record's act carries it as its
+            `carries`). The projector quotes each and escapes it for SQL; no other hash variable
+            is admitted (lint L020).
+        page_size: { type: integer, default: 20 }
+        permissions: { $ref: "#/$defs/permissions" }
+
+  # --------------------------------------------------------------- navigation
+  navigation:
+    type: object
+    description: Userview — personas -> categories -> menus (CAD §6).
+    required: [userview_id, categories]
+    additionalProperties: false
+    patternProperties: { "^x-": {} }
+    properties:
+      userview_id: { type: string, pattern: "^[a-zA-Z][a-zA-Z0-9_]{0,29}$" }
+      name: { type: string }
+      theme:
+        type: object
+        additionalProperties: true
+        properties:
+          name: { type: string, description: "e.g. Dx8TrimedaTheme; DX-version-dependent (delta-keyed)." }
+      lists_of_values:
+        type: object
+        additionalProperties: false
+        description: >-
+          How the administration of the lists of values the application maintains is grouped in
+          the menu (METHOD-2026-09-26-02, point 10; tools/lov.py, admin_categories). `by_record`,
+          the default, applies the ruling on long lists, point 3: a category for each record that
+          uses its lists, a category of the shared lists, no category holding more than nine, and a
+          category of one list joined with another. `one_category`: one category, named
+          `category`, holding every list of values in the order of their labels, shown to the role
+          that keeps them; the limit of nine stays with the drop-downs and the steps of a choice
+          (U026), not with this menu.
+        properties:
+          grouping: { enum: [by_record, one_category], default: by_record }
+          category:
+            type: string
+            minLength: 1
+            description: "The name of the one category, for `one_category` (e.g. Admin)."
+        if: { properties: { grouping: { const: one_category } }, required: [grouping] }
+        then: { required: [category] }
+      categories:
+        type: array
+        minItems: 1
+        items:
+          type: object
+          required: [id, label, menus]
+          additionalProperties: false
+          patternProperties: { "^x-": {} }
+          properties:
+            id: { $ref: "#/$defs/snakeId" }
+            label: { type: string }
+            roles: { type: array, items: { $ref: "#/$defs/snakeId" }, description: "Empty/absent = visible to all authenticated." }
+            hidden:
+              type: boolean
+              default: false
+              description: >-
+                A category never shown in the menu (METHOD-2026-09-25-04, item 4): its menus open
+                from a record — a row's act, a record's button — and keep the category's roles.
+                Projected as the userview category's own `hide`. A form whose trigger is
+                `record_action` stands only in such a category (lint U025).
+            menus:
+              type: array
+              minItems: 1
+              items:
+                type: object
+                required: [type, label]
+                additionalProperties: false
+                patternProperties: { "^x-": {} }
+                properties:
+                  type: { enum: [form, list, crud, dashboard, report, html, api, external_link, inbox] }
+                  label: { type: string }
+                  form: { type: string }
+                  edit_form: { type: string, description: "crud only: the form the menu EDITS an existing record with, when it must differ from the one it CREATES with. Default: `form` (both ids derive from the one key). A create form correctly carries no lifecycle Action select — project_forms.is_create suppresses it, because a create advances nothing — so ANY entity with a lifecycle needs a different form to advance it. Without this key the applicant's record opened with no control and TC-FR-001 was unreachable (registry 0.9.9)." }
+                  readonly: { type: boolean, default: false, description: "form only: a display-only menu (printable summary, confirmation page). Default false — a form menu the user can submit. Was hardcoded true in the generator until registry 0.9.7." }
+                  list: { type: string }
+                  entity: { $ref: "#/$defs/snakeId", description: "For crud: entity whose form+list pair is exposed." }
+                  add: { type: boolean, description: "crud only: false suppresses the New button (records enter by engine/audited path only)." }
+                  delete: { type: boolean, description: "crud only: false suppresses row delete (e.g. cases are never deleted — history retention)." }
+                  dashboard: { $ref: "#/$defs/snakeId" }
+                  report: { $ref: "#/$defs/snakeId" }
+                  html: { type: string, description: "Mind the sanitiser-stripped CustomHTML delta." }
+                  href: { type: string }
+                  roles: { type: array, items: { $ref: "#/$defs/snakeId" } }
+
+  # --------------------------------------------------------------- dashboards
+  dashboards:
+    type: array
+    description: KPI tiles + charts (Enterprise SqlChartMenu / DashboardMenu realization; charts read named queries, never scraped HTML).
+    items:
+      type: object
+      required: [id, tiles]
+      additionalProperties: false
+      patternProperties: { "^x-": {} }
+      properties:
+        id: { $ref: "#/$defs/snakeId" }
+        name: { type: string }
+        feature: { $ref: "#/$defs/freeId" }
+        tiles:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required: [kind]
+            additionalProperties: false
+            properties:
+              kind: { enum: [kpi, chart] }
+              label: { type: string }
+              query: { $ref: "#/$defs/snakeId" }
+              chart_type: { enum: [bar, line, pie, area, table] }
+              key: { type: string, description: "chart tile: the query column alias for the category/x axis (SqlChartMenu keyName; DB-01, 0.1.6)." }
+              value: { type: string, description: "chart tile: the query column alias for the numeric/y axis (SqlChartMenu value; DB-01, 0.1.6)." }
+              thresholds:
+                type: object
+                description: RAG thresholds for kpi tiles.
+                additionalProperties: false
+                properties:
+                  green: { type: string }
+                  amber: { type: string }
+                  red: { type: string }
+
+  # -------------------------------------------------------------------- views
+  views:
+    type: array
+    description: "Schema 0.2 — composite detail (360) views: a main entity presented with its child records as one surface. The projector emits a detail composite (userview + embedded child grids), not separate disconnected forms."
+    items:
+      type: object
+      required: [id, kind, entity]
+      additionalProperties: false
+      properties:
+        id: { $ref: "#/$defs/snakeId" }
+        name: { type: string }
+        kind: { enum: [detail] }
+        entity: { $ref: "#/$defs/snakeId" }
+        sections:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              form: { type: string }
+              child: { $ref: "#/$defs/snakeId" }
+              as: { enum: [grid, form] }
+              label: { type: string }
+
+  # ------------------------------------------------------------------ reports
+  reports:
+    type: array
+    description: Typeset reports (JasperReports realization, Enterprise).
+    items:
+      type: object
+      required: [id, name, engine, query]
+      additionalProperties: false
+      patternProperties: { "^x-": {} }
+      properties:
+        id: { $ref: "#/$defs/snakeId" }
+        name: { type: string }
+        engine: { enum: [jasper] }
+        feature: { $ref: "#/$defs/freeId" }
+        query: { $ref: "#/$defs/snakeId" }
+        params: { type: array, items: { $ref: "#/$defs/snakeId" } }
+        output: { type: array, items: { enum: [pdf, xlsx, docx] }, default: [pdf] }
+
+  # --------------------------------------------------------------- interfaces
+  interfaces:
+    type: object
+    description: External surface. Inbound = APIs this app exposes; outbound = adapters it consumes (always via a catalog component).
+    additionalProperties: false
+    patternProperties: { "^x-": {} }
+    properties:
+      inbound:
+        type: array
+        items:
+          type: object
+          required: [id, style, resource, operations]
+          additionalProperties: false
+          properties:
+            id: { $ref: "#/$defs/snakeId" }
+            style: { enum: [rest] }
+            resource: { type: string, description: "Path template, e.g. /permits/{id}/status." }
+            operations: { type: array, items: { enum: [get, post, put, delete] }, minItems: 1 }
+            auth: { enum: [api_builder, none], default: api_builder, description: "API Builder api_id/api_key — not basic auth (delta)." }
+            exposes:
+              type: object
+              additionalProperties: false
+              properties:
+                entity: { $ref: "#/$defs/snakeId" }
+                attrs: { type: array, items: { $ref: "#/$defs/attrId" } }
+            feature: { $ref: "#/$defs/freeId" }
+      outbound:
+        type: array
+        items:
+          type: object
+          required: [id, component]
+          additionalProperties: false
+          properties:
+            id: { $ref: "#/$defs/snakeId" }
+            component: { $ref: "#/$defs/kebabId" }
+            config:
+              type: object
+              description: Component-contract-validated. Secrets ONLY as ${env:NAME} references — never literals.
+              additionalProperties: true
+            used_by: { type: array, items: { type: string }, description: "Informative back-references, e.g. form:frmX.field:y." }
+            feature: { $ref: "#/$defs/freeId" }
+
+  # --------------------------------------------------------------------- seed
+  seed:
+    type: array
+    description: Master-data rows for md_lookup/config entities (vocabularies seed via their own rows/file). Loaded cache-coherently in `order`.
+    items:
+      type: object
+      required: [entity]
+      additionalProperties: false
+      properties:
+        entity: { $ref: "#/$defs/snakeId" }
+        order: { type: integer, default: 100 }
+        rows: { type: array, items: { type: object, additionalProperties: true } }
+        file: { type: string }
+
+  # --------------------------------------------------------------- acceptance
+  acceptance:
+    type: object
+    description: Given/when/then scenarios over entities and lifecycles — generated into the regression harness (order-independent, cold-start).
+    additionalProperties: false
+    patternProperties: { "^x-": {} }
+    properties:
+      fixtures:
+        type: array
+        items:
+          type: object
+          required: [id]
+          additionalProperties: false
+          properties:
+            id: { $ref: "#/$defs/snakeId" }
+            seed: { type: boolean, default: true, description: "Load all vocabularies + seed sets first." }
+            records:
+              type: array
+              items:
+                type: object
+                required: [entity, values]
+                additionalProperties: false
+                properties:
+                  entity: { $ref: "#/$defs/snakeId" }
+                  alias: { $ref: "#/$defs/snakeId" }
+                  values: { type: object, additionalProperties: true }
+                  state: { $ref: "#/$defs/snakeId" }
+      scenarios:
+        type: array
+        items:
+          type: object
+          required: [id, when, then]
+          additionalProperties: false
+          properties:
+            id: { $ref: "#/$defs/freeId" }
+            name: { type: string }
+            feature: { $ref: "#/$defs/freeId" }
+            given:
+              type: object
+              additionalProperties: false
+              properties:
+                fixture: { $ref: "#/$defs/snakeId" }
+                actor: { type: string, pattern: "^role:[a-z][a-z0-9_]*$" }
+            when:
+              type: array
+              minItems: 0   # 0 = a then-only INVARIANT scenario (e.g. a detection-leg integrity
+                            # watch: no action, assert a standing property). Behavioural scenarios
+                            # still declare `when` steps; `then` remains minItems: 1 (must assert).
+              items:
+                type: object
+                required: [action]
+                additionalProperties: true
+                properties:
+                  action: { enum: [submit_form, save_draft, execute_transition, complete_activity, call_api, run_component, custom] }
+                  form: { type: string }
+                  transition: { $ref: "#/$defs/snakeId" }
+                  entity: { $ref: "#/$defs/snakeId" }
+                  "on": { $ref: "#/$defs/snakeId", description: "Alias of a fixture/created record the action targets." }
+                  values: { type: object, additionalProperties: true }
+            then:
+              type: array
+              minItems: 1
+              items:
+                type: object
+                required: [assert]
+                additionalProperties: true
+                properties:
+                  assert: { enum: [entity_state, record_count, field_value, validation_error, api_response, custom_sql, distinct] }
+                  entity: { $ref: "#/$defs/snakeId" }
+                  "on": { $ref: "#/$defs/snakeId" }
+                  state: { $ref: "#/$defs/snakeId" }
+                  attr: { $ref: "#/$defs/attrId" }
+                  equals: {}
+                  where: { type: object, additionalProperties: true }
+                  scope: { enum: [run], description: "record_count only: count just what THIS run created. A bare count over a shared instance asserts that nobody has used the app by hand, which is a property of who touched the browser last rather than of the system under test." }
+                  sql: { type: string }
+
+  # ---------------------------------------------------------- bespoke plugins
+  bespoke_plugins:
+    type: array
+    description: >-
+      The plugin BUDGET (CAD §4): custom Java outside the catalog. Every entry
+      must be forced by a requirement. Growth here during specification returns
+      the feature to architecture. Coverage metric = spec+catalog behaviour vs
+      entries in this list.
+    items:
+      type: object
+      required: [id, type, justification]
+      additionalProperties: false
+      patternProperties: { "^x-": {} }
+      properties:
+        id: { $ref: "#/$defs/kebabId" }
+        type:
+          enum: [ApplicationPlugin, FormLoadBinder, FormStoreBinder, FormValidator,
+                 FormOptionsBinder, DataListBinder, ProcessTool, ParticipantMapper,
+                 FormElement, ApiPlugin, Scheduler, Other]
+        justification:
+          type: object
+          required: [requirement, reason]
+          additionalProperties: false
+          properties:
+            requirement: { $ref: "#/$defs/freeId" }
+            reason: { type: string }
+        reads: { type: array, items: { $ref: "#/$defs/snakeId" } }
+        writes: { type: array, items: { $ref: "#/$defs/snakeId" } }
+        complexity: { enum: [S, M, L] }
+        feature: { $ref: "#/$defs/freeId" }
+
+# =============================================================================
+$defs:
+
+  semver:
+    type: string
+    pattern: "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+
+  snakeId:
+    type: string
+    pattern: "^[a-z][a-zA-Z0-9_]{0,39}$"
+    description: >-
+      Logical id. snake_case is the house spelling for anything authored here, and
+      camelCase is TOLERATED for the same reason attrId tolerates it: Joget id
+      continuity. An application that already exists names its tables and forms
+      `md21programType`, and a harvested spec that renamed them to `md21_program_type`
+      would regenerate against tables that are not there. For an existing app the
+      identifiers are facts, not style.
+
+  kebabId:
+    type: string
+    pattern: "^[a-z][a-z0-9-]{0,39}$"
+
+  freeId:
+    type: string
+    pattern: "^[A-Za-z0-9][A-Za-z0-9_.-]{0,39}$"
+
+  attrId:
+    type: string
+    pattern: "^[a-z][a-zA-Z0-9_]{0,38}$"
+    description: Attribute/column logical id (c_ prefix added physically; camelCase tolerated for Joget field-id continuity).
+
+  permissions:
+    type: object
+    additionalProperties: false
+    properties:
+      roles: { type: array, items: { $ref: "#/$defs/snakeId" } }
+      note: { type: string }
+
+  attribute:
+    type: object
+    required: [id, type]
+    additionalProperties: false
+    patternProperties: { "^x-": {} }
+    properties:
+      id: { $ref: "#/$defs/attrId" }
+      name: { type: string }
+      type: { enum: [string, text, integer, decimal, boolean, date, datetime, enum, ref, file, json, computed] }
+      required: { type: boolean, default: false }
+      unique: { type: boolean, default: false }
+      length: { type: integer, description: "For string." }
+      precision: { type: integer }
+      scale: { type: integer }
+      vocabulary: { $ref: "#/$defs/snakeId", description: "Required when type = enum." }
+      ref:
+        type: object
+        description: Required when type = ref (FK to another entity).
+        required: [entity]
+        additionalProperties: false
+        properties:
+          entity: { $ref: "#/$defs/snakeId" }
+          display: { $ref: "#/$defs/attrId", description: "Attribute shown via lookup-field pattern." }
+      formula: { type: string, description: "For type computed (CalculationField / ConcatField realization)." }
+      default: {}
+      pattern: { type: string }
+      description: { type: string }
+      semantic:
+        type: string
+        pattern: "^dd:[a-z][a-z0-9_]*$"
+        description: >-
+          KP-01 (schema 0.2): binds this attribute to a governed SET in the domain
+          data dictionary (dd_ref), e.g. dd:tax_period. The set's kind DRIVES the
+          control the projector emits (typed.period -> period picker, md.registry ->
+          smart search, ...), overriding any naive control. The M-series gate refuses
+          an attribute that matches a dd set by name but is left primitive/unbound.
+      govstack:
+        type: object
+        description: >-
+          Attribute-level canonical GovStack mapping — the RegBB seam (ADR-011). The
+          authored semantic residue; attributes without it default to extension.<id> in
+          the emitted channel contract. Consumed by the regbb emitter (RB-01, 0.1.4).
+        required: [path]
+        additionalProperties: false
+        properties:
+          path: { type: string, description: "GovStack Person path, e.g. name.given[0], telecom[0].value." }
+          type_path: { type: string, description: "Companion type-field path, e.g. identifiers[0].type." }
+          type_value: { type: string, description: "Value written to type_path, e.g. NationalId." }
+          transform: { type: string, description: "Named transformation, e.g. date_ISO8601." }
+    allOf:
+      - if: { properties: { type: { const: enum } }, required: [type] }
+        then: { required: [vocabulary] }
+      - if: { properties: { type: { const: ref } }, required: [type] }
+        then: { required: [ref] }
+
+  lifecycle:
+    type: object
+    required: [status_attr, states, transitions]
+    additionalProperties: false
+    patternProperties: { "^x-": {} }
+    properties:
+      status_attr: { $ref: "#/$defs/attrId" }
+      engine:
+        enum: [status_framework, native]
+        default: status_framework
+        description: status_framework = catalog component provides transition execution + audit; native = plain field updates.
+      states:
+        type: array
+        minItems: 2
+        items:
+          type: object
+          required: [id]
+          additionalProperties: false
+          properties:
+            id: { $ref: "#/$defs/snakeId" }
+            name: { type: string }
+            initial: { type: boolean, default: false }
+            terminal: { type: boolean, default: false }
+            tone: { enum: [grey, blue, green, amber, red], description: "status_badge colour for this state; absent → grey (initial) / amber (intermediate) / green (terminal)." }
+      transitions:
+        type: array
+        minItems: 1
+        items:
+          type: object
+          required: [id, from, to]
+          additionalProperties: false
+          patternProperties: { "^x-": {} }
+          properties:
+            id: { $ref: "#/$defs/snakeId" }
+            from: { $ref: "#/$defs/snakeId" }
+            to: { $ref: "#/$defs/snakeId" }
+            trigger: { enum: [user, system, timer, process], default: user }
+            roles: { type: array, items: { $ref: "#/$defs/snakeId" }, description: "Authority matrix row: who may execute. Empty for system/timer." }
+            guard: { type: string, description: "Named rule or expression; realization decided at Stage 2 (route condition vs validator)." }
+            guard_expr: { type: string, pattern: "^[a-zA-Z][a-zA-Z0-9_]* (eq|ne|gt|lt|ge|le) [^|>]+$", description: "Machine-checkable predicate evaluated by the runtime engine against the record before the transition applies, e.g. 'total_amount eq 0'. Word operators (eq ne gt lt ge le) because '>' and '|' are config separators. Complements guard (the human-readable rule)." }
+            requires:
+              type: object
+              description: >-
+                A CROSS-RECORD PRECONDITION: when this transition is taken, a row must EXIST in
+                another entity, correlated to this one. The mirror of `uniqueness` — that refuses
+                when a count is positive, this refuses when a count is zero — and realized through
+                the SAME count-then-refuse validator on the form root (RequireGuard `exists`).
+                Added 2026-08-05 because ten of registration's fifteen guards were about ANOTHER
+                record and `guard_expr` reads one attribute of one row, so they were prose. One of
+                them was proved unenforced by walking a deregistration case through it with no
+                safeguard record. This is deliberately NOT a predicate language: it is one
+                existence test, correlated on one declared attribute, which is what the evidence
+                asked for and no more.
+              additionalProperties: false
+              required: [entity, match]
+              properties:
+                entity: { $ref: "#/$defs/snakeId", description: "The entity whose rows are counted." }
+                form: { $ref: "#/$defs/snakeId", description: "Which of that entity's forms carries the table; defaults to its only form." }
+                match:
+                  type: object
+                  additionalProperties: false
+                  required: [their]
+                  properties:
+                    their: { $ref: "#/$defs/snakeId", description: "The attribute on the OTHER entity that holds the correlation key." }
+                    ours: { type: string, default: id, description: "The attribute on THIS row it is compared to; `id` means this row's primary key." }
+                where: { type: string, description: "Additional predicate on the other entity, in the same bare form as lists[].default_scope; the projector qualifies it to HQL." }
+                message: { type: string, description: "What the officer is told when the precondition is not met." }
+            effects: { type: array, items: { $ref: "#/$defs/effect" } }
+            reason:
+              type: object
+              description: "Schema 0.2 (WP-E / ADR-071): AUD-02 (U009) — a discretionary transition captures a coded reason."
+              additionalProperties: false
+              properties:
+                required: { type: boolean, default: true }
+                vocabulary: { $ref: "#/$defs/snakeId" }
+
+  effect:
+    type: object
+    required: [type]
+    additionalProperties: true
+    properties:
+      type: { enum: [audit, notify, set_attr, component, emit_event, start_process] }
+      component: { $ref: "#/$defs/kebabId" }
+      template: { type: string, description: "For notify: message/email template id." }
+      to: { type: string, description: "For notify: role:<id> or attr:<id> address source." }
+      process:
+        $ref: "#/$defs/snakeId"
+        description: >
+          For start_process: the id of a `processes` entry to launch on arrival, with the
+          record bound so the activity's form opens on it. This is how a `trigger: process`
+          transition (a decision taken in a workflow activity, not from a form's action
+          select) ever becomes reachable by a human: no instance, no assignment, no task.
+          Declare it on the transition that ARRIVES at the state those decisions leave from.
+      attr: { $ref: "#/$defs/attrId" }
+      value: {}
+      config: { type: object, additionalProperties: true }
+
+  activity:
+    type: object
+    required: [id, kind]
+    additionalProperties: false
+    patternProperties: { "^x-": {} }
+    properties:
+      id: { $ref: "#/$defs/snakeId" }
+      name: { type: string }
+      kind: { enum: [human, tool] }
+      participant: { $ref: "#/$defs/snakeId", description: "Required for human activities." }
+      form: { type: string, description: "Form presented to the participant (human)." }
+      component: { $ref: "#/$defs/kebabId", description: "Catalog component executed (tool)." }
+      config: { type: object, additionalProperties: true }
+      outcomes:
+        type: array
+        description: Human decision outcomes; each maps to a lifecycle transition of the process entity.
+        items:
+          type: object
+          required: [id, transition]
+          additionalProperties: false
+          properties:
+            id: { $ref: "#/$defs/snakeId" }
+            label: { type: string }
+            transition: { $ref: "#/$defs/snakeId" }
+    allOf:
+      - if: { properties: { kind: { const: human } }, required: [kind] }
+        then: { required: [participant, form] }
+      - if: { properties: { kind: { const: tool } }, required: [kind] }
+        then: { required: [component] }
+
+  formField:
+    type: object
+    additionalProperties: false
+    patternProperties: { "^x-": {} }
+    properties:
+      attr: { $ref: "#/$defs/attrId" }
+      id: { $ref: "#/$defs/attrId" }
+      label: { type: string }
+      control:
+        enum: [text, textarea, number, select, radio, checkbox, date, datetime,
+               hidden, id_generator, file, lookup, calculation, concat, grid,
+               embedded_list, custom_html, smart_search, gis_polygon, custom,
+               wizard_slot]
+        description: >-
+          Bound fields derive a default control from the attribute type; set
+          only to override. Unbound fields must set it. `wizard_slot` (added
+          2026-08-08, owner full-fidelity objective) marks WHERE the form's
+          wizard element sits: the deployed reference-portal MultiPagedForm is
+          INSIDE a section between other elements (reference shell: QualityBanner
+          then wizard in mainSection), so position is semantic; the wizard
+          block still says WHAT. `custom` carries a deployed element verbatim
+          via config.element {className, properties} - the projector refuses
+          it without that body.
+      class_name: { type: string, description: "Fully-qualified element class when control = custom." }
+      readonly: { type: boolean, default: false }
+      held_by:
+        type: string
+        minLength: 1
+        description: >-
+          METHOD-2026-09-28-07 (the kit's gap G5): the system that holds this value, when another
+          system does — its name in words (e.g. "the accounting system"). The application shows
+          the value and no person changes it: the field is projected read-only, and where a
+          search's choice fills it, locked by the search (`locks`) and written by the choice. The
+          application holds the value only as the copy a search's record carries; reading it from
+          the system that holds it is the application's integration, and not the kit's.
+      options_query:
+        $ref: "#/$defs/snakeId"
+        description: >-
+          METHOD-2026-09-25-04, item 6 (L3): the options of this drop-down (or radio buttons) are
+          the rows of one of the model's `queries[]`, read over the record the form is opened
+          with. The query takes exactly one parameter, that record's identifier, written
+          `$P{<param>}` in its SQL; its first column is the value, its second the label, a third
+          the grouping. The form must carry a record (a `prefill` whose keySources read it from
+          the address). Realized by the enterprise JDBC options binder.
+      deletable: { type: boolean, default: false, description: "grid only: rows may be removed (FormGrid deleteGridData). Editable grids allow add/edit; this adds remove." }
+      required: { type: boolean, description: "Override; bound fields inherit from the attribute." }
+      child:
+        type: object
+        description: Required when control = grid — the one-to-many sub-form.
+        required: [entity, form]
+        additionalProperties: false
+        properties:
+          entity: { $ref: "#/$defs/snakeId" }
+          form: { type: string }
+          columns: { type: array, items: { $ref: "#/$defs/attrId" } }
+      validator: { type: object, additionalProperties: true }
+      config:
+        type: object
+        additionalProperties: true
+        description: "Element-specific extras passed through to the projector."
+        properties:
+          not_found:
+            type: string
+            description: >-
+              METHOD-2026-09-28-01: on a reference placed as a search (a ref to a data dictionary
+              registry, realised by the library's smart search element), the words shown when the
+              search finds nothing — the interaction design's References table, its cell When
+              nothing is found — with `{searched}` standing for what was typed. Projected onto the
+              element's property `notFound`; without it the element says that nothing was found.
+      provenance:
+        enum: [system, derived, source, master, selected, entered, external]
+        description: "PRE-01 (UX-01): the field's single provenance. Schema-optional (DP-2); U002 enforces presence per custody mode, and 'entered' additionally requires justification. Added under schema_version 0.1.6 (no version bump — DP-6, WP-E)."
+      justification: { type: string, description: "Required when provenance: entered (U002/PRE-02)." }
+      consumption:
+        enum: [sync_validate, cached_projection, frozen_snapshot]
+        description: "Required when provenance is master|selected (PRE-01/MDM-05; U013 later)."
+    oneOf:
+      - required: [attr]
+      - required: [id, control]
+    allOf:
+      - if: { properties: { control: { const: grid } }, required: [control] }
+        then: { required: [child] }

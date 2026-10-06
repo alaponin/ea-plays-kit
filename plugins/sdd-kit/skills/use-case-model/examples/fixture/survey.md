@@ -1,0 +1,15 @@
+<!-- Generated from the record headers by extract.py --write-survey. Never written by hand: a change goes into a use case file, and the survey is generated again. -->
+
+# The survey
+
+| Identifier | Name | Level | Primary actor | Status and priority | Format | Linked requirements | Entities | Business rules | Relationships | Package | One-line description |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| UC-01 | Run the allotment season | summary | Season calendar | Draft · High | brief | FR-SEA-001 | reads: Season; changes: Season | BR-SEA-01 | — | AP | The season calendar opens and closes the application window, and the season runs from the first application to the last allocation. |
+| UC-02 | Apply for a plot | user goal | Resident | Baselined · High | written out in full | FR-APP-001, FR-APP-002, FR-APP-003, CON-DAT-001 | reads: Resident, Season; changes: Application | BR-APP-01, BR-APP-02, BR-SEA-01 | includes UC-06, UC-07; extended by UC-04 | AP | The resident applies for a plot for the season and learns whether the application is accepted. |
+| UC-06 | Confirm the applicant's identity | subfunction | Resident | Draft · Medium | brief | FR-APP-002 | reads: Resident | — | included by UC-02 | AP | The registry confirms, through the identity service, who is applying. |
+| UC-07 | Check the applicant's residence | subfunction | Resident | Draft · Medium | brief | FR-APP-003, CON-DAT-001 | reads: Resident | BR-APP-02 | included by UC-02 | AP | The registry confirms, through the address register, that the applicant lives in the town. |
+| UC-03 | Allocate a plot | user goal | Garden officer | Reviewed · High | outline | FR-ALC-001, QR-AUD-001 | reads: Application, Plot, Resident; changes: Allocation | BR-ALC-01 | includes UC-08; extended by UC-05 | AL | The garden officer gives a free plot to the next accepted application. |
+| UC-04 | Pay the plot rent | user goal | Resident | Draft · Medium | brief | FR-PAY-001 | reads: Allocation; changes: Rent payment | BR-PAY-01 | extends UC-02 at the application is accepted when rent is due before the plot is handed over | AL | The resident pays the season's rent so that the plot can be handed over. |
+| UC-05 | Place an applicant on the waiting list | user goal | Garden officer | Draft · Medium | brief | FR-ALC-003 | reads: Application; changes: Waiting list entry | BR-ALC-01 | extends UC-03 at no plot is free when the applicant is placed on the waiting list | AL | The garden officer records an accepted application that no free plot can serve. |
+| UC-08 | Record the allocation decision | subfunction | Garden officer | Draft · Medium | brief | FR-ALC-002, QR-AUD-001 | reads: Application; changes: Allocation | BR-ALC-02 | included by UC-03 | AL | The registry records each allocation decision with the reason for it. |
+| UC-09 | Give up a plot | user goal | Resident | Draft · Low | brief | FR-REL-001 | reads: Allocation; changes: Allocation, Plot | — | — | AL | The resident gives a plot back during the season so that it can be allocated again. |

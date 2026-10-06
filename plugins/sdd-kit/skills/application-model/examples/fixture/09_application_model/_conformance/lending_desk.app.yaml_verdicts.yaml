@@ -1,0 +1,21 @@
+# The answers to the rules of the checklist of SDD-09 for lending_desk.app.yaml, one entry for each
+# rule, in the checklist's order. The model is the fixture of the skill application-model, written for
+# the lending desk of the library of a town called Eastbrook, which does not exist; it belongs to no
+# engagement. Every rule was answered by the program the checklist names for it, run over the model
+# (kit validate, exit 0: the interaction design admitted, then schema, lint, delta and contract ok).
+L001: {verdict: met, check: tools/validate.py}
+L002: {verdict: met, check: tools/validate.py}
+L003: {verdict: met, check: tools/validate.py}
+L004: {verdict: met, check: tools/validate.py}
+L005: {verdict: met, check: tools/validate.py}
+L006: {verdict: met, check: tools/validate.py}
+L007: {verdict: met, check: tools/validate.py}
+L008: {verdict: met, check: tools/validate.py}
+L009: {verdict: met, check: tools/validate.py}
+L010: {verdict: met, check: tools/validate.py}
+L011: {verdict: met, check: tools/validate.py}
+L012: {verdict: met, check: tools/validate.py}
+L013: {verdict: met, check: tools/validate.py}
+L014: {verdict: met, check: tools/validate.py}
+L015: {verdict: met, check: tools/validate.py}
+L016: {verdict: met, check: tools/validate.py}

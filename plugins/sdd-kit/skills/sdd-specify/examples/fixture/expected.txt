@@ -1,0 +1,4 @@
+the register examples/fixture/slots.yaml
+00 · none · no standard of the method governs this thing, so the method gives it no skill; the register's cell reads absent, owner T23 of the plan of the finish (SDD · work · the register names the skills and the route prints them)
+01 · the skill sdd-kit:requirements-catalogue · skills/requirements-catalogue/SKILL.md
+09 · the skill sdd-kit:application-model · skills/application-model/SKILL.md

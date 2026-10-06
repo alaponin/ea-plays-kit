@@ -1,0 +1,33 @@
+# What the model of the lending desk could not carry: one entry for each thing that could not
+# land, naming what it asked for, how it landed instead where any part of it did, and the construct
+# of the model it would need. A fixture of the method's application-model skill. The ledger beside
+# this file names each entry from the thing that could not land.
+losses:
+- id: L-LD-01
+  what: "The precondition of UC-LD-01 that the item is on the shelf: the item carries no state in this model."
+  landed_as: "The registered member and the item stand in the scenario's starting records (the fixture fx_desk); that the item is on the shelf is not asserted."
+  feeds: "A state of the item (on the shelf, on loan), held by the entity model and the shared registers, which neither extract carries."
+- id: L-LD-02
+  what: "The business rule BR-LD-01 that a member holds at most the number of items the library allows, which refuses the loan at extension 4a of UC-LD-01."
+  landed_as: "The rule's words stand as the guard of the move lend, with no guard_expr; the scenario t_ld01_refused states the refusal the rule asks for."
+  feeds: "A computed attribute counting the loans a member holds (a computation of the shared registers), and the setting of the most items a member may hold as a construct of the model."
+- id: L-LD-03
+  what: "The business rule BR-LD-02 that an item returned after its due date carries a fine."
+  landed_as: "The fine stands on the return as a read-only amount; the model does not compute it."
+  feeds: "An attribute of type computed with its formula, from a computation the shared registers do not yet carry."
+- id: L-LD-04
+  what: "The minimal guarantee of UC-LD-02, that the loan stands as it stood when the return is not confirmed."
+  landed_as: "Nothing: the only way the goal fails is the screen's act Back, and no scenario can leave a form unsaved."
+  feeds: "A scenario action for leaving a form without saving, which the acceptance section of the model does not list."
+- id: L-LD-05
+  what: "The setting of the most items a member may hold at once, set by the head librarian."
+  landed_as: "Nothing."
+  feeds: "A construct of the model for a setting with its owner and its class of change, which the shared registers' landing table names."
+- id: L-LD-06
+  what: "The event of a loan becoming overdue, published to the library's notice service."
+  landed_as: "The move fall_overdue, made by the system; nothing is published."
+  feeds: "An emit_event effect on that move naming the notice service's event, once the boundary with the service is specified."
+- id: L-LD-07
+  what: "Where each value on the screens came from, which the specification of the model has no field for."
+  landed_as: "The delivery kit's field provenance, on every field of the three forms."
+  feeds: "A field for a value's origin in the specification of the model, which its current edition does not describe."

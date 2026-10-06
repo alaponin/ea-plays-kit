@@ -1,0 +1,329 @@
+# The application model of the lending desk of the library of a town called Eastbrook, which does
+# not exist; it belongs to no engagement. A fixture of the method's application-model skill:
+# compiled from the two use cases in ../06_use_cases/, their screens in ../07_screens/, the
+# interaction design in ../08a_interaction_design/ and the extract in ../02_05_04_settled_once/,
+# by the landing tables the standards of the use case and of its screens carry. Where each thing
+# landed is recorded in landing.yaml beside this file, and what could not land in loss-report.yaml.
+model:
+  schema_version: 0.1.6
+  spec_version: 0.1.0
+  status: draft
+  authors:
+  - the fixture of the application-model skill
+  interaction_design:
+    path: ../08a_interaction_design/INTERACTION_DESIGN.md
+    sha256: 3b0e9ab4e18840fb2e6c59f95bbacee87eefb0af423711a54b7ff00945f08792
+app:
+  id: lending_desk
+  name: Lending desk
+  platform:
+    dx: '9.0'
+    edition: enterprise
+    db: postgres
+requirements:
+- id: FR-001
+  text: A member borrows an item at the desk.
+  source: the register of requirements of the lending desk, entry RQ-LD-01
+- id: FR-002
+  text: The desk receives a returned item and records its condition.
+  source: the register of requirements of the lending desk, entry RQ-LD-02
+features:
+- id: F01
+  name: Lend an item to a member
+  requirements: [FR-001]
+- id: F02
+  name: Receive a returned item
+  requirements: [FR-002]
+roles:
+- id: role_desk
+  name: Desk librarian
+- id: role_head_librarian
+  name: Head librarian
+- id: role_admin
+  name: Administrator
+catalog:
+- component: status-framework
+  version: '2.0.0'
+vocabularies:
+- id: member_category
+  name: Member category
+  maintained_by: role_admin
+  rows:
+  - {code: adult, name: Adult}
+  - {code: child, name: Child}
+  - {code: student, name: Student}
+  - {code: staff, name: Staff}
+- id: loan_period
+  name: Loan period
+  fixed: true
+  rows:
+  - {code: one_week, name: One week}
+  - {code: two_weeks, name: Two weeks}
+  - {code: three_weeks, name: Three weeks}
+- id: item_condition
+  name: Item condition
+  maintained_by: role_head_librarian
+  rows:
+  - {code: as_new, name: As new}
+  - {code: good, name: Good}
+  - {code: worn, name: Worn}
+  - {code: damaged, name: Damaged}
+  - {code: lost, name: Lost}
+entities:
+- id: member
+  name: Member
+  kind: main
+  table: ld_member
+  feature: F01
+  pk: {strategy: natural, attr: card_number}
+  attributes:
+  - {id: card_number, name: Card number, type: string, length: 12, required: true, unique: true}
+  - {id: name, name: Name, type: string, required: true}
+  - {id: category, name: Member category, type: enum, vocabulary: member_category, required: true}
+- id: item
+  name: Item
+  kind: main
+  table: ld_item
+  feature: F01
+  pk: {strategy: natural, attr: barcode}
+  attributes:
+  - {id: barcode, name: Barcode, type: string, length: 14, required: true, unique: true}
+  - {id: title, name: Title, type: string, required: true}
+- id: loan
+  name: Loan
+  kind: main
+  table: ld_loan
+  feature: F01
+  pk: {strategy: id_generator, attr: loan_no, format: 'LN-??????'}
+  attributes:
+  - {id: loan_no, name: Loan number, type: string, length: 12}
+  - {id: member, name: Member, type: ref, ref: {entity: member, display: card_number}, required: true}
+  - {id: member_name, name: Member name, type: string}
+  - {id: member_category, name: Member category, type: enum, vocabulary: member_category}
+  - {id: item, name: Item, type: ref, ref: {entity: item, display: barcode}, required: true}
+  - {id: item_title, name: Title, type: string}
+  - {id: period, name: Loan period, type: enum, vocabulary: loan_period, required: true}
+  - {id: due_date, name: Due date, type: date}
+  - {id: state, name: Loan state, type: string}
+  lifecycle:
+    status_attr: state
+    states:
+    - {id: new, name: New, initial: true, tone: grey}
+    - {id: on_loan, name: On loan, tone: blue}
+    - {id: overdue, name: Overdue, tone: amber}
+    - {id: returned, name: Returned, terminal: true, tone: green}
+    transitions:
+    - id: lend
+      from: new
+      to: on_loan
+      trigger: user
+      roles: [role_desk]
+      guard: This member already holds the most items a member may hold.
+      effects: [{type: audit}]
+    - id: fall_overdue
+      from: on_loan
+      to: overdue
+      trigger: system
+    - id: return_on_time
+      from: on_loan
+      to: returned
+      trigger: user
+      roles: [role_desk]
+      effects: [{type: audit}]
+    - id: return_late
+      from: overdue
+      to: returned
+      trigger: user
+      roles: [role_desk]
+      effects: [{type: audit}]
+- id: item_return
+  name: Return
+  kind: main
+  table: ld_return
+  feature: F02
+  pk: {strategy: id_generator, attr: return_no, format: 'RT-??????'}
+  attributes:
+  - {id: return_no, name: Return number, type: string, length: 12}
+  - {id: loan, name: Loan, type: ref, ref: {entity: loan, display: due_date}, required: true}
+  - {id: due_date, name: Due date, type: date}
+  - {id: condition, name: Condition on return, type: enum, vocabulary: item_condition, required: true}
+  - {id: fine, name: Fine due, type: decimal}
+forms:
+- id: frmLoan
+  name: Record the loan
+  entity: loan
+  purpose: create
+  feature: F01
+  use_case: UC-LD-01
+  persona: role_desk
+  trigger: {kind: record_action}
+  created_from: {entity: member, mechanism: action_on_source}
+  acts:
+  - {label: Lend the item, transition: lend}
+  sections:
+  - id: sec_loan
+    label: The loan
+    columns: 2
+    fields:
+    - {attr: loan_no, control: id_generator, readonly: true, provenance: system}
+    - {attr: member, control: smart_search, provenance: selected, config: {populate: 'name:member_name,category:member_category'}}
+    - {attr: member_name, readonly: true, provenance: derived}
+    - {attr: member_category, readonly: true, provenance: derived}
+    - {attr: item, control: smart_search, provenance: selected, config: {populate: 'title:item_title'}}
+    - {attr: item_title, readonly: true, provenance: derived}
+    - {attr: period, control: select, provenance: selected}
+    - {attr: due_date, readonly: true, provenance: derived}
+    - {attr: state, readonly: true, provenance: system}
+  permissions:
+    roles: [role_desk]
+- id: frmReturn
+  name: Confirm the return
+  entity: item_return
+  purpose: create
+  feature: F02
+  use_case: UC-LD-02
+  persona: role_desk
+  trigger: {kind: record_action}
+  sections:
+  - id: sec_return
+    label: The return
+    columns: 2
+    fields:
+    - {attr: return_no, control: id_generator, readonly: true, provenance: system}
+    - {attr: loan, control: smart_search, provenance: selected, config: {populate: 'due_date:due_date'}}
+    - {attr: due_date, readonly: true, provenance: derived}
+    - {attr: condition, control: select, provenance: selected}
+    - {attr: fine, readonly: true, provenance: derived}
+  permissions:
+    roles: [role_desk, role_head_librarian]
+- id: frmLoanReturned
+  name: Confirm the return of the loan
+  entity: loan
+  purpose: edit
+  feature: F02
+  use_case: UC-LD-02
+  persona: role_desk
+  trigger: {kind: record_action}
+  acts:
+  - {label: Confirm the return, transition: return_on_time}
+  - {label: Confirm the return, transition: return_late}
+  sections:
+  - id: sec_loan_returned
+    label: The loan
+    readonly: true
+    fields:
+    - {attr: loan_no, provenance: system, readonly: true}
+    - {attr: item_title, provenance: derived, readonly: true}
+    - {attr: member_name, provenance: derived, readonly: true}
+    - {attr: due_date, provenance: derived, readonly: true}
+    - {attr: state, provenance: system, readonly: true}
+  permissions:
+    roles: [role_desk]
+lists:
+- id: frmFindMember
+  name: Find the member
+  source: {entity: member}
+  use_case: UC-LD-01
+  default_scope: "card_number IS NOT NULL"
+  page_size: 20
+  sort: {by: card_number, dir: asc}
+  columns:
+  - {attr: card_number, label: Card number}
+  - {attr: name, label: Name}
+  - {attr: category, label: Category}
+  filters:
+  - {attr: card_number, type: text}
+  - {attr: name, type: text}
+  actions:
+  - {type: open_form, label: Choose this member, form: frmLoan}
+- id: frmFindLoan
+  name: Find the loan
+  source: {entity: loan}
+  use_case: UC-LD-02
+  default_scope: "state IN ('on_loan','overdue')"
+  page_size: 20
+  sort: {by: due_date, dir: asc}
+  columns:
+  - {attr: item_title, label: Title}
+  - {attr: member_name, label: Member}
+  - {attr: due_date, label: Due date, format: date}
+  - {attr: state, label: State, format: status_badge}
+  filters:
+  - {attr: item, type: text}
+  actions:
+  - {type: open_form, label: Choose this loan, form: frmReturn}
+navigation:
+  userview_id: uvLendingDesk
+  name: Lending desk
+  categories:
+  - id: cat_desk
+    label: The desk
+    roles: [role_desk, role_head_librarian]
+    menus:
+    - {type: list, label: Find a member, list: frmFindMember}
+    - {type: list, label: Find a loan, list: frmFindLoan}
+  - id: cat_opened_from_a_choice
+    label: Opened from a choice
+    roles: [role_desk, role_head_librarian]
+    hidden: true
+    menus:
+    - {type: form, label: Record the loan, form: frmLoan}
+    - {type: form, label: Confirm the return, form: frmReturn}
+    - {type: form, label: Confirm the return of the loan, form: frmLoanReturned}
+acceptance:
+  fixtures:
+  - id: fx_desk
+    seed: true
+    records:
+    - entity: member
+      alias: mb_adult
+      values: {card_number: '000000000001', name: A registered member, category: adult}
+    - entity: item
+      alias: it_book
+      values: {barcode: '00000000000001', title: A book on the shelf}
+    - entity: loan
+      alias: ln_new
+      state: new
+      values: {loan_no: LN-000001, period: two_weeks}
+    - entity: loan
+      alias: ln_on_loan
+      state: on_loan
+      values: {loan_no: LN-000002, period: two_weeks}
+    - entity: loan
+      alias: ln_overdue
+      state: overdue
+      values: {loan_no: LN-000003, period: one_week}
+  scenarios:
+  - id: t_ld01_lend
+    name: The desk lends an item to a member
+    feature: F01
+    given: {fixture: fx_desk, actor: 'role:role_desk'}
+    when:
+    - {action: execute_transition, entity: loan, 'on': ln_new, transition: lend}
+    then:
+    - {assert: entity_state, entity: loan, 'on': ln_new, state: on_loan}
+  - id: t_ld01_refused
+    name: The desk is refused a loan for a member who holds the most items
+    feature: F01
+    given: {fixture: fx_desk, actor: 'role:role_desk'}
+    when:
+    - {action: execute_transition, entity: loan, 'on': ln_new, transition: lend}
+    then:
+    - {assert: validation_error, entity: loan, 'on': ln_new}
+    - {assert: entity_state, entity: loan, 'on': ln_new, state: new}
+  - id: t_ld02_return_on_time
+    name: The desk receives an item returned on time
+    feature: F02
+    given: {fixture: fx_desk, actor: 'role:role_desk'}
+    when:
+    - {action: execute_transition, entity: loan, 'on': ln_on_loan, transition: return_on_time}
+    then:
+    - {assert: entity_state, entity: loan, 'on': ln_on_loan, state: returned}
+  - id: t_ld02_return_late
+    name: The desk receives an overdue item
+    feature: F02
+    given: {fixture: fx_desk, actor: 'role:role_desk'}
+    when:
+    - {action: execute_transition, entity: loan, 'on': ln_overdue, transition: return_late}
+    then:
+    - {assert: entity_state, entity: loan, 'on': ln_overdue, state: returned}

@@ -1,0 +1,214 @@
+# =============================================================================
+# Component config-contract mirror  (ADR-009 · ADR-016)
+# =============================================================================
+# The kit validates model `config`/`prefill` blocks against the CONTRACT of each
+# catalog component WITHOUT importing any Java. The canonical source is
+# registry.yaml in joget-platform-plugins; this file is a mirror. `source_sha256`
+# is a PROVENANCE stamp (which registry revision this mirror was synced from) — the
+# registry gains unrelated plugins over time, so the gate is NOT byte-identity. The
+# mirror-integrity test (tests/test_contracts.py) fails only if a mirrored component's
+# CONTRACT drifts from the canonical registry; re-sync this file when that happens.
+#
+# VERIFIED FINDING (ADR-016): of the "big three", only form-prefill carries a raw
+# model config block (forms[].prefill) with a published config-key contract. The
+# other two are realized STRUCTURALLY and validated by schema + L-rules, not by a
+# config-key list: status-framework via entities[].lifecycle (L005), approval-
+# service via processes[].approval + participants (L010). Their registry entries
+# publish classes/triggers/carriers, not a model config-key vocabulary.
+# =============================================================================
+mirror:
+  of: joget-platform-plugins/registry.yaml
+  registry_version: "0.11.0"
+  source_sha256: 0a1ea4e16043b01317ba0663b5bdf273a97b6d27514965169e43f9154ec680e3
+
+# Catalog carries the short generic component name (ADR-009); map it to the
+# registry id that owns the contract.
+catalog_aliases:
+  form-prefill: joget-form-prefill
+  lookup-field: joget-lookup-field
+  status-framework: joget-status-framework
+  approval-service: joget-decision-approval
+
+components:
+
+  joget-form-prefill:
+    version: "1.0.0"
+    maturity: stable   # ADR-050 ladder: stable = proven in >=2 contexts
+    config_keys: [enabled, onlyOnAdd, keySources, formId, table, matchField,
+                  filters, orderBy, orderNumeric, pickFirst, related, mappings, constants]
+    # Source-grounded schema for the forms[].prefill body (minus `component`).
+    # Verified against PrefillConfig.java (KeySource.source enum; Filter.op enum)
+    # and gen_forms.prefill_properties. Blocks unknown keys and bad enum values.
+    config_schema:
+      $schema: "https://json-schema.org/draft/2020-12/schema"
+      type: object
+      additionalProperties: false
+      properties:
+        enabled: { type: boolean }
+        onlyOnAdd: { type: boolean }
+        keySources:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [source]
+            properties:
+              source: { enum: [requestParam, loginUser, currentField, sessionAttr, workflowVar] }
+              name: { type: string }
+        formId: { type: string }
+        table: { type: string }
+        matchField: { type: string }
+        filters:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [field]
+            properties:
+              field: { type: string }
+              op: { enum: [eq, ne] }
+              value: { type: string }
+        orderBy: { type: string }
+        orderNumeric: { type: boolean }
+        pickFirst: { type: boolean }
+        related:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [formId]
+            properties:
+              formId: { type: string }
+              table: { type: string }
+              keyFrom: { type: string }
+              alias: { type: string }
+        mappings:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [to]
+            properties:
+              from: { type: string }
+              to: { type: string }
+        constants:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [to]
+            properties:
+              to: { type: string }
+              value: { type: string }
+
+  joget-status-framework:
+    version: "8.1-SNAPSHOT"
+    maturity: stable   # ADR-050 ladder: stable = proven in >=2 contexts
+    realization: structural   # entities[].lifecycle — schema + L005; no config-key contract
+    config_keys: []
+
+  joget-decision-approval:
+    version: "1.0.0"
+    maturity: stable   # ADR-050 ladder: stable = proven in >=2 contexts
+    realization: structural   # processes[].approval + participants — schema + L010
+    config_keys: []
+
+  # Other contracted foundation components (config-key allow-lists) — used when a
+  # post_actions[].config, form-field/datalist/menu config, or outbound config targets
+  # them. Non-exhaustive lists → unknown-key findings on these are warnings, not errors.
+  # Mirrors every joget-platform-plugins registry entry that publishes contract.config_keys.
+  joget-smart-search:
+    version: "8.2.0"
+    maturity: provisional   # element proven (two registry paths); generic-registry + populate config newly promoted (registry 0.9.3), value-shapes pending WP-7; the record search (recordTable ...) added in 8.2.0, built and tested, not yet deployed (METHOD-2026-09-28-01)
+    config_keys: [entityLabel, simpleSearch, displayColumns, storeValue, populate, idField,
+                  apiEndpoint, apiId, apiKey, nationalIdPattern, nationalIdMinLength,
+                  recordTable, exactColumn, fragmentColumn, resultColumns, locks, notFound]
+    # Form-element knobs the generators target (gen_forms smart_search emit). The plugin also
+    # publishes api_config_keys (SmartSearchApiPlugin generic-registry backend), validated
+    # separately — not part of the forms[].config contract mirrored here.
+  wf-activator:
+    version: "8.1-SNAPSHOT"
+    maturity: provisional   # ADR-050 ladder: stable = proven in >=2 contexts
+    config_keys: [serviceId]
+    # Groundable single-key contract (D4): serviceId is the sole config field, so this is a
+    # STRICT schema (unknown keys -> C001 error) rather than an advisory allow-list.
+    config_schema:
+      $schema: "https://json-schema.org/draft/2020-12/schema"
+      type: object
+      additionalProperties: false
+      required: [serviceId]
+      properties:
+        serviceId: { type: string }
+  form-quality-runtime:
+    version: "8.1-SNAPSHOT"
+    maturity: provisional   # ADR-050 ladder: stable = proven in >=2 contexts
+    config_keys: [formId, ruleLibrary, gate]
+  form-creator-api:
+    version: "8.1-SNAPSHOT"
+    maturity: stable   # ADR-050 ladder: stable = proven in >=2 contexts
+    config_keys: [appId, formJson, formIds, datalistJson, userviewJson]
+  joget-lookup-field:
+    version: "8.1-SNAPSHOT"
+    maturity: provisional   # ADR-050 ladder: stable = proven in >=2 contexts
+    config_keys: [sourceFieldId, lookupFormId, lookupColumn, lookupKeyColumn, updateOn,
+                  displayType, inputDebounceMs, notFoundMessage]
+  joget-concat-field:
+    version: "8.1-SNAPSHOT"
+    maturity: provisional   # ADR-050 ladder: stable = proven in >=2 contexts
+    config_keys: [sourceFields, separator, formatPattern, prefix, suffix, skipEmpty, updateOn, displayType]
+  joget-advanced-filters:
+    version: "8.1.0"
+    maturity: provisional   # ADR-050 ladder: stable = proven in >=2 contexts
+    config_keys: [targetMenuId, panelTitle, columns, applyLabel, collapsedByDefault, frameMinHeight, parameters]
+  tree-menu:
+    version: "8.1.12"
+    maturity: provisional   # ADR-050 ladder: stable = proven in >=2 contexts
+    config_keys: [mode, configTableName, binder, treeNodeLabel, treeNodeParentId, rootParentId,
+                  depth, showSearch, showBreadcrumb, pageSize, orderBy, order]
+  joget-rules-api:
+    version: "8.1-SNAPSHOT"
+    maturity: provisional   # ADR-050 ladder: stable = proven in >=2 contexts
+    config_keys: [info, fieldDefinitionForm, rulesetForm]
+  joget-rule-editor:
+    version: "8.1-SNAPSHOT"
+    maturity: provisional   # ADR-050 ladder: stable = proven in >=2 contexts
+    config_keys: [scopeCode, showDictionary, showSaveButton, rulesetCodeField, rulesetNameField,
+                  filterCategories, filterFieldTypes, filterLookupFormId, apiEndpoint, apiId, apiKey]
+  joget-event-chain:
+    version: "1.0.0"
+    maturity: provisional   # ADR-050 ladder: stable = proven in >=2 contexts
+    config_keys: [eventFormId, caseFormId]
+  joget-status-manager:
+    version: "1.0.0"
+    maturity: provisional   # ADR-050 ladder: stable = proven in >=2 contexts
+    config_keys: [caseFormId, taskFormId, docFormId]
+  joget-case-ops:
+    version: "1.0.0"
+    maturity: provisional   # ADR-050 ladder: stable = proven in >=2 contexts
+    config_keys: [linkFormId, linkTypeFormId, caseFormId, holdFormId, releaseFormId,
+                  requestFormId, responseFormId, taskFormId]
+  joget-sla:
+    version: "1.0.0"
+    maturity: provisional   # ADR-050 ladder: stable = proven in >=2 contexts
+    config_keys: [deadlineFormId, caseFormId, supervisorRole, taxpayerField, amountField]
+  joget-tenant:
+    version: "1.0.0"
+    maturity: provisional   # ADR-050 ladder: stable = proven in >=2 contexts
+    config_keys: [userTenantForm, defaultTenant]   # TenantContext.setDefaults (library; carriers: userTenant)
+
+  joget-unique-guard:
+    version: "1.0.0"
+    maturity: provisional   # ADR-050 ladder: stable = proven in >=2 contexts (live t02 on jdx7/9.0.5)
+    config_keys: [attrs, where, message]
+
+  joget-require-guard:
+    version: "1.0.0"
+    maturity: provisional   # one context so far: registration t03 refused live on jdx9/9.0.7
+    config_keys: [rules, exists]
+
+  joget-transition-guard:
+    version: "1.2.0"
+    maturity: provisional   # one context so far: the kit's lifecycle realisation on DX 9
+    config_keys: [entity, tableName, statusField, actionField, transitions, targetField,
+                  targetKeyColumn, targetForm, actForm, actTable, checkRoles, reasonField,
+                  copyFields]

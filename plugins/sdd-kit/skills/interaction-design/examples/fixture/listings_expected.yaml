@@ -1,0 +1,26 @@
+# The four listings the fixture's two screen records hold, written out by reading the records by
+# eye, so that the listing program's output can be compared with them as sets
+# (python3 scripts/listings.py ... --expect examples/fixture/listings_expected.yaml).
+# Each entry carries its columns in the order the program lists them.
+coded:        # screen, value, name, list
+  - [UC-LD-01-S01, V03, Member category, L01 member category]
+  - [UC-LD-01-S02, V02, Loan period, L02 loan period]
+  - [UC-LD-02-S02, V01, Condition on return, L03 item condition]
+references:   # screen, value, name, record · attribute, picked by the person
+  - [UC-LD-01-S01, V02, Member, loan · member, 'yes']
+  - [UC-LD-01-S02, V01, Item, loan · item, 'yes']
+  - [UC-LD-01-S02, V05, Member, loan · member, 'no']
+  - [UC-LD-02-S01, V02, Loan, return · loan, 'yes']
+  - [UC-LD-02-S02, V02, Loan, return · loan, 'no']
+states:       # record, screen, value
+  - [loan, UC-LD-01-S02, V04]
+  - [loan, UC-LD-02-S01, V03]
+acts:         # screen, act, words, stands on, leads to
+  - [UC-LD-01-S01, A01, Search, the screen, 'UC-LD-01-S01, the result']
+  - [UC-LD-01-S01, A02, Choose this member, a row of the result, UC-LD-01-S02]
+  - [UC-LD-01-S02, A01, Lend the item, the screen, 'ends the goal; the loan stands on loan']
+  - [UC-LD-01-S02, A02, Cancel, the screen, 'ends the goal; nothing is saved']
+  - [UC-LD-02-S01, A01, Search, the screen, 'UC-LD-02-S01, the result']
+  - [UC-LD-02-S01, A02, Choose this loan, a row of the result, UC-LD-02-S02]
+  - [UC-LD-02-S02, A01, Confirm the return, the screen, 'ends the goal; the loan stands returned']
+  - [UC-LD-02-S02, A02, Back, the screen, UC-LD-02-S01]

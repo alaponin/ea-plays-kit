@@ -1,0 +1,8 @@
+# The signers registry (UB-12, ex TA-01 T1; ADR-074's "signers registry" made real).
+# Two or more identities here ARM the separation-of-duties refusal in `kit gate sign`:
+# the signer must be registered and must NOT appear in the model's authors — the v1
+# author-as-signer warning (owner ruling 2026-07-18) is retired the moment this file
+# carries a second identity. Registered 2026-07-30 (ADR-089).
+signers:
+  - { id: "the owner",      role: owner,  note: "signs gates; never a model author" }
+  - { id: "the supplier",   role: author, note: "authors models; may not sign its own gate" }

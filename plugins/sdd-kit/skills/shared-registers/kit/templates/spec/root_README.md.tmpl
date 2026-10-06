@@ -1,0 +1,68 @@
+# {{SYSTEM}} — the specification
+
+**Scaffolded {{DATE}} by `kit spec new {{SYSTEM_ID}}`.** This folder holds one specification,
+written to the standards of the method: `SDD-01`, and the standard the table below names for each
+slot. Each slot's checklist and template are produced by its standard's build and stand in the
+delivery kit, under `templates/spec/checklists/` and `templates/spec/artefacts/`; `kit slot <n>`
+names both.
+
+## How it is laid out
+
+**One folder per thing `SDD-01` §4 names**, numbered in the order they come into existence.
+Each carries a `README.md` saying what it is, who writes it, what governs it, when it is
+written, and what a person working in it has to know.
+
+{{SLOT_TABLE}}
+
+Beside them: `_conformance/` the rule-by-rule claims · `_amendments/` what use teaches the
+standards · `_findings/` gaps with owners · `_rulings/` what the owner decided · `_sessions/`
+commissions and reports · `_machinery/` plans, renderers and checks · `_reviews/` generated
+pages for a person.
+
+**An empty slot is information.** It says the thing does not exist yet. No slot is ever
+filled to make the tree look finished.
+
+## The order the slots are written in
+
+`SDD-01` §5. Four things are settled **once for the whole system** — 00, 01, 02 at naming
+level, 03. The rest of the shared groundwork (05) sits below them. Three things are **walked
+again for every goal** — 06, 07, 08. The entity model (02) is **deepened to structural level
+as the goals demand it**. The architecture specification (04) runs **alongside, to the end**.
+All three per-goal things enter **the review** together. Then **the interaction design (08a)**
+reads the accepted screens of every goal the application model will carry, and the owner
+accepts it; and only then 09, which names it by its path and checksum, then 10.
+
+**A ratchet, not a one-way march: any step may be entered again, but only from above.**
+
+## What was carried into this folder
+
+{{CARRIED_BLOCK}}
+
+{{PRIOR_BLOCK}}
+
+## What this folder is for
+
+The specification is the visible output. **It is not the point.** The point is
+`_amendments/` — the list of places where a standard could not be followed, was ambiguous,
+cost more than it was worth, or turned out to be silent, each recorded with the moment it
+happened. That list is what amends the set; the specification is what proves the list was
+earned.
+
+`SDD-01` §16 states the condition this folder exists to change: *no document produced so far
+carries a conformance claim made rule by rule.*
+
+## The rules this folder is under
+
+- **What software generated is never edited by hand.** A correction goes into the source.
+- **A correction lands in the document that owns the fact**, never where it was noticed.
+- **A gap is a finding with an owner, never a local invention.** The most important rule of
+  all when an assistant is doing the writing.
+- **A claim that something follows a standard is made rule by rule, or it is not a claim.**
+- **Gaps stay open and counted.** Never signed off to turn a light green. A refusal is
+  answered, not worked around.
+- **Where the work stands is read from the work, never remembered.**
+- **`00_customer_documents/` is never edited, for any reason.**
+
+---
+*Scaffolded from the kit's `templates/spec/`. Every slot description in this tree comes
+from `templates/spec/slots.yaml`; a correction goes there and the tree is scaffolded again.*

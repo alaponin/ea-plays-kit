@@ -1,0 +1,30 @@
+# The answers to every rule of SDD-05's checklist for the fixture's model, from which
+#   python3 tools/kit.py conform 03 <this skill>/examples/fixture/use_case_model.md
+# writes the claim beside this file. A fixture: the answers are the fixture's own. The lines
+# whose program part scripts/check_model.py decides were answered from its output, which found
+# nothing; the rest were answered by reading the fixture. The checklist names no program for any
+# rule of SDD-05, so every answer is recorded as a person's ("no program").
+# M15: no slice has been cut from the fixture's model and no test written, so the trace ends at
+# the requirements. M20: no behaviour of the fixture has changed since it was written.
+M1: met
+M2: met
+M3: met
+M4: met
+M5: met
+M6: met
+M7: met
+M8: met
+M9: met
+M10: met
+M11: met
+M12: met
+M13: met
+M14: met
+M15: not applicable
+M16: met
+M17: met
+M22: met
+M18: met
+M19: met
+M20: not applicable
+M21: met

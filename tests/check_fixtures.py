@@ -21,8 +21,8 @@ shipped = {d for d in os.listdir(f"{PLUGIN}/skills")
            if os.path.isfile(f"{PLUGIN}/skills/{d}/SKILL.md")}
 
 # --- 2b: the description stays a trigger blurb, not a second body -------------
-# Every skill's description is loaded into context before any skill runs, so the 22 of
-# them are a standing cost. They reached 1,850 characters before 0.3.0, restating the
+# Every skill's description is loaded into context before any skill runs, so together
+# they are a standing cost. They reached 1,850 characters before 0.3.0, restating the
 # procedure the body already carries. Keep what selects the skill — what it makes, which
 # plays, the trigger phrases, a sibling disambiguator — and leave the rest to the body.
 # The ceiling is a ratchet: lower it when the longest come down, never raise it.
@@ -60,16 +60,18 @@ for name in sorted(shipped):
         ref = os.path.basename(f)
         check(ref in named or ref in SHARED,
               f"{name}: references/{ref} ships but SKILL.md never names it")
+# The play map keeps every play of the course: the GitBook reads its artefacts and inputs. A
+# play has a fixture when its primary skill ships (v0.5.0 carries four skills), and a fixture
+# never tests a skill that does not ship.
 for pid, m in MAP.items():
     d = f"{ROOT}/tests/plays/{pid}"
-    for f in ("input.md", "expected.md"):
-        check(os.path.isfile(f"{d}/{f}"), f"{pid}: missing {f}")
     check(isinstance(m["skill"], str) and m["skill"],
           f"{pid}: no primary skill")
-    check(m["skill"] in shipped,
-          f"{pid}: primary skill {m['skill']!r} does not ship in the plugin")
-    for s in m["also"]:
-        check(s in shipped, f"{pid}: also-runs skill {s!r} does not ship")
+    if m["skill"] in shipped:
+        for f in ("input.md", "expected.md"):
+            check(os.path.isfile(f"{d}/{f}"), f"{pid}: missing {f}")
+    else:
+        check(not os.path.isdir(d), f"tests/plays/{pid}: tests {m['skill']!r}, which does not ship")
 
 stray = set(os.listdir(f"{ROOT}/tests/plays")) - set(MAP) - {".DS_Store"}
 check(not stray, f"fixture folders not in play-map.json: {sorted(stray)}")
@@ -85,6 +87,9 @@ for pid in MAP:
               f"{pid}/expected.md: provenance field {field!r} not required")
     check("Posts, not names" in text, f"{pid}/expected.md: posts-not-names rule missing")
     check("no file, no chart" in text, f"{pid}/expected.md: text-only rule missing")
+    skill = re.search(r"\*\*Skill\*\* ([a-z0-9-]+) v", text)
+    check(skill is None or skill.group(1) in shipped,
+          f"{pid}/expected.md: header names {skill and skill.group(1)!r}, which does not ship")
 
 # The shared reference the skills read must define the same nine fields.
 ph = open(f"{PLUGIN}/shared/provenance-header.md").read()
@@ -92,7 +97,7 @@ for field in FIELDS:
     check(f"**{field}**" in ph, f"shared/provenance-header.md: field {field!r} undefined")
 
 # Its worked example names a version. A release that bumps plugin.json and forgets the
-# example ships fourteen copies of a stale one, so the bump is checked, not remembered.
+# example ships a stale copy in every skill, so the bump is checked, not remembered.
 version = json.load(open(f"{PLUGIN}/.claude-plugin/plugin.json"))["version"]
 check(f"v{version}" in ph,
       f"shared/provenance-header.md: header example does not name v{version}, "
@@ -101,6 +106,8 @@ check(f"v{version}" in ph,
 # --- 2: README maps every play to its primary skill --------------------------
 readme = open(f"{PLUGIN}/README.md").read() if os.path.isfile(f"{PLUGIN}/README.md") else ""
 for pid, m in MAP.items():
+    if m["skill"] not in shipped:
+        continue
     row = re.search(rf"^\|\s*{re.escape(pid)}\s*\|(.+)$", readme, flags=re.M)
     check(row is not None, f"{pid}: no row in the plugin README play table")
     if row:
@@ -232,13 +239,12 @@ check(os.path.isfile(f"{GIF}/progressa-supplement.md"),
 # --- 2: interoperability fixtures exist and are complete ------------------------
 for pid, m in MAP2.items():
     d = f"{GIF}/plays/{pid}"
-    for f in ("input.md", "expected.md"):
-        check(os.path.isfile(f"{d}/{f}"), f"gif/{pid}: missing {f}")
     check(isinstance(m["skill"], str) and m["skill"], f"gif/{pid}: no primary skill")
-    check(m["skill"] in shipped,
-          f"gif/{pid}: primary skill {m['skill']!r} does not ship in the plugin")
-    for s in m["also"]:
-        check(s in shipped, f"gif/{pid}: also-runs skill {s!r} does not ship")
+    if m["skill"] in shipped:
+        for f in ("input.md", "expected.md"):
+            check(os.path.isfile(f"{d}/{f}"), f"gif/{pid}: missing {f}")
+    else:
+        check(not os.path.isdir(d), f"tests/gif/plays/{pid}: tests {m['skill']!r}, which does not ship")
 stray2 = set(os.listdir(f"{GIF}/plays")) - set(MAP2) - {".DS_Store"}
 check(not stray2, f"gif fixture folders not in tests/gif/play-map.json: {sorted(stray2)}")
 
@@ -261,6 +267,8 @@ GIF_HEADING = "## Play → skill — the interoperability course"
 gif_readme = readme[readme.find(GIF_HEADING):] if GIF_HEADING in readme else ""
 check(bool(gif_readme), f"plugin README: no '{GIF_HEADING}' section")
 for pid, m in MAP2.items():
+    if m["skill"] not in shipped:
+        continue
     row = re.search(rf"^\|\s*{re.escape(pid)}\s*\|(.+)$", gif_readme, flags=re.M)
     check(row is not None, f"gif/{pid}: no row in the plugin README interoperability play table")
     if row:
@@ -296,10 +304,10 @@ for play, consumed in chain2_consumes.items():
 for play in MAP2:
     check(play in chain2_consumes, f"tests/gif/play-map.json: {play} has no row in workbook-chain-gif.md")
 
-# --- 11: the skills the interoperability GitBook names in its AI tips all ship --------
-# The three skill names the interoperability AI tips cite must ship under exactly those names.
-for name in ("gif-decree-draft", "gif-semantic-map", "gif-openapi-gen"):
-    check(name in shipped, f"the interoperability tips name `{name}`, which does not ship")
+# --- 11: the skill the interoperability GitBook names in its AI tips ships --------------
+# The decree tips name gif-decree-draft. gif-semantic-map and gif-openapi-gen, which the tips
+# of module 4 named, left the kit in v0.5.0; the GitBook names only skills that ship.
+check("gif-decree-draft" in shipped, "the interoperability tips name `gif-decree-draft`, which does not ship")
 
 
 # =============================================================================
@@ -339,11 +347,47 @@ for course in COURSES:
                   f"{tag}: input.md tests {tested.group(1)}, expected.md's header names {skill.group(1)}")
 
 
+# =============================================================================
+# 12: every skill in the repository passes the ITU Skills Marketplace's automated checks
+# (giga-marketplace.assembly.govstack.global/knowledgebase/checks): the marketplace makes each
+# folder holding a SKILL.md one skill, and installs it on its own.
+# =============================================================================
+SLUG = re.compile(r"^[a-z0-9-]{3,64}$")
+all_skills = sorted(glob.glob(f"{ROOT}/plugins/*/skills/*/SKILL.md"))
+for path in all_skills:
+    rel = os.path.relpath(path, ROOT)
+    text = open(path).read()
+    parts = text.split("---", 2)
+    check(text.startswith("---") and len(parts) == 3, f"{rel}: no frontmatter block")
+    if len(parts) != 3:
+        continue
+    fm, body = parts[1], parts[2]
+    name = re.search(r"^name:\s*(\S+)\s*$", fm, re.M)
+    check(name is not None and SLUG.match(name.group(1)) is not None, f"{rel}: name is not a valid slug")
+    check(name is None or name.group(1) == os.path.basename(os.path.dirname(path)),
+          f"{rel}: name differs from its folder")
+    for key in ("description", "license"):
+        check(re.search(rf"^{key}:", fm, re.M) is not None, f"{rel}: no {key}")
+    check(re.search(r"^metadata:\n(?:\s+.*\n)*?\s+provider:\s*\S", fm, re.M) is not None,
+          f"{rel}: no metadata.provider")
+    check(len(body.strip()) >= 80, f"{rel}: fewer than 80 characters of instructions")
+stray_skill_md = [os.path.relpath(p, ROOT) for p in glob.glob(f"{ROOT}/**/SKILL.md", recursive=True)
+                  if p not in all_skills]
+check(not stray_skill_md, f"SKILL.md outside plugins/*/skills/*/ would list as a skill: {stray_skill_md}")
+
+# --- 13: each sdd-kit skill carries an exact copy of the kit and the standards' text ----
+r = subprocess.run(["bash", f"{ROOT}/plugins/sdd-kit/scripts/sync-skills.sh", "--check"],
+                   capture_output=True, text=True)
+check(r.returncode == 0, f"sdd-kit copies drifted:\n{r.stderr.strip()}")
+
+
 if fails:
     print(f"FAIL — {len(fails)} problem(s):", file=sys.stderr)
     for f in fails:
         print(f"  - {f}", file=sys.stderr)
     sys.exit(1)
-print(f"ok — {len(MAP)} EA plays, {len(MAP2)} interoperability plays, {n_course_plays} DPI roadmap and "
-      f"service design fixtures, {len(shipped)} skills, provenance fields, "
-      f"README tables, one tagged Progressa and two consistent workbook chains all check out")
+n_fix = sum(m["skill"] in shipped for m in MAP.values()), sum(m["skill"] in shipped for m in MAP2.values())
+print(f"ok — {n_fix[0]} EA and {n_fix[1]} interoperability fixtures (of {len(MAP)} and {len(MAP2)} plays), "
+      f"{n_course_plays} DPI roadmap and service design fixtures, {len(shipped)} ea-plays skills, "
+      f"{len(all_skills)} skills passing the marketplace checks, provenance fields, README tables, "
+      f"one tagged Progressa, two consistent workbook chains and in-sync sdd-kit copies all check out")

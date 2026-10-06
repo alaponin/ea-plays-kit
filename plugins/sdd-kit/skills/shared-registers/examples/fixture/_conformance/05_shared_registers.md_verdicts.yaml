@@ -1,0 +1,53 @@
+# The answers to the rules of the checklist of SDD-04 for 05_shared_registers.md, one entry for each
+# rule, in the checklist's order. The register is the fixture of the skill shared-registers, written for
+# the loans module of the lending library of a town called Eastbrook, which does not exist; it belongs
+# to no engagement. Every rule was answered by a person reading the register, because the checklist
+# names no program for any rule. The one rule not met is recorded in the register as a finding with
+# an owner: the register names no source it is generated from (Part 2, its first line).
+IOS-1: met
+IOS-2: met
+IOS-3: not applicable
+IOS-4: not applicable
+IOS-5: not applicable
+IOS-19: met
+IOS-6: met
+IOS-7: met
+IOS-8: met
+IOS-9: met
+IOS-10: met
+IOS-11: met
+IOS-12: not applicable
+IOS-13: met
+IOS-14: met
+IOS-15: not met
+IOS-16: met
+IOS-17: met
+IOS-18: met
+IOS-20: met
+IOS-21: met
+IOS-22: met
+IOS-23: not applicable
+IOS-24: met
+IOS-25: met
+IOS-26: met
+IOS-27: met
+IOS-28: met
+IOS-29: met
+IOS-30: met
+IOS-31: met
+IOS-32: met
+IOS-33: not applicable
+IOS-34: met
+IOS-35: met
+IOS-36: met
+IOS-37: met
+IOS-38: met
+IOS-39: met
+IOS-40: met
+IOS-41: met
+IOS-42: met
+IOS-43: met
+IOS-44: met
+IOS-45: not applicable
+IOS-46: not applicable
+IOS-47: not applicable

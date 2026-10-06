@@ -1,0 +1,1345 @@
+# templates/spec/slots.yaml — the twelve things a specification is made of, and the
+# sixteen points at which one of them is handed to the next. How many of each there are is
+# stated once, under `counts:` below, and read from there by every program that reads this file.
+#
+# THE SINGLE PLACE EACH FACT LIVES. `kit spec new` renders every folder and every README
+# of a specification tree from this file and from nothing else. A correction to what a slot
+# is, who writes it, what governs it or when it is written goes HERE, and the tree is
+# scaffolded again.
+#
+# WHAT VERSION 2.0 ADDS. Version 1.0 carried one prose sentence per slot saying what
+# governed it. This edition carries, for each of the eleven, the four things that have to be
+# known before the thing can be written: where the standard is, where it is written how to
+# prepare the thing, how the seams with what comes before and after are made, and how the
+# result is checked. Those are the `standard`, `preparation`, `seams` and `check` fields.
+# Beside them stands `cadence`, which says whether the thing is settled once for the whole
+# system, walked again for every goal, run alongside the whole of it, or produced by nobody.
+# A new top-level `handovers:` section carries the fourteen crossings of the method
+# standard's figure 6.
+#
+# WHAT VERSION 2.1 ADDS (25 September 2026, METHOD-2026-09-25-12). The twelfth thing, the
+# interaction design, as slot 08a — numbered after the walk-through it follows so that no slot is
+# renumbered (rulings/2026-08-31-the-renumbering.yaml) — and the two handovers SDD-01 v3.3 adds
+# with it, 15 and 16, numbered after the last. And one new entry, `counts:`: how many things and
+# how many handovers the register holds. `tools/slot.py` refused any register without eleven rows
+# and fourteen handovers, a count written into its code; it now reads the counts here, so that a
+# new thing is a change to this file and to nothing else.
+#
+# WHAT IS TYPED AND WHAT IS RESOLVED. Every cell that names a document, an edition, a
+# section, a rule range, a path or a program is typed here and RESOLVED BY A PROGRAM against
+# the two roots — `tools/slot.py`, reached as `kit slot --check`. Four cells are derived
+# rather than authored: the edition, the standing and the rule range, which every standard
+# states on its own first page and in its own rule table, and the one-line `governs`
+# rendering that the scaffold prints. The program refuses a row whose typed value differs
+# from the document's. A cell whose knowledge does not exist carries the `absent` form with
+# the reason and an owner, and the program reports it on every use; it is never filled
+# locally.
+#
+# THE TWO ROOTS. Paths under `standard.file` are relative to the standards root; paths under
+# `check.program`, `preparation.template` and the `kit:` form of `how` are relative to the
+# kit root. The project's constants file names both, and the resolving program takes them as
+# arguments, so that no path of one machine is written here.
+#
+# INVARIANT 1 — this file carries no domain literal. No system name, no sector word, no
+# project. A slot description that only makes sense for one kind of system has leaked
+# testbed into product.
+
+# WHAT THE EDITION OF 28 SEPTEMBER 2026 ADDS (METHOD-2026-09-28-10). Three cells, all pointers.
+# `check.checklist` names the checklist the standard's build emits as its last step, under
+# templates/spec/checklists/, with the standard's edition and the checksum of its document in the
+# head; `kit slot --check` reports a checklist whose head no longer names the document standing in
+# the root. `preparation.template` names a template of the thing itself, emitted by the same build
+# under templates/spec/artefacts/, and never the scaffold's readme for the slot; `preparation.beside`
+# names the templates written beside it where the standard has one person write more than one
+# document (row 02). `skill` names the skill that helps a person build the thing, as plugin:skill;
+# a row for which the method has no skill reads absent, with its reason and its owner. The
+# checklists and the templates are copies of what the builds emit and are never edited here; the
+# builds are the five the estate's REGISTER_what_builds_what.md names, each ending by calling
+# _working/2026-09-28_the_checklists/emit_checklist.js. The format stays 2.1: no cell of 2.1 changed
+# its meaning, and `kit slot --check` holds the new cells.
+
+# WHAT THE EDITION OF 29 SEPTEMBER 2026 CHANGES (METHOD-2026-09-29-04). No cell changes its
+# meaning and the format stays 2.1. Four standards stand in new editions — SDD-02 v0.3, SDD-03
+# v0.6, SDD-06 v1.2 and SDD-07 v1.3 — and the rows citing them name those editions. Three
+# crossings whose act no standard stated now point where a standard states it: handover 2 at
+# SDD-03 §5, handover 9 at SDD-07 §15, and handover 11, with the seam from the entity model to
+# the application model, at the tables of SDD-06 §13 and SDD-07 §16. The walk-through's
+# preparation cell points at SDD-07 §15 in place of its reason for reading absent.
+
+# WHAT THE EDITION OF 29 SEPTEMBER 2026 CHANGES, SECOND (METHOD-2026-09-29-18). No cell changes its
+# meaning and the format stays 2.1. `sourced_from` names SDD-01 v3.4 of 29 September 2026, whose
+# section 4 adds a table of the folder each of the twelve things lives in, as the rows below render
+# it, and says that each standard's build produces its checklist and the template of each thing it
+# has a person write. Row 06 names its driver where the round of the application model moved it,
+# into the method's plugin (the review METHOD-2026-09-29-17, section 8, item 1).
+
+# WHAT THE EDITION OF 29 SEPTEMBER 2026 CHANGES, THIRD (METHOD-2026-09-29-24). No cell changes its
+# meaning and the format stays 2.1. Four standards come into force by the owner's ruling of 29
+# September 2026 (rulings/2026-09-29-four-draft-standards-in-force.yaml, point 1), each in a new
+# edition whose first page says so — SDD-03 v1.0, SDD-04 v1.0, SDD-08 v1.0 and SDD-09 v1.2 — and
+# rows 02, 04, 05 and 09 name those editions and read in force. `sourced_from` names SDD-01 v3.5, which
+# says the same of them. Row 09's `who` gives the person's part, under
+# rulings/2026-09-29-what-an-assistant-writes-a-person-approves.yaml: an assistant writes the model,
+# and a person reviews it and approves it or asks for adjustments.
+
+# WHAT THE EDITION OF 30 SEPTEMBER 2026 CHANGES (METHOD-2026-09-30-01). No cell changes its
+# meaning and the format stays 2.1. The `skill` cell of every row a person writes, and of the
+# walk-through the screens' skill produces, names the skill as plugin:skill: the ten skills of the
+# method's plugin that the target state (04_TARGET_STATE.md section 2) gives the rows.
+# Rows 00 and 10 read absent for good: the method has no skill for the customer's own documents,
+# and none for a working application generated from the model. `kit slot --check` gains its third
+# new check with them: a named skill must stand under the marketplace's plugins, carry the
+# standard of its row in its frontmatter and pin the edition the row names. `kit spec route`
+# prints, at each crossing, the skill of the row the crossing gives to.
+
+version: "2.1"
+sourced_from: "SDD-01 v3.5 of 29 September 2026, sections 4, 5 and 10"
+
+# THE COUNTS. How many things SDD-01 §4 names, which are the rows of `slots:`, and how many
+# handovers SDD-01 §10 numbers, which are the entries of `handovers:`, numbered one to the count.
+# `kit slot --check` holds the rows and the entries to these two numbers, and `kit spec map`,
+# `kit spec route` and `kit spec new` print them. They are stated here and nowhere else.
+counts:
+  things: 12
+  handovers: 16
+
+# Endpoints of a crossing that are not among the twelve. A handover may name one of these on
+# one side; anything else on either side is refused. Figure 6 carries three such crossings.
+outside:
+  built: The screens as they stand in a built system, read against the record that specified them
+  live: A running instance in the hands of the administration that owns it
+  world: The work of the people the instance was built for
+
+# Two decisions of the other programme's plan land in this file by citation and are not
+# restated in it. They are recorded here so that a reader of this file is not left to
+# discover them elsewhere.
+#   · one place for each of the three kinds of document, and
+#   · the emitted planning commission closing its decisions by the four routes,
+# both at round R5 of `_standards/_working/2026-09-14_orchestrator_implementation/`, which
+# this round discharges. See `_standards/_working/2026-09-14_improving_the_method/04_PLAN.md`
+# section M0, last paragraph.
+carried_by_citation:
+  - cites: "_standards/_working/2026-09-14_improving_the_method/04_PLAN.md, section M0"
+    what: >-
+      The two changes round R5 of the orchestrator layer's plan names — one place for each of
+      the three kinds of document, and the emitted commission closing decisions by the four
+      routes — are discharged by the round that wrote this edition and are not restated here.
+
+slots:
+
+  - n: "00"
+    dir: customer_documents
+    title: The customer's own documents
+    who: The customer
+    cadence: [once]
+    governs: "Nothing. Not ours to govern."
+    when: "Before everything. It is the input the whole method measures against."
+    standard:
+      absent: >-
+        Not ours to govern. SDD-01 §4 names this as the first of the twelve and places it
+        outside the set of things this organisation writes.
+      owner: the method's owner
+    preparation:
+      absent: >-
+        It is never edited, not even to convert. A text extraction beside it is a derived
+        file and not a replacement.
+      owner: the method's owner
+    seams:
+      takes: []
+      gives:
+        - to: "01"
+          what: its sentences, each carried into one entry with the document, the place and the words
+          declared_at: "SDD-02 §1, RQR-9"
+          handover: 1
+        - to: "02"
+          what: one module's written descriptions
+          declared_at: "SDD-03 §1; EM-46 to EM-51"
+          handover: 2
+    check:
+      absent: >-
+        The check is the receiving side's. A request that reaches nothing in the customer's
+        material is a finding raised there, not a conformance check of this thing.
+      owner: the method's owner
+    skill:
+      absent: >-
+        No skill of the method, and none is to be written: the target state
+        (04_TARGET_STATE.md section 2) gives this thing none, the round of
+        30 September 2026 (METHOD-2026-09-30-01) recorded that here, and
+        `kit slot --check` reports the cell on every use.
+      owner: the method's owner
+    notes: |
+      **It is never edited.** Not to fix a typo, not to renumber, not to convert. A text
+      extraction may be generated beside it and is a derived file, not a replacement.
+
+      Everything in every slot above this one is measured against what is here, and never
+      the other way round.
+
+  - n: "01"
+    dir: requirements_register
+    title: The register of requirements
+    who: "An assistant extracts it; the analyst rules on it"
+    cadence: [once]
+    governs: "`SDD-02` · RQR-3 to RQR-29 · **draft**"
+    when: >-
+      Once for the whole system, before the entity model and the use case model, because it
+      is one of the two things that measure them.
+    standard:
+      code: SDD-02
+      file: SDD-02_The_Requirements_Catalogue_v0.3.md
+      edition: "0.3"
+      standing: draft
+      rules: RQR-3 to RQR-29
+    preparation:
+      form: "§6 the record sheet for one entry; §7 the record sheet for the register as a whole"
+      template: templates/spec/artefacts/01_requirements_register.md
+    seams:
+      takes:
+        - from: "00"
+          what: the customer's sentences, each with its source line
+          declared_at: "SDD-02 §1, RQR-3, RQR-8, RQR-9"
+          handover: 1
+          how:
+            stated: "SDD-02 §1.3 where the register sits in the work; §4.1 completeness measured against the client's material; §6 the record sheet filled once for each entry"
+      gives:
+        - to: "03"
+          what: the stated requirements, bound in both directions to the goals
+          declared_at: "SDD-02 RQR-27 to RQR-29; SDD-05 M16"
+          handover: 3
+        - to: "04"
+          what: itself, read and its version recorded
+          declared_at: "SDD-08 §7.1"
+    check:
+      gate: "§8, checking the work"
+      checklist: templates/spec/checklists/SDD-02.md
+      program: none
+      conformance: "§11, how to say that you have followed this document — rule by rule, RQR-3 to RQR-29"
+    skill: sdd-kit:requirements-catalogue
+    notes: |
+      This register is one of the two measures the method rests on, and `SDD-01` §3 gives
+      the reason: *if the list of things that must be covered is drawn up from the design
+      itself, then measuring the design against it will always show that the design is
+      complete.* It is written by a separate act, before the design exists.
+
+      **Not one of `SDD-02`'s twenty-five rules cleared this organisation's evidence bar** —
+      its §12 says so on its face, and the standard's own first page repeats it. Expect this
+      slot to produce amendments.
+
+      Closed 22 September 2026 by clauses 3a and 3b of 03_ADDITIONS.md: SDD-02 v0.2 RQR-27
+      names the use case model and its standard (SDD-05) as the reader of the published
+      list, and SDD-05 v2.1 M16 names the register as published under SDD-02 RQR-27 as the
+      list a goal binds to. The person standing at it is unchanged: the model's owner at the
+      review (SDD-05 §11).
+
+  - n: "02"
+    dir: entity_model
+    title: The entity model, its glossary and its register of business rules
+    who: The analyst
+    cadence: [once, alongside]
+    governs: "`SDD-03` · EM-1 to EM-56 · **in force**"
+    when: >-
+      In two passes. The first pass is written BEFORE the use case model, so that it can
+      measure it. The second is deepened alongside, as the goals demand detail.
+    standard:
+      code: SDD-03
+      file: SDD-03_The_Entity_Model_v1.0.md
+      edition: "1.0"
+      standing: in force
+      rules: EM-1 to EM-56
+    preparation:
+      form: "§5, the form the analyst fills, in five parts, answered in two passes, the form itself saying which lines belong to the first (EM-56)"
+      template: templates/spec/artefacts/02_entity_model.md
+      beside:
+        - templates/spec/artefacts/02_glossary.md
+        - templates/spec/artefacts/02_business_rules.md
+    seams:
+      takes:
+        - from: "00"
+          what: one module's written descriptions
+          declared_at: "SDD-03 §1; EM-46 to EM-51"
+          handover: 2
+          how:
+            stated: "SDD-03 §5, how the records are found in the module's written descriptions: the four tests of EM-11 put to each thing they name, and the words that named it kept as its source line (EM-50)"
+        - from: "05"
+          what: the name of every setting a rule reads, and no value of it
+          declared_at: "SDD-03 EM-42; SDD-04 §4"
+          how:
+            stated: "SDD-04 §5.6, the form filled once for each setting; SDD-03 EM-42"
+      gives:
+        - to: "03"
+          what: the one word for every thing, the glossary, and the register of business rules
+          declared_at: "SDD-05 M17, M18, M22"
+        - to: "05"
+          what: the classification, issuer, publication and source line of every governed list
+          declared_at: "SDD-03 EM-46 to EM-51; SDD-04 IOS-28, IOS-31, IOS-32"
+        - to: "06"
+          what: the word the goal must use for every thing the system keeps a record of
+          declared_at: "SDD-06 U10, U11, U20"
+        - to: "07"
+          what: for every value whether this system is its authority, consumes it, or must not hold it
+          declared_at: "SDD-03 EM-19, EM-21; SDD-07 §6"
+          handover: 8
+        - to: "09"
+          what: the domain model, in the platform reference's word
+          declared_at: "SDD-09 §11, in S2C-01's vocabulary"
+    check:
+      gate: "§6, the quality check which is also the review gate — 6.1 what a program will refuse, C1 to C43, 6.2 what only a person can judge, 6.3 the gate"
+      checklist: templates/spec/checklists/SDD-03.md
+      program: none
+      conformance: "§11, rule by rule, EM-1 to EM-56"
+    skill: sdd-kit:entity-model
+    notes: |
+      `SDD-03`'s §5 is the centre of the standard and not an appendix: a form in five parts,
+      answered in two passes, and **a model is finished for a pass when every line of that
+      pass has an answer or a written reason for having none** (EM-56).
+
+      Adding detail in the second pass is allowed at any time. **Changing what the first
+      pass already said is a different act** and travels as a correction.
+
+      **The four findings the inception round raised against this standard, as they stand
+      today.** F-1, that the superseded version 0.4 stood in the root beside version 0.5, is
+      repaired: version 0.4 is in `x_archive/2026-09-15-superseded-by-the-rebuild/` and the
+      root holds one edition. F-4, that the root readme named version 0.4 and gave the rules
+      as EM-1 to EM-51, is repaired: the readme names version 0.5 and EM-1 to EM-56. F-2,
+      that the edition of record had no build source anywhere in the estate, is answered:
+      `_working/2026-09-15_the_rebuild/build/settings/SDD-03_v0_5.json` exists. F-3, that
+      the edition was written into the root with nothing recording it, stands as a fact
+      about how that edition arrived and cannot be repaired after the event.
+
+      **The crossing from the customer's descriptions into the first pass was the one place
+      in the method where a standard named the input, gave the form, and did not say what
+      to do.** Handover 2. Since `SDD-03` v0.6 the sentence at the head of its §5 says it,
+      and the cell above points there.
+
+  - n: "03"
+    dir: use_case_model
+    title: The use case model
+    who: One named architect
+    cadence: [once]
+    governs: "`SDD-05` · M1 to M22 · **in force**"
+    when: >-
+      Once for the whole system, after the register of requirements and after the first pass
+      of the entity model.
+    standard:
+      code: SDD-05
+      file: SDD-05_The_Use_Case_Model_v2.1.md
+      edition: "2.1"
+      standing: in force
+      rules: M1 to M22
+    preparation:
+      form: "§9 the model record, with §9.1 fixing the ten header fields; §13 a worked model"
+      template: templates/spec/artefacts/03_use_case_model.md
+    seams:
+      takes:
+        - from: "01"
+          what: the stated requirements, bound in both directions to the goals
+          declared_at: "SDD-02 RQR-27 to RQR-29; SDD-05 M16"
+          handover: 3
+          how:
+            stated: "SDD-05 M7 for every actor ask what goals; M8 naming them; M9 granularity by three tests; M10 refusing decomposition; M14 and M16 the two completeness conditions; §9.1 the header the binding is carried on"
+        - from: "02"
+          what: the one word for every thing, and the glossary for the rest
+          declared_at: "SDD-05 M17, M18, M22"
+          how:
+            stated: "SDD-05 M17 name exactly one entity model; M22 the glossary carries the rest"
+        - from: "03"
+          what: the goals checked against one another, from the survey generated out of their own headers
+          declared_at: "SDD-05 M13, M14, M19"
+          handover: 5
+          how:
+            stated: "SDD-05 M13 generate the survey from the use cases' record headers; M19 hold the model as versioned text; M14 the conditions read from it"
+      gives:
+        - to: "06"
+          what: one row of the survey, the boundary, and the catalogue of actors
+          declared_at: "SDD-06 §1, §3, U1"
+        - to: "04"
+          what: itself, read and its version recorded
+          declared_at: "SDD-08 §7.1"
+    check:
+      gate: "§11, the review"
+      checklist: templates/spec/checklists/SDD-05.md
+      program: none
+      conformance: "§1, *Claiming conformance* — rule by rule, M1 to M22"
+    skill: sdd-kit:use-case-model
+    notes: |
+      One boundary, the people outside it, every goal they need, and how those goals group
+      together. There is one per system.
+
+      `SDD-01` §5 gives the reason it comes before the descriptions: *without a document
+      that says how many goals there are, a team writes out the goals it happens to think
+      of.*
+
+      **The standard expects a program here and none exists.** M19 says that holding the
+      model as versioned text with the survey generated makes the conditions of M14 to M16
+      *checkable automatically*, and no program in the kit generates or reads that survey.
+      Handover 5 holds on a person.
+
+  - n: "04"
+    dir: architecture
+    title: The software architecture specification
+    who: The solution architect
+    cadence: [alongside]
+    governs: "`SDD-08` · ARC-1 to ARC-31 · **in force**"
+    when: >-
+      Alongside everything, to the end, and finished before the application model is begun.
+      It does not feed the entity model or the use cases and is not fed by them.
+    standard:
+      code: SDD-08
+      file: SDD-08_The_Software_Architecture_Document_v1.0.md
+      edition: "1.0"
+      standing: in force
+      rules: ARC-1 to ARC-31
+    preparation:
+      form: "§7, the form the architect fills, in six parts"
+      template: templates/spec/artefacts/04_architecture.md
+    seams:
+      takes:
+        - from: "01"
+          what: the register of requirements, read and its version recorded
+          declared_at: "SDD-08 §7.1"
+          how:
+            stated: "SDD-08 §7.1, the documents read with the version of each; §10 what it cites and never restates"
+        - from: "03"
+          what: the use case model, read and its version recorded
+          declared_at: "SDD-08 §7.1"
+          how:
+            stated: "SDD-08 §7.1, the documents read with the version of each"
+        - from: "02"
+          what: the record model, read and its version recorded, whose states every process must already carry
+          declared_at: "SDD-08 §7.1, §7.3, ARC-15"
+          how:
+            stated: "SDD-08 §7.3, part 3 filled once for each process, whose states must already stand in the record model (ARC-15)"
+      gives:
+        - to: "09"
+          what: what the application is built on
+          declared_at: "SDD-08 §1.4, §4"
+    check:
+      gate: "§8, the review gate — 8.1 what a program can check, of which none has been built, 8.2 what only a person can judge"
+      checklist: templates/spec/checklists/SDD-08.md
+      program: none
+      conformance: "§12, rule by rule, ARC-1 to ARC-31"
+    skill: sdd-kit:architecture-document
+    notes: |
+      What the application is built on: the platform binding, the components it switches
+      on, the machinery that runs its processes, what crosses its boundaries, and the
+      bespoke-code budget.
+
+      **Nothing that refuses in `SDD-08` rests on published practice.** Every refusal in it
+      is this organisation's own, and §13 says where the rules come from.
+
+      **`SDD-08` assigns this slot to a solution architect.** If nobody holds that role on
+      this system, that is a decision for the owner before the slot opens, not a gap to
+      work around.
+
+      **Where the list of processes comes from is not stated.** §7.3 is filled once for each
+      process and the form assumes the list; no document says which artefact publishes it.
+
+  - n: "05"
+    dir: shared_groundwork
+    title: The rest of the shared groundwork
+    who: "A person, assisted"
+    cadence: [once]
+    governs: "`SDD-04` · IOS-1 to IOS-47 · **in force**"
+    when: >-
+      Below the four things settled once, and before any goal is written out — because a
+      goal draws on it and may not invent what it does not find.
+    standard:
+      code: SDD-04
+      file: SDD-04_The_Shared_Registers_v1.0.md
+      edition: "1.0"
+      standing: in force
+      rules: IOS-1 to IOS-47
+    preparation:
+      form: "§5, the form the analyst fills in seven parts — §5.6 once for each setting, §5.7 once for each class of change"
+      template: templates/spec/artefacts/05_shared_registers.md
+    seams:
+      takes:
+        - from: "02"
+          what: the classification, issuer, publication and source line of every governed list
+          declared_at: "SDD-04 IOS-28, IOS-31, IOS-32; SDD-03 EM-46 to EM-51"
+          how:
+            stated: "SDD-04 §5.5, the form filled once for each governed list and once for each named selection of one; IOS-28, IOS-31 and IOS-32 cite the entity model's own row rather than restating it"
+      gives:
+        - to: "02"
+          what: the catalogue of settings by name, and no value
+          declared_at: "SDD-03 EM-42; SDD-04 §4"
+        - to: "06"
+          what: the records, events, computations, code lists and settings a goal may cite, by identifier
+          declared_at: "SDD-04 IOS-15 to IOS-18; SDD-06 U19 to U21, §8.1"
+          handover: 4
+        - to: "09"
+          what: what each register content owes the application model
+          declared_at: "SDD-04 §10"
+    check:
+      gate: "§6, the review gate in two halves, of which none runs yet"
+      checklist: templates/spec/checklists/SDD-04.md
+      program: none
+      conformance: "§11, rule by rule, IOS-1 to IOS-47"
+    skill: sdd-kit:shared-registers
+    notes: |
+      **Its first subject is identity, ownership and state** — what makes two rows the same
+      thing, who writes each fact, and the states a record moves through, which are the
+      families A to D of `SDD-04` and parts 1 and 2 of its form. The other four are the
+      catalogues of events, of computations, of shared code lists and of settings.
+
+      Everything a goal draws on but does not own, other than the records themselves: who
+      owns each fact, what states a record moves through, what makes two rows the same
+      thing, and the four catalogues beside them — events, computations, the code lists a
+      value may point at, and the settings the administration may change.
+
+      **Twenty-nine of `SDD-04`'s forty-seven rules cleared this organisation's evidence bar
+      and eighteen did not**, and seven of the twenty-nine cleared at a weaker shape than the
+      rule states. §9 gives the tally for each edition's rules separately.
+
+      A goal that needs a record, an event, a computation or a screen pattern this
+      groundwork does not have **may not invent one.** It raises a finding with an owner.
+      `SDD-01` §14 calls this the most important rule of all when an assistant is doing the
+      writing, *because inventing something plausible is the thing an assistant does best.*
+
+      **The one subject of this slot that `SDD-04` does not take is the vocabulary a screen
+      may be built from**, which is governed where it always belonged, by the enterprise
+      standard for what a person sees. `SDD-01` §17 records that what is thin there is the
+      pattern library and not the governance.
+
+      Closed 22 September 2026 by clause 4 of 03_ADDITIONS.md: SDD-04 v0.4 IOS-15 declares the
+      shape a register publishes as a setting, registers.published_set_shape, owned by the
+      module's architect, and closes OQ-12. Appointed the same day, in SDD-06 v1.1 §8.1: the
+      reviewer pair answers, at the use case's review, that every identifier the header cites for
+      something the shared registers publish resolves in the set published under SDD-04; that
+      line is also where the receiving side names the giving side. The giving side already named
+      the receiver (SDD-04 §1.4).
+
+  - n: "06"
+    dir: use_cases
+    title: One use case, written out in full
+    who: "An assistant writes it; a person rules on it"
+    cadence: [per-goal]
+    governs: "`SDD-06` · U1 to U21 · **in force**"
+    when: "Again for every goal. One folder per goal."
+    standard:
+      code: SDD-06
+      file: SDD-06_One_System_Use_Case_v1.2.md
+      edition: "1.2"
+      standing: in force
+      rules: U1 to U21
+    preparation:
+      form: "§7, the template written out in full; §3, choosing the form and the record the use case carries"
+      template: templates/spec/artefacts/06_use_case.md
+      driver: skills/sdd-specify/SKILL.md
+    seams:
+      takes:
+        - from: "03"
+          what: one row of the survey, the boundary, and the catalogue of actors
+          declared_at: "SDD-06 §1, §3, U1, §7.1"
+          how:
+            stated: "SDD-06 §3, state the level as written on this use case's row in the model's survey; U1, which form this use case gets is already written on its survey row; §7.1 the header copied from the model's decisions"
+        - from: "02"
+          what: the word the goal must use for every thing the system keeps a record of
+          declared_at: "SDD-06 U10, U11, U20"
+          how:
+            stated: "SDD-06 U10 refer to data by name only; U11 use the model's word, and if the word you need is in neither place, raise it; U20 record the entities read and changed"
+        - from: "05"
+          what: the records, events, computations, code lists and settings this goal cites, by identifier
+          declared_at: "SDD-06 U19 to U21, §8.1; SDD-04 IOS-15 to IOS-18"
+          handover: 4
+          how:
+            stated: "SDD-06 §1 the five things the writer has and may not decide; §3 choosing the form; §4 writing the flows; §7 the template written out in full; SDD-01 §7 the header written first so that every entry in it can be checked against the shared groundwork"
+        - from: "06"
+          what: the checkpoint lines the description is measured against before it is accepted
+          declared_at: "SDD-06 §8, U15"
+          handover: 6
+          how:
+            stated: "SDD-06 §8, run this on one use case at its review, in two halves — 8.1 what a reader can check, 8.2 what only a person can judge, 8.3 the gate; U15 the test that it can be built from, applied at the review and not while writing"
+      gives:
+        - to: "07"
+          what: the header, the numbered steps, the variations with their kinds and endings, the preconditions, both guarantees, and the stakeholders
+          declared_at: "SDD-07 §7"
+          handover: 7
+        - to: "09"
+          what: the goal written out in full
+          declared_at: "SDD-06 §13; SDD-09 §1 to §2, in S2C-01's vocabulary"
+          handover: 11
+    check:
+      gate: "§8, the review in two halves — 8.1 what a reader can check, 8.2 what only a person can judge, 8.3 the gate"
+      checklist: templates/spec/checklists/SDD-06.md
+      program: none
+      conformance: "§1, *Claiming conformance* — rule by rule, U1 to U21"
+    skill: sdd-kit:use-case-description
+    notes: |
+      This is where most of the work goes. One goal, one document, read by one person in
+      one sitting.
+
+      **The header is written before any prose** — every record, every event, every setting
+      and the set of screens that serves this goal, named first. `SDD-01` §7 says why: it
+      forces every silence into the open while it is still cheap.
+
+      **The measure of depth, in these words:** pointing at a section of another document
+      is not an answer, and the developer must not have to work anything out.
+
+      **This method departs from `SDD-06` in two declared ways** — a description carries
+      data at field level, and it carries detail the entity model was meant to hold.
+      `SDD-01` §9 declares both. **Any conformance claim made here must name them as part
+      of the claim.**
+
+      **The standard has no line for a setting, an event or a computation**, although
+      `SDD-04` §1.4 sends the showing of a setting in a use case's header and at its step to
+      this standard and to the standard for the screens. For three of the kinds of thing the
+      groundwork publishes, the receiving standard states no act. A finding with an owner.
+
+  - n: "07"
+    dir: screens
+    title: The screens of that use case
+    who: "Whoever wrote the use case, beside it"
+    cadence: [per-goal]
+    governs: "`SDD-07` · 1 to 32 · **in force**"
+    when: "After the use case is written out, never beside it."
+    standard:
+      code: SDD-07
+      file: SDD-07_The_Screens_of_a_Use_Case_v1.3.md
+      edition: "1.3"
+      standing: in force
+      rules: 1 to 32
+    preparation:
+      form: "§11 what to write down, with §4 working out the screens, §5 what a screen records and §6 where every value comes from"
+      template: templates/spec/artefacts/07_screen_record.md
+    seams:
+      takes:
+        - from: "06"
+          what: the four lists the set is measured against
+          declared_at: "SDD-07 §7"
+          handover: 7
+          how:
+            stated: "SDD-07 §4 working out the screens; §7 what the set must reach; §11 what to write down"
+        - from: "02"
+          what: for every value whether this system is its authority, consumes it, or must not hold it
+          declared_at: "SDD-07 §6; SDD-03 EM-19, EM-21"
+          handover: 8
+          how:
+            stated: "SDD-07 §6, the six questions asked of every value"
+      gives:
+        - to: "08"
+          what: the whole of its written record, and nothing else
+          declared_at: "SDD-07 §8, §9, §15"
+          handover: 9
+        - to: "08a"
+          what: >-
+            the accepted set of screens of every goal an increment of the model carries, read
+            together with the others into the interaction design
+          declared_at: "SDD-07 §15; SDD-11 §3, IXD-1"
+          handover: 15
+        - to: "09"
+          what: the set of screens
+          declared_at: "SDD-07 §16; SDD-09 §14, §16, in S2C-01's vocabulary"
+        - to: built
+          what: the screens as specified, set beside the screens as built
+          declared_at: "SDD-07 §12; SDD-01 §15"
+          handover: 10
+          how:
+            absent: >-
+              No document states what a person or a program does to set a built screen beside
+              its record. SDD-01 §15 names the measure and nothing states the act; no program
+              of the kit reads a screen record against a running instance.
+            owner: the method's owner
+    check:
+      gate: "§12, the review — twelve questions a person answers"
+      checklist: templates/spec/checklists/SDD-07.md
+      program: none
+      conformance: "§1, *What it means to claim conformance* — rule by rule, 1 to 32"
+    skill: sdd-kit:use-case-screens
+    notes: |
+      `SDD-01` §5 gives two reasons the screens come after and not beside. A screen worked
+      out while the story is still moving is a screen that will be drawn again, and drawing
+      is the most expensive thing in the sequence to repeat. The stronger reason is the
+      second: the screens are what make three documents visibly agree.
+
+      They are measured against **four lists the screens did not write** — all four already
+      in the use case, written earlier, for another purpose: its steps, its variations, the
+      records it names, the requirements it claims. Against each, two admissible answers
+      and no third: reached by a screen, or carrying a written reason for needing none.
+
+      **No figure comes out of this. No percentage is stated and none may be inferred.**
+
+      `SDD-07` supersedes `WF-01` v3.0, whose rules W1 to W30 name different rules and
+      **must not be cited against this document.**
+
+      **This standard and the enterprise standard for what a person sees each state a
+      derivation of a screen and neither names the other.** `SDD-07` §6 asks six questions of
+      every value; `UX-01` §5 asks Q0 and eight, of which the fourth is the same provenance
+      table. A finding with an owner.
+
+      Closed on the trace 22 September 2026 by clauses 7a and 7b of 03_ADDITIONS.md: SDD-07 v1.1
+      §15 places the set of screens on the chain between its goal and what is built, naming the
+      application model (SDD-09) and the use case model's trace (SDD-05); SDD-05 v2.1 M15 names the
+      set of screens, governed by SDD-07, as a link of the trace.
+
+  - n: "08"
+    dir: walkthrough
+    title: The walk-through a person clicks through
+    who: "**Nobody.** It is produced from the screens."
+    cadence: [produced]
+    governs: "`SDD-07` · 1 to 32 · **in force**"
+    when: "Produced whenever the screens change. Never before them."
+    standard:
+      code: SDD-07
+      file: SDD-07_The_Screens_of_a_Use_Case_v1.3.md
+      edition: "1.3"
+      standing: in force
+      rules: 1 to 32
+    preparation:
+      form: "§15, produced and never written: the delivery kit's program kit screens walk produces it from the whole of the written record; §8, what a person must be able to do in it"
+    seams:
+      takes:
+        - from: "07"
+          what: the whole of the written record of the screens, and nothing else
+          declared_at: "SDD-07 §8, §9"
+          handover: 9
+          how:
+            stated: "SDD-07 §15, what produces the walk-through: the delivery kit's program kit screens walk, from the whole of the written record and nothing else; SDD-07 §8, what a person must be able to do in it and what it never carries"
+      gives:
+        - to: "09"
+          what: the pages a counterpart agreed to, and nothing the record does not state
+          declared_at: "SDD-07 §8"
+    check:
+      gate: "§12, the same review"
+      checklist: templates/spec/checklists/SDD-07.md
+      program: none
+      conformance: "§1, *What it means to claim conformance* — rule by rule, 1 to 32"
+    skill: sdd-kit:use-case-screens
+    notes: |
+      **Two pictures kept by hand guarantee that one of them is wrong and that nothing says
+      which.** So there is one written record and the walk-through is made from it. Every
+      page carries the version of the record it came from.
+
+      A correction found here goes into the screens and the walk-through is made again.
+      **Never into the walk-through, and never into what was built.**
+
+      **`SDD-07` §11 requires each set to record how its walk-through was produced, by whom,
+      and when it was last produced — and until `SDD-07` v1.3 nothing said how one is
+      produced.** That is handover 9. Since v1.3 its §15 names the delivery kit's program
+      that produces it, `kit screens walk`, and the preparation and how cells above point there.
+
+  - n: "08a"
+    dir: interaction_design
+    title: The interaction design
+    who: "One analyst writes it; the owner accepts it"
+    cadence: [once]
+    governs: "`SDD-11` · IXD-1 to IXD-29 · **draft**"
+    when: >-
+      After the owner has accepted the use case description and the screen record of every goal
+      the application model will carry, and before the model is written; and again for every
+      increment of the model that takes in goals newly accepted. It is written once for those
+      goals together, never goal by goal.
+    standard:
+      code: SDD-11
+      file: SDD-11_The_Interaction_Design_v0.1.md
+      edition: "0.1"
+      standing: draft
+      rules: IXD-1 to IXD-29
+    preparation:
+      form: "§7 the form of the document, its seven parts and its five tables with fixed headings (IXD-26 to IXD-28), with §5 the four questions and §6 the listings and the pages"
+      template: templates/spec/INTERACTION_DESIGN.md.tmpl
+    seams:
+      takes:
+        - from: "07"
+          what: >-
+            the accepted screens of every goal an increment of the model carries, read together
+          declared_at: "SDD-11 §3, IXD-1, IXD-4; SDD-07 §15"
+          handover: 15
+          how:
+            stated: "SDD-11 §3, IXD-1 open the step only when every goal is accepted, and IXD-4 the acceptance recorded as baselined; SDD-11 §5 the four questions, asked once for each thing the goals hold; SDD-11 §6, IXD-24 the four listings produced by a program from the accepted screen records and compared with them as sets"
+        - from: "02"
+          what: the table of governed lists — whose each list is, who issues it, where it is published
+          declared_at: "SDD-11 §3, IXD-6; SDD-03 EM-19, EM-46 to EM-48"
+          how:
+            stated: "SDD-11 §3, IXD-6 read what the entity model owns and decide none of it again; SDD-11 §5.1 of every list of values the goals draw on, IXD-10 to IXD-14"
+        - from: "05"
+          what: the states and moves of each record, what fires each move and who may make it
+          declared_at: "SDD-11 §5.3, IXD-6, IXD-22; SDD-04 IOS-10 to IOS-12"
+          how:
+            stated: "SDD-11 §5.3, IXD-19 to IXD-22, read who may make each move from the groundwork and decide it nowhere else"
+        - from: "04"
+          what: the platform binding and the components it switches on, which say what can be realised
+          declared_at: "SDD-11 §1; SDD-08 §4"
+          how:
+            stated: "SDD-11 §1, what the analyst has in front of them; SDD-11 §4.1 the patterns, each with the construct of the kit that realises it"
+      gives:
+        - to: "09"
+          what: the accepted interaction design, which the model names by its path and its checksum
+          declared_at: "SDD-11 §8, §8.1, IXD-2, IXD-29"
+          handover: 16
+    check:
+      gate: "§9, the review, run by its writer before the document is put to the owner; §8, the gate after the step, which the kit enforces on the model at handover 16"
+      checklist: templates/spec/checklists/SDD-11.md
+      program: none
+      conformance: "§1, *Claiming conformance* — rule by rule, IXD-1 to IXD-29"
+    skill: sdd-kit:interaction-design
+    notes: |
+      **One document for the goals one writing of the application model carries**, read by one
+      analyst from the screens the owner accepted, and accepted by the owner on its own before
+      the model exists. It settles how a person picks a coded value, finds one record among many,
+      moves a record from one state to the next and acts on a record — and only what each
+      application decides. Everything the same for every application the kit generates without
+      design (SDD-11 §4).
+
+      **The step cannot be skipped.** The application model names the accepted document in
+      `model.interaction_design`, by its path relative to the model and its SHA-256 checksum,
+      and the kit refuses the model — in `kit validate`, `kit gen`, the build and the deploy, in
+      every custody mode, with nothing to turn it off — when the entry names no document, names
+      a missing file or another checksum, names one not baselined with a name and a date, or one
+      that does not cover a goal the model's screens name, or that the model's lists, references,
+      moves or acts contradict. That is rule L021 of `tools/validate.py`; handover 16.
+
+      **Write it from the kit's template**, `templates/spec/INTERACTION_DESIGN.md.tmpl`. SDD-11
+      fixes the parts and the table headings; the template fixes how each row names the
+      construct of the model it governs — the model's identifier between backticks — and which
+      words the gate reads in each column it compares.
+
+      **Its number, 08a, keeps every other slot where it was**: the renumbering of 31 August 2026
+      is recorded as an act nobody should repeat.
+
+      **SDD-11 is a draft.** It comes into force when the first document written to it has been
+      accepted, the model written from it admitted by the gate while the model before it is
+      refused, and the owner has accepted the edition that proof corrects.
+
+  - n: "09"
+    dir: application_model
+    title: The application model
+    who: "An assistant writes it, under refusal discipline; a person reviews it and approves it or asks for adjustments"
+    cadence: [once]
+    governs: "`SDD-09` · None of its own · **in force**"
+    when: >-
+      After the owner has accepted the interaction design of the goals it carries (slot 08a),
+      which itself follows the review of the goals, their screens and their walk-throughs; and
+      after the architecture specification is finished. It names the accepted interaction design
+      by its path and its checksum, and the kit refuses it otherwise. It is the last thing a
+      person edits at all.
+    standard:
+      code: SDD-09
+      file: SDD-09_The_Application_Model_v1.2.md
+      edition: "1.2"
+      standing: in force
+      rules: None of its own
+    preparation:
+      form: "§4 to §23, the model stated section by section and field by field"
+      template: application-model.schema.yaml
+    seams:
+      takes:
+        - from: "06"
+          what: the goal written out in full
+          declared_at: "SDD-09 §1 to §2, in S2C-01's vocabulary"
+          handover: 11
+          how:
+            stated: "SDD-06 §13, what a use case owes the application model — 13.1 what it carries, 13.2 what the model of a goal reads from the documents settled once; SDD-07 §16, what the set owes the application model"
+        - from: "07"
+          what: the set of screens, and the decision of the review that the set may be built from
+          declared_at: "SDD-09 §14, §16; SDD-01 §11; SDD-07 §12"
+          how:
+            stated: "SDD-01 §11, the review — who is in the room, what they are given beforehand, what only a person can settle, what is recorded afterwards; SDD-07 §12 the twelve questions"
+        - from: "02"
+          what: the domain model — record to entity, attribute to attribute, relationship to reference
+          declared_at: "SDD-09 §11, in S2C-01's vocabulary"
+          how:
+            stated: "SDD-06 §13.2, the rows for an attribute, a relationship, a governed list and a glossary term; SDD-06 §13.1, the row for a record"
+        - from: "05"
+          what: what each register content owes the application model
+          declared_at: "SDD-04 §10"
+          how:
+            stated: "SDD-04 §10, what it owes the application model — a table from each register content to the section of SDD-09 it lands in, with five rows reading no landing site"
+        - from: "04"
+          what: what the application is built on
+          declared_at: "SDD-08 §1.4, §4"
+          how:
+            stated: "SDD-08 §4, the five places the work lands; §7 parts 1, 2, 4 and 5"
+        - from: "08a"
+          what: >-
+            the accepted interaction design, named in the model's entry model.interaction_design
+            by its path and SHA-256 checksum, and each decision of its Lists, References, Moves
+            and Acts tables carried into the construct of the model that realises it
+          declared_at: "SDD-11 §8.1, §8.2, IXD-2"
+          handover: 16
+          how:
+            kit: "application-model.schema.yaml, the entry model.interaction_design; tools/validate.py, rule L021, the nine checks; tools/interaction_design.py, the reading of the document; templates/spec/INTERACTION_DESIGN.md.tmpl, how a row names its construct; tools/kit.py, tools/build_app.py and tools/deploy_dx9.py, the same check first at every entry point"
+      gives:
+        - to: "10"
+          what: the model, and what the validator admits
+          declared_at: "SDD-09 §24; SDD-01 §4"
+          handover: 12
+    check:
+      gate: "§24, validation in four levels"
+      checklist: templates/spec/checklists/SDD-09.md
+      program: tools/validate.py
+      conformance:
+        absent: >-
+          SDD-09 states no conformance clause. It carries no rules of its own, and §24 states
+          the checks the model must pass rather than how a claim of conformance is made.
+        owner: the method's owner
+    skill: sdd-kit:application-model
+    notes: |
+      This is where the specification stops being written for people and becomes something
+      a program reads.
+
+      A fault found in the application model goes back into **the description or the set of
+      screens that asserted it**, never into the model.
+
+      **This is the one of the twelve with a running program at its check**, and the program
+      does not name this standard: `tools/validate.py` cites the platform reference and the
+      delta register, and performs the first three of §24's four levels. Recorded as a
+      finding of the inception round and not repaired here.
+
+      **Five sections of this model have no upstream artefact among the twelve** — named
+      queries (§10), navigation (§16), dashboards (§17), composite views (§18) and reports
+      (§19). The route from the register of requirements arrives at them with nothing to
+      compile from. A finding with an owner, and the `how` cells of this slot say nothing
+      about them because nothing does.
+
+      Still broken on 22 September 2026. Clause 11b is clause 7a and landed with it: SDD-07 v1.1
+      §15 names the application model (SDD-09). Clause 11a was not written: it opens SDD-09, which a
+      customer holds at version 1.1 as a draft for review, and what that customer is told about a
+      version 1.2 is unsettled — entry 8 of
+      `_standards/_working/2026-09-21_the_decisions_and_the_application/RECOMMENDATIONS.md`, not
+      accepted by its review, its second attempt held. SDD-09 still names neither SDD-06 nor SDD-07.
+
+  - n: "10"
+    dir: application
+    title: The working application
+    who: "**Nobody.** It is generated."
+    cadence: [produced]
+    governs: >-
+      Nothing governs it — and whether that is right is an argument rather than a fact,
+      recorded as an open finding against `SDD-01` §4, figure 2.
+    when: "After everything."
+    standard:
+      absent: >-
+        Nothing governs it. SDD-01 §4, figure 2, row 10 names it as one of the twelve and no
+        standard of the set is written for it; whether that is right is an open finding
+        against that figure.
+      owner: the method's owner
+    preparation:
+      absent: >-
+        Nobody writes it. It is generated from the application model, and nothing in it is
+        edited by hand.
+      owner: the method's owner
+    seams:
+      takes:
+        - from: "09"
+          what: the model, stamped with the version that produced every generated file
+          declared_at: "SDD-09 §24, §25; SDD-01 §4"
+          handover: 12
+          how:
+            kit: "GETTING-STARTED.md §5 the command reference, §7 generation flow in detail; DEPLOY.md §1 the build; tools/kit.py; tools/build_app.py; tools/validate.py"
+      gives:
+        - to: live
+          what: a build, with what proves it
+          declared_at: "SDD-01 §1"
+          handover: 13
+          how:
+            kit: "DEPLOY.md §2; tools/kit.py; tools/deploy_dx9.py"
+        - to: world
+          what: a task a person actually finishes, and the record that they did
+          declared_at: "SDD-01 §3"
+          handover: 14
+          how:
+            kit: "tools/ui_journey.py, journeys declared with the application and driven through real screens; tools/run_suite.py over the scenarios SDD-09 §22 puts in the model"
+    check:
+      absent: >-
+        SDD-01 §3 requires one check in every piece of work to end somewhere other than in a
+        document, which is a rule of the method and not a conformance check of this thing.
+      owner: the method's owner
+    skill:
+      absent: >-
+        No skill of the method, and none is to be written: the target state
+        (04_TARGET_STATE.md section 2) gives this thing none, the round of
+        30 September 2026 (METHOD-2026-09-30-01) recorded that here, and
+        `kit slot --check` reports the cell on every use.
+      owner: the method's owner
+    notes: |
+      **What this folder keeps is built, never written by hand:** the archive the kit's build
+      made from the model (`<app>.jwa`), the admission record `tools/build_app.py` writes beside
+      it (`<app>.admission.yaml`), and their checksums. Nothing in it is edited. It exists so
+      that the last of the twelve things is visible rather than assumed.
+
+      What software generated is never edited by hand. A fault goes into the pattern, the
+      generator or the model — in that order of preference. **Never into the generated
+      file.**
+
+      **The two crossings past this slot are stated in the kit and in no standard of the
+      set.** The method standard's §1 places everything after a checked description
+      elsewhere, and the delivery kit is that elsewhere. Handovers 13 and 14.
+
+# ---------------------------------------------------------------------------------------
+# The sixteen crossings of SDD-01 §4 and §10, figure 6 — as many as `counts.handovers` states.
+#
+# `from` and `to` are a slot number of this file or an endpoint declared under `outside:`
+# above; anything else is refused. `declared_by` gives the two sides' own declarations, and
+# every section and rule it names must stand in the edition of record the slot row cites.
+# `closes_with` names the clause of `03_ADDITIONS.md` that closes a break; when the clause
+# lands, the field is emptied and `state` becomes `holds`.
+#
+# A handover's `how` is not carried here. It is the `how` of the one seam entry of a slot row
+# that carries the handover's number, and `kit slot --check` refuses a handover whose number
+# no seam entry carries, and a number carried by more than one. The entry and the handover
+# must agree on their ends: a `takes` entry on slot X carrying handover h has h.to equal to X
+# and h.from equal to the entry's `from`; a `gives` entry on slot X carrying handover h has
+# h.to equal to the entry's `to`, and h.from equal to X or an endpoint declared under
+# `outside:`. Thirteen of the sixteen are carried by a `takes` entry; the three whose receiving
+# end is not one of the twelve — 10, 13 and 14 — are carried by the `gives` entry of the slot
+# that reaches that end, because the register has no other entry for them.
+#
+# The verdicts below are the seams round's, at
+# `_standards/_working/2026-09-15_the_seams/00_WHAT_IS_WRITTEN.md` sections 2 and 6, and the
+# states are `02_SCHEMA.md` section 3's. They are copied here and not re-derived.
+#
+# EXCEPT rows 3, 4, 7, 10 and 11, which were brought on 22 September 2026, by the round carrying
+# out METHOD-2026-09-22-07, to what the standards say after it amended them: SDD-02 v0.2,
+# SDD-04 v0.4, SDD-05 v2.1, SDD-06 v1.1 and SDD-07 v1.1. The comment above each of those rows
+# says what closed it, or what stands in the way. The round's report is
+# `_standards/_working/2026-09-22_the_crossings_closed/`.
+# ---------------------------------------------------------------------------------------
+
+handovers:
+
+  - h: 1
+    from: "00"
+    to: "01"
+    crosses: the customer's sentences, one entry each
+    condition: >-
+      every entry names its document, the place within it and the words that were there
+      (SDD-02 RQR-9)
+    declared_by:
+      giving: "SDD-02 §1, RQR-9"
+      receiving: "SDD-02 RQR-3, RQR-8, RQR-9"
+    names_each_other: true
+    stands_at: person
+    state: holds
+    closes_with: ""
+
+  - h: 2
+    from: "00"
+    to: "02"
+    crosses: one module's written descriptions
+    condition: >-
+      the first pass measures against the customer's words, sentence by sentence
+      (SDD-03 EM-46 to EM-50); the register and the model are written in parallel from the
+      same material
+    declared_by:
+      giving: "SDD-03 §1"
+      receiving: "SDD-03 §5, EM-11, EM-46 to EM-51"
+    names_each_other: true
+    stands_at: person
+    state: holds
+    closes_with: ""
+
+  # Closed 22 September 2026 by clauses 3a and 3b of 03_ADDITIONS.md: SDD-02 v0.2 RQR-27 names
+  # the use case model and its standard (SDD-05) as the reader of the published list, and
+  # SDD-05 v2.1 M16 names the register as published under SDD-02 RQR-27 as the list a goal
+  # binds to. The person standing at it is unchanged: the model's owner at the review (SDD-05 §11).
+  - h: 3
+    from: "01"
+    to: "03"
+    crosses: the stated requirements, bound in both directions to the goals
+    condition: >-
+      every stated requirement is realised by at least one goal and every goal realises at
+      least one stated requirement (SDD-05 M16); the list bound to is the register's
+      published list (SDD-02 RQR-27)
+    declared_by:
+      giving: "SDD-02 RQR-27 to RQR-29"
+      receiving: "SDD-05 M16"
+    names_each_other: true
+    stands_at: person
+    state: holds
+    closes_with: ""
+
+  # Closed 22 September 2026 by clause 4 of 03_ADDITIONS.md: SDD-04 v0.4 IOS-15 declares the
+  # shape a register publishes as a setting, registers.published_set_shape, owned by the
+  # module's architect, and closes OQ-12. Appointed the same day, in SDD-06 v1.1 §8.1: the
+  # reviewer pair answers, at the use case's review, that every identifier the header cites for
+  # something the shared registers publish resolves in the set published under SDD-04; that
+  # line is also where the receiving side names the giving side. The giving side already named
+  # the receiver (SDD-04 §1.4).
+  - h: 4
+    from: "05"
+    to: "06"
+    crosses: the records, events, computations, code lists and settings a goal cites, by identifier
+    condition: >-
+      every identifier a goal cites resolves in a published set (SDD-06 U19 to U21); the
+      giving side declares the shape of what it publishes
+    declared_by:
+      giving: "SDD-04 IOS-15 to IOS-18"
+      receiving: "SDD-06 U19 to U21, §8.1"
+    names_each_other: true
+    stands_at: person
+    state: holds
+    closes_with: ""
+
+  - h: 5
+    from: "03"
+    to: "03"
+    crosses: one owner for each computation, no event published by nobody, no state nothing can reach
+    condition: >-
+      the survey is generated from the use cases' own headers and not kept beside them
+      (SDD-05 M13, M19), so that the conditions of M14 to M16 can be read from it
+    declared_by:
+      giving: "SDD-05 M13, M19, §9.1"
+      receiving: "SDD-05 M14, M16"
+    names_each_other: true
+    stands_at: person
+    state: holds
+    closes_with: ""
+
+  - h: 6
+    from: "06"
+    to: "06"
+    crosses: the checkpoint lines of the standard for one use case
+    condition: >-
+      every line of SDD-06 §8 is answered, and the record header stands in the form a
+      program reads
+    declared_by:
+      giving: "SDD-06 §7"
+      receiving: "SDD-06 §8, U15"
+    names_each_other: true
+    stands_at: person
+    state: holds
+    closes_with: ""
+
+  # Closed on the trace 22 September 2026 by clauses 7a and 7b of 03_ADDITIONS.md: SDD-07 v1.1
+  # §15 places the set of screens on the chain between its goal and what is built, naming the
+  # application model (SDD-09) and the use case model's trace (SDD-05); SDD-05 v2.1 M15 names the
+  # set of screens, governed by SDD-07, as a link of the trace.
+  - h: 7
+    from: "06"
+    to: "07"
+    crosses: >-
+      the header, the numbered steps, the variations with their kinds and endings, the
+      preconditions, both guarantees, and the stakeholders
+    condition: >-
+      the set is measured against the four lists the use case wrote earlier for another
+      purpose (SDD-07 §7), and the set stands on a link of the chain of traceability
+    declared_by:
+      giving: "SDD-06 §7"
+      receiving: "SDD-07 §4, §7, §11, §15"
+    names_each_other: true
+    stands_at: person
+    state: holds
+    closes_with: ""
+
+  - h: 8
+    from: "02"
+    to: "07"
+    crosses: >-
+      for every value, whether this system is its authority, consumes it or must not hold it,
+      and the least the records require of it
+    condition: >-
+      every value on a screen answers where it came from with one of four admissible answers
+      (SDD-07 §6), and the fifth the entity model admits never appears (SDD-03 EM-19, EM-21)
+    declared_by:
+      giving: "SDD-03 EM-2, EM-19, EM-21"
+      receiving: "SDD-07 §6"
+    names_each_other: true
+    stands_at: person
+    state: holds
+    closes_with: ""
+
+  - h: 9
+    from: "07"
+    to: "08"
+    crosses: the whole of the written record of the screens, and nothing else
+    condition: >-
+      every page carries the record's identifier, version and standing, and a page whose
+      version is not the record's is stale (SDD-07 §8, §9)
+    declared_by:
+      giving: "SDD-07 §8, §9, §11"
+      receiving: "SDD-07 §8, §15"
+    names_each_other: true
+    stands_at: person
+    state: holds
+    closes_with: ""
+
+  # Appointed 22 September 2026, in SDD-07 v1.1 §12: once something is built from a set, its
+  # owner answers for reading what was built against it, and whether each screen was built as
+  # its record states is recorded against the screen. The same paragraph names the measure of
+  # SDD-01 §15 that reads the result; SDD-01 §15 names the set of screens of each goal in words,
+  # and SDD-01 names SDD-07 by code in its appendix B. By what act the reading is done is not
+  # stated anywhere: the seam entry of slot 07 that carries this number still reads absent.
+  - h: 10
+    from: "07"
+    to: built
+    crosses: the screens as specified, against what was built
+    condition: >-
+      progress is measured as screens specified against screens built (SDD-01 §15;
+      SDD-07 §12)
+    declared_by:
+      giving: "SDD-07 §12"
+      receiving: "SDD-01 §15"
+    names_each_other: true
+    stands_at: person
+    state: holds
+    closes_with: ""
+
+  # Still broken on 22 September 2026. Clause 11b is clause 7a and landed with it: SDD-07 v1.1
+  # §15 names the application model (SDD-09). Clause 11a was not written: it opens SDD-09, which a
+  # customer holds at version 1.1 as a draft for review, and what that customer is told about a
+  # version 1.2 is unsettled — entry 8 of
+  # `_standards/_working/2026-09-21_the_decisions_and_the_application/RECOMMENDATIONS.md`, not
+  # accepted by its review, its second attempt held. SDD-09 still names neither SDD-06 nor SDD-07.
+  # On 29 September 2026 (METHOD-2026-09-29-04) the giving side came to state what it owes the
+  # model: SDD-06 v1.2 §13 and SDD-07 v1.3 §16. The state stays broken until clause 11a lands.
+  - h: 11
+    from: "06"
+    to: "09"
+    crosses: the goal written out in full and its set of screens
+    condition: >-
+      the application model names the documents it is compiled from in the words the chain
+      uses
+    declared_by:
+      giving: "SDD-06 §7, §13; SDD-07 §16"
+      receiving: "SDD-09 §1, §2, §6"
+    names_each_other: false
+    stands_at: person
+    state: broken
+    closes_with: "03_ADDITIONS.md, clause 11a"
+
+  - h: 12
+    from: "09"
+    to: "10"
+    crosses: the model, and what the validator admits
+    condition: >-
+      the four levels of SDD-09 §24 — the schema, the sixteen cross-reference rules, the
+      platform edition's behaviour, and every component's contract
+    declared_by:
+      giving: "SDD-09 §24, §25"
+      receiving: "SDD-01 §4"
+    names_each_other: true
+    stands_at: program
+    state: holds
+    closes_with: ""
+
+  - h: 13
+    from: "10"
+    to: live
+    crosses: a build, with what proves it
+    condition: the change control of the delivery line
+    declared_by:
+      giving: "SDD-01 §1"
+      receiving: ""
+    names_each_other: false
+    stands_at: outside
+    state: holds-on-paper
+    closes_with: ""
+
+  - h: 14
+    from: live
+    to: world
+    crosses: a task a person actually finishes, and the record that they did
+    condition: >-
+      at least one check in every piece of work ends somewhere other than in a document
+      (SDD-01 §3)
+    declared_by:
+      giving: "SDD-01 §3"
+      receiving: ""
+    names_each_other: false
+    stands_at: person
+    state: holds
+    closes_with: ""
+
+  # Added 25 September 2026 by METHOD-2026-09-25-12, from SDD-01 v3.3 §10: the two handovers of the
+  # interaction design, numbered after the last so that none is renumbered, though in the order of
+  # work they stand between the walk-through and the application model.
+  - h: 15
+    from: "07"
+    to: "08a"
+    crosses: the accepted screens of every goal an increment of the model carries, read together
+    condition: >-
+      every goal the document covers is accepted, its description and its screen record baselined
+      with a name and a date (SDD-11 IXD-1, IXD-4), and the decisions are measured against four
+      listings a program produced from the accepted screen records, compared with them as sets
+      (SDD-11 IXD-24)
+    declared_by:
+      giving: "SDD-07 §15"
+      receiving: "SDD-11 §3, §6, IXD-1, IXD-24"
+    names_each_other: true
+    stands_at: person
+    state: holds
+    closes_with: ""
+
+  # The receiving side of 16 is declared by the kit, not by a standard: the schema's entry
+  # model.interaction_design, required, and rule L021 of tools/validate.py, which refuses the model
+  # in kit validate, kit gen, the build and the deploy. SDD-09, the standard of the model, names
+  # neither until its version 1.2 (the plan of the step, its point 3), so the two sides do not
+  # yet name each other.
+  - h: 16
+    from: "08a"
+    to: "09"
+    crosses: the accepted interaction design, which the model names by its path and its checksum
+    condition: >-
+      the model names the document the owner accepted by its path and SHA-256 checksum, and the
+      kit refuses — in every custody mode, with nothing to turn it off — a model that names none,
+      names a missing file or another checksum, names a document not baselined with a name and a
+      date, or one that does not cover a goal the model names or that its lists, references,
+      moves or acts contradict (SDD-11 §8.2)
+    declared_by:
+      giving: "SDD-11 §8, §8.1, §8.2, IXD-2, IXD-29"
+      receiving: ""
+    names_each_other: false
+    stands_at: program
+    state: holds
+    closes_with: ""
+
+# The seven support folders, carried over unchanged from version 1.0.
+support:
+
+  - dir: _conformance
+    title: The rule-by-rule conformance claims
+    body: |
+      One file per document produced here, naming every rule of its governing standard and
+      the verdict against it.
+
+      **A claim of conformance is made rule by rule, or it is not a claim; it is an
+      opinion.** `SDD-01` §14.
+
+      A finding that has an owner does not defeat a claim. **A failure that was never
+      recorded does.**
+
+  - dir: _amendments
+    title: Where the standards get amended from use
+    body: |
+      **This is what a run is actually for.** Every place a standard could not be followed,
+      was ambiguous, cost more than it was worth, or turned out to be silent — recorded
+      **with the moment it happened**, from the first sitting onward and never as a closing
+      step.
+
+      An amendment is drafted here and proposed into the standards folder's `_proposals/`.
+      **Nothing here binds anything**, and no standard is ever edited from this folder.
+
+  - dir: _findings
+    title: Findings, each with an owner
+    body: |
+      A gap is a finding with an owner, never a local invention. `SDD-01` §14.
+
+      A finding that has an owner does not defeat the work. **A failure that nobody wrote
+      down does.**
+
+  - dir: _rulings
+    title: What the owner was asked, what he was offered, what he decided
+    body: |
+      One file per ruling. A decision that has been taken is cited, never argued again. A
+      decision that is genuinely open is flagged, never quietly answered.
+
+      Where two signed documents contradict each other, that is a decision for a person,
+      not a defect to be tidied away.
+
+  - dir: _sessions
+    title: Commissions and their closing reports
+    body: |
+      One commission per piece of work, one report per commission, and one dated folder of
+      working files per session.
+
+  - dir: _machinery
+    title: The plans, the renderers, the checks and the gate
+    body: |
+      Every page a person reads here is generated from a record and never typed. A
+      renderer's `--check` refuses a page that differs from what its record renders now.
+
+  - dir: _reviews
+    title: Generated pages written for a person to read
+    body: |
+      Plain English, no jargon, no internals, no history. Every figure on a page is
+      obtained by a command that is printed on it.

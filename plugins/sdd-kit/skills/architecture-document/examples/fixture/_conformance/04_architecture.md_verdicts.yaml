@@ -1,0 +1,35 @@
+# The verdicts of the fixture, one for each rule of the checklist of SDD-08, as the person who
+# checked the fixture against the checklist answered them. The checklist names no program for any
+# of its rules, so every verdict is a person's and none names a check. `kit conform 04` writes
+# the claim from this file.
+ARC-1: met              # part 1 names the one application
+ARC-2: met              # version, date and finished stated
+ARC-3: met              # the documents read, each with its version
+ARC-4: met              # one finding, with its owner, its date and what happens meanwhile
+ARC-5: met              # one decision recorded in part 6
+ARC-6: met              # platform version, edition and database, each an exact value
+ARC-7: met              # the edition forbids nothing the design uses, and says so
+ARC-8: met              # the conventions stated once
+ARC-9: met              # each component with what it is switched on to do
+ARC-10: met             # each component says once or at each place
+ARC-11: met             # the negative list after part 2
+ARC-12: met             # each configuration is one the component accepts
+ARC-13: met             # the one process names its machinery
+ARC-14: met             # what the machinery decides and what it does not
+ARC-15: met             # its states already stand in the record model
+ARC-16: met             # every change of state names who makes it
+ARC-17: met             # the one crossing, its direction, far side and every field
+ARC-18: met             # issuer, name space, validity and check of the borrowed field
+ARC-19: met             # freshness, missing, out of date and unreachable answered
+ARC-20: met             # what must not be stored, and for how long
+ARC-21: met             # meaning and format stated apart
+ARC-22: met             # how both sides check the crossing
+ARC-23: met             # the credential is named by where it is kept, never written
+ARC-24: not applicable  # the crossing is outgoing and carries no instruction in
+ARC-25: met             # what was tried before the bespoke component
+ARC-26: met             # the bespoke component names the requirement that forced it
+ARC-27: met             # what it reads and what it writes
+ARC-28: met             # whether another application needs it
+ARC-29: met             # the decision recorded once, in part 6
+ARC-30: met             # the decision names what would make it wrong
+ARC-31: met             # withdrawals stated: none

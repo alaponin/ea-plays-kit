@@ -1,0 +1,31 @@
+# The answers to the rules of the checklist of SDD-06, one entry for each rule in the checklist's order, for the use case Renew a loan, UC-LN-02, of the loans module of the Eastbrook library system, a town that does not exist; the fixture of the skill use-case-description, which belongs to no engagement.
+# The parts this one claim is made over, each with its SHA-256 checksum at the moment of answering:
+#   06_use_case.md  sha256 73148b7c408f7fe1232498e37765501db024d7e3c014de82352b66c443a8fd4f
+# The model this use case belongs to: the use case model of the Eastbrook library system, version
+# 0.1 of 29 September 2026. The two departures the method declares in SDD-01 section 9 are named as
+# part of this claim: a description carries data at field level, and it carries detail the entity
+# model was meant to hold; this description carries neither.
+# Every rule was answered by a person, because the checklist names no program for any rule. The one
+# rule not met is a finding with an owner: the two separate readings of the use case by the reviewer
+# pair have not been held; the head of circulation, by 30 October 2026.
+U1: met
+U2: met
+U18: met
+U19: met
+U20: met
+U3: met
+U4: met
+U5: met
+U6: met
+U7: met
+U8: met
+U9: met
+U10: met
+U11: met
+U12: met
+U21: met
+U13: met
+U16: met
+U17: met
+U14: met
+U15: not met

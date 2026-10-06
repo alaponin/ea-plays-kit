@@ -1,0 +1,47 @@
+# The answers to the rules of the checklist of SDD-07, one entry for each rule in the checklist's order, for the screens of the use case Renew a loan, UC-LN-02, of the loans module of the Eastbrook library system, a town that does not exist; the fixture of the skill use-case-screens, which belongs to no engagement.
+# The parts this one claim is made over, each with its SHA-256 checksum at the moment of answering:
+#   UC-LN-02_screens.md  sha256 86dd4394760698aa55d31a703971e1bf346aff1b0e24304deffc08d200319761
+# The use case the set belongs to, and its version: UC-LN-02 Renew a loan, the file 06_use_case.md beside this record,
+# with SHA-256 73148b7c408f7fe1232498e37765501db024d7e3c014de82352b66c443a8fd4f. Its record header carries no line for a
+# version, so the file's checksum stands for it.
+# What the answers were read from, besides the record: two programs run over it on 29 September 2026. The four-list
+# comparison of the skill (scripts/four_lists.py) printed no unmatched item; the kit's program kit screens walk wrote the
+# walk-through's pages and exited 0. The checklist names no program for any rule, so no line below cites one as its check,
+# and every rule was answered by a person.
+# Not applicable: rules 18 and 19, because no value of the set is drawn from a governed list and none enters the
+# organisation at a screen; and rule 31, which the standard keeps of itself and which a set has nothing to answer with.
+# The one rule not met is a finding with an owner: the fixture carries no entity model, no register of requirements and no
+# register of business rules, so its references to them resolve only as far as the use case declares them (rule 28);
+# the owner of the skill use-case-screens, by 30 October 2026.
+"1": met
+"2": met
+"3": met
+"4": met
+"5": met
+"6": met
+"7": met
+"8": met
+"9": met
+"10": met
+"11": met
+"12": met
+"13": met
+"14": met
+"15": met
+"16": met
+"17": met
+"18": not applicable
+"19": not applicable
+"20": met
+"21": met
+"22": met
+"23": met
+"24": met
+"25": met
+"26": met
+"27": met
+"28": not met
+"29": met
+"30": met
+"31": not applicable
+"32": met

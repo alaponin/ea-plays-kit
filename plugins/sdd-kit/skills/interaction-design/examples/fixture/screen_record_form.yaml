@@ -1,0 +1,27 @@
+# The form the fixture application writes its screen records in, as the listing program reads it
+# (scripts/listings.py of this skill). An application keeps its own such file beside the program,
+# among its other programs; this one is the fixture's, for the lending desk of the library of a
+# town called Eastbrook, which does not exist.
+record:
+  status: {table: [Line, Entry], row: Status and version, column: Entry}
+screen:
+  opens: '^## (?P<id>UC-[A-Z]+-\d{2}-S\d{2}) '
+values:
+  heading: [Id, Value, Record · attribute, Reference, List, Least it demands]
+  id: Id
+  id_pattern: '^V\d{2}$'
+  name: Value
+  attribute: Record · attribute
+  reference: Reference
+  list: List
+  picked: '^chosen\b'
+  state: '·\s*state$'
+  record_of: '^(?P<record>.+?)\s*·'
+acts:
+  heading: [Id, Act, Stands on, Leads to]
+  id: Id
+  id_pattern: '^A\d{2}$'
+  words: Act
+  stands_on: Stands on
+  leads_to: Leads to
+none: ['—', '-', 'none', '']

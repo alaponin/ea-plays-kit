@@ -144,7 +144,7 @@ that job.
    simplifications, add this line: *"The video teaches N; the specification has M; your
    element sits here."* The learner must be able to compare this output with the course.
 
-8. **Run `cite-or-discard` on the section citations.** A wrong PAERA section number in a
+8. **Run the verification loop of `references/source-tiers.md` on the section citations.** A wrong PAERA section number in a
    deliverable is the failure that the safeguard of play 1.5 names. If you cannot fetch a
    page, keep the section number and the address from the index, mark the line ⚠
    *unverified — learner to confirm*, and do not write PAERA's words from memory.

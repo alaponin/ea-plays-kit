@@ -1,0 +1,68 @@
+# The answers to the rules of the checklist of SDD-03, one entry for each rule in the checklist's order, for the entity model of the loans module of the Eastbrook library system, a town that does not exist; the fixture of the skill entity-model, which belongs to no engagement.
+# The parts this one claim is made over, each with its SHA-256 checksum at the moment of answering:
+#   02_entity_model.md  sha256 3b472e69d952beb28e309e7d1ae5996f64135a2f3b5bb20db2584f74e64ce394
+#   02_glossary.md  sha256 463761e8de6d366048ce51c9b5399a844da1e515705948e2cb46fe2306b807ae
+#   02_business_rules.md  sha256 96557fa8157d0a59dc3dd45e476ed660af80f3ad0da10d359b0816598b575de6
+# One claim over the three parts, as the standard's part 11 makes it: the rules of its parts for the
+# glossary and for the register of business rules were answered by reading 02_glossary.md and
+# 02_business_rules.md, and every other rule by reading 02_entity_model.md. Every rule was answered
+# by a person, because the checklist names no program for any rule. The two rules not met are
+# recorded in the model as findings with owners: no picture is drawn yet (the line The pictures),
+# and two rules name settings the catalogue of settings does not yet carry (the rules BR-2 and
+# BR-5).
+EM-1: met
+EM-2: met
+EM-3: met
+EM-4: met
+EM-5: met
+EM-6: met
+EM-7: not met
+EM-8: not applicable
+EM-9: met
+EM-10: met
+EM-55: met
+EM-56: met
+EM-11: met
+EM-12: met
+EM-13: not applicable
+EM-14: not applicable
+EM-15: met
+EM-16: met
+EM-17: met
+EM-18: met
+EM-19: met
+EM-20: met
+EM-21: met
+EM-22: met
+EM-23: met
+EM-24: met
+EM-25: met
+EM-52: met
+EM-53: met
+EM-54: met
+EM-26: met
+EM-27: met
+EM-28: not applicable
+EM-29: not applicable
+EM-30: not applicable
+EM-31: met
+EM-32: met
+EM-33: not applicable
+EM-34: met
+EM-35: met
+EM-36: met
+EM-37: met
+EM-38: met
+EM-39: not applicable
+EM-40: met
+EM-41: met
+EM-42: not met
+EM-43: met
+EM-44: met
+EM-45: met
+EM-46: met
+EM-47: met
+EM-48: met
+EM-49: met
+EM-50: met
+EM-51: met

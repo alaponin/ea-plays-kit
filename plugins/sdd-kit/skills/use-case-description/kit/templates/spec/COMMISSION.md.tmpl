@@ -1,0 +1,262 @@
+# COMMISSION — Design how {{SYSTEM}} gets specified to the SDD set
+
+**For:** one fresh session with this repository connected
+**Subject:** the plan by which what has been carried in becomes the {{THINGS}} things `SDD-01`
+names, for the whole of {{SYSTEM}}
+**Standing:** this commission designs a run. **It does not perform it, and it writes no
+specification.** Read it whole before your first act.
+**Raised:** {{DATE}} · scaffolded by `kit spec new {{SYSTEM_ID}}`
+
+---
+
+## 0. What you produce, in one sentence
+
+**One machine-readable plan, its renderer, and the page it renders** — saying, for each of
+the {{THINGS}} things `SDD-01` names, what the carried material gives towards it, what must be
+written from nothing, in what order, by whom, at what cost, and **what tells the person
+doing it that they got it wrong.**
+
+**You author no requirement, no record, no use case, no screen and no model.** Things are
+counted, not written. A page that contains one specified record has exceeded this
+commission.
+
+---
+
+## 1. Why this run exists, and what it is really for
+
+`SDD-01` §16: *no document produced so far carries a conformance claim made rule by rule.*
+The standards have been designed, drafted, built and made consistent. **Using them is a
+different act from writing them, and it is the act that has not happened.**
+
+So the purpose of the run you are designing is **not the specification.** It is the list of
+places where a standard could not be followed, was ambiguous, cost more than it was worth,
+or turned out to be silent — **recorded with the moment it happened, from the first sitting
+onward.** Your plan must carry the register that collects it as a standing obligation of
+every piece of work, never as a closing step. **A plan that puts the amendment register at
+the end has misunderstood the run.**
+
+---
+
+## 2. What is true on disk
+
+**Re-measure every figure below before you rely on it**, and report an overturned claim as
+loudly as a confirmed one. §10 asks you to do exactly that before you plan anything.
+
+### The folder — `{{ROOT}}/`
+
+Scaffolded {{DATE}}. **{{THINGS_CAP}} numbered slots, one per thing `SDD-01` §4 names**, plus seven
+support folders. Every folder carries a `README.md` stating what it is, who writes it, what
+governs it and when. **Read `{{ROOT}}/README.md` first**; it is the shortest true account of
+this folder, and the {{THINGS}} slot READMEs after it.
+
+### What was carried in
+
+{{CARRIED_TABLE}}
+
+{{EMPTY_SLOTS_LINE}}
+
+### The standards
+
+The documents whose codes the slot table of `{{ROOT}}/README.md` names, with `SDD-01` above
+them. Each is generated from a script and none may be edited by hand. Their folder's
+`README.md` is the index; its `CROSSWALK_old_names_to_SDD.md`
+resolves any citation written before 31 August 2026 — **four `SDD-` codes changed meaning
+that evening**, so check any code you inherit.
+
+**Read before you plan:** `SDD-01` §§4, 5, 9, 10, 12, 14, 16 and 17; the standards
+`README.md`; and the standards folder's open-findings register. **Which of them are in
+force and which are drafts is read from their own first pages, not from this commission.**
+
+**Each slot's checklist and template are produced by its standard's build**, and stand in the
+delivery kit under `templates/spec/checklists/` and `templates/spec/artefacts/`, named in each
+slot's row of `templates/spec/slots.yaml` — the checklist carrying the gate, the form's lines and
+the rules, the template the form's lines to fill. `kit slot <n>` prints both for a slot.
+
+**`SDD-01` §10 names {{HANDOVERS}} handovers**, with what is checked at each and how much of that
+checking a machine does, and which rest on a person alone. **Your plan must say where each of
+the {{HANDOVERS}} falls in it, and which this
+run can actually check.**
+
+**`SDD-01` §14** carries **the standing rules** — count them there; §12 the three tests for when a
+specification is good enough — the developer test, the review test, the refusal test — and
+the rule about honesty that fails first when a deadline is close.
+
+**The rule population you will claim against.** Every rule-bearing standard's family, counted
+**from the standards themselves and not from any index.** Arithmetic over a stated range is
+not a count: at least one family in this set carries fewer rules than its range has numbers,
+because rules were withdrawn before issue. **Print what you counted, per standard.**
+
+### What is weak in the standards, and must be planned around rather than discovered
+
+Each standard states its own standing and its own evidence position on its first page, and
+several say plainly that their rules rest on this organisation's judgement rather than on
+published practice. **Read those statements and carry them into the plan**, because a slot
+governed by a standard whose rules are positions will produce more amendments than a slot
+governed by one whose rules are evidenced, and the plan should expect that rather than be
+surprised by it.
+
+**`SDD-01` §17 names things the method requires and no standard governs.** Do not fill them
+speculatively and do not plan work that assumes a standard for them will appear. Where the
+carried material contains such a thing, **say what happens to it.**
+
+**Where a standard assigns work to a role, check that somebody holds it.** A standard that
+assigns a slot to a person who does not exist is a decision for the owner before the slot
+opens, not a gap to work around.
+
+---
+
+## 3. The three problems this plan exists to solve
+
+**Name them on the page. A plan that does not carry all three has not understood the run.**
+
+{{OUT_OF_ORDER_BLOCK}}
+
+### 3.2 The requirements register must be extracted from a document that may not be touched
+
+Slot 00 holds the customer's own documents. They are **never edited**, for any reason, and a
+text extraction beside them is a derived file, not a replacement. `SDD-02` governs what comes
+out of them.
+
+Slot 01 is also one of the two measures the whole method rests on. `SDD-01` §3: *if the list
+of things that must be covered is drawn up from the design itself, then measuring the design
+against it will always show that the design is complete.* **A register written late, or
+written from the design, is not a register.**
+
+### 3.3 The two things nobody writes must be provably produced, not drawn
+
+Slots 08 and 10 are produced from the slots above them. **Two pictures kept by hand guarantee
+that one of them is wrong and that nothing says which.** Your plan says what produces each,
+from what, and **what refuses if the produced thing and its source disagree.**
+
+---
+
+{{PRIOR_BLOCK}}
+
+## 4. What the plan must contain
+
+Hold it as **one YAML record**, render it, and never type the page. A correction goes into
+the record and the page is rendered again; the renderer's `--check` refuses a page that
+differs from what the record renders now.
+
+The record carries, in this order:
+
+1. **`meta`** — version, date, session, this commission's path, **the reader** (a named
+   person who has not worked on this system and must start the first piece of work on the
+   first morning without asking a question the page could have answered), `read_from`, and
+   **`not_used`** — every file opened and deliberately not relied on, with the reason.
+2. **`rule_zero`** — measure before you assert; read the artefact, not the document about
+   the artefact; where the two disagree the artefact wins and the disagreement is a finding.
+3. **`the_words`** — every term that carries weight, defined once. **Where a standard's word
+   and this system's existing word mean the same thing, say so in one line.** Across the
+   standards expect many.
+4. **`what_is_being_built`**, and **`what_this_design_is_not`.**
+5. **`what_was_carried_in`** — what each carried artefact holds, measured, with the command
+   that measured it; and **what none of it carries**, which is most of what the {{THINGS}} slots
+   need.
+6. **`the_slot_map`** — the centre of the plan. **One row per slot, {{SLOT_LIST}}**, carrying: the
+   governing standard and its rule family (or *nothing governs it*); what the carried
+   material gives towards it; the verdict — *have it · half of it · nothing*; whether the
+   work is **compile, research or test**; who does it; and what it costs. Slots 08 and 10
+   carry a row saying what produces them and from what.
+7. **`the_three_problems`** — §3 above, each with the plan's answer to it.
+8. **`the_conformance_bar`** — the rule count you counted, per standard, and how a claim is
+   recorded rule by rule in `_conformance/`. **A claim that is not rule by rule is not a
+   claim; it is an opinion.** Any declared departure of the method from a standard must be
+   named as part of the claim against that standard.
+9. **`the_amendment_register`** — where and how every piece of work records what the
+   standards cost it, **with the moment it happened.** This is what the run is for.
+10. **`pieces`** — the work. Each with an id, a name, what it produces **by path inside
+    `{{ROOT}}/`**, its kind, its inputs, who does it, one honest sitting estimate, **what it
+    answers of the governing standard**, and **what tells the person doing it that they got
+    it wrong** — a program where a program can, a named reader where only a person can. A
+    piece with nothing that can tell it it is wrong says so, and says why.
+11. **`what_forces_that_order`** — the load-bearing links only, argued. Not a restatement of
+    the list.
+12. **`the_handovers`** — where each of `SDD-01` §10's handovers falls, and which
+    this run can actually check.
+13. **`the_questions_this_design_does_not_settle`**, **`what_this_run_will_not_do`**,
+    **`the_decisions_the_owner_must_make_first`** — each with a recommendation and the case
+    against.
+14. **`the_figures`**, **`what_cannot_be_counted`**, **`statements_carried_without_counting`**,
+    **`attacking_this_design_before_filing_it`**, **`met_and_not_repaired`**,
+    **`lines_for_a_register_not_applied`**, **`how_every_figure_was_obtained`**.
+
+**Every figure on the page is obtained by a command that is printed. A count nobody counted
+may not appear.**
+
+---
+
+## 5. Tiers
+
+| Tier | What |
+|---|---|
+| **May change** | Only the files you create (§6), and the `README.md` of a slot **where this commission's or the scaffold's account of that slot is wrong** — with the correction reported, and a note that the fix belongs in `templates/spec/slots.yaml` upstream |
+| **May propose** | Amendments to any standard, as an unsigned paper in `_amendments/`. Findings, numbered, with an owner. Questions for the owner |
+| **May only record** | Everything else. Every defect in the carried material, in a standard, in the folder layout, or in this commission |
+
+**A brief without tiers gets exceeded.**
+
+---
+
+## 6. Where every output goes
+
+```
+{{ROOT}}/_machinery/spec_plan.yaml              the record. The single place each fact lives
+{{ROOT}}/_machinery/render_spec_plan.py         the renderer. --check refuses a page that differs
+{{ROOT}}/_reviews/HOW_IT_GETS_SPECIFIED_<date>.md   the page, generated, never typed
+{{ROOT}}/_sessions/<date>_spec_plan/            your working files, every one of them
+{{ROOT}}/_sessions/SPEC_PLAN_REPORT_<date>.md   the closing report
+```
+
+Nothing is written into the standards folder except an unsigned paper in its `_proposals/`.
+**No slot folder 00 to 10 receives any file from this commission.**
+
+---
+
+## 7. What refuses
+
+- Writing any part of the specification. **You are planning, not filling.**
+- Authoring a requirement, a record, a use case, a screen, a relationship name or a type.
+- Editing `00_customer_documents/` for any reason whatever.
+- Editing a generated document by hand.
+- Declaring a carried artefact correct, or resolving §3.1 by assertion.
+- Inventing a standard, or planning work that assumes a missing one will appear.
+- Acting on your own finding. **A gap is a finding with an owner, never a local invention.**
+- Reporting a count you did not count, or a check you did not watch refuse something.
+- Softening a check, or adjusting a threshold to clear a refusal.
+- Filling a slot folder to make the tree look finished.
+- Accepting this commission's facts. **Re-measure them.**
+
+---
+
+## 8. The closing report
+
+Short. The owner does not want a long report of what you did. He wants what is true, what is
+decided, what is waiting on him, and what you got wrong.
+
+It carries: **the plan in ten lines**; every figure that overturned something this commission
+asserts; the findings you raised with their owners; the decisions for the owner, **each with
+a recommendation and none pre-selected**; **what you did not look at**; and **your own
+errors, first and in the same breath.**
+
+If the decisions run past three, put them on one clickable page rather than as cards in a
+reply — and **do not block on it.** Raise it, say it exists, and carry on with everything the
+answer does not gate.
+
+---
+
+## 9. What this commission does not cover
+
+It stops when the plan is filed. Performing the plan — writing the register, drawing the
+model, describing the goals, working out the screens — is commissioned separately, one piece
+of work at a time, each against the plan this run produces.
+
+---
+
+## 10. Your first act
+
+Open `{{ROOT}}/README.md` and the {{THINGS}} slot READMEs. Open what was carried in and measure
+it. Read the standards named in §2. Count the rules.
+
+**Then write down the three things in this commission you now believe are wrong, before you
+plan anything.**

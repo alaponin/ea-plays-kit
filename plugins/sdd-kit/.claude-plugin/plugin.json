@@ -1,0 +1,17 @@
+{
+  "name": "sdd-kit",
+  "version": "0.1.0",
+  "description": "The specification-driven development (SDD) method's skills for the service design course, Designing Digital Government Services using a Building Block Approach: twelve skills that help a team write the method's documents, each skill carrying the standards it reads and the kit of programs it runs, so it also works installed on its own. Every example is set in Progressa.",
+  "author": {
+    "name": "FiscalAdmin OÜ",
+    "url": "https://github.com/alaponin"
+  },
+  "keywords": [
+    "sdd",
+    "specification",
+    "digital-government",
+    "building-blocks",
+    "standards",
+    "service-design"
+  ]
+}

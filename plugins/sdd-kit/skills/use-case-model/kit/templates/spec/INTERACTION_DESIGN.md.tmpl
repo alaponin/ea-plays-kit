@@ -1,0 +1,190 @@
+# The interaction design of <the application> — <the increment of its model>
+
+## Before you write: what the delivery kit reads in this document
+
+*This section is the template's, not the document's. Delete it from the document you write; the
+kit does not read it.*
+
+This is the kit's template of the interaction design, the document the standard **SDD-11, The
+Interaction Design**, governs. The document settles, once for the goals one writing of the
+application model carries, how a person picks a coded value, finds one record among many, moves a
+record from one state to the next, and acts on a record; the owner accepts it; and the application
+model names it, in its entry `model.interaction_design`, by its path relative to the model and its
+SHA-256 checksum. SDD-11 fixes the seven parts of the document and the headings of its five
+decision tables (its section 7). **This template fixes the rest of what the kit's gate needs: how a
+row names the construct of the application model it governs, and which words the gate reads in each
+column it compares** (SDD-11, section 8.2, last paragraph). The gate is rule L021 of the kit's
+validator, `tools/validate.py`, and it refuses the model — in `kit validate`, `kit gen`, the build
+and the deploy, in every custody mode — wherever the model disagrees with what is read here.
+
+**Why a row names the model's identifier.** The document is accepted before the model is written,
+and the model is then written from it. So every row names the construct it governs by the
+identifier the model gives, or will give, that construct, written between single backticks: a list
+by the identifier of its vocabulary, a record by its entity, a move by its transition, a role, a
+form, a field. Most of these identifiers stand upstream already — the lists, records and their
+attributes in the entity model, the states and moves in the shared groundwork — and the document
+names them as they stand there. Where one does not stand yet, such as the identifier of a form, the
+document gives it, and the writer of the model uses it. **The words for the owner stay in the same
+cell, before the identifier**: "Debt category (`debt_category`)". The owner reads the words; the
+gate reads the identifier.
+
+**What the gate reads, and nothing else.** It reads identifiers only between single backticks, and
+only in the cells named below. In the cells it compares it reads only the words named below, as
+the first such word of the cell, whatever case they are written in. Every other cell, and every
+other word of these cells, is for the owner and the writer of the model, and the gate does not read
+it. A cell may hold a vertical bar written `\|`.
+
+**What makes the gate refuse the reading itself.** A table the gate reads that is missing, or that
+stands twice, or whose headings are not written exactly as below; a row with more or fewer cells
+than its table has columns; a row that names no construct in the cell where it must, or names more
+than one; a cell the gate compares that holds none of the words it reads. Each is refused with the
+line of the document it stands on. A row may instead say, in its naming cell, **not in the model**:
+the gate then reads nothing else of it. Use it only for a thing the goals show and the model does
+not carry as a construct of that table's kind — a set of values shown and never chosen, which the
+model keeps as text — and say why in the row.
+
+### The header — part 1
+
+| Where | What the gate reads |
+|---|---|
+| The table headed `Line` · `Entry` | the row whose Line cell reads **Version and status**, and in its Entry cell the first of the three status words **draft**, **reviewed** and **baselined**. When it reads baselined, the same cell says **accepted by** *the name* **on** *the date*, the date written `25 September 2026` or `2026-09-25`. The gate refuses a status other than baselined, a baselined document with no name or no date it can read, and a date that has not yet come (check 4) |
+| The table headed `Goal` · `Its description` · `Its screen record` | in each row's Goal cell the goal's identifier between backticks, `UC-XX-01`. A form or a list of the model whose `use_case` names a goal — the part before any `/` — that this table does not hold is refused (check 5) |
+
+Nothing else of the header is read by the gate. The document's own acceptance is what the owner
+gives when he reads it; the gate reads only that it is recorded.
+
+### The Lists table — check 6
+
+| Column | What the gate reads, and what it compares it with |
+|---|---|
+| List | the identifier of the model's vocabulary between backticks, exactly one — or **not in the model** |
+| Members in force | a whole number at the very start of the cell; when the cell begins otherwise ("not stated; 11 in the model"), the number of values the model's vocabulary holds. More than nine, and the model's vocabulary carries no `groups`: refused |
+| Maintained or fixed | the first of **maintained** and **fixed**, compared with the vocabulary's `fixed` |
+| Maintained by | for a list that is maintained, one role identifier between backticks, compared with the vocabulary's `maintained_by` or, where the model names none, the administrator role the kit gives the administration of lists of values to. Not read for a fixed list |
+| Code shown as label | the first of **yes** and **no**, compared with the vocabulary's `display_code` |
+| Categories | **none**, compared with a vocabulary that carries no `groups`; or the identifier of the vocabulary that holds its categories, between backticks, compared with `groups` — followed, if you give them, by the categories' codes, each between backticks, compared with that vocabulary's codes |
+| Kept where · First values from · Depends on · Pattern | not read |
+
+### The References table — check 7
+
+| Column | What the gate reads, and what it compares it with |
+|---|---|
+| Place | the form and the field on it where the person picks the record, between backticks and written `form.field` — the field is the one the form places by its `attr` or its `id`. Or, for a place where the person picks a row of a list, the list's identifier alone; for such a place the gate reads nothing more than that the list is in the model. Or **not in the model** |
+| Found by | whether the cell begins **a search**. A place found by a search that the model places as a drop-down, a group of radio buttons, a group of check-boxes or a lookup control is refused |
+| Fills | the fields of the same form the choice fills, each between backticks, or **nothing**. Compared with what the model fills from the choice: the mappings of the form's `prefill` whose key source is this field (`source: currentField`), the mappings of the form's `lookup` that watches this field, and the fields this field's `config.populate` fills |
+| Locks | the filled fields that are then locked, each between backticks, or **nothing**, or **everything it fills**. Compared with what the model locks: every field a search's `populate` fills, which the kit locks, and every field a prefill or a look-up fills that the form shows read-only |
+| Record set · How many · Searched by · Result shows · When nothing is found · Pattern | not read |
+
+### The Moves table — check 8
+
+| Column | What the gate reads, and what it compares it with |
+|---|---|
+| Record | the entity whose lifecycle the move belongs to, between backticks |
+| From · To | the identifiers of the two states between backticks, compared with the move's `from` and `to` |
+| Made by (goal, act) | the goal and its act in words, and the move's identifier between backticks — the `id` of the transition in the model's lifecycle. Nothing else in this cell stands between backticks. Or **not in the model**, for a move the goals make that the model does not carry |
+| Role | the identifiers of the roles that may make the move, between backticks, compared with the roles of the act that offers its button (the act's `roles`, or the move's own where the act names none) |
+| Button | the button's words exactly as the model's act gives them as its `label`, with no quotation marks needed; where two acts make the same move, their words separated by `;`; or **none**, for a move no act of this increment makes, in which case the model may offer no button for it |
+| Guard, in the words shown | not read |
+
+The gate also reads the table the other way. Every button the model offers for a move — an entry
+of a form's `acts` that names a `transition`, and, on a form that is not a create form and declares
+no acts, the one button the kit gives it for each move a person makes that the form's roles may
+make, labelled after the move — must stand in this table, on the row of that record and that move,
+among its buttons. A button the table does not list is refused.
+
+### The Read-only table
+
+Not read by the gate. The owner and the writer of the model read it.
+
+### The Acts table — check 9
+
+| Column | What the gate reads, and what it compares it with |
+|---|---|
+| Stands on | the one form, list or navigation category of the model the act stands on, between backticks: a form whose `acts` carry an act that opens a form; a list whose row `actions` include an `open_form`; or a category whose menu opens the form. Or **not in the model** |
+| Opens | the form the act opens, between backticks. The model must have such an act there |
+| Carries | the entity whose record the act carries, between backticks, or **nothing**. A form's act carries its `carries`, or the form's own record; a list's row act carries the record of the row; a category's CRUD menu carries the record of the row it opens, and any other menu carries nothing |
+| On a menu | the first of **yes** and **no**. For **no**, the form it opens may stand on no menu of a category that is not `hidden` |
+| Act · Filled and locked · Returns to | not read |
+
+---
+
+<!-- The document begins here. Keep the headings below as they stand; fill in every angle-bracketed
+place; delete the rows that are examples. -->
+
+## 1. The header
+
+| Line | Entry |
+|---|---|
+| Identifier | <IXD-XX-W1> — the interaction design of <the application>, <the increment> |
+| Version and status | version 0.1 · draft |
+| The goals it covers | the goals below, each by its description and its screen record, with their versions |
+| The program of its listings | `<its path>`, SHA-256 `<its checksum>` |
+| What it claims | "This interaction design claims conformance to the rules of this standard, IXD-1 to IXD-29." The claim rule by rule stands in the appendix |
+| What the owner reads | the answer (section 2), the five tables (section 3) and the pages (section 4) |
+
+When the owner has accepted it, the row reads, for example: *version 1.0 · baselined · accepted by
+<the owner's name> on <25 September 2026>*.
+
+| Goal | Its description | Its screen record |
+|---|---|---|
+| <the goal's name> (`<UC-XX-01>`) | version <1> · baselined · accepted by <the name> on <the date> | version <1> · baselined · accepted by <the name> on <the date> |
+
+## 2. The answer
+
+<One paragraph: how many lists, references a person picks, records with a state and acts that open
+a form the goals hold; what the owner is asked to accept; and on what the goals were silent
+(SDD-11, IXD-26).>
+
+## 3. The decisions
+
+### 3.1 Lists — one row for each list the goals draw on
+
+| List | Kept where | Members in force | Maintained or fixed | Maintained by | First values from | Code shown as label | Depends on | Categories | Pattern |
+|---|---|---|---|---|---|---|---|---|---|
+| <the list's name> (`<vocabulary_id>`) | this administration's | <6> | maintained | the <role's name> (`<role_id>`) | the entity model's members | no | nothing | none | L2 |
+
+### 3.2 References — one row for each place a person picks a record
+
+| Place | Record set | How many | Found by | Searched by | Result shows | Fills | Locks | When nothing is found | Pattern |
+|---|---|---|---|---|---|---|---|---|---|
+| <what the person does there> (`<form_id>.<field_id>`) | <the records pointed at> | <grows with operations> | a search | <the identifier first; a fragment of the name> | <the columns that tell two apart> | <the name> (`<field_id>`), <the type> (`<field_id>`) | everything it fills | "<the words the person is told>" | S1, S2 |
+
+### 3.3 Moves — one row for each move a person makes
+
+| Record | From | To | Made by (goal, act) | Role | Button | Guard, in the words shown |
+|---|---|---|---|---|---|---|
+| <the record> (`<entity_id>`) | <the state> (`<state_id>`) | <the state> (`<state_id>`) | <UC-XX-01>, <the act> — the move `<transition_id>` | the <role's name> (`<role_id>`) | <the button's words> | "<the words shown when the guard fails>" |
+
+### 3.4 Read-only — one row for each record with a state
+
+| Record | State | Values read-only in it |
+|---|---|---|
+| <the record> | every state | <the values> |
+
+### 3.5 Acts — one row for each act that opens a form
+
+| Act | Stands on | Carries | Opens | Filled and locked | Returns to | On a menu |
+|---|---|---|---|---|---|---|
+| <the act's words> | the record's screen (`<form_id>`) | the <record> (`<entity_id>`) | <the screen it opens> (`<form_id>`) | <the record's standing header> | <where the person returns> | no |
+
+## 4. The pages
+
+<One clickable page for each pattern the application uses, each one file that opens in an ordinary
+browser with nothing fetched, produced by a program (SDD-11, IXD-25).>
+
+## 5. Where the goals were silent
+
+| # | The goals are silent on | The recommended answer | The row that carries it |
+|---|---|---|---|
+| 1 | <what> | <the answer> | <the table and the row> |
+
+## 6. The findings raised
+
+| # | Against | The finding | Its owner |
+|---|---|---|---|
+| 1 | <the document that owns the fact> | <the finding> | <its owner> |
+
+## 7. Appendix: the listings, and their comparison with the screen records
+
+<The four listings the program named in the header produced from the accepted screen records, and
+its comparison of them with the records as sets (SDD-11, IXD-24).>

@@ -10,13 +10,24 @@ jobs:
       - uses: actions/checkout@v4
       - name: Shared references are in sync
         run: bash plugins/ea-plays/scripts/sync-shared.sh --check
-      - name: Fixtures and provenance headers
+      - name: sdd-kit copies in every skill are in sync
+        run: bash plugins/sdd-kit/scripts/sync-skills.sh --check
+      - name: Fixtures, provenance headers and the marketplace checks
         run: python3 tests/check_fixtures.py
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - name: sdd-kit's own checks, at the plugin root and in one skill on its own
+        run: |
+          pip install pyyaml jsonschema
+          (cd plugins/sdd-kit/kit && python tools/kit.py skills --check && python tools/kit.py slot --check)
+          cp -R plugins/sdd-kit/skills/entity-model "$RUNNER_TEMP/" && cd "$RUNNER_TEMP/entity-model/kit" && python tools/kit.py skills --check
       - uses: actions/setup-node@v4
         with: { node-version: '22' }
       - name: Install Claude Code
         run: npm install -g @anthropic-ai/claude-code
-      - name: Validate plugin
-        run: claude plugin validate plugins/ea-plays --strict
+      - name: Validate plugins
+        run: |
+          claude plugin validate plugins/ea-plays --strict
+          claude plugin validate plugins/sdd-kit --strict
       - name: Validate marketplace
         run: claude plugin validate . --strict

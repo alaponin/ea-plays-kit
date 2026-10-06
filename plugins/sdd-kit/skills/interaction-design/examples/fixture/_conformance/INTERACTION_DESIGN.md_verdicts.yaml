@@ -1,0 +1,33 @@
+# The verdicts of the fixture, one for each rule of the checklist of SDD-11, as the person who
+# checked the fixture against the checklist answered them. The checklist names no program for any
+# of its rules, so every verdict is a person's and none names a check. `kit conform 08a` writes
+# the claim from this file.
+IXD-1: met              # both goals accepted before the design was written
+IXD-2: not applicable   # no application model is written in the fixture
+IXD-3: met              # one document for the increment, put to the owner
+IXD-4: met              # baselined, with the name and the date
+IXD-5: not applicable   # the first increment; nothing carried forward
+IXD-6: met              # nothing the entity model or the groundwork owns is decided
+IXD-7: met              # two silences, each with its recommendation and its row
+IXD-8: met              # one finding, against the groundwork, with its owner
+IXD-9: met              # no row decides what every application is given
+IXD-10: met             # every list maintained or fixed, and by whom
+IXD-11: met             # every list's first values named
+IXD-12: met             # every list says whether its code is its label
+IXD-13: met             # every list says what it depends on
+IXD-14: not applicable  # no list is longer than nine
+IXD-15: met             # every reference names its record set and its size
+IXD-16: met             # every search names its keys and its result
+IXD-17: met             # every reference names what it fills and locks
+IXD-18: met             # every search names what the person is told
+IXD-19: met             # every move names its goal and act
+IXD-20: met             # every move names its button and its guard's words
+IXD-21: met             # the read-only values of each state
+IXD-22: met             # the role of each move as the groundwork gives it
+IXD-23: met             # the two acts that open a form, neither on a menu
+IXD-24: met             # the listings produced by the program and compared as sets
+IXD-25: not met         # no page is produced for the fixture
+IXD-26: met             # the document opens with the answer
+IXD-27: met             # the five tables with their headings as they stand
+IXD-28: met             # the owner is asked to read the header, answer, tables and pages
+IXD-29: not applicable  # not changed since it was accepted

@@ -1,11 +1,20 @@
 # ea-plays-kit
 
-A Claude plugin for learners on two Knowledge Product courses about digital government:
+Two Claude plugins for learners on four Knowledge Product courses about digital government:
 
 - **Government Enterprise Architecture** (the EA course): how a government plans its bodies,
   systems and data as one whole.
 - **Government Interoperability Framework** (the interoperability course): the legal,
   organisational and technical rules that let public bodies exchange data.
+- **The education DPI roadmap** course: how a ministry plans its digital public
+  infrastructure, step by step.
+- **The service design** course: how a public service is specified and built on shared
+  building blocks.
+
+| Plugin | What it is |
+| --- | --- |
+| [`ea-plays`](plugins/ea-plays/README.md) | Four skills that sharpen the plays and the AI usage tips of the four courses |
+| [`sdd-kit`](plugins/sdd-kit/README.md) | The service design course's method: twelve skills that help a team write its documents, with the standards and the programs they use |
 
 Each course is made of **plays**. A play is a prompt that the learner runs in an AI
 assistant during a lesson. Each play makes one **artefact** for the learner's own country,
@@ -23,11 +32,19 @@ In Claude Code:
 ```
 /plugin marketplace add alaponin/ea-plays-kit
 /plugin install ea-plays@ea-plays-kit
+/plugin install sdd-kit@ea-plays-kit
 ```
 
-**[`plugins/ea-plays/README.md`](plugins/ea-plays/README.md)** has the other two ways to
-install it (Cowork, or one skill at a time in the Claude app), the list of skills, and a
-table that shows which skill each play uses.
+In any agent that reads skill files, through the skills CLI. The skills are published through
+the ITU Skills Marketplace from this repository; every skill folder is self-contained.
+
+```
+npx skills add alaponin/ea-plays-kit                         # every skill
+npx skills add alaponin/ea-plays-kit --skill decision-cards  # one skill
+```
+
+Each plugin's README has the other ways to install it, the list of its skills, and which
+play or subtopic each skill serves.
 
 ## Terms
 
@@ -44,19 +61,26 @@ table that shows which skill each play uses.
 
 ```
 .claude-plugin/marketplace.json   the marketplace
-plugins/ea-plays/                 the plugin
+plugins/ea-plays/                 the first plugin
   .claude-plugin/plugin.json      the manifest (the only file in this folder)
   shared/                         rules every skill follows: source tiers, provenance header,
                                   output contract, and the two workbook chains
                                   (workbook-chain.md for EA, workbook-chain-gif.md for interoperability)
-  skills/<name>/SKILL.md          twenty-three skills, each one self-contained
+  skills/<name>/SKILL.md          four skills, each one self-contained
   scripts/sync-shared.sh          copies shared/*.md into the references/ folder of each skill
   scripts/package.sh              builds the Cowork .plugin
+plugins/sdd-kit/                  the second plugin: the service design course's method
+  standards/, kit/                the standards the skills read and the programs they run
+  skills/<name>/                  twelve skills; each carries a copy of kit/ and of the
+                                  standards' text, so each is self-contained
+  scripts/sync-skills.sh          makes those copies
 tests/
   progressa.md                    the Progressa country pack (A0)
-  plays/                          one fixture folder per EA course play (37)
-  gif/                            the interoperability supplement to Progressa, and one
-                                  fixture folder per interoperability course play (38)
+  play-map.json                   every EA course play, its artefact, inputs and skill (37)
+  plays/                          one fixture folder per EA play whose skill ships
+  gif/                            the interoperability supplement to Progressa, its play map
+                                  (38) and one fixture folder per play whose skill ships
+  dpi-roadmap/, service-design/   the fixtures of decision-cards for those two courses
   check_fixtures.py               the automated check
 ```
 
@@ -64,24 +88,29 @@ tests/
 `references/` folder, so a learner can upload a single skill folder to the Claude app, where
 there is no plugin root. No `SKILL.md` depends on a plugin root.
 
-Skills whose names start with `gif-` exist for the interoperability course. The other skills
-serve the EA course, and many of them also serve the interoperability course.
+`plugins/sdd-kit/standards/` and `plugins/sdd-kit/kit/` are edited in one place only, the same
+way: `sync-skills.sh` copies them into each sdd-kit skill. The standards' figures stay at the
+plugin root.
 
 ## Working on it
 
 ```bash
 bash plugins/ea-plays/scripts/sync-shared.sh    # run it after you edit a file in shared/
-python3 tests/check_fixtures.py                 # fixtures, README tables, workbook chains
+bash plugins/sdd-kit/scripts/sync-skills.sh     # run it after you edit sdd-kit's kit/ or standards/
+python3 tests/check_fixtures.py                 # fixtures, README tables, workbook chains,
+                                                # the marketplace checks on every skill
 claude plugin validate plugins/ea-plays --strict
-claude --plugin-dir plugins/ea-plays            # load the plugin for one session; install nothing
+claude plugin validate plugins/sdd-kit --strict
+claude --plugin-dir plugins/ea-plays            # load a plugin for one session; install nothing
 ```
 
-CI runs the first three, plus `claude plugin validate . --strict` on the marketplace,
-on every push and pull request.
+CI runs these checks with `--check` on the two sync scripts, sdd-kit's own checks (at the
+plugin root and in one skill on its own), and `claude plugin validate . --strict` on the
+marketplace, on every push and pull request.
 
 To make a release:
 
-1. Increase the version in **both** manifests.
+1. Increase the version of the plugin in its `plugin.json` **and** in `marketplace.json`.
 2. Add the entry to `CHANGELOG.md`.
 3. Run `bash plugins/ea-plays/scripts/package.sh`.
 4. Tag the commit.
@@ -93,7 +122,8 @@ The content uses CC BY 4.0. `LICENSE` at the root of the repository carries the 
 `plugins/ea-plays/LICENSE-CONTENT` says which files the licence covers, and it travels inside
 the packaged plugin.
 
-The scripts use MIT. See `plugins/ea-plays/LICENSE-CODE`.
+The scripts use MIT. See `plugins/ea-plays/LICENSE-CODE`. sdd-kit carries the same two
+licence files.
 
 Each `SKILL.md` declares `license: CC-BY-4.0` and `metadata.provider` in its frontmatter, as
-the Giga Skills Marketplace requires.
+the ITU Skills Marketplace requires.

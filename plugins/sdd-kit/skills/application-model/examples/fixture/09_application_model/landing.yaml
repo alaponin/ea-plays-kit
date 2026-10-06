@@ -1,0 +1,117 @@
+# Where each thing the model of the lending desk is written from landed. A fixture of the method's
+# application-model skill: the lending desk of the library of a town called Eastbrook, which does
+# not exist; it belongs to no engagement. `row` is the first cell of the landing table's row, in the
+# words `scripts/landing.py tables` prints; `ref` is where the thing landed in the model; an
+# assumption is the decision in one sentence, with its ground. What the interaction design decides
+# is not repeated here: the kit's gate compares the model with it, row by row.
+model: lending_desk.app.yaml
+loss_report: loss-report.yaml
+
+items:
+# --- the use case Lend an item to a member, ../06_use_cases/UC-LD-01.md
+- {thing: "UC-LD-01, Lend an item to a member", source: "UC-LD-01 7.1", row: "The use case itself: its identifier and its name", ref: features.F01}
+- {thing: "the desk librarian", source: "UC-LD-01 7.1", row: "The primary actor", ref: roles.role_desk}
+- {thing: "RQ-LD-01", source: "UC-LD-01 7.1", row: "A requirement, a quality requirement, a constraint", ref: requirements.FR-001}
+- {thing: "member, read", source: "UC-LD-01 7.1", row: "A record the use case reads or changes", ref: entities.member, assumption: "The member lands as a record of kind main, which the extract of the entity model does not settle.", ground: "UC-LD-01 7.1, entities read or changed"}
+- {thing: "item, read", source: "UC-LD-01 7.1", row: "A record the use case reads or changes", ref: entities.item, assumption: "The item lands as a record of kind main, which the extract of the entity model does not settle.", ground: "UC-LD-01 7.1, entities read or changed"}
+- {thing: "loan, changed", source: "UC-LD-01 7.1", row: "A record the use case reads or changes", ref: entities.loan, assumption: "The loan lands as a record of kind main carrying the lifecycle, which the extract of the entity model does not settle.", ground: "UC-LD-01 7.1, entities read or changed"}
+- {thing: "BR-LD-01, at step 4", source: "UC-LD-01 7.1", row: "A business rule", ref: entities.loan.lifecycle.transitions.lend, assumption: "The rule guards the move that lends, so it lands as that move's guard, in words.", ground: "UC-LD-01 7.1, business rules cited, step 4", loss: L-LD-02}
+- {thing: "the member is registered and the item is on the shelf", source: "UC-LD-01 7.2", row: "A precondition", ref: acceptance.fixtures.fx_desk, assumption: "The registered member and the item on the shelf stand as the scenario's starting records.", ground: "UC-LD-01 7.2, preconditions", loss: L-LD-01}
+- {thing: "a member brings an item to the desk", source: "UC-LD-01 7.2", row: "The trigger", ref: entities.loan.lifecycle.transitions.lend, assumption: "The goal's first act that moves a record is Lend the item, made by a person, so the trigger is that move's trigger, user.", ground: "UC-LD-01 7.2, trigger; main success scenario, step 4"}
+- {thing: "no loan is recorded", source: "UC-LD-01 7.2", row: "A guarantee, minimal or success", ref: acceptance.scenarios.t_ld01_refused, assumption: "No loan recorded lands as the loan staying new, since the model records the loan as new before the move that lends it.", ground: "UC-LD-01 7.2, minimal guarantee"}
+- {thing: "a loan stands on loan", source: "UC-LD-01 7.2", row: "A guarantee, minimal or success", ref: acceptance.scenarios.t_ld01_lend, assumption: "The success guarantee lands as the assertion that the loan stands on loan.", ground: "UC-LD-01 7.2, success guarantee"}
+- {thing: "steps 1 to 4", source: "UC-LD-01 7.2", row: "A numbered step of the main success scenario", ref: acceptance.scenarios.t_ld01_lend, why_mechanical: "The goal has no process, so its steps land only as the scenario."}
+- {thing: "extension 4a", source: "UC-LD-01 7.2", row: "A variation, numbered against its step", ref: acceptance.scenarios.t_ld01_refused, why_mechanical: "The goal has no process and the variation moves no record, so it lands only as its scenario."}
+- {thing: "T1", source: "UC-LD-01 7.2", row: "An acceptance test", ref: acceptance.scenarios.t_ld01_lend, assumption: "T1 is the scenario of the main success scenario.", ground: "UC-LD-01 7.2, acceptance tests"}
+- {thing: "T2", source: "UC-LD-01 7.2", row: "An acceptance test", ref: acceptance.scenarios.t_ld01_refused, assumption: "T2 is the scenario of extension 4a.", ground: "UC-LD-01 7.2, acceptance tests"}
+# --- the use case Receive a returned item, ../06_use_cases/UC-LD-02.md
+- {thing: "UC-LD-02, Receive a returned item", source: "UC-LD-02 7.1", row: "The use case itself: its identifier and its name", ref: features.F02}
+- {thing: "the desk librarian", source: "UC-LD-02 7.1", row: "The primary actor", ref: roles.role_desk}
+- {thing: "RQ-LD-02", source: "UC-LD-02 7.1", row: "A requirement, a quality requirement, a constraint", ref: requirements.FR-002}
+- {thing: "item, read", source: "UC-LD-02 7.1", row: "A record the use case reads or changes", ref: entities.item, why_mechanical: "The record's entry is the one UC-LD-01 already landed."}
+- {thing: "loan, changed", source: "UC-LD-02 7.1", row: "A record the use case reads or changes", ref: entities.loan, why_mechanical: "The record's entry is the one UC-LD-01 already landed."}
+- {thing: "return, changed", source: "UC-LD-02 7.1", row: "A record the use case reads or changes", ref: entities.item_return, assumption: "The return lands as a record of kind main named item_return, which the extract of the entity model does not settle.", ground: "UC-LD-02 7.1, entities read or changed"}
+- {thing: "BR-LD-02, at step 3", source: "UC-LD-02 7.1", row: "A business rule", ref: entities.item_return.attributes.fine, assumption: "None of the four places holds a rule that computes an amount, so the fine is shown and the rule is a loss.", ground: "UC-LD-02 7.1, business rules cited, step 3", loss: L-LD-03}
+- {thing: "the item is on loan or overdue", source: "UC-LD-02 7.2", row: "A precondition", ref: acceptance.fixtures.fx_desk, assumption: "The loans on loan and overdue stand as the scenarios' starting records.", ground: "UC-LD-02 7.2, preconditions"}
+- {thing: "a member hands an item back at the desk", source: "UC-LD-02 7.2", row: "The trigger", ref: entities.loan.lifecycle.transitions.return_on_time, assumption: "The goal's act that moves a record is Confirm the return, made by a person, so the trigger is the return moves' trigger, user.", ground: "UC-LD-02 7.2, trigger; main success scenario, step 4"}
+- {thing: "the loan stands as it stood", source: "UC-LD-02 7.2", row: "A guarantee, minimal or success", loss: L-LD-04, assumption: "The minimal guarantee has no scenario to be asserted in.", ground: "UC-LD-02 7.2, minimal guarantee"}
+- {thing: "the loan stands returned, and a return records the condition and any fine", source: "UC-LD-02 7.2", row: "A guarantee, minimal or success", ref: acceptance.scenarios.t_ld02_return_on_time, assumption: "The success guarantee lands as the assertion that the loan stands returned.", ground: "UC-LD-02 7.2, success guarantee"}
+- {thing: "steps 1 to 4", source: "UC-LD-02 7.2", row: "A numbered step of the main success scenario", ref: acceptance.scenarios.t_ld02_return_on_time, why_mechanical: "The goal has no process, so its steps land only as the scenario."}
+- {thing: "extension 3a", source: "UC-LD-02 7.2", row: "A variation, numbered against its step", ref: forms.frmReturn.permissions, assumption: "The variation moves no record and continues at step 4; it lands as the return form's permission for the head librarian, and has no scenario of its own because its end is the main scenario's.", ground: "UC-LD-02 7.2, extension 3a"}
+- {thing: "T1", source: "UC-LD-02 7.2", row: "An acceptance test", ref: acceptance.scenarios.t_ld02_return_on_time, assumption: "T1 is the scenario of a return on time.", ground: "UC-LD-02 7.2, acceptance tests"}
+- {thing: "T2", source: "UC-LD-02 7.2", row: "An acceptance test", ref: acceptance.scenarios.t_ld02_return_late, assumption: "T2 is the scenario of a return of an overdue loan; its fine is L-LD-03.", ground: "UC-LD-02 7.2, acceptance tests"}
+# --- the extract standing in for the documents settled once, ../02_05_04_settled_once/EXTRACT.md
+- {thing: "member · card number", source: "EXTRACT 1", row: "An attribute", ref: entities.member.attributes.card_number}
+- {thing: "member · name", source: "EXTRACT 1", row: "An attribute", ref: entities.member.attributes.name}
+- {thing: "member · category", source: "EXTRACT 1", row: "An attribute", ref: entities.member.attributes.category}
+- {thing: "item · barcode", source: "EXTRACT 1", row: "An attribute", ref: entities.item.attributes.barcode}
+- {thing: "item · title", source: "EXTRACT 1", row: "An attribute", ref: entities.item.attributes.title}
+- {thing: "loan · loan period", source: "EXTRACT 1", row: "An attribute", ref: entities.loan.attributes.period}
+- {thing: "loan · due date", source: "EXTRACT 1", row: "An attribute", ref: entities.loan.attributes.due_date}
+- {thing: "return · condition on return", source: "EXTRACT 1", row: "An attribute", ref: entities.item_return.attributes.condition}
+- {thing: "return · fine due", source: "EXTRACT 1", row: "An attribute", ref: entities.item_return.attributes.fine}
+- {thing: "loan → member", source: "EXTRACT 1", row: "A relationship", ref: entities.loan.attributes.member, why_mechanical: "The loan does not depend on the member for its existence, so it lands as an attribute of type ref."}
+- {thing: "loan → item", source: "EXTRACT 1", row: "A relationship", ref: entities.loan.attributes.item, why_mechanical: "The loan does not depend on the item for its existence, so it lands as an attribute of type ref."}
+- {thing: "return → loan", source: "EXTRACT 1", row: "A relationship", ref: entities.item_return.attributes.loan, why_mechanical: "The return is a record of its own and not a part of the loan, so it lands as an attribute of type ref."}
+- {thing: "member category", source: "EXTRACT 1", row: "A governed list", ref: vocabularies.member_category}
+- {thing: "loan period", source: "EXTRACT 1", row: "A governed list", ref: vocabularies.loan_period}
+- {thing: "item condition", source: "EXTRACT 1", row: "A governed list", ref: vocabularies.item_condition}
+- {thing: "a member is the same member when the card number is the same", source: "EXTRACT 2", row: "An identity rule: what makes two rows the same thing", ref: entities.member.pk}
+- {thing: "the loan's states and moves", source: "EXTRACT 2", row: "A state, and a move between states", ref: entities.loan.lifecycle}
+- {thing: "a loan becoming overdue is published", source: "EXTRACT 2", row: "An event", ref: entities.loan.lifecycle.transitions.fall_overdue, assumption: "The event's nearest landing is the move the system makes; what is published for another service lands nowhere.", ground: "EXTRACT 2, event", loss: L-LD-06}
+- {thing: "the most items a member may hold", source: "EXTRACT 2", row: "A setting", loss: L-LD-05}
+- {thing: "the application binding", source: "EXTRACT 3", row: "The application binding", ref: app.platform}
+- {thing: "the status framework", source: "EXTRACT 3", row: "A component switched on", ref: catalog.status-framework}
+# --- the screens of Lend an item to a member, ../07_screens/UC-LD-01.md
+- {thing: "UC-LD-01-S01 Find the member", source: "UC-LD-01 screens", row: "A screen: its identifier and its name", ref: lists.frmFindMember, assumption: "The screen shows many members, so it lands as a list; its identifier is the one the interaction design names.", ground: "UC-LD-01-S01; the interaction design's Acts, row 1"}
+- {thing: "UC-LD-01-S02 Record the loan", source: "UC-LD-01 screens", row: "A screen: its identifier and its name", ref: forms.frmLoan, assumption: "The screen shows one loan, so it lands as a form.", ground: "UC-LD-01-S02"}
+- {thing: "S01 serves UC-LD-01", source: "UC-LD-01 screens", row: "The use cases the screen serves, with the steps and variations it serves", ref: lists.frmFindMember.use_case}
+- {thing: "S02 serves UC-LD-01", source: "UC-LD-01 screens", row: "The use cases the screen serves, with the steps and variations it serves", ref: forms.frmLoan.use_case}
+- {thing: "S01 shows member", source: "UC-LD-01 screens", row: "The entities shown and the entities changed", ref: lists.frmFindMember.source}
+- {thing: "S02 changes loan", source: "UC-LD-01 screens", row: "The entities shown and the entities changed", ref: forms.frmLoan.entity}
+- {thing: "S01 V01 Member card number", source: "UC-LD-01-S01", row: "A value", ref: lists.frmFindMember.filters.card_number, assumption: "On a list the value the person types lands as the list's filter and column.", ground: "UC-LD-01-S01 V01"}
+- {thing: "S01 V02 Member, chosen from a result", source: "UC-LD-01-S01", row: "— a reference to another record, chosen from a result", ref: lists.frmFindMember.actions}
+- {thing: "S01 V03 Member category, may only read", source: "UC-LD-01-S01", row: "— a value drawn from a governed list", ref: lists.frmFindMember.columns.category, why_mechanical: "The screen states no owner, strength or date for the list, so only the list lands."}
+- {thing: "S02 V01 Item, chosen from a result", source: "UC-LD-01-S02", row: "— a reference to another record, chosen from a result", ref: forms.frmLoan.sections.sec_loan.fields.item}
+- {thing: "S02 V02 Loan period", source: "UC-LD-01-S02", row: "— a value drawn from a governed list", ref: forms.frmLoan.sections.sec_loan.fields.period, why_mechanical: "The list's owner, strength and date are not stated by the screen, so only the list lands."}
+- {thing: "S02 V03 Due date, may only read", source: "UC-LD-01-S02", row: "— the least the screen demands, and the most it admits", ref: forms.frmLoan.sections.sec_loan.fields.due_date}
+- {thing: "S02 V04 Loan state, may only read", source: "UC-LD-01-S02", row: "— the least the screen demands, and the most it admits", ref: forms.frmLoan.sections.sec_loan.fields.state}
+- {thing: "S02 V05 Member, carried from S01", source: "UC-LD-01-S02", row: "— a reference to another record, chosen from a result", ref: forms.frmLoan.sections.sec_loan.fields.member}
+- {thing: "where each value came from", source: "UC-LD-01 screens", row: "— where the value came from", ref: forms.frmLoan.sections.sec_loan.fields.member.provenance, loss: L-LD-07}
+- {thing: "S01 A01 Search", source: "UC-LD-01-S01", row: "An act that takes the person from one screen to another, and an act that raises a variation", ref: lists.frmFindMember.filters, assumption: "The search is the list's filters, which the platform runs.", ground: "UC-LD-01-S01 A01"}
+- {thing: "S01 A02 Choose this member", source: "UC-LD-01-S01", row: "An act that takes the person from one screen to another, and an act that raises a variation", ref: lists.frmFindMember.actions, assumption: "The act is the list's row action opening the loan's form, carrying the member.", ground: "UC-LD-01-S01 A02; the interaction design's Acts, row 1"}
+- {thing: "S02 A01 Lend the item", source: "UC-LD-01-S02", row: "An act that takes the person from one screen to another, and an act that raises a variation", ref: forms.frmLoan.acts, assumption: "The act makes the move lend on the loan's form.", ground: "UC-LD-01-S02 A01; the interaction design's Moves, row 1"}
+- {thing: "S02 A02 Cancel", source: "UC-LD-01-S02", row: "An act that takes the person from one screen to another, and an act that raises a variation", ref: forms.frmLoan, assumption: "Cancel is the form's own closing without saving, which the platform gives every form.", ground: "UC-LD-01-S02 A02"}
+# --- the screens of Receive a returned item, ../07_screens/UC-LD-02.md
+- {thing: "UC-LD-02-S01 Find the loan", source: "UC-LD-02 screens", row: "A screen: its identifier and its name", ref: lists.frmFindLoan, assumption: "The screen shows many loans, so it lands as a list; its identifier is the one the interaction design names.", ground: "UC-LD-02-S01; the interaction design's Acts, row 2"}
+- {thing: "UC-LD-02-S02 Confirm the return", source: "UC-LD-02 screens", row: "A screen: its identifier and its name", ref: forms.frmReturn, assumption: "The screen shows one return, so it lands as a form of the return.", ground: "UC-LD-02-S02"}
+- {thing: "S01 serves UC-LD-02", source: "UC-LD-02 screens", row: "The use cases the screen serves, with the steps and variations it serves", ref: lists.frmFindLoan.use_case}
+- {thing: "S02 serves UC-LD-02", source: "UC-LD-02 screens", row: "The use cases the screen serves, with the steps and variations it serves", ref: forms.frmReturn.use_case}
+- {thing: "S01 shows loan", source: "UC-LD-02 screens", row: "The entities shown and the entities changed", ref: lists.frmFindLoan.source}
+- {thing: "S02 changes return", source: "UC-LD-02 screens", row: "The entities shown and the entities changed", ref: forms.frmReturn.entity}
+- {thing: "S01 V01 Item barcode", source: "UC-LD-02-S01", row: "A value", ref: lists.frmFindLoan.filters.item, assumption: "On a list the value the person types lands as the list's filter.", ground: "UC-LD-02-S01 V01"}
+- {thing: "S01 V02 Loan, chosen from a result", source: "UC-LD-02-S01", row: "— a reference to another record, chosen from a result", ref: lists.frmFindLoan.actions}
+- {thing: "S01 V03 Loan state, may only read", source: "UC-LD-02-S01", row: "— the least the screen demands, and the most it admits", ref: lists.frmFindLoan.columns.state}
+- {thing: "S02 V01 Condition on return", source: "UC-LD-02-S02", row: "— a value drawn from a governed list", ref: forms.frmReturn.sections.sec_return.fields.condition, why_mechanical: "The list's owner, strength and date are not stated by the screen, so only the list lands."}
+- {thing: "S02 V02 Loan, carried from S01", source: "UC-LD-02-S02", row: "— a reference to another record, chosen from a result", ref: forms.frmReturn.sections.sec_return.fields.loan}
+- {thing: "S02 V03 Fine due, may only read", source: "UC-LD-02-S02", row: "— the least the screen demands, and the most it admits", ref: forms.frmReturn.sections.sec_return.fields.fine}
+- {thing: "S01 A01 Search", source: "UC-LD-02-S01", row: "An act that takes the person from one screen to another, and an act that raises a variation", ref: lists.frmFindLoan.filters, assumption: "The search is the list's filter, which the platform runs.", ground: "UC-LD-02-S01 A01"}
+- {thing: "S01 A02 Choose this loan", source: "UC-LD-02-S01", row: "An act that takes the person from one screen to another, and an act that raises a variation", ref: lists.frmFindLoan.actions, assumption: "The act is the list's row action opening the return's form, carrying the loan.", ground: "UC-LD-02-S01 A02; the interaction design's Acts, row 2"}
+- {thing: "S02 A01 Confirm the return", source: "UC-LD-02-S02", row: "An act that takes the person from one screen to another, and an act that raises a variation", ref: forms.frmLoanReturned.acts, assumption: "The return is recorded on the return's form and the move is offered on a form of the loan, since a move's button stands only on a form of the record that moves; finding F-LD-01.", ground: "UC-LD-02-S02 A01; the interaction design's Moves, rows 2 and 3"}
+- {thing: "S02 A02 Back", source: "UC-LD-02-S02", row: "An act that takes the person from one screen to another, and an act that raises a variation", ref: forms.frmReturn, assumption: "Back is the form's own closing without saving, which the platform gives every form.", ground: "UC-LD-02-S02 A02"}
+
+carried:
+- {thing: "UC-LD-01: level, status and priority", source: "UC-LD-01 7.1", row: "Its level, its status and its priority"}
+- {thing: "UC-LD-01: scope", source: "UC-LD-01 7.2", row: "The scope"}
+- {thing: "UC-LD-01: stakeholders and interests", source: "UC-LD-01 7.2", row: "A stakeholder interest"}
+- {thing: "UC-LD-02: level, status and priority", source: "UC-LD-02 7.1", row: "Its level, its status and its priority"}
+- {thing: "UC-LD-02: scope", source: "UC-LD-02 7.2", row: "The scope"}
+- {thing: "UC-LD-02: stakeholders and interests", source: "UC-LD-02 7.2", row: "A stakeholder interest"}
+- {thing: "the term loan", source: "EXTRACT 1", row: "A glossary term"}
+- {thing: "the fine is computed by the application", source: "EXTRACT 3", row: "An architecture decision"}
+- {thing: "the status and version of each screen record", source: "UC-LD-01 and UC-LD-02 screens", row: "The status and the version of a screen"}
+- {thing: "what each set reaches", source: "UC-LD-01 and UC-LD-02 screens", row: "What the set reaches: the steps and variations, the two lists of entities, the requirements, and the reading against the stakeholders' interests"}
+
+outside:
+- {thing: "the head librarian, called on at extension 3a of UC-LD-02", source: "UC-LD-02 7.2, extension 3a", ref: roles.role_head_librarian, assumption: "The head librarian lands as a role, given the return form's permission, since the model declares every role it names.", ground: "UC-LD-02 7.2, extension 3a; the landing table's row names the primary actor only", amendment: ../_amendments/A-LD-01.md}
+- {thing: "the groups of screens, which the screens do not yet carry", source: "the standard for the screens, 16.3", ref: navigation.categories, assumption: "Two categories: the desk with the two searches, and a hidden one with the three forms a choice opens.", ground: "the interaction design's Acts, the On a menu cells", amendment: ../_findings/F-LD-02.md}

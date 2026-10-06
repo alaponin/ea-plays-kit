@@ -8,6 +8,44 @@ Video descriptions and the GitBook link the install command, never a release num
 
 ## [Unreleased]
 
+## [0.5.0] — 2026-10-06
+
+The kit is emptied down to the skills of the first wave, and the service design course's method
+joins it as a second plugin. Minor: skills leave, a plugin arrives, and nothing that ships
+changes its output contract.
+
+### Removed
+
+- Twenty skills of `ea-plays`, with the fixtures that tested them: `bb-landscape-check`,
+  `bb-sourcing-researcher`, `bdat-assessor`, `cite-or-discard`, `country-context-pack`,
+  `ea-comparator-evidence`, `ea-cost-case`, `ea-institution-mapper`, `ea-legal-context`,
+  `ea-method-runner`, `ea-open-learning-catalogue`, `ea-tool-evaluator`, and the six `gif-`
+  skills other than `gif-decree-draft`. They are in the history, up to v0.4.0. The play maps
+  and the two workbook chains keep every play, since the course GitBooks read them.
+
+### Added
+
+- **`sdd-kit`**, the second plugin: the twelve skills of the specification-driven development
+  method that the service design course teaches, the thirteen standards they read and the kit
+  of programs they run. `scripts/sync-skills.sh` copies the kit and the standards' text into
+  each skill's folder, so a skill installed on its own carries what it reads and runs; the
+  kit's programs and the two skill scripts look in the skill's own folder first.
+- **The ITU Skills Marketplace.** Every skill carries `license` and `metadata.provider`, and
+  `check_fixtures.py` runs the marketplace's automated checks on all sixteen (criterion 12).
+  The READMEs give the `npx skills add` route.
+
+### Changed
+
+- `ea-governance-drafter`, `gif-decree-draft` and `paera-reference-check` run the verification
+  loop of `references/source-tiers.md` where they ran `cite-or-discard`, which has left.
+- Both READMEs describe the four courses and the two plugins.
+- No file names a course by its acronym. The note on line 3 of each sdd-kit standard names the
+  service design course, so each standard's checksum changed: the skills' pins, the
+  checklists' and templates' heads and the fixtures' claims of conformance carry the new one,
+  and `kit skills --check` reports all twelve current. The older entries below name the
+  courses too.
+- sdd-kit's manifest names FiscalAdmin OÜ as its author, as every skill names it as provider.
+
 ## [0.4.0] — 2026-10-06
 
 The first wave of learner skills for four courses: enterprise architecture,
@@ -56,10 +94,10 @@ output contracts changed.
 
 ## [0.3.1] — 2026-09-14
 
-The course acronyms are gone. A reader outside the programme could not tell what KP1 and KP2
-meant. Earlier entries still use them: **KP1** is the Government Enterprise Architecture
-course (the EA course, A-numbered artefacts), and **KP2** is the Government Interoperability
-Framework course (the interoperability course, B-numbered artefacts).
+The course acronyms are gone. A reader outside the programme could not tell what they meant.
+The EA course is the Government Enterprise Architecture course (A-numbered artefacts); the
+interoperability course is the Government Interoperability Framework course (B-numbered
+artefacts).
 
 Patch: no artefact number, skill name, play id or output contract changed.
 
@@ -67,8 +105,8 @@ Patch: no artefact number, skill name, play id or output contract changed.
 
 - **Every file names the course instead of the acronym**: the skills, the shared references,
   the fixtures, both READMEs, both manifests and `check_fixtures.py`. Trigger phrases that
-  said "names KP2 play 4.4" now say "names interoperability play 4.4". Three other acronym
-  mentions (KP3, KP4) now say "later courses" or are dropped.
+  named the interoperability course by its acronym now say "names interoperability play 4.4". Three other acronym
+  mentions, of the two later courses, now say "later courses" or are dropped.
 - **Files renamed to match the `gif-` skill prefix**: `shared/workbook-chain-kp2.md` →
   `shared/workbook-chain-gif.md` (and its copy in every skill's `references/`),
   `country-context-pack/references/a0-kp2-supplement.md` → `a0-gif-supplement.md`, and
@@ -80,60 +118,60 @@ Patch: no artefact number, skill name, play id or output contract changed.
 
 ## [0.3.0] — 2026-09-12
 
-The KP2 layer. The KP2 GitBook of 12 September names three skills in its AI tips —
+The interoperability course layer. The interoperability GitBook of 12 September names three skills in its AI tips —
 `gif-decree-draft`, `gif-semantic-map`, `gif-openapi-gen` — that did not exist, and sixteen
-of its thirty-eight plays said *no skill yet, so the prompt runs bare*. Every KP2 play now
+of its thirty-eight plays said *no skill yet, so the prompt runs bare*. Every interoperability play now
 has a primary skill, and the three named skills ship under exactly those names.
 
-Minor: eight new skills, a second workbook chain, no change to any KP1 artefact number, skill
+Minor: eight new skills, a second workbook chain, no change to any EA artefact number, skill
 name or output contract.
 
 ### Added
 
-- **Eight `gif-*` skills**, one per KP2 artefact family: `gif-four-layer-map` (1.2),
+- **Eight `gif-*` skills**, one per interoperability artefact family: `gif-four-layer-map` (1.2),
   `gif-foundation-drafter` (1.4, the home-page storyboard), `gif-decree-draft` (2.2–2.5),
   `gif-consistency-check` (2.6, 5.9), `gif-semantic-map` (4.4, 4.6), `gif-openapi-gen`
   (4.5, 4.7), `gif-federation-standup` (5.4–5.6), `gif-bus-monitor` (5.8). Each follows the
   output contract, runs `cite-or-discard` where it cites, and keeps every identifier, code
   value and legal citation the country's own registries or statutes must confirm as
-  `[confirm]`. Three carry Progressa fixture material from the KP2 build pack — the
+  `[confirm]`. Three carry Progressa fixture material from the interoperability build pack — the
   semantic map, the identity-service contract and wiring, the federation and its acceptance
   — each under the fixture marker.
-- **`shared/workbook-chain-kp2.md`** — the B1–B38 chain, the A0 §8–§10 sections, the KP1
+- **`shared/workbook-chain-kp2.md`** — the B1–B38 chain, the A0 §8–§10 sections, the EA
   hand-offs (A0, A7, A24), and the frozen Progressa federation identifiers. Synced into every
   skill's `references/` like the other shared files.
 - **`tests/kp2/`** — `progressa-supplement.md` (A0 §8–§10 for Progressa, the once-only
-  scenario and the federation), `play-map.json` for the 38 KP2 plays, and one fixture folder
-  per play. KP1 and KP2 share play ids, so the KP2 fixtures live in their own tree.
-- **`tests/check_fixtures.py`** — a KP2 block with the same criteria: fixtures complete,
+  scenario and the federation), `play-map.json` for the 38 interoperability plays, and one fixture folder
+  per play. The two courses share play ids, so the interoperability fixtures live in their own tree.
+- **`tests/check_fixtures.py`** — an interoperability block with the same criteria: fixtures complete,
   skills shipped, nine provenance fields, README rows, the B-chain consistent in both
   directions, the map equal to the chain, and the three tip-named skills present.
 - **`country-context-pack/references/a0-kp2-supplement.md`** — how to build A0 §8–§10.
 
 ### Changed
 
-- **Eight existing skills gained a `## KP2 plays` section and KP2 trigger phrases** in
+- **Eight existing skills gained a `## Interoperability course plays` section and its trigger phrases** in
   their descriptions: `country-context-pack`, `ea-institution-mapper`,
   `ea-comparator-evidence`, `ea-legal-context`, `ea-governance-drafter`,
-  `bb-landscape-check`, `ea-method-runner`, `paera-reference-check`. Their KP1 behaviour is
+  `bb-landscape-check`, `ea-method-runner`, `paera-reference-check`. Their EA behaviour is
   unchanged.
-- **`shared/provenance-header.md`** — the Artefact field says A- for KP1 and B- for KP2;
+- **`shared/provenance-header.md`** — the Artefact field says A- for the EA course and B- for the interoperability course;
   the Feeds field names which chain to read.
-- The plugin README carries a second play → skill table for KP2; both manifests say 0.3.0.
+- The plugin README carries a second play → skill table for the interoperability course; both manifests say 0.3.0.
 - **Every skill description is a trigger blurb again.** They had grown to 1,850 characters
   by restating the procedure the body already carries, and all 22 load before any skill
   runs. Each is now one sentence of identity plus its trigger list, with the sibling
   disambiguators kept: 29,282 → 20,321 characters, roughly 2,200 tokens off the standing
   cost. No trigger phrase was dropped, and everything below `allowed-tools:` is
   byte-identical in all 22 files.
-- **The six KP1-only skills name `workbook-chain-kp2.md`** in their shared contract, as the
+- **The six EA-only skills name `workbook-chain-kp2.md`** in their shared contract, as the
   `gif-*` skills already did. `sync-shared.sh` copies all five shared files into all 22
   skills and still does; making it course-aware was considered and rejected, because which
   course a skill serves is the most volatile fact about it — this release alone moved eight
   skills from one course to two — and a skill that loses a chain it turns out to need fails
   inside a folder a learner has already uploaded. A file shipped and never opened costs
   disk; a file needed and not shipped costs the learner.
-- `.claude-plugin/marketplace.json` — the marketplace description names KP2 beside KP1, as
+- `.claude-plugin/marketplace.json` — the marketplace description names the interoperability course beside the EA course, as
   the plugin entry inside it already did.
 
 ### Fixed
@@ -164,9 +202,9 @@ name or output contract.
 
 ### Not in this release
 
-- The KP2 GitBook still says *no skill yet* on sixteen play pages and lists fourteen skills
-  on the kit page. `KP2-GIF/gitbook/play-map.json` (`skill`, `also`) and `KIT_SKILLS` in
-  `kp-gitbook-render` are the two edits, then a re-render; the KP2 skill mapping is
+- The interoperability GitBook still says *no skill yet* on sixteen play pages and lists fourteen skills
+  on the kit page. the interoperability GitBook's own `play-map.json` (`skill`, `also`) and `KIT_SKILLS` in
+  `kp-gitbook-render` are the two edits, then a re-render; the interoperability skill mapping is
   `tests/kp2/play-map.json` here.
 
 ## [0.2.3] — 2026-09-07
@@ -174,7 +212,7 @@ name or output contract.
 The workbook chain agreed with itself in one direction only. Ten artefacts named a play in
 their **Feeds** cell that did not name them back in its **Consumes** cell — A10 → 2.5,
 A15 → 4.4 and 4.7, A17 → 3.1, A18 → 3.5, A13 → 4.1 among them. `check_fixtures.py` walked
-Consumes → Feeds and never the reverse, so the one-way edges passed every run, and the KP1
+Consumes → Feeds and never the reverse, so the one-way edges passed every run, and the EA
 GitBook rendered 2.2 and 2.7 as dead ends because it reads the map rather than the chain.
 
 Patch: no artefact number, skill name or output contract changed.
@@ -192,17 +230,17 @@ Patch: no artefact number, skill name or output contract changed.
 
 - **`tests/check_fixtures.py` 10b** — walks Feeds → Consumes, so a one-way edge now fails.
 - **`tests/check_fixtures.py` 10c** — compares `play-map.json` `consumes` against the chain
-  cell by cell: the drift the KP1 structure draft §10.1 predicted when the two are
+  cell by cell: the drift the EA course's structure draft §10.1 predicted when the two are
   maintained apart.
 
 ## [0.2.2] — 2026-09-06
 
-Play ids aligned with KP1 v0.2 (the 3 September 2026 tightening). Patch: no artefact number
+Play ids aligned with the EA course v0.2 (the 3 September 2026 tightening). Patch: no artefact number
 changes, no skill name changes, no output contract changes — only which play makes what.
 
 ### Changed
 
-- **1.8 is retired.** KP1 v0.2 folded its comparator play into 5.1. The `1.8` fixture and
+- **1.8 is retired.** The EA course v0.2 folded its comparator play into 5.1. The `1.8` fixture and
   play-map entry are gone; 5.1 now makes **A8 — Comparator-country cards, sourced** from
   A0 §5 in one pass, and the "A8 rev.2" label is dropped. A8 keeps its number because the
   artefact did not move. 1.7 no longer consumes A8 (it comes later in the course now).

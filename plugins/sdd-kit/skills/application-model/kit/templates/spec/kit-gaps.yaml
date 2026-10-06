@@ -1,0 +1,83 @@
+# templates/spec/kit-gaps.yaml — the register of the kit's own gaps: what the kit cannot yet state
+# or build that an accepted interaction design decides, and the estate's round that removes each.
+#
+# WHY IT EXISTS. Rule L021 (tools/validate.py; SDD-11, section 8) refuses a model that disagrees
+# with the interaction design its owner accepted. Some disagreements are not the model's to close:
+# the kit has no construct for what the design decides. On the estate's orchestrator's answer of 27
+# September 2026, 10:40 UTC, to point 19 of an engagement's Held row, a build may
+# go ahead over such a disagreement when the model records it as a loss that names an entry of this
+# register and the round that removes the gap is still open (METHOD-2026-09-26-02, point 19 (b)).
+#
+# HOW IT IS READ. A model names its losses in `model.interaction_design.losses`: each loss gives its
+# identifier, the entry below it stands on (`gap`), and the lines of the document it covers
+# (`rows`). Each entry names, beside the checks of L021 it touches (`checks`), the kind of
+# disagreement it admits (`admits`), in the terms L021 uses to tell its disagreements apart
+# (tools/validate.py, IXD_KINDS and IXD_WHERE): the check, the comparison that fails
+# (`disagreement`), and, where the gap is narrower than that comparison, the conditions that hold
+# of the element the disagreement is about (`where`, all of them). An entry that admits more than
+# one kind, or one kind under either of two conditions, lists each, and admits a disagreement any
+# one of them names. L021 admits a disagreement — printed as a warning naming the loss,
+# the entry and the round — only where it arises from a covered row and is of a kind the entry
+# admits (METHOD-2026-09-26-02, version 3, gap 1). A loss naming no entry, or an entry this
+# register does not hold, or covering a row on which no disagreement arises, is refused; so is a
+# loss covering a row whose disagreement is of another kind than its entry admits, in words that
+# name the kind the disagreement is and the kind the entry admits, and that disagreement stands. A
+# disagreement that arises from no row of the document is never admitted. The loader refuses an
+# entry that names no kind, or a kind or a condition L021 does not tell apart.
+#
+# WHAT IS NEVER AN ENTRY. The engagement's own kinds: the design's words, the model's source and
+# its starting data. An entry is the kit's (`owner: kit`) and the loader refuses any other owner.
+#
+# HOW AN ENTRY LEAVES. The round that removes a gap removes its entry in the same round; the gate
+# then refuses every model that still records a loss on it (tests/test_repair_dm_application.py,
+# test_a_gap_removed_from_the_register_refuses_the_loss_that_still_names_it). An entry whose round
+# has no identifier yet says which round it is; the orchestrator writes the identifier here when it
+# raises the round.
+#
+# Its first five entries were the estate's rows of the table in an engagement's
+# review, part one,
+# section 1.1 (b), rows 2, 3, 4, 7 and the estate's part of 13. Row 1 (an issue found in testing) has no entry: point
+# 19 (a) of the same round removes it. Rows 8 and 9 are removed by its point 18. Rows 5, 6, 10, 11
+# and 12 are the engagement's.
+#
+# REMOVED. G4 (row 7), the choice from the taxpayer search, left the
+# register with the search round METHOD-2026-09-28-01, which removed the gap: the library's smart
+# search element searches the record its properties name (joget-smart-search 8.2.0), the forms
+# projector writes those properties from the model (tools/project_forms.py, record_search), and
+# rule L021 reads the choice from a search's result as the act that stands on it (tools/validate.py,
+# _ixd_searches). A model that still records a loss on G4 is refused, naming G4
+# (tests/test_record_search.py, test_a_model_that_still_records_a_loss_on_g4_is_refused_naming_it).
+#
+# G1, G2, G3 and G5 left the register with the schema round METHOD-2026-09-28-07, which removed the
+# first two gaps, settled the third against the owner's ruling on long lists, and settled the part
+# of the fourth that is the kit's:
+#   G1 — a list's row act names the record it carries (`record`,
+#      `carries`) and may open a list (`open_list`); a list has acts on the rows chosen
+#      (`chosen_actions`); a form's act stands on a value of the form (`stands_on`).
+#      Projected onto the platform's hyperlink action and the kit's act bar; rule L021's check 9
+#      reads each (tools/validate.py; tools/project_datalists.py; tools/project_forms.py).
+#   G2 — a list is sourced from an act on chosen rows (`source.act`), the records it was
+#      taken on, read by the platform's JDBC list binder from the statement the kit writes.
+#   G3 — no change to the kit: the schema already states a divided list and its
+#      categories as lists the application maintains, with their first values (`groups`, each
+#      row's `group`, `rows`), and lint U026 keeps them so, as point 2 of the ruling on long
+#      lists makes the categories a list the application maintains. A design row that fixes such
+#      a list disagrees with the ruling, and the disagreement is the design's words — the
+#      engagement's own kind, never an entry here.
+#   G5 — a search's record may be one of the model's queries, made a view of the
+#      database (`queries[].view`), so that the view carries another record's value or the copy
+#      of a value another system holds; a field names the system that holds its value
+#      (`held_by`) and is shown read-only. Where the application holds no copy of such a value,
+#      reading it from the system that holds it is the application's integration and not the
+#      kit's: the loss stays with the engagement, under its own name.
+# A model that still records a loss on any of the four is refused, naming the entry as none of
+# the register's (tests/test_schema_gaps.py, test_a_model_that_still_records_a_loss_on_a_removed_gap_is_refused).
+# The register now holds no entry; the gate refuses every recorded loss until a round names a new
+# gap of the kit here.
+
+version: "1.3"
+set_by: >-
+  METHOD-2026-09-26-02, point 19 (b); each entry's `admits` by its version 3, gap 1; G4 removed by
+  METHOD-2026-09-28-01; G1, G2, G3 and G5 removed by METHOD-2026-09-28-07
+
+gaps: []

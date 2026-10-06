@@ -1,0 +1,32 @@
+# Ruling — whatever is put to the owner for review or acceptance reaches him as a polished Word document.
+# Recorded by the orchestrator on 25 September 2026, on the owner's word of the same day.
+set: the-owner-reviews-a-polished-document
+date: 2026-09-25
+owner: the owner of the method
+supersedes: nothing.
+authority: >-
+  The owner's word of 25 September 2026, on being asked to review the interaction design of an application
+  as a markdown file: "I reviewed pages, seems ok. But I do not review MDs, it is almost
+  impossible for me to comprehend them. You have to deliver for me for review it as a polished DOCX in a
+  human-readable plain-English, i.e. free from American/English idioms, fully context-elaborated way, with
+  explanation of all concepts, terms and abbreviations. Please use diagrams to visualise all concepts."
+decided:
+  - point: 1
+    decision: >-
+      Every document put to the owner for review, acceptance or a decision is delivered to him as a polished Word
+      document (.docx). A markdown file is never what he is asked to read.
+  - point: 2
+    decision: >-
+      The Word document is a reader's edition. It is written in plain English, with no idioms of any variety of
+      English and no trade metaphors. It sets out the context before any conclusion. It explains every concept, term
+      and abbreviation where it is first used, and again in a glossary. It names things in words and puts any
+      identifier after the words, never instead of them. Every concept it relies on is shown in a diagram.
+  - point: 3
+    decision: >-
+      The markdown, or whatever a program reads, stays the source of record. The Word document is built from its
+      own source by a program and is never edited by hand. The owner's acceptance is written into the source of
+      record, and the Word document is built again from it.
+applied_by:
+  - the instruction of the engagement where it was first applied, which put an interaction design to the owner
+  - every later instruction that puts a document to the owner
+  - SDD-11 version 1.0 (the plan's R5), whose step hands the owner a reader's edition of the interaction design

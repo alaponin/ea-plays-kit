@@ -1,0 +1,113 @@
+# Gate-report — the computed custody artefact (ADR-069, CH-01 WP-A).
+#
+# Assembled ONLY by `kit gate` (never hand-authored — an authored gate-report is
+# counterfeit by definition: claims-lint guards the model against gate-verdict
+# vocabulary, and per-constituent input sha256s guard THIS file against edits).
+#
+# CH-01 refinements folded in:
+#   * Each constituent declares an explicit INPUT MANIFEST (`inputs: {path: sha256}`)
+#     — the deterministic set of files that tool read. `kit gate --check` recomputes
+#     exactly this set against the working tree; a tool must report its own inputs
+#     (no "whatever it happened to open"), so the freshness guard is neither leaky
+#     nor over-broad (it never includes kit source, only app/design inputs).
+#   * `signature` is process-grade v1 (signer-on-record): a named, dated signer is
+#     recorded; `signer ∉ model.authors` is CHECKED IN CODE but, per the owner ruling
+#     (2026-07-18), only WARNS until a second signing identity exists (ADR-074).
+#   * Signing is a DEPLOY/MILESTONE act, not a per-regen one: `kit gate` (assemble)
+#     runs in the loop; `kit gate sign` is separate, so the inner edit→validate→regen
+#     loop is never gated on a signature.
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: gate-report
+type: object
+required: [gate_report]
+properties:
+  gate_report:
+    type: object
+    required: [app, model_sha256, kit_version, custody_mode, constituents, verdict]
+    additionalProperties: false
+    properties:
+      app:          { type: string }              # app.id
+      model_sha256: { type: string, pattern: "^[0-9a-f]{64}$" }
+      kit_version:  { type: string }              # from .kit.yaml
+      custody_mode: { enum: [required, stamp] }
+      custody_declared: { type: boolean }   # false = no `custody:` in .kit.yaml, so the weakest
+                                            # posture was defaulted into rather than chosen
+      assembled_at: { type: string }              # ISO timestamp; kit gate is not a projector, clocks allowed
+      constituents:
+        type: object
+        # Each PRESENT block was RUN by `kit gate`. Absence = did not run (RED in
+        # `required` mode for the required set: validate, spec_lint, diff_reference,
+        # drift, suite, ux_lint).
+        additionalProperties: false
+        properties:
+          validate:       { $ref: "#/$defs/result" }
+          spec_lint:      { $ref: "#/$defs/result" }
+          lint_decisions: { $ref: "#/$defs/result" }
+          citation_check: { $ref: "#/$defs/result" }
+          # schema-0.2 §3.6: is the app carrying a decision its model cannot enforce?
+          # Ten constituents read green while the file recording exactly that sat unread.
+          loss_report:    { $ref: "#/$defs/result" }
+          diff_reference: { $ref: "#/$defs/result" }   # summary carries pack id+version+hash
+          # 2026-08-13 (verification-seam ruling): the fidelity axis. The only constituent
+          # whose denominator is the CUSTOMER'S requirements document rather than something
+          # the design authored — so the only one that can see a requirement the customer
+          # paid for that no artefact in the build realizes.
+          requirements_coverage: { $ref: "#/$defs/result" }
+          drift:          { $ref: "#/$defs/result" }
+          # 2026-08-06: the only check that grades the output against what the MODEL declared,
+          # rather than against a re-run of the producer. drift compares the projector to itself.
+          totality:       { $ref: "#/$defs/result" }
+          suite:          { $ref: "#/$defs/result" }   # summary carries features_without_cases
+          ux_lint:        { $ref: "#/$defs/result" }
+          diff_ux:        { $ref: "#/$defs/result" }
+          # ADR-077 behavioural leg: the ONLY constituent whose green means "the running
+          # system was observed to do it" rather than "the spec is well-formed".
+          acceptance:     { $ref: "#/$defs/result" }
+          ui_probe:       { $ref: "#/$defs/result" }
+      signature:
+        type: object
+        required: [signer, date]
+        additionalProperties: false
+        properties:
+          signer: { type: string }   # ∈ signers registry ∧ (v1: warns if ∈ model.authors) — checked in code
+          date:   { type: string, format: date }
+      verdict: { enum: [GREEN, RED, STALE, UNSIGNED] }   # derived by `kit gate --check`; stored for display only
+$defs:
+  result:
+    type: object
+    required: [ran_at, tool_version, inputs, exit]
+    additionalProperties: false
+    properties:
+      ran_at:       { type: string }                    # ISO timestamp
+      tool_version: { type: string }
+      inputs:                                           # path -> sha256 of EVERY file the tool declared it read
+        type: object
+        additionalProperties: { type: string, pattern: "^[0-9a-f]{64}$" }
+      exit:         { type: integer }
+      summary:      { type: string }                    # one-line, tool-authored
+      scope:                                            # honest-scope label (review §F.3):
+        enum: [presence, shape, "shape+contract", "presence+shape", contract, coverage,
+               behaviour, transmission, fidelity]
+        # `fidelity` added 13 Aug 2026 (night). It was MISSING: commit 3837f30 put
+        # `requirements_coverage` into the required set with scope `fidelity` and did not add the
+        # value here, so `_validate_against_schema` refused every report and `kit gate assemble`
+        # could not write for ANY application — the check that exists to stop the schema and the
+        # assembler drifting apart caught them drifting apart, and then blocked the gate entirely.
+        # Found by running the gate, not by reading it. Raised as F-CFG-30.
+        # what this gate's verdict actually PROVES, so "green" can never read as "behaves".
+      observed:                                         # present only when exit == 3: the check
+        enum: [nothing]                                 # ran and its population was EMPTY. Not a
+                                                        # pass, and not a failure of the thing
+                                                        # graded — an absence of evidence. Blocks
+                                                        # GREEN in `required` posture all the same.
+      applicable:   { type: boolean }                   # false = the gate did not apply (e.g. no
+                                                        # scenarios declared); exit 0 must NOT then
+                                                        # read as behavioural evidence.
+
+# Freshness rule (enforced in gate_report.py, not by this schema):
+#   verdict = STALE     if any constituent input sha differs from the working tree at --check time
+#           = UNSIGNED  if signature absent/invalid (signer not in registry)
+#           = RED       if any required-set constituent is absent or exit != 0
+#                       (diff_reference exit 0-with-signed-waivers counts green per its own contract)
+#           = GREEN     otherwise
+# Custody resolution (gen/build_app/deploy): GREEN+fresh+signed -> GATED:<report-sha256>; else UNGATED.

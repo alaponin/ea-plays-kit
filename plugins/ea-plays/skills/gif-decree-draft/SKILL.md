@@ -106,7 +106,7 @@ the learner* block in the artefact.
    and mark every reference to it ⚠. If it is absent, the memo says so and lists what the
    decree must then carry itself.
 
-6. **Run `cite-or-discard`** on every citation before you give the output. A citation to
+6. **Run the verification loop of `references/source-tiers.md`** on every citation before you give the output. A citation to
    a section that the fetched text does not contain is *not supported*: remove the section
    number and restore the `[confirm]`.
 

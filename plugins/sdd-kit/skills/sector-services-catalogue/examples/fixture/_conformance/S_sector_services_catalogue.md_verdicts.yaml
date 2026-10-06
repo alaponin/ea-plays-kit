@@ -1,0 +1,25 @@
+# The verdicts of the fixture, one for each rule of the checklist of SDD-10, as the person who
+# checked the fixture against the checklist answered them. The checklist names no program for any
+# of its rules, so every verdict is a person's and none names a check. `kit conform` would write
+# the claim from this file; the register of the kit carries no row for the sector's catalogue, so
+# it cannot yet be run for it, and no claim stands beside this file.
+SSC-1: met              # the sector holds three bodies
+SSC-2: met              # one catalogue, one architect named
+SSC-3: met              # one boundary; the counterparty at it
+SSC-4: not met          # the rules of SDD-05 it reads were not checked for the fixture
+SSC-5: met              # customers and bodies as actors; the counterparty owns no row
+SSC-6: met              # each service one customer's outcome by one owning body
+SSC-7: met              # each service passes the one test; nothing decomposed
+SSC-8: met              # every service rests on an obligation
+SSC-9: met              # every row carries a source mark; the gap row is marked searched
+SSC-10: met             # the structure declared with its source; every row names its group
+SSC-11: not met         # completeness was not measured against the two registers for the fixture
+SSC-12: met             # every service binds by identifier to the obligations register
+SSC-13: met             # the registers are named in the rows
+SSC-14: met             # every rule a row links is in the obligations register
+SSC-15: not met         # the survey and the views are not generated for the fixture
+SSC-16: met             # every row carries the row header; the closed lists are declared
+SSC-17: met             # one state not established, with the question that settles it
+SSC-18: met             # no service placed before the register it reads
+SSC-19: met             # the two rows chosen to be built have a model beneath them
+SSC-20: not applicable  # no row rests on observed practice

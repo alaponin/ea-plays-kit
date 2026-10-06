@@ -1,6 +1,6 @@
 {
   "name": "ea-plays-kit",
-  "description": "The learner kit for the Knowledge Product AI plays on government enterprise architecture and the government interoperability framework — sourced country context, verified claims, and the artefacts that chain into a country workbook.",
+  "description": "The learner kits for four Knowledge Product courses on digital government: the 'with the kit' skills for the AI plays, and the service design course's specification-driven development method.",
   "owner": {
     "name": "FiscalAdmin OÜ",
     "url": "https://github.com/alaponin"
@@ -9,8 +9,14 @@
     {
       "name": "ea-plays",
       "source": "./plugins/ea-plays",
-      "description": "The 'with the kit' layer for the Government Enterprise Architecture and Government Interoperability Framework AI plays",
-      "version": "0.4.0"
+      "description": "The 'with the kit' layer for the AI plays and usage tips of the enterprise architecture, interoperability, education DPI roadmap and service design courses",
+      "version": "0.5.0"
+    },
+    {
+      "name": "sdd-kit",
+      "source": "./plugins/sdd-kit",
+      "description": "The specification-driven development method's twelve skills for the service design course, each with the standards it reads and the kit of programs it runs",
+      "version": "0.1.0"
     }
   ]
 }

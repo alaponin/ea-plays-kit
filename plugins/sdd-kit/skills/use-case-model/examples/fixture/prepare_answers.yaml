@@ -1,0 +1,102 @@
+# The answers the fixture's use case files were prepared with, by
+#   python3 scripts/prepare.py examples/fixture --system "The allotment registry" --answers examples/fixture/prepare_answers.yaml
+# Every value is fictitious and belongs to no engagement. The field names are the template's own.
+UC-01:
+  Name: Run the allotment season
+  Level: summary
+  Primary actor: Season calendar
+  Status and priority: Draft · High
+  Format: brief
+  Linked requirements: FR-SEA-001
+  Entities: "reads: Season; changes: Season"
+  Business rules: BR-SEA-01
+  Relationships: "—"
+  description: The season calendar opens and closes the application window, and the season runs from the first application to the last allocation.
+UC-02:
+  Name: Apply for a plot
+  Level: user goal
+  Primary actor: Resident
+  Status and priority: Baselined · High
+  Format: written out in full
+  Linked requirements: FR-APP-001, FR-APP-002, FR-APP-003, CON-DAT-001
+  Entities: "reads: Resident, Season; changes: Application"
+  Business rules: BR-APP-01, BR-APP-02, BR-SEA-01
+  Relationships: includes UC-06, UC-07; extended by UC-04
+  description: The resident applies for a plot for the season and learns whether the application is accepted.
+UC-03:
+  Name: Allocate a plot
+  Level: user goal
+  Primary actor: Garden officer
+  Status and priority: Reviewed · High
+  Format: outline
+  Linked requirements: FR-ALC-001, QR-AUD-001
+  Entities: "reads: Application, Plot, Resident; changes: Allocation"
+  Business rules: BR-ALC-01
+  Relationships: includes UC-08; extended by UC-05
+  description: The garden officer gives a free plot to the next accepted application.
+UC-04:
+  Name: Pay the plot rent
+  Level: user goal
+  Primary actor: Resident
+  Status and priority: Draft · Medium
+  Format: brief
+  Linked requirements: FR-PAY-001
+  Entities: "reads: Allocation; changes: Rent payment"
+  Business rules: BR-PAY-01
+  Relationships: extends UC-02 at the application is accepted when rent is due before the plot is handed over
+  description: The resident pays the season's rent so that the plot can be handed over.
+UC-05:
+  Name: Place an applicant on the waiting list
+  Level: user goal
+  Primary actor: Garden officer
+  Status and priority: Draft · Medium
+  Format: brief
+  Linked requirements: FR-ALC-003
+  Entities: "reads: Application; changes: Waiting list entry"
+  Business rules: BR-ALC-01
+  Relationships: extends UC-03 at no plot is free when the applicant is placed on the waiting list
+  description: The garden officer records an accepted application that no free plot can serve.
+UC-06:
+  Name: Confirm the applicant's identity
+  Level: subfunction
+  Primary actor: Resident
+  Status and priority: Draft · Medium
+  Format: brief
+  Linked requirements: FR-APP-002
+  Entities: "reads: Resident"
+  Business rules: "—"
+  Relationships: included by UC-02
+  description: The registry confirms, through the identity service, who is applying.
+UC-07:
+  Name: Check the applicant's residence
+  Level: subfunction
+  Primary actor: Resident
+  Status and priority: Draft · Medium
+  Format: brief
+  Linked requirements: FR-APP-003, CON-DAT-001
+  Entities: "reads: Resident"
+  Business rules: BR-APP-02
+  Relationships: included by UC-02
+  description: The registry confirms, through the address register, that the applicant lives in the town.
+UC-08:
+  Name: Record the allocation decision
+  Level: subfunction
+  Primary actor: Garden officer
+  Status and priority: Draft · Medium
+  Format: brief
+  Linked requirements: FR-ALC-002, QR-AUD-001
+  Entities: "reads: Application; changes: Allocation"
+  Business rules: BR-ALC-02
+  Relationships: included by UC-03
+  description: The registry records each allocation decision with the reason for it.
+UC-09:
+  Name: Give up a plot
+  Level: user goal
+  Primary actor: Resident
+  Status and priority: Draft · Low
+  Format: brief
+  Linked requirements: FR-REL-001
+  Entities: "reads: Allocation; changes: Allocation, Plot"
+  Business rules: "—"
+  Relationships: "—"
+  description: The resident gives a plot back during the season so that it can be allocated again.

@@ -77,7 +77,7 @@ be absent.
    governance charter, a policy for digital spend control, a mandate for an architecture
    review board, or a published repository policy. Cite each one with its URL and one line
    on what to take from it. Use exemplars **for illustration only**. Never put the text of
-   an exemplar into the draft. Run `cite-or-discard` on the URLs of the exemplars.
+   an exemplar into the draft. Run the verification loop of `references/source-tiers.md` on the URLs of the exemplars.
 
 5. **Write what the document must not contain.** Each of these documents has one
    characteristic failure: a ToR with no quorum and no escalation path; a RACI with two

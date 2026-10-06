@@ -1,0 +1,37 @@
+# A fixture of the method's driver, sdd-specify: four rows of the delivery kit's register,
+# templates/spec/slots.yaml, copied on 29 September 2026 with the cells the driver's program reads
+# (n, and the code of the standard or its absence, and skill) and the row's title. The skill cells of
+# rows 01 and 09 are filled as the register's own round is to fill them, as plugin:skill; rows 00 and
+# 06 keep the cells the register carries today. It is not a register, and nothing but the fixture
+# test reads it.
+slots:
+- n: '00'
+  title: The customer's own documents
+  standard:
+    absent: Not ours to govern. SDD-01 §4 names this as the first of the twelve and places it outside
+      the set of things this organisation writes.
+    owner: the method's owner
+  skill:
+    absent: 'No skill of the method: the target state (the design of the target state, section 2) gives this thing
+      none, and T23 records that here.'
+    owner: T23 of the plan of the finish (SDD · work · the register names the skills and the route prints
+      them)
+- n: '01'
+  title: The register of requirements
+  standard:
+    code: SDD-02
+  skill: sdd-kit:requirements-catalogue
+- n: '06'
+  title: One use case, written out in full
+  standard:
+    code: SDD-06
+  skill:
+    absent: The skill sdd-kit:use-case-description, which the target state names for this thing (the design of the target state,
+      section 2), is not yet written; T19 of the plan of the finish writes it, and T23 names it here.
+    owner: T23 of the plan of the finish (SDD · work · the register names the skills and the route prints
+      them)
+- n: '09'
+  title: The application model
+  standard:
+    code: SDD-09
+  skill: sdd-kit:application-model
