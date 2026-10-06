@@ -177,7 +177,7 @@ def schema_errors(schema: dict, doc: dict) -> list[str]:
 
 
 # --------------------------------------------------------------------------- #
-# KP-01 — domain data dictionary (dd) loading + the semantic->control contract  #
+# DD-01 — domain data dictionary (dd) loading + the semantic->control contract  #
 # --------------------------------------------------------------------------- #
 # The dd classifies every governed set by `kind`; the kind DRIVES the control the
 # projector emits and the M-series gate enforces. One source of truth, shared by
@@ -241,7 +241,7 @@ class Lint:
         self.processes = {p["id"]: p for p in doc.get("processes", [])}
         self.fixtures = {f["id"]: f for f in
                          doc.get("acceptance", {}).get("fixtures", [])}
-        # ---- KP-01: domain data dictionary (advisory-off when no dd_ref) ----
+        # ---- DD-01: domain data dictionary (advisory-off when no dd_ref) ----
         self.app_path = app_path
         self.dd = load_dd(doc, app_path)
         self.dd_sets = {st["id"]: st for st in self.dd.get("sets", [])}
@@ -1236,7 +1236,7 @@ class Lint:
                       "(UX-01 TRM-04 - no user-facing literal outside language resources)")
 
     def m_series_dd_gate(self):
-        """KP-01 M-series: the AUTHORING gate that makes a naive control unauthorable.
+        """DD-01 M-series: the AUTHORING gate that makes a naive control unauthorable.
         Active only when model.dd_ref resolves. M-00 broken ref; M-01 semantic that
         names no dd set; M-02 an attribute that matches a governed set but is left an
         unbound primitive (HARD error for typed.period — the period-as-text defect;

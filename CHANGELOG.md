@@ -20,8 +20,8 @@ changes its output contract.
   `bb-sourcing-researcher`, `bdat-assessor`, `cite-or-discard`, `country-context-pack`,
   `ea-comparator-evidence`, `ea-cost-case`, `ea-institution-mapper`, `ea-legal-context`,
   `ea-method-runner`, `ea-open-learning-catalogue`, `ea-tool-evaluator`, and the six `gif-`
-  skills other than `gif-decree-draft`. They are in the history, up to v0.4.0. The play maps
-  and the two workbook chains keep every play, since the course GitBooks read them.
+  skills other than `gif-decree-draft`. They are in the history before the v0.5.0 tag. The
+  play maps and the two workbook chains keep every play, since the course GitBooks read them.
 
 ### Added
 

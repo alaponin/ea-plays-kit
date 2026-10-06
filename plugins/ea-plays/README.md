@@ -12,7 +12,7 @@ kit is optional. It adds the step a bare prompt skips: it fetches the named sour
 writes the draft, and it checks the draft against them afterwards.
 
 Since v0.5.0 the kit carries only these four skills. The other skills of earlier versions
-are in the repository's history, up to v0.4.0.
+are in the repository's history before the v0.5.0 tag.
 
 ## Install
 

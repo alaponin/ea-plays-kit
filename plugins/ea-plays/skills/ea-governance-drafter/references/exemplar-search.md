@@ -45,6 +45,6 @@ a summary.
 > areas of interest. Take the structure of §2.
 > `<URL>` · T1 · checked 2026-09-05
 
-Run `cite-or-discard` on the URL of each exemplar. An exemplar that the learner cannot open
-is worse than no exemplar. The learner will then assume that the rest of the draft is as
-weak as its citations.
+Check the URL of each exemplar with the verification loop in `references/source-tiers.md`.
+An exemplar that the learner cannot open is worse than no exemplar. The learner will then
+assume that the rest of the draft is as weak as its citations.

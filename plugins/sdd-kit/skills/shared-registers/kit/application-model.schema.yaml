@@ -106,7 +106,7 @@ properties:
   dd_ref:
     type: string
     description: >-
-      KP-01 (schema 0.2): relative path to the domain data dictionary
+      DD-01 (schema 0.2): relative path to the domain data dictionary
       (<domain>.dd.yaml) whose `sets` this model's attributes bind via `semantic`.
       The M-series authoring gate loads it; absent = gate is advisory only.
 
@@ -617,7 +617,7 @@ properties:
         entity: { $ref: "#/$defs/snakeId" }
         purpose: { enum: [create, edit, view, review, wizard_step, wizard] }
         layout: { enum: [detail_360], description: "detail_360 (ADR-068 / W-9, UX-01 CTX-02): the form renders as a tabbed record console (enterprise MultiPagedForm displayMode=tab). Sections marked header:true (default: the first section) stay pinned above the tabs as the context header; each remaining section becomes a tab bound to a projector-emitted per-tab form over the same table; a user-triggered lifecycle adds an Actions tab carrying the transition select + guard." }
-        use_case: { type: string, description: "KP-01 (schema 0.2): M15 traceability anchor — the use-case id (optionally /step or /ext) this screen realizes, e.g. UC-D02. The UC-series gate warns on an orphan screen (no behavioural anchor); becomes an error once the use-case model is bound." }
+        use_case: { type: string, description: "DD-01 (schema 0.2): M15 traceability anchor — the use-case id (optionally /step or /ext) this screen realizes, e.g. UC-D02. The UC-series gate warns on an orphan screen (no behavioural anchor); becomes an error once the use-case model is bound." }
         feature: { $ref: "#/$defs/freeId" }
         persona: { type: string, description: "Schema 0.2 (WP-E / ADR-071): who uses this screen (U008)." }
         trigger:
@@ -872,7 +872,7 @@ properties:
             NOT this: D-022 records it as a measured DX behaviour and it stands.
         name: { type: string }
         feature: { $ref: "#/$defs/freeId" }
-        use_case: { type: string, description: "KP-01 (schema 0.2): M15 traceability anchor — the use-case id this list realizes." }
+        use_case: { type: string, description: "DD-01 (schema 0.2): M15 traceability anchor — the use-case id this list realizes." }
         source:
           type: object
           additionalProperties: false
@@ -1424,7 +1424,7 @@ $defs:
         type: string
         pattern: "^dd:[a-z][a-z0-9_]*$"
         description: >-
-          KP-01 (schema 0.2): binds this attribute to a governed SET in the domain
+          DD-01 (schema 0.2): binds this attribute to a governed SET in the domain
           data dictionary (dd_ref), e.g. dd:tax_period. The set's kind DRIVES the
           control the projector emits (typed.period -> period picker, md.registry ->
           smart search, ...), overriding any naive control. The M-series gate refuses

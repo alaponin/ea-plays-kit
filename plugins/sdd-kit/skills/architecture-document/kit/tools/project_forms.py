@@ -497,7 +497,7 @@ class Index:
     def __init__(self, doc: dict, app_path=None):
         self.doc = doc
         self.app_path = app_path
-        # KP-01: the domain data dictionary drives the derivation contract
+        # DD-01: the domain data dictionary drives the derivation contract
         self.dd = l1.load_dd(doc, app_path)
         self.dd_sets = {st['id']: st for st in self.dd.get('sets', [])}
         self.entities = {e["id"]: e for e in doc.get("entities", [])}
@@ -797,7 +797,7 @@ def project_field(fld: dict, entity: dict, ix: Index, sec_managed: bool, path: s
             raise ProjectionError(f"{path}: no default control mapping for attribute type '{atype}'")
         ftype, numeric = ATTR_TYPE_MAP[atype]
 
-    # ---- KP-01 derivation contract: a bound attribute's dd `semantic` DRIVES the
+    # ---- DD-01 derivation contract: a bound attribute's dd `semantic` DRIVES the
     # control, overriding any naive field control (this is what makes period-as-text
     # unauthorable — the model author cannot pick the wrong control for a period).
     sem = a.get("semantic")
@@ -918,7 +918,7 @@ def project_field(fld: dict, entity: dict, ix: Index, sec_managed: bool, path: s
             target = ix.entities[a["ref"]["entity"]]
             scale = target.get("scale") or ("operational" if target.get("lifecycle") else "bounded")
             editable = not (fld.get("readonly") or a.get("readonly") or sec_managed)
-            # KP-01: a ref to a dd md.registry set is a PARTIAL-KNOWLEDGE smart search
+            # DD-01: a ref to a dd md.registry set is a PARTIAL-KNOWLEDGE smart search
             # (owner-corrected 14.07) — search with whatever facts are known, ranked
             # candidates, explicit pick. Realized by joget-smart-search. Other
             # operational refs stay the popup search-select; bounded refs stay dropdown.
