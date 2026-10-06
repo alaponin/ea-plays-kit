@@ -49,7 +49,7 @@ plugins/ea-plays/                 the plugin
   shared/                         rules every skill follows: source tiers, provenance header,
                                   output contract, and the two workbook chains
                                   (workbook-chain.md for EA, workbook-chain-gif.md for interoperability)
-  skills/<name>/SKILL.md          twenty-two skills, each one self-contained
+  skills/<name>/SKILL.md          twenty-three skills, each one self-contained
   scripts/sync-shared.sh          copies shared/*.md into the references/ folder of each skill
   scripts/package.sh              builds the Cowork .plugin
 tests/

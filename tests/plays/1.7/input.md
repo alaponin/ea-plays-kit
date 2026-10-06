@@ -1,7 +1,7 @@
 # Play 1.7 — Draft a Terms of Reference for your EA Governance Board · fixture input
 
 **Consumes:** A0 §4, A0 §7, A3, A6 — from [`tests/progressa.md`](../../progressa.md).
-**Primary skill:** `ea-governance-drafter` · also runs: `ea-legal-context`
+**Primary skill:** `ea-governance-drafter` · also runs: `ea-legal-context`, `decision-cards`
 **Produces:** A7 — EA Governance Board ToR
 
 ## What the learner types
@@ -17,3 +17,13 @@ those sections without a change.
 If this play consumes an artefact from an earlier play, such as A1, A3 or A22, run that play
 on Progressa first. The chain is in
 [`shared/workbook-chain.md`](../../../plugins/ea-plays/shared/workbook-chain.md).
+
+## Then the learner asks for the minister's page
+
+After the ToR, the learner types: *"Put the four asks and the open points of this ToR on
+one page that the Minister of ICT can answer."* The four asks are those of the play page:
+a small permanent EA team; an EA Board with binding authority; a budget envelope that
+lasts five years; and the promise that the team is not moved onto the urgent project of
+the week.
+
+This tests `decision-cards`, which runs after `ea-governance-drafter` on this play.

@@ -19,3 +19,10 @@ If this play consumes a B-artefact from an earlier play, run that play on Progre
 The chain is in
 [`shared/workbook-chain-gif.md`](../../../../plugins/ea-plays/shared/workbook-chain-gif.md).
 This play is from the interoperability course. The EA course has a play with the same id that makes an A-artefact.
+
+## A second run: the mandatory-connection article
+
+Run the play a second time. This time the learner chooses the **mandatory-connection**
+article, and names the Public Information Act, § 43⁹, as the published model.
+
+This tests `references/reading-estonian-law.md` of `gif-decree-draft`.

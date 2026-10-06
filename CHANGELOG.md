@@ -8,6 +8,46 @@ Video descriptions and the GitBook link the install command, never a release num
 
 ## [Unreleased]
 
+## [0.4.0] — 2026-10-06
+
+The first wave of learner skills for four courses: enterprise architecture,
+interoperability, the education DPI roadmap and service design. Minor: a new skill, and two
+output contracts changed.
+
+### Added
+
+- **`decision-cards`**, the twenty-third skill. It turns a list of open questions into one
+  page of cards that the person who rules answers by clicking, and reads the answers back.
+  It always gives the same cards as a numbered list in the chat. It serves EA play 1.7 (as
+  a second skill, after `ea-governance-drafter`), DPI roadmap play 6.7, and service design
+  plays 3.6 and 4.5.
+- **`gif-decree-draft/references/reading-estonian-law.md`**: how to read an Estonian model
+  act on Riigi Teataja — the three traps, the steps, how to cite the text in force, and what
+  to write when the text cannot be read. Step 1 of the procedure and the reference list
+  name it.
+- **`paera-reference-check/references/`**: `paera-index.md` (the map of PAERA's sections and
+  their public addresses), `paera-tests.md` (the principles and the capability ladder as
+  tests, in the kit's words) and `paera-glossary.md`. None of them carries PAERA text.
+- Fixtures for the two new courses: `tests/dpi-roadmap/plays/6.7` and
+  `tests/service-design/plays/3.6` and `4.5`. `check_fixtures.py` does not read them yet.
+
+### Changed
+
+- **`paera-reference-check` also looks up PAERA.** Asked a question about PAERA, it finds the
+  section, reads the public page and cites the section, the address and the date. Its output
+  contract gains the sections *Look-up* and *Findings* and a column of public addresses in
+  the foundation map. The principle card now quotes the title of the principle and one
+  sentence of it, where 0.3.1 quoted the principle as worded.
+- **The output contract has one exception to rule 1.** `decision-cards` writes one HTML file.
+  `shared/output-contract.md` and the plugin README's rules say so; the chain still reads
+  the numbered list in the chat.
+- Fixtures of EA plays 1.5, 1.7, 2.2 and 2.3 and of interoperability plays 2.2–2.5 each keep
+  their fixture and add a section for the new behaviour. In 1.7 the contract check names
+  the one exception.
+- Both READMEs count twenty-three skills. The plugin README's interoperability section says
+  that nine of the other fifteen skills serve its plays; it said fourteen, which was the
+  count of all non-`gif-` skills, not of those its table names.
+
 ## [0.3.1] — 2026-09-14
 
 The course acronyms are gone. A reader outside the programme could not tell what KP1 and KP2

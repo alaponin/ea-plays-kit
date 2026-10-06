@@ -17,3 +17,9 @@ those sections without a change.
 If this play consumes an artefact from an earlier play, such as A1, A3 or A22, run that play
 on Progressa first. The chain is in
 [`shared/workbook-chain.md`](../../../plugins/ea-plays/shared/workbook-chain.md).
+
+## The look-up the learner also asks
+
+During the play, the learner asks: *"What does PAERA say about how to classify public
+bodies?"* The skill answers before it builds the map. This tests the look-up of
+`paera-reference-check`, step 2 of its procedure.

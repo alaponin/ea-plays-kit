@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}} — decisions for {{WHO_RULES}}</title>
+<!--
+  The page of decision cards. One file: the style and the script are inside it.
+  It loads nothing from the internet and uses no browser storage.
+  Replace each {{...}} and copy one card block for each card, in the order of the
+  numbered list in the chat. Delete the example cards. Pre-select nothing.
+-->
+<style>
+  :root{
+    --bg:#fbfaf8; --card:#fff; --ink:#1b1a18; --muted:#6b6862; --line:#e5e1da;
+    --accent:#8a5a2b; --accent-soft:#f4ece2; --ok:#3f6b4a; --ok-soft:#eaf1eb;
+    --pick:#fdf6ec; --pickline:#c99a5f;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#171614; --card:#201e1b; --ink:#f0ede8; --muted:#a09b93; --line:#332f2a;
+           --accent:#d9a066; --accent-soft:#2b241c; --ok:#8fbf9c; --ok-soft:#1e2820;
+           --pick:#2e2519; --pickline:#a87b41; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:16px/1.55 ui-serif,Georgia,"Times New Roman",serif;padding:40px 16px 220px}
+  .wrap{max-width:760px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 4px;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:14px;margin:0 0 14px}
+  .rule{background:var(--accent-soft);border-radius:8px;padding:10px 14px;font-size:14px;
+        margin:0 0 18px}
+  .count{display:inline-block;background:var(--accent-soft);color:var(--accent);
+         border-radius:20px;padding:2px 10px;font-size:13px;font-weight:600;
+         font-family:ui-sans-serif,system-ui,sans-serif}
+  .who{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 24px;
+       font-family:ui-sans-serif,system-ui,sans-serif;font-size:13px;color:var(--muted)}
+  .who label{display:flex;flex-direction:column;gap:4px;flex:1 1 220px}
+  .who input{font:14px ui-sans-serif,system-ui,sans-serif;color:var(--ink);background:var(--card);
+             border:1px solid var(--line);border-radius:6px;padding:7px 9px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+        padding:18px 20px;margin-bottom:14px}
+  .card.done{opacity:.62}
+  .card.answered{border-color:var(--pickline)}
+  .hd{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+  .n{font-family:ui-sans-serif,system-ui,sans-serif;font-size:12px;font-weight:700;
+     color:var(--accent);background:var(--accent-soft);border-radius:5px;
+     padding:2px 7px;flex:none}
+  .card.done .n{color:var(--ok);background:var(--ok-soft)}
+  .ttl{font-size:18px;font-weight:600;letter-spacing:-.01em}
+  .bg{margin:0 0 8px}
+  .words{margin:0 0 8px;font-style:italic}
+  .q{margin:0 0 12px;font-weight:600}
+  .opts{list-style:none;padding:0;margin:0 0 12px}
+  .opts li{padding:9px 10px 9px 30px;position:relative;border-top:1px solid var(--line);
+           font-size:15px;cursor:pointer;border-radius:6px;transition:background .12s}
+  .opts li:hover{background:var(--accent-soft)}
+  .opts li:before{content:"○";position:absolute;left:9px;color:var(--muted);
+                  font-family:ui-sans-serif,system-ui,sans-serif}
+  .opts li.sel{background:var(--pick);box-shadow:inset 2px 0 0 var(--pickline)}
+  .opts li.sel:before{content:"●";color:var(--pickline)}
+  .opts li b{font-weight:600}
+  .rec{font-size:13px;color:var(--muted);font-style:italic}
+  .meta{font-family:ui-sans-serif,system-ui,sans-serif;font-size:12px;color:var(--muted);
+        border-top:1px solid var(--line);padding-top:9px;margin-top:2px}
+  .meta b{color:var(--ink);font-weight:600}
+  .sect{font-family:ui-sans-serif,system-ui,sans-serif;font-size:12px;font-weight:700;
+        letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+        margin:30px 0 12px}
+  .note{width:100%;margin-top:10px;font:14px/1.5 ui-serif,Georgia,serif;color:var(--ink);
+        background:transparent;border:1px solid var(--line);border-radius:6px;padding:8px 10px;
+        resize:vertical;min-height:38px;display:none}
+  .card.answered .note{display:block}
+  footer{color:var(--muted);font-size:13px;margin-top:30px;border-top:1px solid var(--line);
+         padding-top:14px}
+  #bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);
+       border-top:1px solid var(--pickline);padding:12px 16px;
+       font-family:ui-sans-serif,system-ui,sans-serif;box-shadow:0 -4px 18px rgba(0,0,0,.07)}
+  #bar .in{max-width:760px;margin:0 auto;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  #tally{font-size:14px;color:var(--muted);flex:1}
+  #tally b{color:var(--ink)}
+  button{font:600 14px ui-sans-serif,system-ui,sans-serif;padding:9px 16px;border-radius:7px;
+         border:1px solid var(--pickline);background:var(--accent);color:#fff;cursor:pointer}
+  button.ghost{background:transparent;color:var(--accent)}
+  button:disabled{opacity:.4;cursor:default}
+  #out{max-width:760px;margin:10px auto 0;white-space:pre-wrap;font:13px/1.5 ui-monospace,
+       Menlo,monospace;background:var(--bg);border:1px solid var(--line);border-radius:7px;
+       padding:12px;display:none;max-height:190px;overflow:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>{{TITLE}}</h1>
+<p class="sub"><span class="count">{{N}} cards</span> &nbsp;for {{WHO_RULES}} · answers needed by {{DATE}}</p>
+
+<p class="rule"><b>You rule. This page only records.</b> Click one answer on each card.
+Nothing is chosen for you. When you finish, press <b>Copy answers</b> and paste the block
+back into the chat. Your answers are written into the document that owns each fact.</p>
+
+<div class="who">
+  <label>Ruled by — your post, and your name if you wish
+    <input id="ruler" type="text" autocomplete="off"></label>
+  <label>Date
+    <input id="when" type="date"></label>
+</div>
+
+<div class="sect">Decisions</div>
+
+<!-- ONE CARD BLOCK FOR EACH DECISION. data-q is the card number; data-label is the short
+     label that appears in the copied block. -->
+<div class="card" data-q="1" data-label="Short label of the decision">
+  <div class="hd"><span class="n">1</span><span class="ttl">Title, five words or less</span></div>
+  <p class="bg">The background, in one or two plain sentences, so that the card stands on its own.</p>
+  <p class="words">"The line's own words, where the course asks for them."</p>
+  <p class="q">The question, in one sentence, that states a choice?</p>
+  <ul class="opts">
+    <li data-a="Short form of the first option"><b>First option</b> — what follows if it is
+        chosen: what changes, what it costs, what it closes off.</li>
+    <li data-a="Short form of the second option"><b>Second option</b> — what follows.</li>
+  </ul>
+  <p class="rec">The note: the trade-off, the link to another card, or the recommendation.
+     The recommendation is not pre-selected.</p>
+  <div class="meta"><b>Who rules</b> the post · <b>Touches</b> the identifiers of the lines this closes · the document where the answer goes</div>
+  <textarea class="note" placeholder="Anything to add? (optional)"></textarea>
+</div>
+
+<div class="sect">Quick answers</div>
+
+<div class="card" data-q="2" data-label="Short label">
+  <div class="hd"><span class="n">2</span><span class="ttl">How long does it last?</span></div>
+  <p class="bg">No source gives a figure, so any figure on this card would be invented.</p>
+  <p class="q">Does it end, and if so, when?</p>
+  <ul class="opts">
+    <li data-a="It does not end"><b>It does not end</b> — it stays until someone removes it.</li>
+    <li data-a="It ends after a period — the period is in the note"><b>It ends after a period that you set</b>
+        — type the period in the note.</li>
+  </ul>
+  <div class="meta"><b>Who rules</b> the post · <b>Touches</b> the lines this closes</div>
+  <textarea class="note" placeholder="The period, if you set one"></textarea>
+</div>
+
+<div class="sect">Not yours to rule</div>
+
+<!-- Show these in grey, with no options, and one line on why no answer here closes them,
+     and who or what does. Never drop them. -->
+<div class="card done">
+  <div class="hd"><span class="n">—</span><span class="ttl">A fact to establish</span></div>
+  <p class="q">Why no answer on this page can close this line, and who or what closes it.</p>
+  <div class="meta"><b>Owner</b> the post · <b>Touches</b> the lines it leaves open</div>
+</div>
+
+<footer>
+Already ruled: … (so the reader sees that earlier answers landed)<br>
+Not on this page: … (and why)
+</footer>
+
+</div>
+
+<div id="bar"><div class="in">
+  <span id="tally"><b>0</b> answered</span>
+  <button class="ghost" id="reset" type="button">Clear</button>
+  <button id="copy" type="button" disabled>Copy answers</button>
+</div><pre id="out"></pre></div>
+
+<script>
+(function(){
+  var answers = {};
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card[data-q]'));
+  var tally = document.getElementById('tally');
+  var copyBtn = document.getElementById('copy');
+  var out = document.getElementById('out');
+  var ruler = document.getElementById('ruler');
+  var when = document.getElementById('when');
+  var title = document.querySelector('h1').textContent.trim();
+
+  function text(){
+    var lines = [title + ' — answers: ' + Object.keys(answers).length + ' of ' + cards.length,
+                 'Ruled by: ' + (ruler.value.trim() || '(not given)') +
+                 ' · Date: ' + (when.value || '(not given)'), ''];
+    cards.forEach(function(c){
+      var q = c.getAttribute('data-q');
+      if(!answers[q]) return;
+      var note = c.querySelector('.note').value.trim();
+      lines.push(q + '. ' + c.getAttribute('data-label') + ' → ' + answers[q] + (note ? '  [' + note + ']' : ''));
+    });
+    return lines.join('\n');
+  }
+
+  function refresh(){
+    var n = Object.keys(answers).length;
+    tally.innerHTML = '<b>' + n + '</b> of ' + cards.length + ' answered' + (n === cards.length ? ' — all answered' : '');
+    copyBtn.disabled = n === 0;
+    out.style.display = n ? 'block' : 'none';
+    out.textContent = text();
+  }
+
+  cards.forEach(function(card){
+    var q = card.getAttribute('data-q');
+    card.querySelectorAll('.opts li').forEach(function(li){
+      li.setAttribute('tabindex', '0');
+      li.setAttribute('role', 'button');
+      function pick(){
+        var already = li.classList.contains('sel');
+        card.querySelectorAll('.opts li').forEach(function(x){ x.classList.remove('sel'); });
+        if(already){ delete answers[q]; card.classList.remove('answered'); }
+        else { li.classList.add('sel'); answers[q] = li.getAttribute('data-a'); card.classList.add('answered'); }
+        refresh();
+      }
+      li.addEventListener('click', pick);
+      li.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pick(); } });
+    });
+    card.querySelector('.note').addEventListener('input', refresh);
+  });
+  ruler.addEventListener('input', refresh);
+  when.addEventListener('input', refresh);
+
+  copyBtn.addEventListener('click', function(){
+    var t = text();
+    function done(){ copyBtn.textContent = 'Copied'; setTimeout(function(){ copyBtn.textContent = 'Copy answers'; }, 1600); }
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = t; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); done(); }catch(e){ out.style.display = 'block'; }
+      document.body.removeChild(ta);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(done, fallback);
+    } else { fallback(); }
+  });
+
+  document.getElementById('reset').addEventListener('click', function(){
+    answers = {};
+    cards.forEach(function(c){
+      c.classList.remove('answered');
+      c.querySelectorAll('.opts li').forEach(function(x){ x.classList.remove('sel'); });
+      c.querySelector('.note').value = '';
+    });
+    refresh();
+  });
+
+  refresh();
+})();
+</script>
+</body>
+</html>

@@ -14,6 +14,10 @@ that runs play 1.7 after play 1.6 cannot read a `.docx`.
 This is why each skill declares `disallowed-tools: Write`. If the learner asks for a
 file, write the text. Then tell the learner to save the text. The chain needs the text.
 
+The one exception is `decision-cards`. It writes one HTML page of cards, for the person
+who rules, and it always gives the same cards as a numbered list in the chat. The list
+is what the chain reads.
+
 ## 2. Posts, not names
 
 Write the name of the post: *the PDGA Director-General*, *the MoEYS ICT Director*,

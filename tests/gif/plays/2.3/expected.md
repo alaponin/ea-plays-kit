@@ -23,6 +23,17 @@ The prompt of the play says: the Memorandum draft, then the Preamble scaffold, t
 
 Never let a [confirm] placeholder reach the Ministry of Justice as if it were a real citation.
 
+## What the reference on Estonian law adds
+
+- The model line is quoted from the Estonian text that was read, with the dates of the
+  text in force, the address and the date read.
+- The output says that the regulation exists in Estonian only, and that the English of the
+  line is the skill's own translation.
+- The legal basis in the line is written as § 43⁹(1), clause 5, of the Public Information
+  Act — never as "§ 439".
+- Progressa's own enacting formula and its authority stay `[confirm]`. The Estonian line
+  gives the shape, not the authority.
+
 ## Contract checks, for each play
 
 - Text in the chat only: no file, no chart, no image, no screenshot.

@@ -17,3 +17,16 @@ those sections without a change.
 If this play consumes an artefact from an earlier play, such as A1, A3 or A22, run that play
 on Progressa first. The chain is in
 [`shared/workbook-chain.md`](../../../plugins/ea-plays/shared/workbook-chain.md).
+
+## The draft model for this run
+
+Paste this draft, for the National Learner Registry of MoEYS, as the model:
+
+- Learner registration — a Capability
+- Enrol a learner — a Service
+- The registry application — an Application
+- Learner record — a Data Domain, owned by MoEYS
+- Linkup — a Technology Component
+- MoEYS — the Organisation that owns them
+
+This tests the check of `paera-reference-check` against Annex 2 as published.

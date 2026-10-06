@@ -23,6 +23,16 @@ The prompt of the play says: the Cover Note, then the Two-Track Memo
 
 The memo's value depends on the actual text of the data-protection law — every point of intersection must be checked against the real articles by counsel and, ideally, walked through with the data-protection authority before filing; a memo that coordinates with a law as the model imagines it is worse than none.
 
+## What the reference on Estonian law adds
+
+- The Cover Note gives the Estonian split as an example only: the duty in the Public
+  Information Act, § 43⁹; the rules in Government Regulation No. 105 of 23 September 2016,
+  made under § 43⁹(1), clause 5. Both are cited with the text in force that was read, and
+  the date read.
+- The route for Progressa — a decree or primary legislation — stays a **question** for the
+  Ministry of Justice. The Estonian example does not answer it.
+- The English text of the act is marked as a translation, with its own dates.
+
 ## Contract checks, for each play
 
 - Text in the chat only: no file, no chart, no image, no screenshot.

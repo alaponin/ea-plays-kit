@@ -19,3 +19,12 @@ If this play consumes a B-artefact from an earlier play, run that play on Progre
 The chain is in
 [`shared/workbook-chain-gif.md`](../../../../plugins/ea-plays/shared/workbook-chain-gif.md).
 This play is from the interoperability course. The EA course has a play with the same id that makes an A-artefact.
+
+## The published models named in this run
+
+The learner names Estonia as the model for the mandatory-connection article and for the
+operating authority's powers: the Public Information Act, and the Government regulation on
+the data exchange layer of information systems. The play page names the Information
+Society Services Act.
+
+This tests `references/reading-estonian-law.md` of `gif-decree-draft`.

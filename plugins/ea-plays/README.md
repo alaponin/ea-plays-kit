@@ -2,7 +2,7 @@
 
 This is the **"with the kit"** layer for the AI plays of two Knowledge Product courses:
 **Government Enterprise Architecture** (the EA course) and, since v0.3.0, **Government
-Interoperability Framework** (the interoperability course). It has twenty-two skills. They
+Interoperability Framework** (the interoperability course). It has twenty-three skills. They
 build a sourced country context, verify each claim against public sources in four tiers, and
 make the artefacts that go into a country workbook.
 
@@ -39,13 +39,14 @@ Do you not use Claude Code? There are two other routes, from the same source tre
 | `ea-legal-context` | The national legal register that an EA programme touches |
 | `ea-comparator-evidence` | Comparator countries, with primary sources and one contested case |
 | `ea-cost-case` | The business case for re-use: the assumptions first, and each benchmark cited |
-| `paera-reference-check` | Checks against PAERA as published, and not against the simplification in the videos |
+| `paera-reference-check` | Looks up PAERA and cites the section, its public address and the date; and checks against PAERA as published, and not against the simplification in the videos |
 | `ea-method-runner` | The lifecycle of five phases. It reads the workbook and writes to it |
 | `ea-governance-drafter` | The Board ToR, the RACI, the repository, the gate checklist, the scorecard and the risk register |
 | `ea-tool-evaluator` | Scores an EA tool on facts that you can verify, and gives a real export test |
 | `ea-open-learning-catalogue` | A capability plan. Each of its links was checked today |
 | `bdat-assessor` | Reads a body or a sector in four layers, and traces the impact of a change |
 | `bb-sourcing-researcher` | Which products can supply a block that the country does not have |
+| `decision-cards` | Turns open questions into one page of cards that the person who rules answers by clicking, with the same cards as a numbered list in the chat |
 
 Each output starts with a provenance header. The header gives the country, the date, the
 count of sources in each tier, and the count of unverified lines. The next play can then use
@@ -72,7 +73,7 @@ skills. You do not call it directly.
 | 1.4 | A4 — Joint business–IT agenda | `ea-legal-context` | — |
 | 1.5 | A5 — PAERA foundation coverage map | `paera-reference-check` | `cite-or-discard` |
 | 1.6 | A6 — Phase RACI and role-gap list | `ea-governance-drafter` | `ea-institution-mapper` |
-| 1.7 | A7 — EA Governance Board ToR | `ea-governance-drafter` | `ea-legal-context` |
+| 1.7 | A7 — EA Governance Board ToR | `ea-governance-drafter` | `ea-legal-context`, `decision-cards` |
 
 **Module 2 — Reading a government**
 
@@ -136,7 +137,7 @@ under `tests/gif/`.
 
 Eight skills belong to this course only, all prefixed `gif-`. The three that the play pages
 name — `gif-decree-draft`, `gif-semantic-map`, `gif-openapi-gen` — ship under those names.
-The other fourteen skills serve interoperability plays as the table says.
+Nine of the other fifteen skills serve interoperability plays as the table says.
 
 | Skill | What it does |
 | --- | --- |
@@ -228,7 +229,9 @@ plays are 5.8, 5.9 and 5.10, and its storyboard is the home-page play.
 
 ## The rules every skill follows
 
-- **Text in, text out.** No file, no chart, no image. The next play must read the output.
+- **Text in, text out.** No file, no chart, no image. The next play must read the output. The
+  one exception is `decision-cards`: one HTML page of cards, with the same cards as a numbered
+  list in the chat.
 - **Posts, not names.** Never write the name of a real office-holder, also when the name is
   public.
 - **Cite or discard.** Each claim has a URL, a tier and a date. If it does not, a skill marks

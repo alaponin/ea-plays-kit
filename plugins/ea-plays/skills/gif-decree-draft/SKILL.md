@@ -70,6 +70,9 @@ the learner* block in the artefact.
    If the fetch fails, say so, mark the model ⚠ *unverified — learner to confirm*, and
    adapt from the structure that `references/published-models.md` gives. Never adapt from
    memory alone without saying so.
+   For an Estonian model, read `references/reading-estonian-law.md` first. The portal
+   needs a browser tool, the English text can be an older text, and a superscript section
+   number breaks in extracted text.
 
 2. **Read the legal register.** For each placeholder that the bare play would leave as
    `[confirm]`, look for the instrument in the register: the constitution's article on
@@ -148,6 +151,9 @@ signed instrument is cited as the document. Write no analysis before the header.
 - `references/published-models.md` — the instruments to adapt from, component by
   component: where each is published, which provision does what, and what does not
   transfer across legal systems.
+- `references/reading-estonian-law.md` — how to read an Estonian model on Riigi Teataja:
+  the three traps, the steps, how to cite the text in force, and what to write when the
+  text cannot be read.
 - `references/component-templates.md` — the shape of each of the five components and of
   the six operative articles, with the enforcement ladder.
 - `references/source-tiers.md` · `references/provenance-header.md` ·

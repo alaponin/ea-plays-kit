@@ -19,3 +19,11 @@ If this play consumes a B-artefact from an earlier play, run that play on Progre
 The chain is in
 [`shared/workbook-chain-gif.md`](../../../../plugins/ea-plays/shared/workbook-chain-gif.md).
 This play is from the interoperability course. The EA course has a play with the same id that makes an A-artefact.
+
+## The Estonian model in this run
+
+In the Cover Note, the learner asks how the Estonian model splits the work between an act
+and a regulation: the duty to use the exchange layer in the Public Information Act, and
+the technical rules in a Government regulation made under it.
+
+This tests `references/reading-estonian-law.md` of `gif-decree-draft`.

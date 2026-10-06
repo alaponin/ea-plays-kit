@@ -17,3 +17,14 @@ those sections without a change.
 If this play consumes an artefact from an earlier play, such as A1, A3 or A22, run that play
 on Progressa first. The chain is in
 [`shared/workbook-chain.md`](../../../plugins/ea-plays/shared/workbook-chain.md).
+
+## The principles for this run
+
+Run the play twice.
+
+1. The learner adopts **Principle #5, Once-Only**, and pastes no wording. The skill reads
+   §5.2 on the public page.
+2. The learner adopts **Technology neutrality**, which a course page lists among ten
+   principles.
+
+This tests the principle card of `paera-reference-check` against §5.2 as published.

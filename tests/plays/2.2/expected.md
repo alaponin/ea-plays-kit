@@ -23,6 +23,21 @@ The prompt of the play says: a mapping table (my element / PAERA entity / note),
 
 The check only sees what you paste, and a clean mapping is necessary but not sufficient — a model can conform to the metamodel and still be wrong about the real world. Confirm the entity assignments with the body that owns the systems before relying on the result.
 
+## What the check against Annex 2 as published adds
+
+- **PAERA version checked**, then the address of the Annex 2 page and the date read.
+- **The conformance table** compares each element with the six classes of Annex 2 as
+  published: Customer, Service, Business process, Workflow, Application function,
+  Application component.
+- *Enrol a learner* is **conformant**. *Learner registration*, *Learner record* and
+  *Linkup* get **conformant to the teaching subset only**, each with the Annex 2 element
+  that it must become, or the words *no Annex 2 class*. *The registry application* maps to
+  Application component, and its functions to Application function.
+- **Annex 2 elements with no counterpart in the draft** lists at least Customer, Business
+  process and Workflow.
+- **Where the teaching subset was applied** has the line *"The video teaches N; the
+  specification has M; your element sits here."*
+
 ## Contract checks, for each play
 
 - Text in the chat only: no file, no chart, no image, no screenshot.

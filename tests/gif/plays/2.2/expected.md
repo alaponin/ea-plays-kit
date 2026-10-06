@@ -23,6 +23,22 @@ The prompt of the play says: the five-part outline with sub-points and input not
 
 The outline is a drafting plan, not legal content — every authority and article it names must be confirmed against the country's actual law by a qualified lawyer.
 
+## What the reference on Estonian law adds
+
+- **The models adapted from** gives each Estonian instrument with the text that was read:
+  its Estonian title, the dates of the text in force (*In force from* and *In force
+  until*), whether the English text translates an older text, the address on
+  riigiteataja.ee, and the date read.
+- The mandatory-connection article points to the Public Information Act, § 43⁹, written
+  with the superscript and never as "§ 439". The operating authority's powers point to the
+  Government regulation on the data exchange layer of information systems.
+- The output says that the Information Society Services Act, which the play page names,
+  does not carry the duty to use the exchange layer, and it says which act the outline
+  adapts from.
+- **Without a browser tool**, the output says that the Estonian text could not be read,
+  marks each Estonian citation ⚠, and keeps `[confirm]` for the section number. It writes
+  no section number that it did not read.
+
 ## Contract checks, for each play
 
 - Text in the chat only: no file, no chart, no image, no screenshot.
